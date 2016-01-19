@@ -138,7 +138,7 @@ namespace XLabs.Forms.Controls
 		{
 			if (oldElement != null)
 			{
-				oldElement.PropertyChanging += ElementPropertyChanging;
+				oldElement.PropertyChanging -= ElementPropertyChanging;
 				oldElement.PropertyChanged -= ElementPropertyChanged;
 				if (oldElement.ItemsSource is INotifyCollectionChanged) {
 					(oldElement.ItemsSource as INotifyCollectionChanged).CollectionChanged -= DataCollectionChanged;

@@ -4,7 +4,7 @@
 		<id>XLabs.Caching</id>
 		<title>XLabs - Caching</title>
 		<tags>Xamarin XLabs caching</tags>
-		<version>2.0.5603</version>
+		<version>2.0.5818</version>
 		<authors>XLabs Team</authors>
 		<licenseUrl>https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
 		<projectUrl>https://github.com/XLabs/Xamarin-Forms-Labs</projectUrl>
@@ -19,22 +19,15 @@
 			XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
 		</summary>
 		<releaseNotes>
-
 		</releaseNotes>
 		<language>en-US</language>
 		<dependencies>
 		</dependencies>
 	</metadata>
 	<files>
-		<file src="..\..\build\**\XLabs.Caching.dll" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
-		<file src="..\..\build\**\XLabs.Caching.dll.mdb" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
-		<file src="..\..\build\**\XLabs.Caching.pdb" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
-		<file src="..\..\build\**\XLabs.Caching.xml" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
-
-		<file src="..\..\build\**\XLabs.Caching.dll" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
-		<file src="..\..\build\**\XLabs.Caching.dll.mdb" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
-		<file src="..\..\build\**\XLabs.Caching.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
-		<file src="..\..\build\**\XLabs.Caching.xml" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Caching.dll" target="lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10" exclude="" />
+		<file src="..\..\build\**\XLabs.Caching.pdb" target="lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10" exclude="" />
+		<file src="..\..\build\**\XLabs.Caching.XML" target="lib\portable-net45+win+wpa81+wp80+MonoAndroid10+xamarinios10+MonoTouch10" exclude="" />
 
 		<!-- Source Files for Symbol Server -->
 		<file src="..\..\src\Caching\XLabs.Caching\**\*.cs" target="src" />
