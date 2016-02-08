@@ -225,27 +225,34 @@ namespace XLabs.Forms.Controls
             InvokeOnMainThread (()=> {
                 try 
                 {
-                    if(this.Control == null) return;
+                    if(this.Control == null)
+                        return;
 
-                    // try to handle add or remove operations gracefully, just reload the whole collection for other changes
-                    var indexes = new List<NSIndexPath>();
-                    switch (e.Action) {
-                        case NotifyCollectionChangedAction.Add:
-                            for (int i = 0; i < e.NewItems.Count; i++) {
-                                indexes.Add(NSIndexPath.FromRowSection((nint)(e.NewStartingIndex + i),0));
-                            }
-                            this.Control.InsertItems(indexes.ToArray());
-                            break;
-                        case NotifyCollectionChangedAction.Remove:
-                            for (int i = 0; i< e.OldItems.Count; i++) {
-                                indexes.Add(NSIndexPath.FromRowSection((nint)(e.OldStartingIndex + i),0));
-                            }
-                            this.Control.DeleteItems(indexes.ToArray());
-                            break;
-                        default:
-                            this.Control.ReloadData();
-                            break;
-                    }
+                    this.Control.ReloadData();
+
+                    // TODO: try to handle add or remove operations gracefully, just reload the whole collection for other changes
+                    // InsertItems, DeleteItems or ReloadItems can cause
+                    // *** Assertion failure in -[XLabs_Forms_Controls_GridCollectionView _endItemAnimationsWithInvalidationContext:tentativelyForReordering:],
+                    // BuildRoot/Library/Caches/com.apple.xbs/Sources/UIKit_Sim/UIKit-3512.30.14/UICollectionView.m:4324
+
+//                    var indexes = new List<NSIndexPath>();
+//                    switch (e.Action) {
+//                        case NotifyCollectionChangedAction.Add:
+//                            for (int i = 0; i < e.NewItems.Count; i++) {
+//                                indexes.Add(NSIndexPath.FromRowSection((nint)(e.NewStartingIndex + i),0));
+//                            }
+//                            this.Control.InsertItems(indexes.ToArray());
+//                            break;
+//                        case NotifyCollectionChangedAction.Remove:
+//                            for (int i = 0; i< e.OldItems.Count; i++) {
+//                                indexes.Add(NSIndexPath.FromRowSection((nint)(e.OldStartingIndex + i),0));
+//                            }
+//                            this.Control.DeleteItems(indexes.ToArray());
+//                            break;
+//                        default:
+//                            this.Control.ReloadData();
+//                            break;
+//                    }
                 } 
                 catch { } // todo: determine why we are hiding a possible exception here
             });
