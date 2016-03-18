@@ -109,6 +109,7 @@
     <Compile Include="Pages\Samples\ConverterPage.xaml.cs">
       <DependentUpon>ConverterPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Samples\OrientationPage.cs" />
     <Compile Include="Pages\Samples\WebHybridSamplePage.cs" />
     <Compile Include="Pages\Services\EmailPage.cs" />
     <Compile Include="Pages\Services\GyroscopePage.cs" />

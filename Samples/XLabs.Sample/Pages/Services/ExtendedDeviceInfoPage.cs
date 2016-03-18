@@ -56,19 +56,19 @@ namespace XLabs.Sample.Pages.Services
             if (display != null)
             {
                 displayFrame.Content = new StackLayout()
-                            {
-                                Children =
-                                {
-                                    new Label() { Text = display.ToString() },
-                                    new Label() { Text = string.Format("Screen width is\t {0:0.0} inches.", display.ScreenWidthInches()) },
-                                    new Label() { Text = string.Format("Screen height is\t {0:0.0} inches.", display.ScreenHeightInches()) },
-                                    new Label() { Text = string.Format("Screen diagonal size is\t {0:0.0} inches.", display.ScreenSizeInches()) }
-                                }
-                            };
+                {
+                    Children =
+                    {
+                        new Label { Text = display.ToString() },
+                        new Label { Text = $"Screen width is\t {display.ScreenWidthInches():0.0} inches." },
+                        new Label { Text = $"Screen height is\t {display.ScreenHeightInches():0.0} inches." },
+                        new Label { Text = $"Screen diagonal size is\t {display.ScreenSizeInches():0.0} inches." }
+                    }
+                };
             }
             else
             {
-                displayFrame.Content = new Label() { TextColor = Color.Red, Text = "Device does not contain display information." };
+                displayFrame.Content = new Label { TextColor = Color.Red, Text = "Device does not contain display information." };
             }
 
             stack.Children.Add(displayFrame); 
@@ -82,8 +82,9 @@ namespace XLabs.Sample.Pages.Services
                 var level = new Label();
                 var charger = new Label();
 
-                var levelAction = new Action(() => level.Text = string.Format("Battery level is {0}%.", battery.Level));
-                var chargerAction = new Action(() => charger.Text = string.Format("Charger is {0}.", battery.Charging ? "Connected" : "Disconnected"));
+                var levelAction = new Action(() => level.Text = $"Battery level is {battery.Level}%.");
+                var chargerAction = new Action(() => charger.Text =
+                    $"Charger is {(battery.Charging ? "Connected" : "Disconnected")}.");
 
                 levelAction.Invoke();
                 chargerAction.Invoke();
@@ -99,27 +100,27 @@ namespace XLabs.Sample.Pages.Services
             }
             else
             {
-                batteryFrame.Content = new Label() { TextColor = Color.Red, Text = "Device does not contain battery information." };
+                batteryFrame.Content = new Label { TextColor = Color.Red, Text = "Device does not contain battery information." };
             }
 
             stack.Children.Add(batteryFrame); 
             #endregion
 
             #region RAM information
-            var ramLabel = new Label() { Text = "Total Memory:" };
+            var ramLabel = new Label { Text = "Total Memory:" };
 
             var ramText = new Label();
 
-            stack.Children.Add(new Frame()
+            stack.Children.Add(new Frame
             {
-                Content = new StackLayout()
+                Content = new StackLayout
                 {
                     Children = { ramLabel, ramText }
                 }
             });
 
             double mem;
-            var format = "";
+            string format;
 
             if (device.TotalMemory < 1073741824)
             {
@@ -132,20 +133,17 @@ namespace XLabs.Sample.Pages.Services
                 format = "{0:#,0.00} GB";
             }
 
-            ramText.Text = String.Format(format, mem);
+            ramText.Text = string.Format(format, mem);
             #endregion
 
             #region Device Info
-
-
-
-            var idLabel = new Label() { Text = "Device Id:" };
+            var idLabel = new Label { Text = "Device Id:" };
 
             var idText = new Label();
 
-            stack.Children.Add(new Frame()
+            stack.Children.Add(new Frame
             {
-                Content = new StackLayout()
+                Content = new StackLayout
                 {
                     Children = { idLabel, idText }
                 }
