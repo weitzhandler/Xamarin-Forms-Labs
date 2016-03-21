@@ -1,17 +1,36 @@
-﻿namespace XLabs.Platform.Services.Geolocation
+﻿// ***********************************************************************
+// Assembly         : XLabs.Platform.Droid
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="Geolocator.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using System;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using Android.App;
+using Android.Content;
+using Android.Locations;
+using Android.OS;
+using Java.Lang;
+
+namespace XLabs.Platform.Services.Geolocation
 {
-	using System;
-	using System.Linq;
-	using System.Threading;
-	using System.Threading.Tasks;
-
-	using Android.App;
-	using Android.Content;
-	using Android.Locations;
-	using Android.OS;
-
-	using Java.Lang;
-
 	/// <summary>
 	///     Class Geolocator.
 	/// </summary>
@@ -22,10 +41,10 @@
 		/// </summary>
 		private static readonly DateTime Epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
 
-		/// <summary>
-		///     The _heading provider
-		/// </summary>
-		private string _headingProvider;
+		//// <summary>
+		////     The _heading provider
+		//// </summary>
+		//private string _headingProvider;
 
 		/// <summary>
 		///     The _last position

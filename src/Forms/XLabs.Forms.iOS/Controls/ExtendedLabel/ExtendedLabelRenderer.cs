@@ -1,19 +1,36 @@
-using Xamarin.Forms;
+// ***********************************************************************
+// Assembly         : XLabs.Forms.iOS
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="ExtendedLabelRenderer.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
 
+using System.IO;
+using Foundation;
+using UIKit;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 using XLabs.Forms.Controls;
+using System;
 
 [assembly: ExportRenderer(typeof(ExtendedLabel), typeof(ExtendedLabelRenderer))]
 
 namespace XLabs.Forms.Controls
 {
-    using System.IO;
-
-    using Foundation;
-    using UIKit;
-
-    using Xamarin.Forms;
-    using Xamarin.Forms.Platform.iOS;
-
     /// <summary>
     /// The extended label renderer.
     /// </summary>
@@ -34,7 +51,7 @@ namespace XLabs.Forms.Controls
             //UpdateUi(view, this.Control);
             if (view != null)
             {
-                SetPlaceholder (view);
+                SetPlaceholder(view);
             }
         }
 
@@ -51,7 +68,7 @@ namespace XLabs.Forms.Controls
 
             if (view != null &&
                 e.PropertyName == Label.TextProperty.PropertyName ||
-                e.PropertyName == Label.FormattedTextProperty.PropertyName || 
+                e.PropertyName == Label.FormattedTextProperty.PropertyName ||
                 e.PropertyName == ExtendedLabel.PlaceholderProperty.PropertyName ||
                 e.PropertyName == ExtendedLabel.FormattedPlaceholderProperty.PropertyName ||
                 e.PropertyName == ExtendedLabel.IsDropShadowProperty.PropertyName ||
@@ -102,6 +119,19 @@ namespace XLabs.Forms.Controls
                 }
                 #endregion ====== End of obsolete section ==========================================================
             }
+            else
+            {
+                try
+                {
+                    var font = UIFont.FromName(view.FontFamily, (float)view.FontSize);
+                    if (font != null)
+                        this.Control.Font = font;
+                }
+                catch (Exception ex)
+                {
+                    var x = ex;
+                }
+            }
 
             //Do not create attributed string if it is not necesarry
             //if (!view.IsUnderline && !view.IsStrikeThrough && !view.IsDropShadow)
@@ -133,10 +163,11 @@ namespace XLabs.Forms.Controls
             }
 
             this.Control.AttributedText = new NSMutableAttributedString(view.Text,
-                                                                   this.Control.Font,
-                                                                   underlineStyle: underline,
-                                                                   strikethroughStyle: strikethrough,
-                                                                   shadow: dropShadow); ;
+                this.Control.Font,
+                underlineStyle: underline,
+                strikethroughStyle: strikethrough,
+                shadow: dropShadow);
+            ;
         }
 
         private void SetPlaceholder(ExtendedLabel view)

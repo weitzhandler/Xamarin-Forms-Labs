@@ -1,10 +1,30 @@
+// ***********************************************************************
+// Assembly         : XLabs.Forms
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="Action.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
 using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using Xamarin.Forms;
-using XLabs.Forms.Controls;
 
 namespace XLabs.Forms.Validation
 {
@@ -51,7 +71,7 @@ namespace XLabs.Forms.Validation
 				{ typeof(Constraint), new ConstraintTypeConverter() },
 				{ typeof(Font), new FontTypeConverter() },
 				{ typeof(GridLength), new GridLengthTypeConverter() },
-				{ typeof(ImageSource), new ImageSourceConverter() },
+				{ typeof(ImageSource), new Controls.ImageSourceConverter() },
 				{ typeof(Keyboard), new KeyboardTypeConverter() },
 				{ typeof(Point), new PointTypeConverter() },
 				{ typeof(Thickness), new ThicknessTypeConverter() },

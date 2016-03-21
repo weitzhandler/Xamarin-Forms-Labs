@@ -10,7 +10,7 @@
     <!--Application Resources-->
     <Application.Resources>
         <wp:LocalizedStrings x:Key="LocalizedStrings"/>
-        <MediaElement x:Key="GlobalMedia"></MediaElement>
+        <MediaElement x:Key="GlobalMedia" />
     </Application.Resources>
 
     <Application.ApplicationLifetimeObjects>

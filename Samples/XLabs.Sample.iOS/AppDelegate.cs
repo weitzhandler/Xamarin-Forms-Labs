@@ -1,25 +1,42 @@
-﻿namespace XLabs.Sample.iOS
+﻿// ***********************************************************************
+// Assembly         : XLabs.Sample.iOS
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="AppDelegate.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using System.IO;
+using Foundation;
+using UIKit;
+using XLabs.Caching;
+using XLabs.Caching.SQLite;
+using XLabs.Forms;
+using XLabs.Forms.Controls;
+using XLabs.Forms.Services;
+using XLabs.Ioc;
+using XLabs.Platform.Device;
+using XLabs.Platform.Mvvm;
+using XLabs.Platform.Services;
+using XLabs.Platform.Services.Email;
+using XLabs.Platform.Services.Media;
+using XLabs.Serialization;
+
+namespace XLabs.Sample.iOS
 {
-    using System.IO;
-    using Forms.Services;
-    using Foundation;
-    using Platform.Services;
-    using Platform.Services.Email;
-    using Platform.Services.Media;
-    using UIKit;
-
-    using Xamarin.Forms;
-
-    using XLabs.Caching;
-    using XLabs.Caching.SQLite;
-    using XLabs.Forms;
-    using XLabs.Forms.Controls;
-    using XLabs.Ioc;
-    using XLabs.Platform.Device;
-    using XLabs.Platform.Mvvm;
-    using XLabs.Sample;
-    using XLabs.Serialization;
-
     /// <summary>
     /// Class AppDelegate.
     /// </summary>
@@ -34,7 +51,7 @@
         /// <summary>
         /// The window
         /// </summary>
-        private UIWindow _window;
+        //private UIWindow _window;
 
         /// <summary>
         /// Finished the launching.
@@ -55,7 +72,7 @@
 
             //new CalendarViewRenderer(); //added so the assembly is included
             HybridWebViewRenderer.CopyBundleDirectory("HTML");
-            Forms.Init();
+            Xamarin.Forms.Forms.Init();
 
             var formsApp = new App();
 
@@ -66,7 +83,7 @@
 //				RootViewController = App.GetMainPage().CreateViewController()
 //			};
 
-            Forms.ViewInitialized += (sender, e) =>
+            Xamarin.Forms.Forms.ViewInitialized += (sender, e) =>
             {
                 if (!string.IsNullOrWhiteSpace(e.View.StyleId))
                 {
@@ -103,7 +120,7 @@
                 .Register<IXFormsApp>(app)
                 .Register<ISecureStorage, SecureStorage>()
                 .Register<IDependencyContainer>(t => resolverContainer)
-                .Register<ISimpleCache>(
+                .Register<ICacheProvider>(
                     t => new SQLiteSimpleCache(new SQLite.Net.Platform.XamarinIOS.SQLitePlatformIOS(),
                         new SQLite.Net.SQLiteConnectionString(pathToDatabase, true), t.Resolve<IJsonSerializer>()));
             

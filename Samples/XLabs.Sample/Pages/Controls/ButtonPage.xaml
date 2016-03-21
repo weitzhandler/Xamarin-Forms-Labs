@@ -84,8 +84,8 @@
             </controls:ImageButton>
           
           <StackLayout Orientation="Horizontal">
-            <Switch IsToggled="{Binding ButtonEnabled}" WidthRequest="125" MinimumHeightRequest="25"></Switch>
-            <controls:ImageButton x:Name="EnabledButton" BackgroundColor="#a2e2ef" Text="{Binding EnabledButtonTitle}"
+            <Switch IsToggled="{Binding ButtonEnabled}" WidthRequest="125" MinimumHeightRequest="25" />
+	          <controls:ImageButton x:Name="EnabledButton" BackgroundColor="#a2e2ef" Text="{Binding EnabledButtonTitle}"
                       TextColor="#000000" HeightRequest="125"
                       HorizontalOptions="FillAndExpand"
                       IsEnabled="{Binding ButtonEnabled}"

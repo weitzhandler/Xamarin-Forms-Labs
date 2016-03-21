@@ -1,3 +1,24 @@
+// ***********************************************************************
+// Assembly         : XLabs.Forms
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="Rule.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -5,11 +26,10 @@ using System.Linq;
 using System.Reflection;
 using System.Text.RegularExpressions;
 using Xamarin.Forms;
+using XLabs.Exceptions;
 
 namespace XLabs.Forms.Validation
 {
-	using XLabs.Exceptions;
-
 	/// <summary>
 	/// Defines a single validation rule
 	/// A validation rule consists of an Element, a property on that element(must be a bindable property)

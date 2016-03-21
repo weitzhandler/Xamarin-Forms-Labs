@@ -1,16 +1,34 @@
-﻿using Android.App;
+﻿// ***********************************************************************
+// Assembly         : XLabs.Platform.Droid
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="TextToSpeechService.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using System.Collections.Generic;
+using System.Linq;
+using Android.App;
 using Android.Content;
+using Android.Speech.Tts;
+using Java.Lang;
+using Java.Util;
 
 namespace XLabs.Platform.Services
 {
-    using System.Collections.Generic;
-    using System.Linq;
-
-    using Android.Speech.Tts;
-
-    using Java.Lang;
-    using Java.Util;
-
     /// <summary>
     ///     The text to speech service implements <see cref="ITextToSpeechService" /> for Android.
     /// </summary>
@@ -42,19 +60,19 @@ namespace XLabs.Platform.Services
                 var p = new Dictionary<string, string>();
 
 #pragma warning disable CS0618 // Type or member is obsolete
-				_speaker.Speak(_toSpeak, QueueMode.Flush, p);
+                _speaker.Speak(_toSpeak, QueueMode.Flush, p);
 #pragma warning restore CS0618 // Type or member is obsolete
-			}
+            }
         }
 
-		#endregion
+        #endregion
 
-		/// <summary>
-		/// The speak.
-		/// </summary>
-		/// <param name="text">The text.</param>
-		/// <param name="language">The language.</param>
-		public void Speak (string text, string language = DefaultLocale)
+        /// <summary>
+        /// The speak.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <param name="language">The language.</param>
+        public void Speak (string text, string language = DefaultLocale)
         {
             _toSpeak = text;
             if (_speaker == null)
@@ -70,9 +88,9 @@ namespace XLabs.Platform.Services
                 var p = new Dictionary<string, string>();
 
 #pragma warning disable CS0618 // Type or member is obsolete
-				_speaker.Speak(_toSpeak, QueueMode.Flush, p);
+                _speaker.Speak(_toSpeak, QueueMode.Flush, p);
 #pragma warning restore CS0618 // Type or member is obsolete
-			}
+            }
         }
 
         /// <summary>

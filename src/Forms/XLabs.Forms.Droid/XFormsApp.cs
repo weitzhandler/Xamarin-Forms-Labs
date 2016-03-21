@@ -1,17 +1,38 @@
+// ***********************************************************************
+// Assembly         : XLabs.Forms.Droid
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="XFormsApp.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using System;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
+using XLabs.Platform.Device;
+using XLabs.Platform.Mvvm;
+using XLabs.Platform.Services;
+using XLabs.Platform.Services.Email;
+using XLabs.Platform.Services.Geolocation;
+using XLabs.Platform.Services.IO;
+using XLabs.Platform.Services.Media;
+using Environment = Android.OS.Environment;
+
 namespace XLabs.Forms
 {
-    using System;
-    using Platform.Device;
-    using Platform.Mvvm;
-    using Platform.Services;
-    using Platform.Services.Email;
-    using Platform.Services.Geolocation;
-    using Platform.Services.IO;
-    using Platform.Services.Media;
-    using Xamarin.Forms;
-    using Xamarin.Forms.Platform.Android;
-    using Environment = Android.OS.Environment;
-
     /// <summary>
     /// Class XFormsApplicationDroid.
     /// </summary>
@@ -282,21 +303,21 @@ namespace XLabs.Forms
     /// </summary>
     public class XFormsAppDroid : XFormsApp<XFormsApplicationDroid>
     {
-		/// <summary>
-		/// Initializes a new instance of the <see cref="XFormsAppDroid"/> class.
-		/// </summary>
-		public XFormsAppDroid() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XFormsAppDroid"/> class.
+        /// </summary>
+        public XFormsAppDroid() { }
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="XFormsAppDroid"/> class.
-		/// </summary>
-		/// <param name="app">The application.</param>
-		public XFormsAppDroid(XFormsApplicationDroid app) : base(app) { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XFormsAppDroid"/> class.
+        /// </summary>
+        /// <param name="app">The application.</param>
+        public XFormsAppDroid(XFormsApplicationDroid app) : base(app) { }
 
-		/// <summary>
-		/// Raises the back press.
-		/// </summary>
-		public void RaiseBackPress()
+        /// <summary>
+        /// Raises the back press.
+        /// </summary>
+        public void RaiseBackPress()
         {
             this.OnBackPress();
         }

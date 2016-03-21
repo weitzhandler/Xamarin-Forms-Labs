@@ -1,10 +1,30 @@
-﻿namespace XLabs.Sample.Pages.Controls
+﻿// ***********************************************************************
+// Assembly         : XLabs.Sample
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="ExtendedEntryPage.xaml.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using Xamarin.Forms;
+using XLabs.Forms.Controls;
+
+namespace XLabs.Sample.Pages.Controls
 {
-	using Xamarin.Forms;
-
-	using XLabs.Forms.Controls;
-
-	/// <summary>
+    /// <summary>
     /// Example page showing the ExtendedEntry control
     /// </summary>
     public partial class ExtendedEntryPage : ContentPage
@@ -15,12 +35,12 @@
         public ExtendedEntryPage()
         {
             InitializeComponent();
-			var entryFromCode = new ExtendedEntry() {
-				Placeholder = "Aded from code, custom font",
-				Font = Font.OfSize("Open 24 Display St", NamedSize.Medium)
-			};
+            var entryFromCode = new ExtendedEntry() {
+                Placeholder = "Aded from code, custom font",
+                Font = Font.OfSize("Open 24 Display St", NamedSize.Medium)
+            };
 
-			StackLayout.Children.Add(entryFromCode);
+            StackLayout.Children.Add(entryFromCode);
 
             var swipeEntry = new ExtendedEntry()
             {

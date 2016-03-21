@@ -1,4 +1,25 @@
-﻿using System.ComponentModel;
+﻿// ***********************************************************************
+// Assembly         : XLabs.Forms.WP8
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="RadioButtonRenderer.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,16 +33,16 @@ using NativeCheckBox = System.Windows.Controls.RadioButton;
 
 namespace XLabs.Forms.Controls
 {
-	/// <summary>
-	/// Class RadioButtonRenderer.
-	/// </summary>
-	public class RadioButtonRenderer : ViewRenderer<CustomRadioButton, NativeCheckBox>
+    /// <summary>
+    /// Class RadioButtonRenderer.
+    /// </summary>
+    public class RadioButtonRenderer : ViewRenderer<CustomRadioButton, NativeCheckBox>
     {
-		/// <summary>
-		/// Called when [element changed].
-		/// </summary>
-		/// <param name="e">The e.</param>
-		protected override void OnElementChanged(ElementChangedEventArgs<CustomRadioButton> e)
+        /// <summary>
+        /// Called when [element changed].
+        /// </summary>
+        /// <param name="e">The e.</param>
+        protected override void OnElementChanged(ElementChangedEventArgs<CustomRadioButton> e)
         {
             base.OnElementChanged(e);
 

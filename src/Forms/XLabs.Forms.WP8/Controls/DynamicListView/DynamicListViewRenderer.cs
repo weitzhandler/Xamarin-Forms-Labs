@@ -1,13 +1,31 @@
-﻿namespace XLabs.Forms.Controls
+﻿// ***********************************************************************
+// Assembly         : XLabs.Forms.WP8
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="DynamicListViewRenderer.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using System.Linq;
+using System.Windows.Markup;
+using Microsoft.Phone.Controls;
+using Xamarin.Forms.Platform.WinPhone;
+
+namespace XLabs.Forms.Controls
 {
-	using System.Linq;
-	using System.Windows.Controls;
-	using System.Windows.Markup;
-
-	using Microsoft.Phone.Controls;
-
-	using Xamarin.Forms.Platform.WinPhone;
-
 	/// <summary>
 	/// Class DynamicListViewRenderer.
 	/// </summary>
@@ -18,6 +36,8 @@
 		/// The _table view
 		/// </summary>
 		private LongListSelector _tableView;
+
+		private System.Windows.DataTemplate _dateTemplate;
 
 		/// <summary>
 		/// The xaml
@@ -69,8 +89,9 @@
 		{
 			get
 			{
-				return (System.Windows.DataTemplate)XamlReader.Load(XAML);
+				return _dateTemplate ?? (_dateTemplate = (System.Windows.DataTemplate)XamlReader.Load(XAML));
 			}
+			set { _dateTemplate = value; }
 		}
 
 		/// <summary>

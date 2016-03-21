@@ -1,13 +1,30 @@
-﻿namespace XLabs.Sample.WP
+﻿// ***********************************************************************
+// Assembly         : XLabs.Sample.WP
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="MainPage.xaml.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using System.Threading;
+using Microsoft.Phone.Controls;
+using XLabs.Forms.Extensions;
+
+namespace XLabs.Sample.WP
 {
-    using System.Threading;
-
-    using Microsoft.Phone.Controls;
-
-    using Xamarin.Forms;
-
-    using XLabs.Forms.Extensions;
-
     public partial class MainPage
     {
         // Constructor
@@ -17,7 +34,7 @@
             SupportedOrientations = SupportedPageOrientation.PortraitOrLandscape;
 
             // Sample code to localize the ApplicationBar
-            Forms.Init();
+            Xamarin.Forms.Forms.Init();
 
             XLabs.Sample.App.Init();
             Thread.Sleep(2000);

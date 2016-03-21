@@ -1,27 +1,53 @@
-﻿using System.Reflection;
-using System.Runtime.CompilerServices;
+﻿// ***********************************************************************
+// Assembly         : XLabs.Ioc.Unity
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="AssemblyInfo.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
 
-// Information about this assembly is defined by the following attributes.
-// Change them to the values specific to your project.
+using System.Reflection;
+using System.Resources;
+
+// General Information about an assembly is controlled through the following 
+// set of attributes. Change these attribute values to modify the information
+// associated with an assembly.
 
 [assembly: AssemblyTitle("XLabs.Ioc.Unity")]
 [assembly: AssemblyDescription("")]
-[assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("XLabs Team")]
-[assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("Copyright © 2014")]
-[assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+[assembly: NeutralResourcesLanguage("en")]
 
-// The assembly version has the format "{Major}.{Minor}.{Build}.{Revision}".
-// The form "{Major}.{Minor}.*" will automatically update the build and revision,
-// and "{Major}.{Minor}.{Build}.*" will update just the revision.
+#if !_USE_SHARED_ASSEMBLYINFO
+[assembly: AssemblyCompany("XLabs Team")]
+[assembly: AssemblyProduct("XLabs")]
+[assembly: AssemblyCopyright("Copyright © XLabs Team 2016")]
+[assembly: AssemblyTrademark("")]
+[assembly: AssemblyConfiguration("")]
 
+// Version information for an assembly consists of the following four values:
+//
+//      Major Version
+//      Minor Version 
+//      Build Number
+//      Revision
+//
+// You can specify all the values or you can default the Build and Revision Numbers 
+// by using the '*' as shown below:
 [assembly: AssemblyVersion("2.0.*")]
 
-// The following attributes are used to specify the signing key for the assembly,
-// if desired. See the Mono documentation for more information about signing.
-
-//[assembly: AssemblyDelaySign(false)]
-//[assembly: AssemblyKeyFile("")]
-
+//[assembly: AssemblyFileVersion("2.0.*")]
+#endif

@@ -1,28 +1,32 @@
 ﻿// ***********************************************************************
 // Assembly         : XLabs.Forms
-// Author           : Shawn Anderson
-// Created          : 12-29-2014
-//
-// Last Modified By : AngryPowman
-// Last Modified On : 08-04-2015
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
 // ***********************************************************************
-// <copyright file="NavigationService.cs" company="">
-//     Copyright (c) 2014 . All rights reserved.
+// <copyright file="NavigationService.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
 // </copyright>
 // <summary>
-//	Note: This implementatio is based on the excellent work done in MVVM Light
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
 // </summary>
 // ***********************************************************************
+// 
 
+using System;
+using System.Collections.Generic;
+using System.Reflection;
 using XLabs.Forms.Mvvm;
+using XLabs.Platform.Services;
 
 namespace XLabs.Forms.Services
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Reflection;
-	using XLabs.Platform.Services;
-
 	/// <summary>
 	/// Class NavigationService.
 	/// </summary>

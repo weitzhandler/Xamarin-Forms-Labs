@@ -1,8 +1,29 @@
-﻿namespace XLabs.Ioc.Unity
-{
-    using System;
-    using Microsoft.Practices.Unity;
+﻿// ***********************************************************************
+// Assembly         : XLabs.Ioc.Unity
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="UnityDependencyContainer.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
 
+using System;
+using Microsoft.Practices.Unity;
+
+namespace XLabs.Ioc.Unity
+{
     /// <summary>
     /// Dependency container using Unity container.
     /// </summary>
@@ -103,14 +124,14 @@
             return this;
         }
 
-		/// <summary>
-		/// Registers the specified function.
-		/// </summary>
-		/// <typeparam name="T"></typeparam>
-		/// <param name="func">The function.</param>
-		/// <returns>IDependencyContainer.</returns>
-		/// <exception cref="System.NotImplementedException">Unity container does not support registering funcs for resolving.</exception>
-		public IDependencyContainer Register<T>(Func<IResolver, T> func) where T : class
+        /// <summary>
+        /// Registers the specified function.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="func">The function.</param>
+        /// <returns>IDependencyContainer.</returns>
+        /// <exception cref="System.NotImplementedException">Unity container does not support registering funcs for resolving.</exception>
+        public IDependencyContainer Register<T>(Func<IResolver, T> func) where T : class
         {
             throw new NotImplementedException("Unity container does not support registering funcs for resolving.");
         }

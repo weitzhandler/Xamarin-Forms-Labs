@@ -1,26 +1,45 @@
-﻿namespace XLabs.Sample.ViewModel
+﻿// ***********************************************************************
+// Assembly         : XLabs.Sample
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="GeolocatorViewModel.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Input;
+using Xamarin.Forms;
+using XLabs.Forms.Mvvm;
+using XLabs.Ioc;
+using XLabs.Platform;
+using XLabs.Platform.Device;
+using XLabs.Platform.Services;
+using XLabs.Platform.Services.Email;
+using XLabs.Platform.Services.Geolocation;
+using XLabs.Sample.Pages.Services;
+
+namespace XLabs.Sample.ViewModel
 {
-	using System.Linq;
-	using System.Threading;
-	using System.Threading.Tasks;
-	using System.Windows.Input;
-
-	using Xamarin.Forms;
-
-	using XLabs.Forms.Mvvm;
-	using XLabs.Ioc;
-	using XLabs.Platform;
-	using XLabs.Platform.Device;
-	using XLabs.Platform.Services;
-	using XLabs.Platform.Services.Email;
-	using XLabs.Platform.Services.Geolocation;
-	using XLabs.Sample.Pages.Services;
-
 	/// <summary>
 	/// The Geo-locator view model.
 	/// </summary>
 	[ViewType(typeof(GeolocatorPage))]
-	public class GeolocatorViewModel : ViewModel
+	public class GeolocatorViewModel : Forms.Mvvm.ViewModel
 	{
 		/// <summary>
 		/// The scheduler
@@ -236,7 +255,7 @@
 		{
 			get
 			{
-				return _emailService ?? (_emailService = DependencyService.Get<IEmailService>());
+				return _emailService ?? (_emailService = DependencyService.Get<IEmailService>() ?? Resolver.Resolve<IEmailService>());
 			}
 		}
 
@@ -248,7 +267,7 @@
 		{
 			get
 			{
-				return _phoneService ?? (_phoneService = DependencyService.Get<IPhoneService>());
+				return _phoneService ?? (_phoneService = DependencyService.Get<IPhoneService>() ?? Resolver.Resolve<IPhoneService>());
 			}
 		}
 
@@ -262,7 +281,7 @@
 			{
 				if (_geolocator == null)
 				{
-					_geolocator = DependencyService.Get<IGeolocator>();
+					_geolocator = DependencyService.Get<IGeolocator>() ?? Resolver.Resolve<IGeolocator>();
 					_geolocator.PositionError += OnListeningError;
 					_geolocator.PositionChanged += OnPositionChanged;
 				}

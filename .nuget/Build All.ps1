@@ -91,7 +91,9 @@ param(
     [Parameter(Mandatory = $False)]
     [string] $preRelease = $null,
     [Parameter(Mandatory = $False)]
-    [bool] $versionUpdate = $true
+    [bool] $versionUpdate = $true,
+    [Parameter(Mandatory = $False)]
+    [string] $versionDependency = $null
 )
 
 
@@ -141,7 +143,7 @@ try
     ## Spawn off individual build processes...
     ## ---------------------------------------
     Set-Location "$originalLocation\Definition" ## Adjust current working directory since scripts are using relative paths
-    $packages | ForEach { & ".\Build.ps1" -package $_ -version $version -preRelease $preRelease -versionUpdate $versionUpdate }
+    $packages | ForEach { & ".\Build.ps1" -package $_ -version $version -preRelease $preRelease -versionUpdate $versionUpdate -versionDependency $versionDependency}
     Write-Host "Build All - Done." -ForegroundColor Green
 }
 catch 

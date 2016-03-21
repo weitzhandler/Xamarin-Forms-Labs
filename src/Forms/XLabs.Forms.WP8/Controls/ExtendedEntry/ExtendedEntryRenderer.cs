@@ -1,24 +1,36 @@
-﻿using Xamarin.Forms;
+﻿// ***********************************************************************
+// Assembly         : XLabs.Forms.WP8
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="ExtendedEntryRenderer.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
 
+using System.ComponentModel;
+using System.Linq;
+using System.Windows.Controls;
+using Microsoft.Phone.Controls;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.WinPhone;
 using XLabs.Forms.Controls;
+using XLabs.Forms.Extensions;
 
 [assembly: ExportRenderer(typeof(ExtendedEntry), typeof(ExtendedEntryRenderer))]
 namespace XLabs.Forms.Controls
 {
-    using System.ComponentModel;
-    using System.Linq;
-    using System.Windows;
-    using System.Windows.Controls;
-
-    using Microsoft.Phone.Controls;
-
-    using Xamarin.Forms;
-    using Xamarin.Forms.Platform.WinPhone;
-
-    using XLabs.Forms.Extensions;
-
-    using TextAlignment = Xamarin.Forms.TextAlignment;
-
     /// <summary>
     /// Class ExtendedEntryRenderer.
     /// </summary>
@@ -107,12 +119,12 @@ namespace XLabs.Forms.Controls
         {
             if (view.IsPassword && _thisPasswordBox != null)
             {
-				#pragma warning disable CS1522 // Empty switch block
+                #pragma warning disable CS1522 // Empty switch block
                 switch (view.XAlign)
-				{
-					//NotCurrentlySupported: Text alaignement not available on Windows Phone for Password Entry
-				}   
-				#pragma warning restore CS1522 // Empty switch block
+                {
+                    //NotCurrentlySupported: Text alaignement not available on Windows Phone for Password Entry
+                }   
+                #pragma warning restore CS1522 // Empty switch block
             }
             else if (!view.IsPassword && _thisPhoneTextBox != null)
             {

@@ -1,25 +1,46 @@
-﻿using System.Collections.ObjectModel;
+﻿// ***********************************************************************
+// Assembly         : XLabs.Forms
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="OnPlatformList.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.Linq;
 using Xamarin.Forms;
 
 namespace XLabs.Forms
 {
-	//From the Xamarin forums 
-	//http://forums.xamarin.com/discussion/comment/68739#Comment_68739
+    //From the Xamarin forums 
+    //http://forums.xamarin.com/discussion/comment/68739#Comment_68739
 
-	/// <summary>
-	/// Class OnPlatformList.
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	public class OnPlatformList<T> : ObservableCollection<T>
+    /// <summary>
+    /// Class OnPlatformList.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public class OnPlatformList<T> : ObservableCollection<T>
     {
         private ObservableCollection<T> _realData;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="OnPlatformList{T}"/> class.
-		/// </summary>
-		public OnPlatformList()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="OnPlatformList{T}"/> class.
+        /// </summary>
+        public OnPlatformList()
         {
             iOS = new ObservableCollection<T>();
             Android = new ObservableCollection<T>();
@@ -34,22 +55,22 @@ namespace XLabs.Forms
             WinPhone.CollectionChanged += OnInitialize;
         }
 
-		// ReSharper disable once InconsistentNaming
-		/// <summary>
-		/// Gets the i os.
-		/// </summary>
-		/// <value>The i os.</value>
-		public ObservableCollection<T> iOS { get; private set; }
-		/// <summary>
-		/// Gets the android.
-		/// </summary>
-		/// <value>The android.</value>
-		public ObservableCollection<T> Android { get; private set; }
-		/// <summary>
-		/// Gets the win phone.
-		/// </summary>
-		/// <value>The win phone.</value>
-		public ObservableCollection<T> WinPhone { get; private set; }
+        // ReSharper disable once InconsistentNaming
+        /// <summary>
+        /// Gets the i os.
+        /// </summary>
+        /// <value>The i os.</value>
+        public ObservableCollection<T> iOS { get; private set; }
+        /// <summary>
+        /// Gets the android.
+        /// </summary>
+        /// <value>The android.</value>
+        public ObservableCollection<T> Android { get; private set; }
+        /// <summary>
+        /// Gets the win phone.
+        /// </summary>
+        /// <value>The win phone.</value>
+        public ObservableCollection<T> WinPhone { get; private set; }
 
         void OnInitialize(object sender, NotifyCollectionChangedEventArgs e)
         {

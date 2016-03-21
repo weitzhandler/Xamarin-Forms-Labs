@@ -1,66 +1,30 @@
 ﻿// ***********************************************************************
 // Assembly         : XLabs.Cryptography
-// Author           : rmarinho
-// Created          : 09-08-2015
-//
-// Last Modified By : rmarinho
-// Last Modified On : 09-08-2015
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
 // ***********************************************************************
 // <copyright file="MD5.cs" company="XLabs Team">
-//     Copyright ©  2014
+//     Copyright (c) XLabs Team. All rights reserved.
 // </copyright>
-// <summary></summary>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
 // ***********************************************************************
-/****************************************************************************
-	 Copyright 2002-2005 GL Conseil/Flow Group SAS.  All rights reserved.
+// 
 
-	Permission is granted to anyone to use this software for any purpose on
-	any computer system, and to alter it and redistribute it, subject
-	to the following restrictions:
-
-	1. The author is not responsible for the consequences of use of this
-	   software, no matter how awful, even if they arise from flaws in it.
-
-	2. The origin of this software must not be misrepresented, either by
-	   explicit claim or by omission.  Since few users ever read sources,
-	   credits must appear in the documentation.
-
-	3. Altered versions must be plainly marked as such, and must not be
-	   misrepresented as being the original software.  Since few users
-	   ever read sources, credits must appear in the documentation.
-
-	4. This notice may not be removed or altered.
-
- ----------------------------------------------------------------------------
- This software is derived from the RSA Data Security, Inc.
- MD5 Message-Digest Algorithm.
-
- Copyright (C) 1990-2, RSA Data Security, Inc. Created 1990. 
- All rights reserved.
-
-
- RSA Data Security, Inc. makes no representations concerning either 
- the merchantability of this software or the suitability of this 
- software for any particular purpose. It is provided ""as is"" 
- without express or implied warranty of any kind.
-
- These notices must be retained in any copies of any part of this 
- documentation and/or software.
-
- Copyright (C) 1991-2, RSA Data Security, Inc. Created 1991. 
- All rights reserved.
- ****************************************************************************/
-
-// src: http://www.flowgroup.fr/en/kb/technical/md5.aspx
-// 04/26/2014
-// Changed namespace
+using System;
+using System.IO;
+using System.Text;
 
 namespace XLabs.Cryptography
 {
-    using System;
-    using System.IO;
-    using System.Text;
-
 	/// <summary>
 	/// Summary description for MD5.
 	/// </summary>

@@ -6,12 +6,12 @@
 	<ContentPage.Content>
 		<StackLayout>
 	    <Label Text="Key" HeightRequest="45" />
-      <Entry x:Name="KeyEntry"></Entry>
-      <Label Text="Data"></Label>
-      <Entry x:Name="DataEntry"></Entry>
-      <Button x:Name="SaveButton" Text="Save"></Button>
-      <Button x:Name="DeleteButton" Text="Delete"></Button>  
-      <Button x:Name="LoadButton" Text="Load"></Button>
+      <Entry x:Name="KeyEntry" />
+			<Label Text="Data" />
+			<Entry x:Name="DataEntry" />
+			<Button x:Name="SaveButton" Text="Save" />
+			<Button x:Name="DeleteButton" Text="Delete" />
+			<Button x:Name="LoadButton" Text="Load" />
 		</StackLayout>
 	</ContentPage.Content>
 </ContentPage>

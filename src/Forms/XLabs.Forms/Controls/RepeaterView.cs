@@ -1,12 +1,33 @@
-﻿namespace XLabs.Forms.Controls
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Windows.Input;
-    using Xamarin.Forms;
-    using XLabs.Exceptions;
+﻿// ***********************************************************************
+// Assembly         : XLabs.Forms
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="RepeaterView.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Input;
+using Xamarin.Forms;
+using XLabs.Exceptions;
+
+namespace XLabs.Forms.Controls
+{
     /// <summary>
     /// Low cost control to display a set of clickable items
     /// </summary>
@@ -51,17 +72,17 @@
                 x => x.TemplateSelector,
                 default(TemplateSelector));
 
-		/// <summary>
-		/// The item template selector property
-		/// </summary>
-		public static readonly BindableProperty ItemTemplateSelectorProperty = BindableProperty.Create<RepeaterView<T>, DataTemplateSelector>(x => x.ItemTemplateSelector, default(DataTemplateSelector), propertyChanged: OnDataTemplateSelectorChanged);
+        /// <summary>
+        /// The item template selector property
+        /// </summary>
+        public static readonly BindableProperty ItemTemplateSelectorProperty = BindableProperty.Create<RepeaterView<T>, DataTemplateSelector>(x => x.ItemTemplateSelector, default(DataTemplateSelector), propertyChanged: OnDataTemplateSelectorChanged);
 
         private DataTemplateSelector currentItemSelector;
-		/// <summary>
-		/// Gets or sets the item template selector.
-		/// </summary>
-		/// <value>The item template selector.</value>
-		public DataTemplateSelector ItemTemplateSelector
+        /// <summary>
+        /// Gets or sets the item template selector.
+        /// </summary>
+        /// <value>The item template selector.</value>
+        public DataTemplateSelector ItemTemplateSelector
         {
             get
             {
@@ -78,13 +99,13 @@
             ((RepeaterView<T>)bindable).OnDataTemplateSelectorChanged(oldvalue, newvalue);
         }
 
-		/// <summary>
-		/// Called when [data template selector changed].
-		/// </summary>
-		/// <param name="oldValue">The old value.</param>
-		/// <param name="newValue">The new value.</param>
-		/// <exception cref="System.ArgumentException">Cannot set both ItemTemplate and ItemTemplateSelector;ItemTemplateSelector</exception>
-		protected virtual void OnDataTemplateSelectorChanged(DataTemplateSelector oldValue, DataTemplateSelector newValue)
+        /// <summary>
+        /// Called when [data template selector changed].
+        /// </summary>
+        /// <param name="oldValue">The old value.</param>
+        /// <param name="newValue">The new value.</param>
+        /// <exception cref="System.ArgumentException">Cannot set both ItemTemplate and ItemTemplateSelector;ItemTemplateSelector</exception>
+        protected virtual void OnDataTemplateSelectorChanged(DataTemplateSelector oldValue, DataTemplateSelector newValue)
         {
             // check to see we don't have an ItemTemplate set
             if (ItemTemplate != null && newValue != null)

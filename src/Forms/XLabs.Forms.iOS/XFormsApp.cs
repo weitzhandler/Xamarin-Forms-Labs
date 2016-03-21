@@ -1,21 +1,39 @@
+// ***********************************************************************
+// Assembly         : XLabs.Forms.iOS
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="XFormsApp.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using System;
+using Foundation;
+using UIKit;
 using Xamarin.Forms;
-using XLabs.Platform.Services;
-using XLabs.Platform.Services.Geolocation;
-using XLabs.Platform.Services.Media;
-using XLabs.Platform.Services.Email;
+using Xamarin.Forms.Platform.iOS;
 using XLabs.Platform.Device;
+using XLabs.Platform.Mvvm;
+using XLabs.Platform.Services;
+using XLabs.Platform.Services.Email;
+using XLabs.Platform.Services.Geolocation;
 using XLabs.Platform.Services.IO;
+using XLabs.Platform.Services.Media;
 
 namespace XLabs.Forms
 {
-    using System;
-
-    using Foundation;
-    using UIKit;
-    using Xamarin.Forms.Platform.iOS;
-
-    using XLabs.Platform.Mvvm;
-
     /// <summary>
     /// Class XFormsApplicationDelegate.
     /// </summary>
@@ -150,21 +168,21 @@ namespace XLabs.Forms
     /// </summary>
     public class XFormsAppiOS : XFormsApp<XFormsApplicationDelegate>
     {
-		/// <summary>
-		/// Initializes this instance.
-		/// </summary>
-		public static void Init() { } /* allow to add assembly without extras */
+        /// <summary>
+        /// Initializes this instance.
+        /// </summary>
+        public static void Init() { } /* allow to add assembly without extras */
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="XFormsAppiOS"/> class.
-		/// </summary>
-		public XFormsAppiOS() { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XFormsAppiOS"/> class.
+        /// </summary>
+        public XFormsAppiOS() { }
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="XFormsAppiOS"/> class.
-		/// </summary>
-		/// <param name="appDelegate">The application delegate.</param>
-		public XFormsAppiOS(XFormsApplicationDelegate appDelegate) : base(appDelegate) { }
+        /// <summary>
+        /// Initializes a new instance of the <see cref="XFormsAppiOS"/> class.
+        /// </summary>
+        /// <param name="appDelegate">The application delegate.</param>
+        public XFormsAppiOS(XFormsApplicationDelegate appDelegate) : base(appDelegate) { }
 
         /// <summary>
         /// Called when [initialize].

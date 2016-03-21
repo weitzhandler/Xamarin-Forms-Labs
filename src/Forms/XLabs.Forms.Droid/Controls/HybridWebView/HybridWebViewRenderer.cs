@@ -1,20 +1,39 @@
-﻿using Xamarin.Forms;
+﻿// ***********************************************************************
+// Assembly         : XLabs.Forms.Droid
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="HybridWebViewRenderer.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using System;
+using Android.Runtime;
+using Android.Views;
+using Android.Webkit;
+using Java.Interop;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
 using XLabs.Forms.Controls;
+using Object = Java.Lang.Object;
+using WebView = Android.Webkit.WebView;
 
 [assembly: ExportRenderer(typeof(HybridWebView), typeof(HybridWebViewRenderer))]
 
 namespace XLabs.Forms.Controls
 {
-    using System;
-    using Android.Runtime;
-    using Android.Views;
-    using Android.Webkit;
-    using Java.Interop;
-    using Xamarin.Forms;
-    using Xamarin.Forms.Platform.Android;
-    using Object = Java.Lang.Object;
-    using WebView = Android.Webkit.WebView;
-
     /// <summary>
     /// Class HybridWebViewRenderer.
     /// </summary>

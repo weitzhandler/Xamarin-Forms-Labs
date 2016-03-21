@@ -1,4 +1,25 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : XLabs.Forms
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="BindableRadioGroup.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using System;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -6,43 +27,43 @@ using Xamarin.Forms;
 
 namespace XLabs.Forms.Controls
 {
-	/// <summary>
-	/// Class BindableRadioGroup.
-	/// </summary>
-	public class BindableRadioGroup : StackLayout
+    /// <summary>
+    /// Class BindableRadioGroup.
+    /// </summary>
+    public class BindableRadioGroup : StackLayout
     { 
 
-		/// <summary>
-		/// The items
-		/// </summary>
-		public ObservableCollection<CustomRadioButton> Items;
+        /// <summary>
+        /// The items
+        /// </summary>
+        public ObservableCollection<CustomRadioButton> Items;
 
-		/// <summary>
-		/// Initializes a new instance of the <see cref="BindableRadioGroup"/> class.
-		/// </summary>
-		public BindableRadioGroup()
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BindableRadioGroup"/> class.
+        /// </summary>
+        public BindableRadioGroup()
         {
             Items = new ObservableCollection<CustomRadioButton>();
         }
 
-		/// <summary>
-		/// The items source property
-		/// </summary>
+        /// <summary>
+        /// The items source property
+        /// </summary>
         public static BindableProperty ItemsSourceProperty =
                     BindableProperty.Create<BindableRadioGroup, IEnumerable>(o => o.ItemsSource, default(IEnumerable), propertyChanged: OnItemsSourceChanged);
 
-		/// <summary>
-		/// The selected index property
-		/// </summary>
-		public static BindableProperty SelectedIndexProperty =
+        /// <summary>
+        /// The selected index property
+        /// </summary>
+        public static BindableProperty SelectedIndexProperty =
             BindableProperty.Create<BindableRadioGroup, int>(o => o.SelectedIndex, default(int), BindingMode.TwoWay,
                 propertyChanged: OnSelectedIndexChanged);
 
 
-		/// <summary>
-		/// The text color property
-		/// </summary>
-		public static readonly BindableProperty TextColorProperty =
+        /// <summary>
+        /// The text color property
+        /// </summary>
+        public static readonly BindableProperty TextColorProperty =
             BindableProperty.Create<CheckBox, Color>(
                 p => p.TextColor, Color.Black);
 
@@ -60,31 +81,31 @@ namespace XLabs.Forms.Controls
             BindableProperty.Create<CheckBox, string>(
                 p => p.FontName, string.Empty);
 
-		/// <summary>
-		/// Gets or sets the items source.
-		/// </summary>
-		/// <value>The items source.</value>
-		public IEnumerable ItemsSource
+        /// <summary>
+        /// Gets or sets the items source.
+        /// </summary>
+        /// <value>The items source.</value>
+        public IEnumerable ItemsSource
         {
             get { return (IEnumerable)GetValue(ItemsSourceProperty); }
             set{ SetValue(ItemsSourceProperty, value); }
         }
 
-		/// <summary>
-		/// Gets or sets the index of the selected.
-		/// </summary>
-		/// <value>The index of the selected.</value>
-		public int SelectedIndex
+        /// <summary>
+        /// Gets or sets the index of the selected.
+        /// </summary>
+        /// <value>The index of the selected.</value>
+        public int SelectedIndex
         {
             get { return (int)GetValue(SelectedIndexProperty); }
             set { SetValue(SelectedIndexProperty, value); }
         }
 
-		/// <summary>
-		/// Gets or sets the color of the text.
-		/// </summary>
-		/// <value>The color of the text.</value>
-		public Color TextColor
+        /// <summary>
+        /// Gets or sets the color of the text.
+        /// </summary>
+        /// <value>The color of the text.</value>
+        public Color TextColor
         {
             get { return (Color)GetValue(TextColorProperty); }
             set { SetValue(TextColorProperty, value); }
@@ -122,10 +143,10 @@ namespace XLabs.Forms.Controls
             }
         }
 
-		/// <summary>
-		/// Occurs when [checked changed].
-		/// </summary>
-		public event EventHandler<int> CheckedChanged;
+        /// <summary>
+        /// Occurs when [checked changed].
+        /// </summary>
+        public event EventHandler<int> CheckedChanged;
 
         private void OnCheckedChanged(object sender, EventArgs<bool> e)
         {

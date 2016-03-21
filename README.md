@@ -111,15 +111,15 @@ Render your control:
 Or from your codebehind:
 
 
-	var button = new ImageButton() {
-				ImageHeightRequest = 50,
-				ImageWidthRequest = 50,
-				Orientation = Orientation.ImageToLeft,
-				Source = "icon_twitter.png",
-				Text = "Twitter"
-			};
-	stacker.Children.Add (button);
-	
+    var button = new ImageButton() {
+                ImageHeightRequest = 50,
+                ImageWidthRequest = 50,
+                Orientation = Orientation.ImageToLeft,
+                Source = "icon_twitter.png",
+                Text = "Twitter"
+            };
+    stacker.Children.Add (button);
+    
 
 
 Using the Services
@@ -127,24 +127,24 @@ Using the Services
 
 **TextToSpeechService** 
 
-	Resolver.Resolve<ITextToSpeechService>().Speak(TextToSpeak);
-	
+    Resolver.Resolve<ITextToSpeechService>().Speak(TextToSpeak);
+    
 **Device** 
 
-		var device = Resolver.Resolve<IDevice>();
-		device.Display; //display information
-		device.Battery; //battery information
+        var device = Resolver.Resolve<IDevice>();
+        device.Display; //display information
+        device.Battery; //battery information
 
-	
+    
 **PhoneService** 
 
-	 	var device = Resolver.Resolve<IDevice>();
-		// not all devices have phone service, f.e. iPod and Android tablets
-		// so we need to check if phone service is available
-		if (device.PhoneService != null)
-		{
-			device.PhoneService.DialNumber("+1 (855) 926-2746");
-		}
+        var device = Resolver.Resolve<IDevice>();
+        // not all devices have phone service, f.e. iPod and Android tablets
+        // so we need to check if phone service is available
+        if (device.PhoneService != null)
+        {
+            device.PhoneService.DialNumber("+1 (855) 926-2746");
+        }
 
 
 Initializing the Services
@@ -157,17 +157,17 @@ Do this before using the services
 * Android => MainActivity inherits from XFormsApplicationDroid
 
 * Windows Phone => Add this line to your App.cs 
-				  var app = new XFormsAppWP(); app.Init(this);
+                  var app = new XFormsAppWP(); app.Init(this);
 
 **Step 2:** 
-		Initialize the container in your app startup code.
+        Initialize the container in your app startup code.
 
-		var container = new SimpleContainer ();
-		container.Register<IDevice> (t => AppleDevice.CurrentDevice);
-		container.Register<IDisplay> (t => t.Resolve<IDevice> ().Display);
-		container.Register<INetwork>(t=> t.Resolve<IDevice>().Network);
+        var container = new SimpleContainer ();
+        container.Register<IDevice> (t => AppleDevice.CurrentDevice);
+        container.Register<IDisplay> (t => t.Resolve<IDevice> ().Display);
+        container.Register<INetwork>(t=> t.Resolve<IDevice>().Network);
 
-		Resolver.SetResolver (container.GetResolver ());
+        Resolver.SetResolver (container.GetResolver ());
 
 [For more info on initialization go to the Labs Wiki](https://github.com/XLabs/Xamarin-Forms-Labs/wiki)
 ________________
@@ -188,7 +188,7 @@ ________________
 ======
 
 To develop on this project, just clone the project to your computer, package restore is enable so build the solution first, if you get any errors try to build each project independently .
-		
+        
 __________________
 
 **Nuget**
@@ -207,7 +207,7 @@ __________________
 
 **Contributions:**
 ======
- - Shawn Anderson
+ - [Shawn Anderson](https://www.linkedin.com/in/andersonshawn) [@ravensorb](https://twitter.com/ravensorb)
  - [Jim Bennett](http://www.jimbobbennett.io) [@jimbobbennett](https://twitter.com/jimbobbennett)
  - Filip De Vos  [@foxtricks](https://twitter.com/foxtricks) 
  - [Kevin E. Ford](http://windingroadway.blogspot.com/) [@Bowman74](https://twitter.com/Bowman74)
@@ -240,9 +240,9 @@ __________________
 Everbody is welcome to contribute with any kind of controls or features at this time.
 
 Twitter hashtag : [#xflabs](https://twitter.com/search?q=xflabs)
-		
-		  
-		  
+        
+          
+          
 _________________
 
 **CHAT**

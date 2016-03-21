@@ -1,4 +1,24 @@
-﻿
+﻿// ***********************************************************************
+// Assembly         : XLabs.Forms
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="CarouselView.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -9,12 +29,12 @@ using XLabs.Forms.Exceptions;
 
 namespace XLabs.Forms.Controls
 {
-	/// <summary>
-	/// Provides a View that uses swipe left and swipe right to change between displays
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	public class CarouselView<T> : ContentView
-	{
+    /// <summary>
+    /// Provides a View that uses swipe left and swipe right to change between displays
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public class CarouselView<T> : ContentView
+    {
         private int currentview;
 
         /// <summary>
@@ -92,35 +112,39 @@ namespace XLabs.Forms.Controls
 
         }
 
-		#region Bindables
-		/// <summary>
-		/// Property defnition for the <see cref="ViewModels" /> property
-		/// </summary>
-		public static BindableProperty ViewModelsProperty = BindableProperty.Create<CarouselView<T>, ObservableCollection<T>>(x => x.ViewModels, default(ObservableCollection<T>),BindingMode.OneWay,null,ViewModelsChanged);
-		/// <summary>
-		/// Property definition for the <see cref="TemplateSelector" /> property
-		/// </summary>
-		public static readonly BindableProperty TemplateSelectorProperty = BindableProperty.Create<CarouselView<T>, TemplateSelector>(x => x.TemplateSelector, default(TemplateSelector),BindingMode.OneWay,null,TemplateSelectorChanged);
-		/// <summary>
-		/// Property definition for the <see cref="TickColor" /> property
-		/// </summary>
-		public static readonly BindableProperty TickColorProperty =BindableProperty.Create<CarouselView<T>, Color>(x => x.TickColor, Color.Lime);
-		/// <summary>
-		/// Property definition for the <see cref="ShowTick" />
-		/// </summary>
-		public static readonly BindableProperty ShowTickProperty =BindableProperty.Create<CarouselView<T>, bool>(x => x.ShowTick, true,BindingMode.OneWay,null,ShowTickchanged);
+        #region Bindables
+        /// <summary>
+        /// Property defnition for the <see cref="ViewModels" /> property
+        /// </summary>
+        public static BindableProperty ViewModelsProperty = BindableProperty.Create<CarouselView<T>, ObservableCollection<T>>(x => x.ViewModels, default(ObservableCollection<T>),BindingMode.OneWay,null,ViewModelsChanged);
+        /// <summary>
+        /// Property defnition for the <see cref="SelectedViewModel" /> property
+        /// </summary>
+        public static BindableProperty SelectedViewModelProperty = BindableProperty.Create<CarouselView<T>, T>(x => x.SelectedViewModel, default(T),BindingMode.TwoWay,null,SelectedViewModelChanged);
+        /// <summary>
+        /// Property definition for the <see cref="TemplateSelector" /> property
+        /// </summary>
+        public static readonly BindableProperty TemplateSelectorProperty = BindableProperty.Create<CarouselView<T>, TemplateSelector>(x => x.TemplateSelector, default(TemplateSelector),BindingMode.OneWay,null,TemplateSelectorChanged);
+        /// <summary>
+        /// Property definition for the <see cref="TickColor" /> property
+        /// </summary>
+        public static readonly BindableProperty TickColorProperty =BindableProperty.Create<CarouselView<T>, Color>(x => x.TickColor, Color.Lime);
+        /// <summary>
+        /// Property definition for the <see cref="ShowTick" />
+        /// </summary>
+        public static readonly BindableProperty ShowTickProperty =BindableProperty.Create<CarouselView<T>, bool>(x => x.ShowTick, true,BindingMode.OneWay,null,ShowTickchanged);
 
-		/// <summary>
-		/// The item template selector property
-		/// </summary>
-		public static readonly BindableProperty ItemTemplateSelectorProperty = BindableProperty.Create<CarouselView<T>, DataTemplateSelector>(x => x.ItemTemplateSelector, default(DataTemplateSelector), propertyChanged: OnDataTemplateSelectorChanged);
+        /// <summary>
+        /// The item template selector property
+        /// </summary>
+        public static readonly BindableProperty ItemTemplateSelectorProperty = BindableProperty.Create<CarouselView<T>, DataTemplateSelector>(x => x.ItemTemplateSelector, default(DataTemplateSelector), propertyChanged: OnDataTemplateSelectorChanged);
 
         private DataTemplateSelector currentItemSelector;
-		/// <summary>
-		/// Gets or sets the item template selector.
-		/// </summary>
-		/// <value>The item template selector.</value>
-		public DataTemplateSelector ItemTemplateSelector
+        /// <summary>
+        /// Gets or sets the item template selector.
+        /// </summary>
+        /// <value>The item template selector.</value>
+        public DataTemplateSelector ItemTemplateSelector
         {
             get
             {
@@ -132,23 +156,23 @@ namespace XLabs.Forms.Controls
             }
         }
 
-		/// <summary>
-		/// Called when [data template selector changed].
-		/// </summary>
-		/// <param name="bindable">The bindable.</param>
-		/// <param name="oldvalue">The oldvalue.</param>
-		/// <param name="newvalue">The newvalue.</param>
-		private static void OnDataTemplateSelectorChanged(BindableObject bindable, DataTemplateSelector oldvalue, DataTemplateSelector newvalue)
+        /// <summary>
+        /// Called when [data template selector changed].
+        /// </summary>
+        /// <param name="bindable">The bindable.</param>
+        /// <param name="oldvalue">The oldvalue.</param>
+        /// <param name="newvalue">The newvalue.</param>
+        private static void OnDataTemplateSelectorChanged(BindableObject bindable, DataTemplateSelector oldvalue, DataTemplateSelector newvalue)
         {
             ((CarouselView<T>)bindable).OnDataTemplateSelectorChanged(oldvalue, newvalue);
         }
 
-		/// <summary>
-		/// Called when [data template selector changed].
-		/// </summary>
-		/// <param name="oldValue">The old value.</param>
-		/// <param name="newValue">The new value.</param>
-		protected virtual void OnDataTemplateSelectorChanged(DataTemplateSelector oldValue, DataTemplateSelector newValue)
+        /// <summary>
+        /// Called when [data template selector changed].
+        /// </summary>
+        /// <param name="oldValue">The old value.</param>
+        /// <param name="newValue">The new value.</param>
+        protected virtual void OnDataTemplateSelectorChanged(DataTemplateSelector oldValue, DataTemplateSelector newValue)
         {
             // Cache locally
             currentItemSelector = newValue;
@@ -166,73 +190,90 @@ namespace XLabs.Forms.Controls
         /// </summary>
         /// <value><c>true</c> if [show tick]; otherwise, <c>false</c>.</value>
         public bool ShowTick
-		{
-			get { return (bool)GetValue(ShowTickProperty); }
-			set { SetValue(ShowTickProperty,value);}
-		}
+        {
+            get { return (bool)GetValue(ShowTickProperty); }
+            set { SetValue(ShowTickProperty,value);}
+        }
 
-		/// <summary>
-		/// The color for the Ticks
-		/// </summary>
-		/// <value>The color of the tick.</value>
-		public Color TickColor
-		{
-			get { return (Color)GetValue(TickColorProperty); }
-			set { SetValue(TickColorProperty,value);}
-		}
-		/// <summary>
-		/// The collection of viewmodels to display in the carousel
-		/// </summary>
-		/// <value>The view models.</value>
-		public ObservableCollection<T> ViewModels
-		{
-			get { return (ObservableCollection<T>)GetValue(ViewModelsProperty); }
-			set { SetValue(ViewModelsProperty, value); }
-		}
+        /// <summary>
+        /// The color for the Ticks
+        /// </summary>
+        /// <value>The color of the tick.</value>
+        public Color TickColor
+        {
+            get { return (Color)GetValue(TickColorProperty); }
+            set { SetValue(TickColorProperty,value);}
+        }
+        /// <summary>
+        /// The collection of viewmodels to display in the carousel
+        /// </summary>
+        /// <value>The view models.</value>
+        public ObservableCollection<T> ViewModels
+        {
+            get { return (ObservableCollection<T>)GetValue(ViewModelsProperty); }
+            set { SetValue(ViewModelsProperty, value); }
+        }
 
-		/// <summary>
-		/// Used to match a type with a datatemplate
-		/// <see cref="TemplateSelector" />
-		/// </summary>
-		/// <value>The template selector.</value>
-		public TemplateSelector TemplateSelector
-		{
-			get { return (TemplateSelector)GetValue(TemplateSelectorProperty); }
-			set { SetValue(TemplateSelectorProperty, value); }
-		}
+        /// <summary>
+        /// The selected view model.
+        /// </summary>
+        /// <value>The selected view model.</value>
+        public T SelectedViewModel {
+            get { return (T)GetValue (SelectedViewModelProperty); }
+            set { SetValue (SelectedViewModelProperty, value); }
+        }
 
-		/// <summary>
-		/// Invoked whenever the binding context of the <see cref="T:Xamarin.Forms.View" /> changes. Override this method to add class handling for this event.
-		/// </summary>
-		/// <remarks>Overriders must call the base method.</remarks>
-		protected override void OnBindingContextChanged()
-		{
-			base.OnBindingContextChanged();            
-			foreach (var i in this.interests) i.BindingContext = BindingContext;
-			this.gestureView.BindingContext = BindingContext;
-			this.contentView.BindingContext = BindingContext;
-		}
+        /// <summary>
+        /// Used to match a type with a datatemplate
+        /// <see cref="TemplateSelector" />
+        /// </summary>
+        /// <value>The template selector.</value>
+        public TemplateSelector TemplateSelector
+        {
+            get { return (TemplateSelector)GetValue(TemplateSelectorProperty); }
+            set { SetValue(TemplateSelectorProperty, value); }
+        }
 
-		/// <summary>
-		/// Setups the tick board.
-		/// </summary>
-		private void SetupTickBoard()
-		{
-			this.myGrid.ColumnDefinitions.Clear();
+        /// <summary>
+        /// Invoked whenever the binding context of the <see cref="T:Xamarin.Forms.View" /> changes. Override this method to add class handling for this event.
+        /// </summary>
+        /// <remarks>Overriders must call the base method.</remarks>
+        protected override void OnBindingContextChanged()
+        {
+            base.OnBindingContextChanged();            
+            foreach (var i in this.interests) i.BindingContext = BindingContext;
+            this.gestureView.BindingContext = BindingContext;
+            this.contentView.BindingContext = BindingContext;
+        }
+
+        /// <summary>
+        /// Setups the tick board.
+        /// </summary>
+        private void SetupTickBoard()
+        {
+            this.myGrid.ColumnDefinitions.Clear();
             for (var i = 0; i < ViewModels.Count; i++)
             {
                 this.myGrid.ColumnDefinitions.Add(new ColumnDefinition { Width = new GridLength(1, GridUnitType.Star) });
             }
-		}
+        }
 
-		/// <summary>
-		/// Switches the view.
-		/// </summary>
-		/// <param name="increment">if set to <c>true</c> [increment].</param>
+        /// <summary>
+        /// Switches the view.
+        /// </summary>
+        /// <param name="increment">if set to <c>true</c> [increment].</param>
         private void SwitchView(bool increment)
         {
             var newval = this.currentview + (increment ? 1 : -1);
-            
+            SwitchView (newval);
+        }
+
+        /// <summary>
+        /// Switches the view. Based on absolute position.
+        /// </summary>
+        /// <param name="newval">New position.</param>
+        private void SwitchView(int newval)
+        {
             if (newval < 0 || newval > ViewModels.Count() - 1) return;
             var oldview = this.currentview >=0 ?  ViewModels[this.currentview] as ICarouselView : null;
             var newview = ViewModels[newval] as ICarouselView;
@@ -241,7 +282,9 @@ namespace XLabs.Forms.Controls
             if(oldview != null) oldview.Hiding();
             if(newview != null) newview.Showing();
             this.currentview = newval;
-            this.contentView.ViewModel = ViewModels[this.currentview];
+            var newVm = ViewModels [this.currentview];
+            this.contentView.ViewModel = newVm;
+            this.SelectedViewModel = newVm;
             if(oldview != null) oldview.Hiden();
             if(newview != null) newview.Shown();
             this.myGrid.Children.Add(this.marker, this.currentview, 0);
@@ -311,6 +354,24 @@ namespace XLabs.Forms.Controls
         }
 
         /// <summary>
+        ///The selected viewmodel changed.
+        /// </summary>
+        /// <param name="bo">The bo.</param>
+        /// <param name="oldval">The oldval.</param>
+        /// <param name="newval">The newval.</param>
+        /// <exception cref="XLabs.Forms.Exceptions.InvalidBindableException"></exception>
+        private static void SelectedViewModelChanged(BindableObject bo, T oldval, T newval)
+        {
+            var cv = bo as CarouselView<T>;
+            if (cv == null)
+                throw new InvalidBindableException(bo, typeof(CarouselView<T>));
+
+            var newPosition = cv.ViewModels.IndexOf (newval);
+            if(newPosition >= 0 && newPosition != cv.currentview)	
+                cv.SwitchView (newPosition);
+        }
+
+        /// <summary>
         /// Shows the tickchanged.
         /// </summary>
         /// <param name="bo">The bo.</param>
@@ -357,5 +418,5 @@ namespace XLabs.Forms.Controls
 
             cv.SelectorChanged(newval);
         }
-	}
+    }
 }

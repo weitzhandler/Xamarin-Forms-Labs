@@ -1,18 +1,36 @@
-﻿namespace XLabs.Platform.Device
+﻿// ***********************************************************************
+// Assembly         : XLabs.Platform.WP8
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="WindowsPhoneDevice.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using System;
+using System.IO.IsolatedStorage;
+using System.Threading.Tasks;
+using Windows.System;
+using Microsoft.Phone.Info;
+using XLabs.Enums;
+using XLabs.Platform.Services;
+using XLabs.Platform.Services.IO;
+using XLabs.Platform.Services.Media;
+
+namespace XLabs.Platform.Device
 {
-    using System;
-    using System.IO.IsolatedStorage;
-    using System.Threading.Tasks;
-
-    using Windows.System;
-
-    using Microsoft.Phone.Info;
-
-    using Services;
-    using Services.IO;
-    using Services.Media;
-    using XLabs.Enums;
-
     /// <summary>
     /// Windows phone device.
     /// </summary>
@@ -266,11 +284,11 @@
             }
         }
 
-		/// <summary>
-		/// Gets the time zone offset.
-		/// </summary>
-		/// <value>The time zone offset.</value>
-		public double TimeZoneOffset
+        /// <summary>
+        /// Gets the time zone offset.
+        /// </summary>
+        /// <value>The time zone offset.</value>
+        public double TimeZoneOffset
         {
             get
             {
@@ -278,11 +296,11 @@
             }
         }
 
-		/// <summary>
-		/// Gets the time zone.
-		/// </summary>
-		/// <value>The time zone.</value>
-		public string TimeZone
+        /// <summary>
+        /// Gets the time zone.
+        /// </summary>
+        /// <value>The time zone.</value>
+        public string TimeZone
         {
             get
             {
@@ -290,11 +308,11 @@
             }
         }
 
-		/// <summary>
-		/// Gets the language code.
-		/// </summary>
-		/// <value>The language code.</value>
-		public string LanguageCode
+        /// <summary>
+        /// Gets the language code.
+        /// </summary>
+        /// <value>The language code.</value>
+        public string LanguageCode
         {
             get
             {
@@ -302,11 +320,11 @@
             }
         }
 
-		/// <summary>
-		/// Gets the orientation.
-		/// </summary>
-		/// <value>The orientation.</value>
-		public Orientation Orientation
+        /// <summary>
+        /// Gets the orientation.
+        /// </summary>
+        /// <value>The orientation.</value>
+        public Orientation Orientation
         {
             get
             {

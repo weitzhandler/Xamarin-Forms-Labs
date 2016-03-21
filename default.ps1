@@ -19,7 +19,7 @@ Task Publish -Depends Package {
 	exec { & ".\.nuget\Push All.ps1"}	
 }
 
-Task Package -Depends {
+Task Package {
     $version = getVersionBase
     
 	exec { & ".\.nuget\Build All.ps1" "-version $version -preRelease $preRelease"}

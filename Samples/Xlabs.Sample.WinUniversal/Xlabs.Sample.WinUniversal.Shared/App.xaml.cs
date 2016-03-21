@@ -1,37 +1,45 @@
-﻿using System;
-using System.Collections.Generic;
+﻿// ***********************************************************************
+// Assembly         : Xlabs.Sample.WinUniversal.WindowsPhone
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="App.xaml.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using System;
 using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+using XLabs.Forms;
+using XLabs.Ioc;
+using XLabs.Platform.Device;
+using XLabs.Platform.Mvvm;
+using XLabs.Platform.Services;
+using XLabs.Serialization;
+using XLabs.Serialization.JsonNET;
 
 // The Blank Application template is documented at http://go.microsoft.com/fwlink/?LinkId=234227
 
 namespace Xlabs.Sample.WinUniversal
 {
-    using XLabs.Forms;
-    using XLabs.Forms.Services;
-    using XLabs.Ioc;
-    using XLabs.Platform.Device;
-    using XLabs.Platform.Mvvm;
-    using XLabs.Platform.Services;
-    using XLabs.Platform.Services.Email;
-    using XLabs.Platform.Services.Media;
-    using XLabs.Serialization;
-    using XLabs.Serialization.JsonNET;
-
-    /// <summary>
+	/// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
     public sealed partial class App : Application
@@ -163,22 +171,22 @@ namespace Xlabs.Sample.WinUniversal
 
             app.Init(this);
 
-            //var documents = app.AppDataDirectory;
-            //var pathToDatabase = Path.Combine(documents, "xforms.db");
+            var documents = app.AppDataDirectory;
+            var pathToDatabase = Path.Combine(documents, "xforms.db");
 
             resolverContainer
-                //.Register<IDevice>(t => WindowsPhoneDevice.CurrentDevice)
+                .Register<IDevice>(t => WindowsDevice.CurrentDevice)
                 .Register<IDisplay>(t => new Display())
                 //.Register<IFontManager>(t => new FontManager(t.Resolve<IDisplay>()))
                 //.Register<IEmailService, EmailService>()
                 //.Register<IMediaPicker, MediaPicker>()
                 .Register<IJsonSerializer, JsonSerializer>()
-                //.Register<ITextToSpeechService, TextToSpeechService>()
+                .Register<ITextToSpeechService, TextToSpeechService>()
                 .Register<IDependencyContainer>(t => resolverContainer)
                 .Register<XFormsAppWin>(app)
                 .Register<IXFormsApp>(app)
-                //.Register<ISecureStorage, SecureStorage>()
-                //.Register<ISimpleCache>(
+                .Register<ISecureStorage, SecureStorage>()
+                //.Register<ICacheProvider>(
                 //    t => new SQLiteSimpleCache(new SQLite.Net.Platform.WindowsPhone8.SQLitePlatformWP8(),
                 //        new SQLite.Net.SQLiteConnectionString(pathToDatabase, true), t.Resolve<IJsonSerializer>()))
                 ;

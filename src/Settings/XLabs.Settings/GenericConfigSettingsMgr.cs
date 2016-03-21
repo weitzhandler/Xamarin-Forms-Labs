@@ -1,13 +1,34 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : XLabs.Settings
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="GenericConfigSettingsMgr.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using System;
 
 namespace XLabs.Settings
 {
     public class GenericConfigSettingsMgr : IConfigSettingsMgr
     {
-		/// <summary>
-		/// The _get setting function
-		/// </summary>
-		readonly Func<string, string> _getSettingFunction;
+        /// <summary>
+        /// The _get setting function
+        /// </summary>
+        readonly Func<string, string> _getSettingFunction;
         readonly Func<string, string, bool> _setSettingFunction;
 
         /// <summary>
@@ -16,12 +37,12 @@ namespace XLabs.Settings
         /// <param name="getSettingFunc">The get setting function.</param>
         /// <param name="setSettungFunc">The set settung function.</param>
         public GenericConfigSettingsMgr(Func<string, string> getSettingFunc, Func<string, string, bool> setSettungFunc)
-		{
-			_getSettingFunction = getSettingFunc;
-		    _setSettingFunction = setSettungFunc;
-		}
+        {
+            _getSettingFunction = getSettingFunc;
+            _setSettingFunction = setSettungFunc;
+        }
 
-		#region Implementation of IConfigurationManager
+        #region Implementation of IConfigurationManager
 
         /// <summary>
         /// Gets the setting.
@@ -30,11 +51,11 @@ namespace XLabs.Settings
         /// <param name="key">The key.</param>
         /// <param name="defaultValue">The default value.</param>
         /// <returns>T.</returns>
-		public T GetValue<T>(string key, T defaultValue = default(T))
-		{
-			var result = GetValue(key);
+        public T GetValue<T>(string key, T defaultValue = default(T))
+        {
+            var result = GetValue(key);
 
-			var tmp = (T) Convert.ChangeType(result, typeof (T));
+            var tmp = (T) Convert.ChangeType(result, typeof (T));
             
             if (tmp == null)
             {
@@ -42,7 +63,7 @@ namespace XLabs.Settings
             }
 
             return tmp;
-		}
+        }
 
         /// <summary>
         /// Gets the setting.

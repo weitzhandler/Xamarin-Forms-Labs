@@ -4,7 +4,7 @@
 		<id>XLabs.Cryptography</id>
 		<title>XLabs - Cryptography</title>
 		<tags>Xamarin XLabs Cryptography md5</tags>
-		<version>2.0.5603</version>
+		<version>2.0.5818</version>
 		<authors>XLabs Team</authors>
 		<licenseUrl>https://github.com/XForms/Xamarin-Forms-Labs/blob/master/LICENSE</licenseUrl>
 		<projectUrl>https://github.com/XForms/Xamarin-Forms-Labs</projectUrl>
@@ -19,24 +19,16 @@
 			XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.
 		</summary>
 		<releaseNotes>
-
 		</releaseNotes>
 		<language>en-US</language>
 		<dependencies>
-
 		</dependencies>
 	</metadata>
 	<files>
-		<file src="..\..\build\**\XLabs.Cryptography.dll*" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
-		<file src="..\..\build\**\XLabs.Cryptography.dll.mdb*" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
-		<file src="..\..\build\**\XLabs.Cryptography.pdb*" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
-		<file src="..\..\build\**\XLabs.Cryptography.xml*" target="lib\portable-net45+netcore45+wp8+MonoAndroid1+MonoTouch1" />
+		<file src="..\..\build\**\XLabs.Cryptography.dll" target="lib\portable-net45+wp80+MonoAndroid10+xamarinios10+MonoTouch10" exclude="" />
+		<file src="..\..\build\**\XLabs.Cryptography.pdb" target="lib\portable-net45+wp80+MonoAndroid10+xamarinios10+MonoTouch10" exclude="" />
+		<file src="..\..\build\**\XLabs.Cryptography.XML" target="lib\portable-net45+wp80+MonoAndroid10+xamarinios10+MonoTouch10" exclude="" />
 
-		<file src="..\..\build\**\XLabs.Cryptography.dll*" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
-		<file src="..\..\build\**\XLabs.Cryptography.dll.mdb*" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
-		<file src="..\..\build\**\XLabs.Cryptography.pdb*" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
-		<file src="..\..\build\**\XLabs.Cryptography.xml*" target="lib\portable-net45+netcore45+wpa81+wp8+MonoAndroid1+MonoTouch1" />
-		
 		<!-- Source Files for Symbol Server -->
 		<file src="..\..\src\Cryptography\XLabs.Cryptography\**\*.cs" target="src" />
 	</files>

@@ -7,7 +7,9 @@ param(
     [Parameter(Mandatory = $False)]
     [string] $preRelease = $null,
     [Parameter(Mandatory = $False)]
-    [bool] $versionUpdate = $true
+    [bool] $versionUpdate = $true,
+    [Parameter(Mandatory = $False)]
+    [string] $versionDependency = $null
 )
 
 function OutputCommandLineUsageHelp()
@@ -28,26 +30,26 @@ function Pause( $Message="Press any key to continue..." )
     Write-Host ""
 }
 
-function ChangeNuSpecVersion( [string] $nuSpecFilePath, [string] $version="0.0.0.0", [string] $nuSpecFilePathTmp = $null, [bool] $dependencyVersionUpdate = $false)
+function ChangeNuSpecVersion( [string] $nuSpecFilePath, [string] $version="0.0.0.0", [string] $nuSpecFilePathTmp = $null, [bool] $dependencyVersionUpdate = $false, [string] $verDependency = $null)
 {
-    Write-Host "Dynamically setting NuSpec version: $Version" -ForegroundColor Yellow
-    
     # Get full path or save operation fails when launched in standalone powershell
     $nuSpecFile = Get-Item $nuSpecFilePath | Select-Object -First 1
     
-    # Bring the XML Linq namespace in
-    [Reflection.Assembly]::LoadWithPartialName( “System.Xml.Linq” ) | Out-Null
-    
-    # Update the XML document with the new version
-    $xDoc = [System.Xml.Linq.XDocument]::Load( $nuSpecFile.FullName )
-    $versionNode = $xDoc.Descendants( "version" ) | Select-Object -First 1
-    if ($versionNode -ne $null)
-    {
-        $versionNode.SetValue($version)
-    }
-    
+	Write-Host "Dynamically setting NuSpec version: $Version" -ForegroundColor Yellow
+
+		# Bring the XML Linq namespace in
+	[Reflection.Assembly]::LoadWithPartialName( “System.Xml.Linq” ) | Out-Null
+	
+	# Update the XML document with the new version
+	$xDoc = [System.Xml.Linq.XDocument]::Load( $nuSpecFile.FullName )
+	$versionNode = $xDoc.Descendants( "version" ) | Select-Object -First 1
+	if ($versionNode -ne $null)
+	{
+		$versionNode.SetValue($version)
+	}
+		
     # Update the XML document dependencies with the new version
-    if ($dependencyVersionUpdate)
+    if ($dependencyVersionUpdate -eq $true)
     {
         $dependencies = $xDoc.Descendants( "dependency" )
         foreach( $dependency in $dependencies )
@@ -57,7 +59,16 @@ function ChangeNuSpecVersion( [string] $nuSpecFilePath, [string] $version="0.0.0
             {
                 if ( $idAttribute.Value -like "XLabs.*" )
                 {
-                    $dependency.SetAttributeValue( "version", "[$version]" )
+					if (-Not $verDependency)
+                    {
+						$dependency.SetAttributeValue( "version", "[$version]" )
+					}
+					else
+					{
+						$dependency.SetAttributeValue( "version", "$verDependency" )
+					}
+					
+					Write-Host "Setting Dependency: $dependency"
                 }
             }
         }
@@ -146,7 +157,7 @@ try
         $productVersion = [System.String]::Format( "{0}-{1}", $productVersion, $preRelease )
     }
 
-    ChangeNuSpecVersion "$basePath\$package.NuSpec" $productVersion "$basePath\$package.tmp.NuSpec" $versionUpdate
+    ChangeNuSpecVersion "$basePath\$package.NuSpec" $productVersion "$basePath\$package.tmp.NuSpec" $versionUpdate $versionDependency
     
     ## Launch NuGet.exe to build package
     Write-Host "Build NuGet package: $package..." -ForegroundColor Yellow

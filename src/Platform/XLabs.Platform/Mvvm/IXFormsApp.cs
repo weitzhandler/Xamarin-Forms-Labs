@@ -1,10 +1,30 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : XLabs.Platform
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="IXFormsApp.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using System;
 using System.Threading.Tasks;
+using XLabs.Enums;
 
 namespace XLabs.Platform.Mvvm
 {
-    using Enums;
-
     /// <summary>
     /// Interface IXFormsApp
     /// </summary>
@@ -24,17 +44,17 @@ namespace XLabs.Platform.Mvvm
         /// <value>The application data directory</value>
         string AppDataDirectory { get; set; }
 
-		/// <summary>
-		/// Gets the orientation.
-		/// </summary>
-		/// <value>The orientation.</value>
-		Orientation Orientation { get; }
+        /// <summary>
+        /// Gets the orientation.
+        /// </summary>
+        /// <value>The orientation.</value>
+        Orientation Orientation { get; }
 
-		/// <summary>
-		/// Gets or sets the back press delegate.
-		/// </summary>
-		/// <value>The back press delegate.</value>
-		[Obsolete]
+        /// <summary>
+        /// Gets or sets the back press delegate.
+        /// </summary>
+        /// <value>The back press delegate.</value>
+        [Obsolete]
         Func<Task<bool>> BackPressDelegate
         {
             get;
@@ -87,11 +107,11 @@ namespace XLabs.Platform.Mvvm
         /// <value>The on rotation.</value>
         EventHandler<EventArgs<Orientation>> Rotation { get; set; }
 
-		/// <summary>
-		/// Gets or sets the back press.
-		/// </summary>
-		/// <value>The back press.</value>
-		EventHandler<EventArgs> BackPress { get; set; } 
+        /// <summary>
+        /// Gets or sets the back press.
+        /// </summary>
+        /// <value>The back press.</value>
+        EventHandler<EventArgs> BackPress { get; set; } 
 
         #endregion Event Handlers
 

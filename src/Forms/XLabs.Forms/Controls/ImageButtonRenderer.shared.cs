@@ -1,15 +1,41 @@
+// ***********************************************************************
+// Assembly         : XLabs.Forms.iOS
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="ImageButtonRenderer.shared.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+using Xamarin.Forms;
+
 #if __ANDROID__
 using Xamarin.Forms.Platform.Android;
+
 #elif __IOS__
 using Xamarin.Forms.Platform.iOS;
+
 #elif WINDOWS_PHONE
 using Xamarin.Forms.Platform.WinPhone;
+
+#elif NETFX_CORE
+using Xamarin.Forms.Platform.WinRT;
+
 #endif
 
 namespace XLabs.Forms.Controls
 {
-	using Xamarin.Forms;
-
 	/// <summary>
 	/// Draws a button on the Android platform with the image shown in the right 
 	/// position with the right size.

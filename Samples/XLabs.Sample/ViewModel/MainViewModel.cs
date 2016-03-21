@@ -1,15 +1,34 @@
-﻿namespace XLabs.Sample.ViewModel
+// ***********************************************************************
+// Assembly         : XLabs.Sample
+// Author           : XLabs Team
+// Created          : 01-03-2016
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="MainViewModel.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using System;
+using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using Xamarin.Forms;
+using XLabs.Ioc;
+using XLabs.Platform.Device;
+using XLabs.Platform.Services;
+
+namespace XLabs.Sample.ViewModel
 {
-    using System;
-    using System.Collections.ObjectModel;
-    using System.Threading.Tasks;
-
-    using Xamarin.Forms;
-    
-    using Ioc;
-    using Platform.Device;
-    using Platform.Services;
-
     /// <summary>
     /// The main view model.
     /// </summary>
@@ -28,6 +47,9 @@
         public MainViewModel ()
         {
             SpeakCommand = new Command (() => Resolver.Resolve<ITextToSpeechService>().Speak(TextToSpeak));
+            AddImagesCommand = new Command(() => AddImages());
+            RemoveImagesCommand = new Command(() => RemoveImages());
+            ChangeImageSourceCommand = new Command(() => ChangeImageSource());
 
             Images = new ObservableCollection<string>();
             for (var i = 0; i < 10; i++)
@@ -37,6 +59,7 @@
 
             _device = Resolver.Resolve<IDevice>();
         }
+
 
         public Task AddImages()
         {
@@ -48,6 +71,23 @@
                     Images.Add ("http://www.stockvault.net/data/2011/05/31/124348/small.jpg");
                 }
             });
+        }
+
+        public Task RemoveImages()
+        {
+            return Task.Run(async () => 
+            {
+                    for (var i = 0; i < 5; i++) 
+                {
+                    if(Images.Count > 0)
+                        Images.RemoveAt(0);
+                }
+            });
+        }
+
+        public void ChangeImageSource()
+        {
+            Images = new ObservableCollection<string>();
         }
 
         /// <summary>
@@ -172,6 +212,24 @@
         /// The speak command.
         /// </value>
         public Command SpeakCommand { get; private set; }
+
+        /// <summary>
+        /// Command to add images to the list
+        /// </summary>
+        /// <value>The add images command.</value>
+        public Command AddImagesCommand { get; private set; }
+
+        /// <summary>
+        /// Command to remove images from the list
+        /// </summary>
+        /// <value>The remove images command.</value>
+        public Command RemoveImagesCommand { get; private set; }
+
+        /// <summary>
+        /// Command to swap the image source to a new object
+        /// </summary>
+        /// <value>The change image source command.</value>
+        public Command ChangeImageSourceCommand { get; private set; }
         
         /// <summary>
         /// Gets the call command.

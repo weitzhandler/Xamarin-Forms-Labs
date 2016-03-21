@@ -77,7 +77,7 @@
 						WinPhone="20,20,20,20" />
 		</StackLayout.Padding>
 
-		<lc:CarouselView x:TypeArguments="my:PageWidget" ViewModels="{Binding Models}" TemplateSelector="{StaticResource Carouselselector}" HeightRequest="100" Padding="10,25"/>
+		<lc:CarouselView x:TypeArguments="my:PageWidget" ViewModels="{Binding Models}" SelectedViewModel="{Binding SelectedModel}" TemplateSelector="{StaticResource Carouselselector}" HeightRequest="100" Padding="10,25"/>
 		<Label Text="The view obove is bound to a collection that contains workoders and message objects"/>
 		<Label Text="As you swipe back and forth the view uses it's template selector to determine which datatemplate to instantiate and bind to the current item."/>
 		<Label Text="If you have a single DataTemplate simply create the selector with one template and mark set the IsDefault property to true"/>

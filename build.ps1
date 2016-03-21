@@ -49,6 +49,7 @@ $properties = @{
 	"versionUpdate" = $versionUpdate
 }
 
-import-module .\packages\psake.4.4.2\tools\psake.psm1
+#import-module .\packages\psake.4.4.2\tools\psake.psm1
+import-module C:\ProgramData\chocolatey\lib\psake\tools\psake.psm1
 
 invoke-psake $build_file $task_list -Properties $properties

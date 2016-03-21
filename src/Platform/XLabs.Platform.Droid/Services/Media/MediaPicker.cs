@@ -1,15 +1,35 @@
+// ***********************************************************************
+// Assembly         : XLabs.Platform.Droid
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="MediaPicker.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using System;
+using System.Threading;
+using System.Threading.Tasks;
+using Android.App;
+using Android.Content;
+using Android.Content.PM;
+using Android.OS;
+using Android.Provider;
+
 namespace XLabs.Platform.Services.Media
 {
-    using System;
-    using System.Threading;
-    using System.Threading.Tasks;
-
-    using Android.App;
-    using Android.Content;
-    using Android.Content.PM;
-    using Android.OS;
-    using Android.Provider;
-
     /// <summary>
     ///     Class MediaPicker.
     /// </summary>

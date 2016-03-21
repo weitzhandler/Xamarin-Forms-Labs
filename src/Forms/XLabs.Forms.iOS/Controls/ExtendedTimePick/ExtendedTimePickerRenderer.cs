@@ -1,21 +1,37 @@
-using Xamarin.Forms;
+// ***********************************************************************
+// Assembly         : XLabs.Forms.iOS
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="ExtendedTimePickerRenderer.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
 
+using System;
+using System.ComponentModel;
+using CoreGraphics;
+using Foundation;
+using UIKit;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 using XLabs.Forms.Controls;
 
 [assembly: ExportRenderer(typeof(ExtendedTimePicker), typeof(ExtendedTimePickerRenderer))]
 
 namespace XLabs.Forms.Controls
 {
-    using System;
-    using System.ComponentModel;
-    using CoreGraphics;
-
-    using Foundation;
-    using UIKit;
-
-    using Xamarin.Forms;
-    using Xamarin.Forms.Platform.iOS;
-
     /// <summary>
     /// Class ExtendedTimePickerRenderer.
     /// </summary>
@@ -90,6 +106,7 @@ namespace XLabs.Forms.Controls
             UpdateTime();
 
             SetBorder();
+            UpdateTimeConstraints();
         }
 
         /// <summary>
@@ -107,6 +124,8 @@ namespace XLabs.Forms.Controls
             else if (e.PropertyName == ExtendedTimePicker.HasBorderProperty.PropertyName)
             {
                 SetBorder();
+            } else if (e.PropertyName == ExtendedTimePicker.MinimumTimeProperty.PropertyName || e.PropertyName == ExtendedTimePicker.MaximumTimeProperty.PropertyName) {
+                UpdateTimeConstraints();
             }
         }
 
@@ -169,6 +188,17 @@ namespace XLabs.Forms.Controls
             this.Control.BorderStyle = this.Element.HasBorder ? UITextBorderStyle.RoundedRect : UITextBorderStyle.None;
         }
 
+        /// <summary>
+        /// Updates the time constraints.
+        /// </summary>
+        private void UpdateTimeConstraints()
+        {
+            if (this.Element == null) return;
+
+            this._picker.MinimumDate = new DateTime(1, 1, 1).Add(this.Element.MinimumTime).ToNSDate();
+            this._picker.MaximumDate = new DateTime(1, 1, 1).Add(this.Element.MaximumTime).ToNSDate();
+        }
+
         //
         // Methods
         //
@@ -184,11 +214,11 @@ namespace XLabs.Forms.Controls
             this.Element.Time = this._picker.Date.ToDateTime() - new DateTime(1, 1, 1);
         }
 
-		/// <summary>
-		/// Releases unmanaged and - optionally - managed resources.
-		/// </summary>
-		/// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
-		protected override void Dispose (bool disposing)
+        /// <summary>
+        /// Releases unmanaged and - optionally - managed resources.
+        /// </summary>
+        /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
+        protected override void Dispose (bool disposing)
         {
             base.Dispose (disposing);
             if (disposing && this._picker != null)

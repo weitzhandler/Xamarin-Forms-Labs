@@ -1,25 +1,40 @@
-using Xamarin.Forms;
+// ***********************************************************************
+// Assembly         : XLabs.Forms.Droid
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="GesturesContentViewRenderer.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using Android.Graphics;
+using Android.Views;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
+using XLabs.Forms.Behaviors;
 using XLabs.Forms.Controls;
+using Point = Xamarin.Forms.Point;
+using View = Xamarin.Forms.View;
 
 [assembly:ExportRenderer(typeof(GesturesContentView),typeof(GesturesContentViewRenderer))]
 
 namespace XLabs.Forms.Controls
 {
-	using System;
-	using System.Collections.Generic;
-	using System.Linq;
-
-	using Android.Graphics;
-	using Android.Views;
-
-	using Xamarin.Forms.Platform.Android;
-
-	using XLabs.Forms.Behaviors;
-
-	using Point = Xamarin.Forms.Point;
-	using View = Xamarin.Forms.View;
-
 	/// <summary>
 	/// Android renderer for the GestureContentView
 	/// This class detects gestures and sends them

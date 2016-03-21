@@ -1,15 +1,35 @@
-﻿using System.Runtime.Serialization;
+﻿// ***********************************************************************
+// Assembly         : XLabs.Forms
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="HybridWebView.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using System;
+using System.Collections.Generic;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Threading.Tasks;
+using Xamarin.Forms;
+using XLabs.Ioc;
+using XLabs.Serialization;
 
 namespace XLabs.Forms.Controls
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Threading.Tasks;
-    using Ioc;
-    using Serialization;
-    using Xamarin.Forms;
-
     /// <summary>
     /// The hybrid web view.
     /// </summary>
@@ -139,7 +159,7 @@ namespace XLabs.Forms.Controls
         /// Gets or sets the cleanup called flag.
         /// </summary>
         public bool CleanupCalled 
-		{
+        {
             get { return (bool)GetValue (CleanupProperty); }
             set { SetValue (CleanupProperty, value); }
         }

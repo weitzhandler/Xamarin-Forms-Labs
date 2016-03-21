@@ -1,10 +1,31 @@
-﻿namespace XLabs.Sample.Pages.Controls
-{
-	using System;
-	using System.Collections.ObjectModel;
-	using ViewModel;
-	using Xamarin.Forms;
+﻿// ***********************************************************************
+// Assembly         : XLabs.Sample
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="CarouselSample.xaml.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
 
+using System;
+using System.Collections.ObjectModel;
+using Xamarin.Forms;
+using XLabs.Sample.ViewModel;
+
+namespace XLabs.Sample.Pages.Controls
+{
     public partial class CarouselSample  : ContentPage
     {
         public CarouselSample()
@@ -74,6 +95,13 @@
         }
 
         public ObservableCollection<PageWidget> Models { get; set; }
+
+        private PageWidget _SelectedModel;
+        public PageWidget SelectedModel 
+        {
+            get { return _SelectedModel; }  
+            set { SetField (ref _SelectedModel, value);  }
+        }
     }
 
     public class PageWidget

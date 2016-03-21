@@ -1,7 +1,26 @@
-﻿using Foundation;
+﻿// ***********************************************************************
+// Assembly         : XLabs.Forms.iOS
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="IconLabelRenderer.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
 using System;
-using System.Collections.Generic;
-using System.Text;
+using Foundation;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
@@ -11,23 +30,34 @@ using XLabs.Forms.Controls;
 [assembly: ExportRenderer(typeof(IconLabel), typeof(IconLabelRenderer))]
 namespace XLabs.Forms.Controls
 {
+    /// <summary>
+    /// Implementation of IconLabelRender.
+    /// </summary>
     public class IconLabelRenderer : LabelRenderer
     {
-        IconLabel iconLabel;
-        UIKit.UILabel nativeLabel;
+        IconLabel _iconLabel;
+        UIKit.UILabel _nativeLabel;
 
+        /// <summary>
+        /// Handles the on element changed messages
+        /// </summary>
+        /// <param name="e">The e.</param>
         protected override void OnElementChanged(ElementChangedEventArgs<Label> e)
         {
             base.OnElementChanged(e);
 
-            iconLabel = (IconLabel)Element;
-            nativeLabel = Control;
+            _iconLabel = (IconLabel)Element;
+            _nativeLabel = Control;
 
-            if (iconLabel != null && nativeLabel != null && !string.IsNullOrEmpty(iconLabel.Icon))
-                SetText(iconLabel, nativeLabel);
+            if (_iconLabel != null && _nativeLabel != null && !string.IsNullOrEmpty(_iconLabel.Icon))
+                SetText(_iconLabel, _nativeLabel);
         }
 
-
+        /// <summary>
+        /// Handles the <see cref="E:ElementPropertyChanged" /> event.
+        /// </summary>
+        /// <param name="sender">The sender.</param>
+        /// <param name="e">The <see cref="System.ComponentModel.PropertyChangedEventArgs"/> instance containing the event data.</param>
         protected override void OnElementPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
@@ -40,12 +70,21 @@ namespace XLabs.Forms.Controls
                 e.PropertyName == IconLabel.FontSizeProperty.PropertyName ||
                 e.PropertyName == IconLabel.OrientationProperty.PropertyName)
              {
-                 SetText(iconLabel, nativeLabel);
+                 SetText(_iconLabel, _nativeLabel);
              }
         }
 
-
-        private  void SetText(IconLabel iconLabel, UILabel targetLabel)
+        /// <summary>
+        /// Sets the text.
+        /// </summary>
+        /// <param name="iconLabel">The icon label.</param>
+        /// <param name="targetLabel">The target label.</param>
+        /// <exception cref="System.NotSupportedException">
+        /// Image orientation top and bottom are not supported on iOS
+        /// or
+        /// Image orientation top and bottom are not supported on iOS
+        /// </exception>
+        private void SetText(IconLabel iconLabel, UILabel targetLabel)
         {
             var renderedIcon = iconLabel.Icon;
 
@@ -55,9 +94,7 @@ namespace XLabs.Forms.Controls
                 : iconLabel.IconFontName;
 
             var iconSize = (iconLabel.IconSize == 0) ? iconLabel.FontSize : iconLabel.IconSize;
-          
-
-
+         
 
             var faFont = UIFont.FromName(iconFontName, (float)iconSize);
             string combinedText = null;
@@ -71,7 +108,6 @@ namespace XLabs.Forms.Controls
                         combinedText = renderedIcon;
                     else
                     {
-
                         combinedText = renderedIcon + separator + iconLabel.Text;
                     }
                     break;
@@ -86,8 +122,7 @@ namespace XLabs.Forms.Controls
                     
                 case ImageOrientation.ImageOnBottom:
                     throw new NotSupportedException("Image orientation top and bottom are not supported on iOS");
-            }
-          
+            }          
 
             // string attributes for the icon
             var iconAttributes = new UIStringAttributes
@@ -97,7 +132,6 @@ namespace XLabs.Forms.Controls
                 Font = faFont,
                 TextAttachment = new NSTextAttachment()
             };
-
           
             // TODO: Calculate an appropriate BaselineOffset for the main button text in order to center it vertically relative to the icon
             var btnAttributes = new UIStringAttributes
@@ -107,6 +141,7 @@ namespace XLabs.Forms.Controls
                 Font = GetButtonFont(iconLabel, targetLabel, 17f),
 
             };
+
             if (!string.IsNullOrEmpty(iconLabel.Text))
                 btnAttributes.BaselineOffset = 3;
 
@@ -118,9 +153,6 @@ namespace XLabs.Forms.Controls
                 iconLabel.Orientation == ImageOrientation.ImageToLeft
                     ? new NSRange(0, 1)
                     : new NSRange(prettyString.Length - 1, 1));
-
-
-          
 
             // set the final formatted string as the button's text
             targetLabel.AttributedText  = prettyString;
@@ -139,23 +171,25 @@ namespace XLabs.Forms.Controls
             else if (iconLabel.TextAlignement == TextAlignment.Start)
             {
                 targetLabel.TextAlignment = UITextAlignment.Left;
-              
+            
             }
         }
 
         /// <summary>
         /// Gets the font for the button (applied to all button text EXCEPT the icon)
         /// </summary>
-        /// <param name="iconLabel"></param>
-        /// <param name="targetLabel"></param>
-        /// <returns></returns>
-        private  UIFont GetButtonFont(IconLabel iconLabel, UILabel targetLabel, nfloat fontSize)
+        /// <param name="iconLabel">The icon label.</param>
+        /// <param name="targetLabel">The target label.</param>
+        /// <param name="fontSize">Size of the font.</param>
+        /// <returns>UIFont.</returns>
+        private UIFont GetButtonFont(IconLabel iconLabel, UILabel targetLabel, nfloat fontSize)
         {
             UIFont btnTextFont = iconLabel.Font.ToUIFont();
 
             if (iconLabel.Font != Font.Default && btnTextFont != null)
                 return btnTextFont;
-            else if (iconLabel.Font == Font.Default)
+            
+            if (iconLabel.Font == Font.Default)
                 return UIFont.SystemFontOfSize(fontSize);
 
             return btnTextFont;

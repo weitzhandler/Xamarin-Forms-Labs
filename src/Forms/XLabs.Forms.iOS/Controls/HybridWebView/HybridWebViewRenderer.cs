@@ -1,30 +1,47 @@
+// ***********************************************************************
+// Assembly       : XLabs.Forms.iOS
+// Author           : XLabs Team
+// Created          : 01-06-2016
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-06-2016
+// ***********************************************************************
+// <copyright file="HybridWebViewRenderer.cs" company="XLabs Team">
+//        Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//        This project is licensed under the Apache 2.0 license
+//        https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+// 
+//        XLabs is a open source project that aims to provide a powerfull and cross
+//        platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using System;
+using System.Diagnostics;
+using System.IO;
+using Foundation;
+using UIKit;
+using WebKit;
 using Xamarin.Forms;
+using Xamarin.Forms.Platform.iOS;
 using XLabs.Forms.Controls;
+using XLabs.Platform.Services.IO;
 
 [assembly: ExportRenderer(typeof(HybridWebView), typeof(HybridWebViewRenderer))]
 
 namespace XLabs.Forms.Controls
 {
-    using System;
-    using System.Diagnostics;
-    using System.IO;
-    using Foundation;
-    using Platform.Services.IO;
-    using UIKit;
-    using WebKit;
-    using Xamarin.Forms;
-    using Xamarin.Forms.Platform.iOS;
-
     /// <summary>
     /// The hybrid web view renderer.
     /// </summary>
     public partial class HybridWebViewRenderer : ViewRenderer<HybridWebView, WKWebView>, IWKScriptMessageHandler
     {
-        private const string ScriptMessageHandlerName = "native";
-
-        private UISwipeGestureRecognizer leftSwipeGestureRecognizer;
-        private UISwipeGestureRecognizer rightSwipeGestureRecognizer;
-        private WKUserContentController userController;
+        private UISwipeGestureRecognizer _leftSwipeGestureRecognizer;
+        private UISwipeGestureRecognizer _rightSwipeGestureRecognizer;
+        private WKUserContentController _userController;
 
         /// <summary>
         /// Gets the desired size of the view.
@@ -52,10 +69,7 @@ namespace XLabs.Forms.Controls
         [Export("webView:didFinishNavigation:")]
         public void DidFinishNavigation(WKWebView webView, WKNavigation navigation)
         {
-            if (this.Element != null)
-            {
-                this.Element.OnLoadFinished(webView, EventArgs.Empty);
-            }
+            Element.OnLoadFinished(webView, EventArgs.Empty);
         }
 
         /// <summary>
@@ -66,10 +80,7 @@ namespace XLabs.Forms.Controls
         [Export("webView:didStartProvisionalNavigation:")]
         public void DidStartProvisionalNavigation(WKWebView webView, WKNavigation navigation)
         {
-            if (this.Element != null)
-            {
-                this.Element.OnNavigating(webView.Url);
-            }
+            Element.OnNavigating(webView.Url);
         }
 
         #endregion
@@ -92,10 +103,7 @@ namespace XLabs.Forms.Controls
         /// <param name="message">The message being sent.</param>
         public void DidReceiveScriptMessage(WKUserContentController userContentController, WKScriptMessage message)
         {
-            if (this.Element != null)
-            {
-                this.Element.MessageReceived(message.Body.ToString());
-            }
+            Element.MessageReceived(message.Body.ToString());
         }
 
         /// <summary>
@@ -110,56 +118,54 @@ namespace XLabs.Forms.Controls
 
             if (Control == null && e.NewElement != null)
             {
-                this.userController = new WKUserContentController();
-                var config = new WKWebViewConfiguration
+                _userController = new WKUserContentController();
+                var config = new WKWebViewConfiguration()
                 {
-                    UserContentController = this.userController
+                    UserContentController = _userController
                 };
 
                 var script = new WKUserScript(new NSString(NativeFunction + GetFuncScript()), WKUserScriptInjectionTime.AtDocumentEnd, false);
 
-                this.userController.AddUserScript(script);
+                _userController.AddUserScript(script);
 
-                this.userController.AddScriptMessageHandler(this, ScriptMessageHandlerName);
+                _userController.AddScriptMessageHandler(this, "native");
 
-                var webView = new WKWebView(this.Frame, config) { WeakNavigationDelegate = this };
+                var webView = new WKWebView(Frame, config) { WeakNavigationDelegate = this };
 
                 SetNativeControl(webView);
 
                 //webView.AutoresizingMask = UIViewAutoresizing.FlexibleWidth | UIViewAutoresizing.FlexibleHeight;
                 //webView.ScalesPageToFit = true;
 
-                this.leftSwipeGestureRecognizer = new UISwipeGestureRecognizer(() => Element.OnLeftSwipe(this, EventArgs.Empty))
+                _leftSwipeGestureRecognizer = new UISwipeGestureRecognizer(() => Element.OnLeftSwipe(this, EventArgs.Empty))
                 {
                     Direction = UISwipeGestureRecognizerDirection.Left
                 };
 
-                this.rightSwipeGestureRecognizer = new UISwipeGestureRecognizer(() => Element.OnRightSwipe(this, EventArgs.Empty))
+                _rightSwipeGestureRecognizer = new UISwipeGestureRecognizer(() => Element.OnRightSwipe(this, EventArgs.Empty))
                 {
                     Direction = UISwipeGestureRecognizerDirection.Right
                 };
 
-                webView.AddGestureRecognizer(this.leftSwipeGestureRecognizer);
-                webView.AddGestureRecognizer(this.rightSwipeGestureRecognizer);
+                webView.AddGestureRecognizer(_leftSwipeGestureRecognizer);
+                webView.AddGestureRecognizer(_rightSwipeGestureRecognizer);
             }
 
-            if (e.NewElement == null)
+            if (e.NewElement == null && Control != null)
             {
-				HandleCleanup ();
+                Control.RemoveGestureRecognizer(_leftSwipeGestureRecognizer);
+                Control.RemoveGestureRecognizer(_rightSwipeGestureRecognizer);
             }
 
-            this.Unbind(e.OldElement);
-            this.Bind();
+            Unbind(e.OldElement);
+            Bind();
         }
 
         partial void HandleCleanup()
         {
-			this.userController.RemoveAllUserScripts();
-			this.userController.RemoveScriptMessageHandler(ScriptMessageHandlerName);
-
             if (Control == null) return;
-            Control.RemoveGestureRecognizer(this.leftSwipeGestureRecognizer);
-            Control.RemoveGestureRecognizer(this.rightSwipeGestureRecognizer);
+            Control.RemoveGestureRecognizer(_leftSwipeGestureRecognizer);
+            Control.RemoveGestureRecognizer(_rightSwipeGestureRecognizer);
         }
 
         partial void Inject(string script)
@@ -194,7 +200,7 @@ namespace XLabs.Forms.Controls
 
         partial void LoadFromString(string html)
         {
-            this.LoadContent(null, new HybridWebView.LoadContentEventArgs(html, null));
+            LoadContent(null, new HybridWebView.LoadContentEventArgs(html, null));
         }
 
         /// <summary>

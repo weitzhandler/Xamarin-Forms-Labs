@@ -1,77 +1,91 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+// ***********************************************************************
+// Assembly         : XLabs.Forms.Droid
+// Author           : XLabs Team
+// Created          : 01-06-2016
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-06-2016
+// ***********************************************************************
+// <copyright file="IconButtonRenderer.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
 
-using Android.App;
-using Android.Content;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using Xamarin.Forms;
-using XLabs.Forms.Controls;
-using Xamarin.Forms.Platform.Android;
+using System.Linq;
 using Android.Graphics;
 using Android.Text;
-using XLabs.Enums;
-using XLabs.Forms.Services;
 using Android.Text.Style;
+using Android.Widget;
+using Xamarin.Forms;
+using Xamarin.Forms.Platform.Android;
+using XLabs.Enums;
+using XLabs.Forms.Controls;
 
 [assembly: ExportRenderer(typeof(IconButton), typeof(IconButtonRenderer))]
 namespace XLabs.Forms.Controls
 {
+    /// <summary>
+    /// Implementation of Icon ButtonRenderer.
+    /// </summary>
     public class IconButtonRenderer : ButtonRenderer
     {
-        Typeface iconFont;
-        Typeface textFont;
-        IconButton iconButton;
+        Typeface _iconFont;
+        Typeface _textFont;
+        IconButton _iconButton;
         //Final span including font and icon size and color
-        SpannableString iconSpan;
-        int textStartIndex = -1;
-        int textStopIndex = -1;
+        SpannableString _iconSpan;
+        int _textStartIndex = -1;
+        int _textStopIndex = -1;
        
-        Android.Widget.Button nativeBtn;
+        Android.Widget.Button _nativeBtn;
+        private TextViewRenderHelper _helper;
 
-        public IconButtonRenderer()
-            : base()
-        {
-
-        }
-
+        /// <summary>
+        /// Handles the Element Changed event messages
+        /// </summary>
+        /// <param name="e">The e.</param>
         protected override void OnElementChanged(ElementChangedEventArgs<Xamarin.Forms.Button> e)
         {
-
             base.OnElementChanged(e);
             if (e.NewElement != null && this.Control != null)
             {
-                if (iconSpan == null)
+                if (_helper == null)
+                    _helper = new TextViewRenderHelper(Context);
+                if (_iconSpan == null)
                 {
-                    nativeBtn = (Android.Widget.Button)this.Control;
-                    iconButton = (IconButton)e.NewElement;
+                    _nativeBtn = (Android.Widget.Button)this.Control;
+                    _iconButton = (IconButton)e.NewElement;
 
-                    iconFont = TrySetFont("fontawesome-webfont.ttf");
-                    textFont = iconButton.Font.ToTypeface();
-                    iconButton.IconSize = iconButton.IconSize == 0 ? (float)iconButton.FontSize : iconButton.IconSize;
+                    _iconFont = _helper.TrySetFont("fontawesome-webfont.ttf");
+                    _textFont = _iconButton.Font.ToTypeface();
+                    _iconButton.IconSize = _iconButton.IconSize == 0 ? (float)_iconButton.FontSize : _iconButton.IconSize;
                     var computedString = BuildRawTextString();
 
-                    iconSpan = BuildSpannableString(computedString);
-                    if (iconButton.TextAlignement == Xamarin.Forms.TextAlignment.Center)
+                    _iconSpan = BuildSpannableString(computedString);
+                    if (_iconButton.TextAlignement == Xamarin.Forms.TextAlignment.Center)
                     {
-                        nativeBtn.Gravity = Android.Views.GravityFlags.Center;
+                        _nativeBtn.Gravity = Android.Views.GravityFlags.Center;
 
                     }
-                    else if (iconButton.TextAlignement == Xamarin.Forms.TextAlignment.End)
+                    else if (_iconButton.TextAlignement == Xamarin.Forms.TextAlignment.End)
                     {
-                        nativeBtn.Gravity = Android.Views.GravityFlags.Right;
+                        _nativeBtn.Gravity = Android.Views.GravityFlags.Right;
                     }
-                    else if (iconButton.TextAlignement == Xamarin.Forms.TextAlignment.Start)
+                    else if (_iconButton.TextAlignement == Xamarin.Forms.TextAlignment.Start)
                     {
-                        nativeBtn.Gravity = Android.Views.GravityFlags.Left;
+                        _nativeBtn.Gravity = Android.Views.GravityFlags.Left;
                     }
-                    nativeBtn.TransformationMethod = null;
-                    nativeBtn.SetPadding(0, 0, 0, 0);
-                    nativeBtn.AfterTextChanged += nativeBtn_AfterTextChanged;
+                    _nativeBtn.TransformationMethod = null;
+                    _nativeBtn.SetPadding(0, 0, 0, 0);
+                    _nativeBtn.AfterTextChanged += nativeBtn_AfterTextChanged;
                 }
             }
 
@@ -87,10 +101,10 @@ namespace XLabs.Forms.Controls
         {
 
             ISpannable spannable = e.Editable;
-            var indice = spannable.ToString().IndexOf(iconButton.Icon);
-            var spans = spannable.GetSpans(indice, indice + iconButton.Icon.Length, Java.Lang.Class.FromType(typeof(TypefaceSpan))).ToList();
+            var indice = spannable.ToString().IndexOf(_iconButton.Icon);
+            var spans = spannable.GetSpans(indice, indice + _iconButton.Icon.Length, Java.Lang.Class.FromType(typeof(TypefaceSpan))).ToList();
             if (spans.Count == 0)
-                nativeBtn.SetText(iconSpan, TextView.BufferType.Spannable);
+                _nativeBtn.SetText(_iconSpan, TextView.BufferType.Spannable);
 
         }
 
@@ -103,53 +117,45 @@ namespace XLabs.Forms.Controls
         private string BuildRawTextString()
         {
             string computedText = string.Empty;
-            if (!string.IsNullOrEmpty(iconButton.Icon) && !string.IsNullOrEmpty(iconButton.Text))
+            if (!string.IsNullOrEmpty(_iconButton.Icon) && !string.IsNullOrEmpty(_iconButton.Text))
             {
-                string iconSeparator = iconButton.ShowIconSeparator ? " | " : " ";
+                string iconSeparator = _iconButton.ShowIconSeparator ? " | " : " ";
 
-                switch (iconButton.Orientation)
+                switch (_iconButton.Orientation)
                 {
                     case ImageOrientation.ImageToLeft:
 
-                        computedText = iconButton.Icon + iconSeparator + iconButton.Text;
-                        textStartIndex = computedText.IndexOf(iconSeparator);
-                        textStopIndex = computedText.Length;
+                        computedText = _iconButton.Icon + iconSeparator + _iconButton.Text;
+                        _textStartIndex = computedText.IndexOf(iconSeparator);
+                        _textStopIndex = computedText.Length;
 
                         break;
                     case ImageOrientation.ImageToRight:
-                        computedText = iconButton.Text + iconSeparator + iconButton.Icon;
-                        textStartIndex = 0;
-                        textStopIndex = computedText.IndexOf(iconSeparator) + iconSeparator.Length;
+                        computedText = _iconButton.Text + iconSeparator + _iconButton.Icon;
+                        _textStartIndex = 0;
+                        _textStopIndex = computedText.IndexOf(iconSeparator) + iconSeparator.Length;
                         break;
                     case ImageOrientation.ImageOnTop:
-                        computedText = iconButton.Icon + System.Environment.NewLine + iconButton.Text;
-                        textStartIndex = computedText.IndexOf(iconButton.Text);
-                        textStopIndex = computedText.Length - 1;
+                        computedText = _iconButton.Icon + System.Environment.NewLine + _iconButton.Text;
+                        _textStartIndex = computedText.IndexOf(_iconButton.Text);
+                        _textStopIndex = computedText.Length - 1;
                         break;
                     case ImageOrientation.ImageOnBottom:
-                        computedText = iconButton.Text + System.Environment.NewLine + iconButton.Icon;
-                        textStartIndex = 0;
-                        textStopIndex = computedText.IndexOf(System.Environment.NewLine) - 1;
+                        computedText = _iconButton.Text + System.Environment.NewLine + _iconButton.Icon;
+                        _textStartIndex = 0;
+                        _textStopIndex = computedText.IndexOf(System.Environment.NewLine) - 1;
                         break;
                 }
             }
-            else if (!string.IsNullOrEmpty(iconButton.Text) && string.IsNullOrEmpty(iconButton.Icon))
+            else if (!string.IsNullOrEmpty(_iconButton.Text) && string.IsNullOrEmpty(_iconButton.Icon))
             {
-                computedText = iconButton.Text;
+                computedText = _iconButton.Text;
             }
-            else if (string.IsNullOrEmpty(iconButton.Text) && !string.IsNullOrEmpty(iconButton.Icon))
+            else if (string.IsNullOrEmpty(_iconButton.Text) && !string.IsNullOrEmpty(_iconButton.Icon))
             {
-                computedText = iconButton.Icon;
+                computedText = _iconButton.Icon;
             }
             return computedText;
-        }
-
-        private Android.Graphics.Color GetSpanColor(Xamarin.Forms.Color color)
-        {
-            if (color == Xamarin.Forms.Color.Default)
-                return new Android.Graphics.Color(Control.TextColors.DefaultColor);
-
-            return color.ToAndroid();
         }
 
         /// <summary>
@@ -161,31 +167,31 @@ namespace XLabs.Forms.Controls
         {
             SpannableString span = new SpannableString(computedString);
             //if there is an icon
-            if (!string.IsNullOrEmpty(iconButton.Icon))
+            if (!string.IsNullOrEmpty(_iconButton.Icon))
             {
                 //set icon
-                span.SetSpan(new CustomTypefaceSpan("fontawesome", iconFont, GetSpanColor(iconButton.IconColor)),
-                    computedString.IndexOf(iconButton.Icon),
-                    computedString.IndexOf(iconButton.Icon) + iconButton.Icon.Length,
+                span.SetSpan(new CustomTypefaceSpan("fontawesome", _iconFont, _helper.GetSpanColor(_iconButton.IconColor, Control.TextColors)),
+                    computedString.IndexOf(_iconButton.Icon),
+                    computedString.IndexOf(_iconButton.Icon) + _iconButton.Icon.Length,
                     SpanTypes.ExclusiveExclusive);
                 //set icon size
-                span.SetSpan(new AbsoluteSizeSpan((int)iconButton.IconSize, true),
-                     computedString.IndexOf(iconButton.Icon),
-                     computedString.IndexOf(iconButton.Icon) + iconButton.Icon.Length,
+                span.SetSpan(new AbsoluteSizeSpan((int)_iconButton.IconSize, true),
+                     computedString.IndexOf(_iconButton.Icon),
+                     computedString.IndexOf(_iconButton.Icon) + _iconButton.Icon.Length,
                      SpanTypes.ExclusiveExclusive);
 
 
             }
             //if there is text
-            if (!string.IsNullOrEmpty(iconButton.Text))
+            if (!string.IsNullOrEmpty(_iconButton.Text))
             {
-                span.SetSpan(new CustomTypefaceSpan("", textFont, GetSpanColor(iconButton.TextColor)),
-                     textStartIndex,
-                     textStopIndex,
+                span.SetSpan(new CustomTypefaceSpan("", _textFont, _helper.GetSpanColor(_iconButton.TextColor, Control.TextColors)),
+                     _textStartIndex,
+                     _textStopIndex,
                      SpanTypes.ExclusiveExclusive);
-                span.SetSpan(new AbsoluteSizeSpan((int)iconButton.FontSize, true),
-                    textStartIndex,
-                     textStopIndex,
+                span.SetSpan(new AbsoluteSizeSpan((int)_iconButton.FontSize, true),
+                    _textStartIndex,
+                     _textStopIndex,
                     SpanTypes.ExclusiveExclusive);
 
 
@@ -195,40 +201,13 @@ namespace XLabs.Forms.Controls
 
         }
 
-       
-
         /// <summary>
-        /// Load the FA font from assets
+        /// Releases unmanaged and - optionally - managed resources.
         /// </summary>
-        /// <param name="fontName"></param>
-        /// <returns></returns>
-        private Typeface TrySetFont(string fontName)
-        {
-            try
-            {
-                var tp = Typeface.CreateFromAsset(Context.Assets, "fonts/" + fontName);
-
-                return tp;
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(string.Format("not found in assets. Exception: {0}", ex));
-                try
-                {
-                    return Typeface.CreateFromFile("fonts/" + fontName);
-                }
-                catch (Exception ex1)
-                {
-                    System.Diagnostics.Debug.WriteLine(string.Format("not found by file. Exception: {0}", ex1));
-
-                    return Typeface.Default;
-                }
-            }
-        }
-
+        /// <param name="disposing"><c>true</c> to release both managed and unmanaged resources; <c>false</c> to release only unmanaged resources.</param>
         protected override void Dispose(bool disposing)
         {
-            nativeBtn.AfterTextChanged -= nativeBtn_AfterTextChanged;
+            _nativeBtn.AfterTextChanged -= nativeBtn_AfterTextChanged;
             base.Dispose(disposing);
         }
     }

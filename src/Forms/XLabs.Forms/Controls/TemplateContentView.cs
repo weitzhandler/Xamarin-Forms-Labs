@@ -1,13 +1,34 @@
-﻿using Xamarin.Forms;
+﻿// ***********************************************************************
+// Assembly         : XLabs.Forms
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="TemplateContentView.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using Xamarin.Forms;
 using XLabs.Forms.Exceptions;
 
 namespace XLabs.Forms.Controls
 {
-	/// <summary>
-	/// Class TemplateContentView.
-	/// </summary>
-	/// <typeparam name="T"></typeparam>
-	public class TemplateContentView<T> : ContentView
+    /// <summary>
+    /// Class TemplateContentView.
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    public class TemplateContentView<T> : ContentView
     {
         #region Bindable Properties
         /// <summary>
@@ -19,17 +40,17 @@ namespace XLabs.Forms.Controls
         /// </summary>
         public static readonly BindableProperty ViewModelProperty = BindableProperty.Create<TemplateContentView<T>, T>(x => x.ViewModel,default(T),BindingMode.OneWay,null,ViewModelChanged);
 
-		/// <summary>
-		/// The item template selector property
-		/// </summary>
-		public static readonly BindableProperty ItemTemplateSelectorProperty = BindableProperty.Create<TemplateContentView<T>, DataTemplateSelector>(x => x.ItemTemplateSelector, default(DataTemplateSelector), propertyChanged: OnDataTemplateSelectorChanged);
+        /// <summary>
+        /// The item template selector property
+        /// </summary>
+        public static readonly BindableProperty ItemTemplateSelectorProperty = BindableProperty.Create<TemplateContentView<T>, DataTemplateSelector>(x => x.ItemTemplateSelector, default(DataTemplateSelector), propertyChanged: OnDataTemplateSelectorChanged);
 
         private DataTemplateSelector currentItemSelector;
-		/// <summary>
-		/// Gets or sets the item template selector.
-		/// </summary>
-		/// <value>The item template selector.</value>
-		public DataTemplateSelector ItemTemplateSelector
+        /// <summary>
+        /// Gets or sets the item template selector.
+        /// </summary>
+        /// <value>The item template selector.</value>
+        public DataTemplateSelector ItemTemplateSelector
         {
             get
             {
@@ -46,12 +67,12 @@ namespace XLabs.Forms.Controls
             ((TemplateContentView<T>)bindable).OnDataTemplateSelectorChanged(oldvalue, newvalue);
         }
 
-		/// <summary>
-		/// Called when [data template selector changed].
-		/// </summary>
-		/// <param name="oldValue">The old value.</param>
-		/// <param name="newValue">The new value.</param>
-		protected virtual void OnDataTemplateSelectorChanged(DataTemplateSelector oldValue, DataTemplateSelector newValue)
+        /// <summary>
+        /// Called when [data template selector changed].
+        /// </summary>
+        /// <param name="oldValue">The old value.</param>
+        /// <param name="newValue">The new value.</param>
+        protected virtual void OnDataTemplateSelectorChanged(DataTemplateSelector oldValue, DataTemplateSelector newValue)
         {
             // cache value locally
             currentItemSelector = newValue;
@@ -81,17 +102,17 @@ namespace XLabs.Forms.Controls
         }
 
 #pragma warning disable CS1711 // XML comment has a typeparam tag, but there is no type parameter by that name
-		/// <summary>
-		/// Call down to the actual controls Implmentation
-		/// <see cref="ViewModelChangedImpl"/>
-		/// </summary>
-		/// <param name="bindable">The TemplateContentView<typeparam name="T"></typeparam></param>
-		/// <param name="oldValue">Ignored</param>
-		/// <param name="newValue">Passed down to <see cref="ViewModelChangedImpl"/></param>
-		/// <exception cref="InvalidBindableException"></exception>Thrown if bindable is not in fact a TemplateContentView<typeparam name="T"></typeparam>
-		private static void ViewModelChanged(BindableObject bindable, T oldValue, T newValue)
+        /// <summary>
+        /// Call down to the actual controls Implmentation
+        /// <see cref="ViewModelChangedImpl"/>
+        /// </summary>
+        /// <param name="bindable">The TemplateContentView<typeparam name="T"></typeparam></param>
+        /// <param name="oldValue">Ignored</param>
+        /// <param name="newValue">Passed down to <see cref="ViewModelChangedImpl"/></param>
+        /// <exception cref="InvalidBindableException"></exception>Thrown if bindable is not in fact a TemplateContentView<typeparam name="T"></typeparam>
+        private static void ViewModelChanged(BindableObject bindable, T oldValue, T newValue)
 #pragma warning restore CS1711 // XML comment has a typeparam tag, but there is no type parameter by that name
-		{
+        {
             var layout = bindable as TemplateContentView<T>;
             if(layout==null)
                 throw new InvalidBindableException(bindable,typeof(TemplateContentView<T>));

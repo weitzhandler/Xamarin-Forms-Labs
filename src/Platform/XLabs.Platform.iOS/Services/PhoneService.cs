@@ -1,13 +1,33 @@
+// ***********************************************************************
+// Assembly         : XLabs.Platform.iOS
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="PhoneService.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using System;
+using SystemConfiguration;
+using CoreTelephony;
+using Foundation;
+using MessageUI;
+using UIKit;
+
 namespace XLabs.Platform.Services
 {
-    using System;
-
-    using CoreTelephony;
-    using Foundation;
-    using MessageUI;
-    using SystemConfiguration;
-    using UIKit;
-
     /// <summary>
     /// Apple Phone service implements <see cref="IPhoneService" />.
     /// </summary>
@@ -125,9 +145,9 @@ namespace XLabs.Platform.Services
         /// <param name="number">Number to dial.</param>
         public void DialNumber(string number)
         {
-			if (string.IsNullOrEmpty (number))
-				return;
-			UIApplication.SharedApplication.OpenUrl(NSUrl.FromString("tel://" + number.Replace (" ", "")));
+            if (string.IsNullOrEmpty (number))
+                return;
+            UIApplication.SharedApplication.OpenUrl(NSUrl.FromString("tel://" + number.Replace (" ", "")));
         }
 
         /// <summary>

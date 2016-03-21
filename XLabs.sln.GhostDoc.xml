@@ -14,6 +14,7 @@
 <HelpConfigurations selected="Xamarin-Forms-Labs">
   <HelpConfiguration name="HelpFile">
     <OutputPath>.\Help</OutputPath>
+    <CleanupOutputPath>true</CleanupOutputPath>
     <ImageFolderPath />
     <HtmlFormats>
       <HtmlHelp>true</HtmlHelp>
@@ -31,6 +32,11 @@
       <EnableTags>false</EnableTags>
       <TagList />
     </IncludeScopes>
+    <SyntaxLanguages>
+      <CSharp>true</CSharp>
+      <VisualBasic>true</VisualBasic>
+      <CPlusPlus>true</CPlusPlus>
+    </SyntaxLanguages>
     <ResolveCrefLinks>true</ResolveCrefLinks>
     <HeaderText>Xamarin Forms Labs is a open source project that aims to provide a powerful and cross platform set of controls and helpers tailored to work with Xamarin Forms.</HeaderText>
     <FooterText>See more in https://github.com/XForms/Xamarin-Forms-Labs</FooterText>
@@ -38,6 +44,7 @@
   </HelpConfiguration>
   <HelpConfiguration name="Xamarin-Forms-Labs">
     <OutputPath>..\..\Help</OutputPath>
+    <CleanupOutputPath>true</CleanupOutputPath>
     <ImageFolderPath />
     <HtmlFormats>
       <HtmlHelp>true</HtmlHelp>
@@ -55,6 +62,11 @@
       <EnableTags>false</EnableTags>
       <TagList />
     </IncludeScopes>
+    <SyntaxLanguages>
+      <CSharp>true</CSharp>
+      <VisualBasic>true</VisualBasic>
+      <CPlusPlus>true</CPlusPlus>
+    </SyntaxLanguages>
     <ResolveCrefLinks>true</ResolveCrefLinks>
     <HeaderText>Xamarin Forms Labs is a open source project that aims to provide a powerful and cross platform set of controls and helpers tailored to work with Xamarin Forms.</HeaderText>
     <FooterText>See more in https://github.com/XForms/Xamarin-Forms-Labs</FooterText>
@@ -97,4 +109,7 @@
     </SelectedProjects>
   </HelpConfiguration>
 </HelpConfigurations>
+<GeneralProperties>
+  <SearchInheritedCommentsOnlyWithinProject>False</SearchInheritedCommentsOnlyWithinProject>
+</GeneralProperties>
 </GhostDoc>

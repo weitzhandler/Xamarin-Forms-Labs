@@ -1,24 +1,47 @@
-﻿namespace XLabs.Platform.Device
-{
-    using System;
-    using System.IO.IsolatedStorage;
-    using System.Threading.Tasks;
-    using Android.App;
-    using Android.Bluetooth;
-    using Android.Content;
-    using Android.OS;
-    using Android.Runtime;
-    using Android.Telephony;
-    using Android.Util;
-    using Android.Views;
-    using Enums;
-    using Java.IO;
-    using Java.Util;
-    using Java.Util.Concurrent;
-    using Services;
-    using Services.IO;
-    using Services.Media;
+﻿// ***********************************************************************
+// Assembly         : XLabs.Platform.Droid
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="AndroidDevice.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
 
+using System;
+using System.IO;
+using System.IO.IsolatedStorage;
+using System.Threading.Tasks;
+using Android.App;
+using Android.Bluetooth;
+using Android.Content;
+using Android.OS;
+using Android.Runtime;
+using Android.Telephony;
+using Android.Util;
+using Android.Views;
+using Java.IO;
+using Java.Util;
+using Java.Util.Concurrent;
+using XLabs.Enums;
+using XLabs.Platform.Services;
+using XLabs.Platform.Services.IO;
+using XLabs.Platform.Services.Media;
+using FileMode = System.IO.FileMode;
+
+namespace XLabs.Platform.Device
+{
     /// <summary>
     /// Android device implements <see cref="IDevice"/>.
     /// </summary>
@@ -213,20 +236,20 @@
         /// </value>
         public string Manufacturer { get; private set; }
 
-		/// <summary>
-		/// Gets the language code.
-		/// </summary>
-		/// <value>The language code.</value>
-		public string LanguageCode
+        /// <summary>
+        /// Gets the language code.
+        /// </summary>
+        /// <value>The language code.</value>
+        public string LanguageCode
         {
             get { return Locale.Default.Language; }
         }
 
-		/// <summary>
-		/// Gets the time zone offset.
-		/// </summary>
-		/// <value>The time zone offset.</value>
-		public double TimeZoneOffset
+        /// <summary>
+        /// Gets the time zone offset.
+        /// </summary>
+        /// <value>The time zone offset.</value>
+        public double TimeZoneOffset
         {
             get
             {
@@ -237,37 +260,62 @@
             }
         }
 
-		/// <summary>
-		/// Gets the time zone.
-		/// </summary>
-		/// <value>The time zone.</value>
-		public string TimeZone
+        /// <summary>
+        /// Gets the time zone.
+        /// </summary>
+        /// <value>The time zone.</value>
+        public string TimeZone
         {
             get { return Java.Util.TimeZone.Default.ID; }
         }
 
-		/// <summary>
-		/// Gets the orientation.
-		/// </summary>
-		/// <value>The orientation.</value>
-		public Orientation Orientation
+        /// <summary>
+        /// Gets the orientation.
+        /// </summary>
+        /// <value>The orientation.</value>
+        public Orientation Orientation
         {
             get
             {
-                var wm = Application.Context.GetSystemService(Context.WindowService).JavaCast<IWindowManager>();
-
-                switch (wm.DefaultDisplay.Rotation)
+                using (var wm = Application.Context.GetSystemService(Context.WindowService).JavaCast<IWindowManager>())
+                using (var dm = new DisplayMetrics())
                 {
-                    case SurfaceOrientation.Rotation0:
-                        return Orientation.Portrait & Orientation.PortraitUp;
-                    case SurfaceOrientation.Rotation90:
-                        return Orientation.Landscape & Orientation.LandscapeLeft;
-                    case SurfaceOrientation.Rotation180:
-                        return Orientation.Portrait & Orientation.PortraitDown;
-                    case SurfaceOrientation.Rotation270:
-                        return Orientation.Landscape & Orientation.LandscapeRight;
-                    default:
-                        return Orientation.None;
+                    var rotation = wm.DefaultDisplay.Rotation;
+                    var width = dm.WidthPixels;
+                    var height = dm.HeightPixels;
+
+                    wm.DefaultDisplay.GetMetrics(dm);
+                    if (height > width && (rotation == SurfaceOrientation.Rotation0 || rotation == SurfaceOrientation.Rotation180)  ||
+                        width > height && (rotation == SurfaceOrientation.Rotation90 || rotation == SurfaceOrientation.Rotation270))
+                    {
+                        switch (rotation)
+                        {
+                            case SurfaceOrientation.Rotation0:
+                                return Orientation.Portrait & Orientation.PortraitUp;
+                            case SurfaceOrientation.Rotation90:
+                                return Orientation.Landscape & Orientation.LandscapeLeft;
+                            case SurfaceOrientation.Rotation180:
+                                return Orientation.Portrait & Orientation.PortraitDown;
+                            case SurfaceOrientation.Rotation270:
+                                return Orientation.Landscape & Orientation.LandscapeRight;
+                            default:
+                                return Orientation.None;
+                        }
+                    }
+
+                    switch (rotation)
+                    {
+                        case SurfaceOrientation.Rotation0:
+                            return Orientation.Landscape & Orientation.LandscapeLeft;
+                        case SurfaceOrientation.Rotation90:
+                            return Orientation.Portrait & Orientation.PortraitUp;
+                        case SurfaceOrientation.Rotation180:
+                            return Orientation.Landscape & Orientation.LandscapeRight;
+                        case SurfaceOrientation.Rotation270:
+                            return Orientation.Portrait & Orientation.PortraitDown;
+                        default:
+                            return Orientation.None;
+                    }
                 }
             }
         }
@@ -308,6 +356,16 @@
 
         private static long GetTotalMemory()
         {
+
+            using (var reader = new RandomAccessFile("/proc/meminfo", "r"))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    Log.Debug("Memory", line);
+                }
+            }
+
             using (var reader = new RandomAccessFile("/proc/meminfo", "r")) 
             {
                 var line = reader.ReadLine(); // first line --> MemTotal: xxxxxx kB

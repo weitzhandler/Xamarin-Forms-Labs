@@ -1,11 +1,32 @@
-﻿namespace XLabs.Platform.Services
-{
-    using System;
-    using System.IO;
-    using System.IO.IsolatedStorage;
-    using System.Security.Cryptography;
-    using System.Threading;
+﻿// ***********************************************************************
+// Assembly         : XLabs.Platform.WP8
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="SecureStorage.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
 
+using System;
+using System.IO;
+using System.IO.IsolatedStorage;
+using System.Security.Cryptography;
+using System.Threading;
+
+namespace XLabs.Platform.Services
+{
     /// <summary>
     /// Implements <see cref="ISecureStorage"/> for WP using <see cref="IsolatedStorageFile"/> and <see cref="ProtectedData"/>.
     /// </summary>
@@ -32,14 +53,14 @@
             
         }
 
-		#region ISecureStorage Members
+        #region ISecureStorage Members
 
-		/// <summary>
-		/// Stores the specified key.
-		/// </summary>
-		/// <param name="key">The key.</param>
-		/// <param name="dataBytes">The data bytes.</param>
-		public void Store(string key, byte[] dataBytes)
+        /// <summary>
+        /// Stores the specified key.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <param name="dataBytes">The data bytes.</param>
+        public void Store(string key, byte[] dataBytes)
         {
             var mutex = new Mutex(false, key);
 
@@ -58,13 +79,13 @@
             }
         }
 
-		/// <summary>
-		/// Retrieves the specified key.
-		/// </summary>
-		/// <param name="key">The key.</param>
-		/// <returns>System.Byte[].</returns>
-		/// <exception cref="System.Exception"></exception>
-		public byte[] Retrieve(string key)
+        /// <summary>
+        /// Retrieves the specified key.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        /// <returns>System.Byte[].</returns>
+        /// <exception cref="System.Exception"></exception>
+        public byte[] Retrieve(string key)
         {
             var mutex = new Mutex(false, key);
 
@@ -89,11 +110,11 @@
             }
         }
 
-		/// <summary>
-		/// Deletes the specified key.
-		/// </summary>
-		/// <param name="key">The key.</param>
-		public void Delete(string key)
+        /// <summary>
+        /// Deletes the specified key.
+        /// </summary>
+        /// <param name="key">The key.</param>
+        public void Delete(string key)
         {
             var mutex = new Mutex(false, key);
 

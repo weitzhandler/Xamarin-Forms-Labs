@@ -1,25 +1,42 @@
-﻿namespace XLabs.Forms.Services
+﻿// ***********************************************************************
+// Assembly         : XLabs.Forms.WP8
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="FontManager.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using System.Collections.Generic;
+using Xamarin.Forms;
+using XLabs.Forms.Extensions;
+using XLabs.Platform.Device;
+using XLabs.Platform.Services;
+using Application = System.Windows.Application;
+
+namespace XLabs.Forms.Services
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using Extensions;
-    using Platform.Device;
-    using Platform.WinRT;
-    using Xamarin.Forms;
-    using Application = System.Windows.Application;
 
     /// <summary>
     /// Class FontManager.
     /// </summary>
     public partial class FontManager : IFontManager
     {
-        /// <summary>
-        /// The _display
-        /// </summary>
-        private readonly IDisplay display;
+        private readonly IDisplay _display;
 
-        private readonly FontService fontService;
+        private readonly FontService _fontService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="FontManager"/> class.
@@ -27,8 +44,8 @@
         /// <param name="display">The display.</param>
         public FontManager(IDisplay display)
         {
-            this.display = display;
-            this.fontService = new FontService();
+            _display = display;
+            _fontService = new FontService();
         }
 
         #region IFontManager Members
@@ -43,7 +60,7 @@
             {
                 // ReSharper disable once LoopCanBeConvertedToQuery
                 // returning WinRT method call directly doesn't work so do NOT refactor!!!
-                foreach (var fontName in this.fontService.GetFontNames())
+                foreach (var fontName in _fontService.GetFontNames())
                 {
                     yield return fontName;
                 }
@@ -58,7 +75,7 @@
         public double GetHeight(Font font)
         {
             var multiplier = Application.Current.Host.Content.ScaleFactor / 100d;
-            return multiplier * font.GetHeight() / this.display.Ydpi;
+            return multiplier * font.GetHeight() / _display.Ydpi;
         }
 
         #endregion

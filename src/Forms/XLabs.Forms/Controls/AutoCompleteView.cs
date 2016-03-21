@@ -1,9 +1,30 @@
-﻿using System;
+﻿// ***********************************************************************
+// Assembly         : XLabs.Forms
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="AutoCompleteView.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+
+using System;
 using System.Collections;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Windows.Input;
 using System.Text.RegularExpressions;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace XLabs.Forms.Controls
@@ -758,13 +779,13 @@ namespace XLabs.Forms.Controls
         {
             SelectedItem = selectedItem;
 
-			if(SelectedCommand != null)
-            	SelectedCommand.Execute(selectedItem);
+            if(SelectedCommand != null)
+                SelectedCommand.Execute(selectedItem);
 
-			var handler = SelectedItemChanged;
-			if (handler != null)
+            var handler = SelectedItemChanged;
+            if (handler != null)
             {
-				handler(this, new SelectedItemChangedEventArgs(selectedItem));
+                handler(this, new SelectedItemChangedEventArgs(selectedItem));
             }
         }
 
@@ -774,10 +795,10 @@ namespace XLabs.Forms.Controls
         /// <param name="e">The <see cref="TextChangedEventArgs"/> instance containing the event data.</param>
         private void OnTextChanged(TextChangedEventArgs e)
         {
-			var handler = TextChanged;
-			if (handler != null)
+            var handler = TextChanged;
+            if (handler != null)
             {
-				handler(this, e);
+                handler(this, e);
             }
         }
 

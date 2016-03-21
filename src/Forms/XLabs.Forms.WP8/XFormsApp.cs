@@ -1,22 +1,47 @@
-﻿namespace XLabs.Forms
+﻿// ***********************************************************************
+// Assembly         : XLabs.Forms.WP8
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
+// <copyright file="XFormsApp.cs" company="XLabs Team">
+//     Copyright (c) XLabs Team. All rights reserved.
+// </copyright>
+// <summary>
+//       This project is licensed under the Apache 2.0 license
+//       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
+//       
+//       XLabs is a open source project that aims to provide a powerfull and cross 
+//       platform set of controls tailored to work with Xamarin Forms.
+// </summary>
+// ***********************************************************************
+// 
+#region
+
+using System.Diagnostics.CodeAnalysis;
+using System.Linq;
+using Windows.Storage;
+using Microsoft.Phone.Controls;
+using Microsoft.Phone.Reactive;
+using Microsoft.Phone.Shell;
+using Xamarin.Forms;
+using XLabs.Enums;
+using XLabs.Platform;
+using XLabs.Platform.Device;
+using XLabs.Platform.Mvvm;
+using XLabs.Platform.Services;
+using XLabs.Platform.Services.Email;
+using XLabs.Platform.Services.Geolocation;
+using XLabs.Platform.Services.IO;
+using XLabs.Platform.Services.Media;
+using Application = System.Windows.Application;
+
+#endregion
+
+namespace XLabs.Forms
 {
-    using System.Diagnostics.CodeAnalysis;
-    using System.Linq;
-    using Windows.Storage;
-
-    using Microsoft.Phone.Controls;
-    using Microsoft.Phone.Shell;
-    using Platform.Device;
-    using Platform.Services;
-    using Platform.Services.Email;
-    using Platform.Services.Geolocation;
-    using Platform.Services.IO;
-    using Platform.Services.Media;
-    using Xamarin.Forms;
-    using XLabs.Platform;
-    using XLabs.Platform.Mvvm;
-    using Application = System.Windows.Application;
-
     /// <summary>
     ///     The XLabs Windows Phone Application.
     /// </summary>
