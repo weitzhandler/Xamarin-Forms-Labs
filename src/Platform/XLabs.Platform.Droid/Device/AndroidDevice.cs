@@ -281,10 +281,11 @@ namespace XLabs.Platform.Device
                 using (var dm = new DisplayMetrics())
                 {
                     var rotation = wm.DefaultDisplay.Rotation;
+                    wm.DefaultDisplay.GetMetrics(dm);
+
                     var width = dm.WidthPixels;
                     var height = dm.HeightPixels;
 
-                    wm.DefaultDisplay.GetMetrics(dm);
                     if (height > width && (rotation == SurfaceOrientation.Rotation0 || rotation == SurfaceOrientation.Rotation180)  ||
                         width > height && (rotation == SurfaceOrientation.Rotation90 || rotation == SurfaceOrientation.Rotation270))
                     {
