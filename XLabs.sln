@@ -46,6 +46,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Definition", "Definition", 
 		.nuget\Definition\XLabs.Settings.NuSpec = .nuget\Definition\XLabs.Settings.NuSpec
 		.nuget\Definition\XLabs.Settings.XamSettings.NuSpec = .nuget\Definition\XLabs.Settings.XamSettings.NuSpec
 		.nuget\Definition\XLabs.Web.NuSpec = .nuget\Definition\XLabs.Web.NuSpec
+		.nuget\Definition\XLabs.Web.Portable.NuSpec = .nuget\Definition\XLabs.Web.Portable.NuSpec
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Samples", "Samples", "{BE825D31-2EA2-4CB9-B838-F3CFA84E3CC9}"

@@ -23,9 +23,6 @@
 			<group>
 				<dependency id="XLabs.Core" version="2.0.5818" />
 				<dependency id="XLabs.Serialization" version="2.0.5818" />
-				<dependency id="Microsoft.Bcl" version="1.1.10" />
-				<dependency id="Microsoft.Bcl.Build" version="1.0.21" />
-				<dependency id="Microsoft.Net.Http" version="2.2.29" />
 			</group>
 		</dependencies>
 	</metadata>
@@ -33,9 +30,6 @@
 		<file src="..\..\build\**\XLabs.Web.dll" target="lib\portable-net45+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10" exclude="" />
 		<file src="..\..\build\**\XLabs.Web.pdb" target="lib\portable-net45+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10" exclude="" />
 		<file src="..\..\build\**\XLabs.Web.XML" target="lib\portable-net45+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10" exclude="" />
-		<file src="..\..\build\**\XLabs.Web.PortableClient.dll" target="lib\portable-net45+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10" exclude="" />
-		<file src="..\..\build\**\XLabs.Web.PortableClient.pdb" target="lib\portable-net45+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10" exclude="" />
-		<file src="..\..\build\**\XLabs.Web.PortableClient.XML" target="lib\portable-net45+win+wp80+MonoAndroid10+xamarinios10+MonoTouch10" exclude="" />
 
 		<file src="..\..\build\**\XLabs.Web.dll" target="lib\MonoAndroid60" exclude="" />
 		<file src="..\..\build\**\XLabs.Web.pdb" target="lib\MonoAndroid60" exclude="" />
