@@ -196,6 +196,10 @@ namespace XLabs.Forms.Controls
                     this.Control.ReloadData();
                 }
             }
+            else if(e.PropertyName == "ItemWidth" || e.PropertyName == "ItemHeight")
+            {
+                this.Control.ItemSize = new CoreGraphics.CGSize ((float)this.Element.ItemWidth, (float)this.Element.ItemHeight);
+            }
         }
 
         /// <summary>
