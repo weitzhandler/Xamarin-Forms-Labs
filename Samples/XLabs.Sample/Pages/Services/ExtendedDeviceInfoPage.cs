@@ -160,8 +160,8 @@ namespace XLabs.Sample.Pages.Services
 
             #endregion
 
-            #region Device Name Information
-            var nameLabel = new Label { Text = "Device Name:" };
+            #region Hardware Version Information
+            var nameLabel = new Label { Text = "Hardware Version:" };
 
             var nameText = new Label();
 
