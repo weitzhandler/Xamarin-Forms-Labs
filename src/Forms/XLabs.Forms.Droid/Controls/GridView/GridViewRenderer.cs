@@ -169,10 +169,11 @@ namespace XLabs.Forms.Controls
 		/// <param name="e">The <see cref="System.ComponentModel.PropertyChangedEventArgs" /> instance containing the event data.</param>
 		private void ElementPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
 		{
-			if (e.PropertyName == "ItemsSource")
+			if (e.PropertyName == GridView.ItemsSourceProperty.PropertyName)
 			{
 				if (this.Element.ItemsSource is INotifyCollectionChanged) {
-					(this.Element.ItemsSource as INotifyCollectionChanged).CollectionChanged -= DataCollectionChanged;
+					(this.Element.ItemsSource as INotifyCollectionChanged).CollectionChanged += DataCollectionChanged;
+                    DataSource.NotifyDataSetChanged();
 				}
 			}
 		}
@@ -183,10 +184,10 @@ namespace XLabs.Forms.Controls
 		/// <param name="e">The <see cref="PropertyChangingEventArgs" /> instance containing the event data.</param>
 		private void ElementPropertyChanging(object sender, PropertyChangingEventArgs e)
 		{
-			if (e.PropertyName == "ItemsSource")
+			if (e.PropertyName == GridView.ItemsSourceProperty.PropertyName)
 			{
 				if (this.Element.ItemsSource is INotifyCollectionChanged) {
-					(this.Element.ItemsSource as INotifyCollectionChanged).CollectionChanged += DataCollectionChanged;
+					(this.Element.ItemsSource as INotifyCollectionChanged).CollectionChanged -= DataCollectionChanged;
 				}
 			}
 		}
@@ -198,7 +199,8 @@ namespace XLabs.Forms.Controls
 		/// <param name="e">The <see cref="System.Collections.Specialized.NotifyCollectionChangedEventArgs" /> instance containing the event data.</param>
 		private void DataCollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
 		{
-			//  Control.ReloadData();
+            DataSource.NotifyDataSetChanged();
+			//Control.ReloadData();
 		}
 
 		/// <summary>
@@ -240,7 +242,7 @@ namespace XLabs.Forms.Controls
 			var item = this.Element.ItemsSource.Cast<object>().ElementAt(position);
 			var viewCellBinded = (Element.ItemTemplate.CreateContent () as ViewCell);
 			viewCellBinded.BindingContext = item;
-			var view = RendererFactory.GetRenderer (viewCellBinded.View);
+			var view =  Xamarin.Forms.Platform.Android.Platform.CreateRenderer(viewCellBinded.View);
 			// Platform.SetRenderer (viewCellBinded.View, view);
 			view.ViewGroup.LayoutParameters = new  Android.Widget.GridView.LayoutParams (Convert.ToInt32(this.Element.ItemWidth), Convert.ToInt32(this.Element.ItemHeight));
 			view.ViewGroup.SetBackgroundColor (global::Android.Graphics.Color.Blue);
