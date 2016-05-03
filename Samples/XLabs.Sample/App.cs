@@ -325,6 +325,8 @@ namespace XLabs.Sample
                  {"US Presidents Circle Image", typeof(UsPresidentList)},
                  {"Web hybrid func callback", typeof(WebHybridSamplePage)},
                 {"Web hybrid page loading", typeof(WebPageLoadSample)},
+                {"Converter page", typeof(ConverterPage) },
+                {"Orientation page", typeof(OrientationPage) },
             };
 
             var controls = new ContentPage

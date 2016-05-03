@@ -105,6 +105,7 @@
     <Compile Include="Controls\TemplateSelector.cs" />
     <Compile Include="Controls\WebImage.cs" />
     <Compile Include="Controls\WrapLayout.cs" />
+    <Compile Include="Converter\BooleanToColorConverter.cs" />
     <Compile Include="Converter\CollectionEmptyToBool.cs" />
     <Compile Include="Converter\HeightToMillimeters.cs" />
     <Compile Include="Converter\InverseBooleanConverter.cs" />
