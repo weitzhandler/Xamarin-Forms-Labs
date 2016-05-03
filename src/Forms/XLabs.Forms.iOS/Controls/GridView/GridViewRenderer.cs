@@ -122,7 +122,7 @@ namespace XLabs.Forms.Controls
             {
                 if (Control == null)
                 {
-                    var collectionView = new GridCollectionView {
+                    var collectionView = new GridCollectionView() {
                         AllowsMultipleSelection = false,
                         SelectionEnable = e.NewElement.SelectionEnabled,
                         ContentInset =  new UIEdgeInsets ((float)this.Element.Padding.Top, (float)this.Element.Padding.Left, (float)this.Element.Padding.Bottom, (float)this.Element.Padding.Right),
@@ -187,7 +187,7 @@ namespace XLabs.Forms.Controls
         /// <param name="e">The <see cref="System.ComponentModel.PropertyChangedEventArgs"/> instance containing the event data.</param>
         private void ElementPropertyChanged (object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "ItemsSource")
+            if (e.PropertyName == GridView.ItemsSourceProperty.PropertyName)
             {
                 var newItemsSource = this.Element.ItemsSource as INotifyCollectionChanged;
                 if (newItemsSource != null) 
