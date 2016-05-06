@@ -26,6 +26,21 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using SQLite.Net;
+using XLabs.Caching;
+using XLabs.Caching.SQLite;
+using XLabs.Forms;
+using XLabs.Forms.Services;
+using XLabs.Ioc;
+using XLabs.Platform.Device;
+using XLabs.Platform.Mvvm;
+using XLabs.Platform.Services;
+using XLabs.Platform.Services.Email;
+using XLabs.Platform.Services.Media;
+using XLabs.Serialization;
+using System.IO;
+using SQLite.Net.Platform.XamarinAndroid;
+using XLabs.Serialization.JsonNET;
 
 namespace XLabs.Samples.Droid
 {
@@ -34,8 +49,8 @@ namespace XLabs.Samples.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
-            TabLayoutResource = Resource.Layout.Tabbar;
-            ToolbarResource = Resource.Layout.Toolbar;
+            //TabLayoutResource = Resource.Layout.Tabbar;
+            //ToolbarResource = Resource.Layout.Toolbar;
 
             base.OnCreate(bundle);
 
@@ -67,7 +82,7 @@ namespace XLabs.Samples.Droid
                 }
             };
 
-            LoadApplication(new App());
+            LoadApplication(new XLabs.Samples.App());
         }
 
         /// <summary>

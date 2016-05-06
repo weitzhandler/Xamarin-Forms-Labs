@@ -40,7 +40,7 @@ namespace SerializationTests
             {
                 tuple = new Tuple<int, string>(n, n.ToString());
 
-                
+
                 var str = tuple.ToString();
                 Debug.WriteLine(str);
 

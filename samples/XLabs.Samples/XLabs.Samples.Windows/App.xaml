@@ -1,7 +1,3 @@
-﻿<Application
-    x:Class="XLabs.Samples.Windows.App"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:XLabs.Samples.Windows">
-
-</Application>
+﻿<Application x:Class="XLabs.Samples.WinRT.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" />

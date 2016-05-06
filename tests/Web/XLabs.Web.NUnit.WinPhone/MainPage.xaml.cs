@@ -33,7 +33,7 @@ namespace XLabs.Web.NUnit.WinPhone
 
             // Windows Phone will not load all tests within the current project,
             // you must do it explicitly below
-            var nunit = new NUnit.Runner.App();
+            var nunit = new global::NUnit.Runner.App();
 
             // If you want to add tests in another assembly, add a reference and
             // duplicate the following line with a type from the referenced assembly

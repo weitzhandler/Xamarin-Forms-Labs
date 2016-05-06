@@ -36,6 +36,10 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+using SQLite.Net.Platform.WinRT;
+using XLabs.Caching;
+using XLabs.Caching.SQLite;
+using XLabs.Forms;
 using XLabs.Ioc;
 using XLabs.Platform.Device;
 using XLabs.Platform.Mvvm;
@@ -93,7 +97,7 @@ namespace XLabs.Samples.WinPhone
                 // TODO: change this value to a cache size that is appropriate for your application
                 rootFrame.CacheSize = 1;
 
-                Resolver.Resolve<XFormsAppWin>().RaiseStartup();
+                Resolver.Resolve<XLabs.Forms.XFormsAppWin>().RaiseStartup();
 
                 Xamarin.Forms.Forms.Init(e);
 
@@ -178,7 +182,7 @@ namespace XLabs.Samples.WinPhone
             var pathToDatabase = Path.Combine(documents, "xforms.db");
 
             resolverContainer
-                .Register<IDevice>(t => WindowsDevice.CurrentDevice)
+                .Register<IDevice>(t => WindowsPhoneDevice.CurrentDevice)
                 .Register<IDisplay>(t => new Display())
                 //.Register<IFontManager>(t => new FontManager(t.Resolve<IDisplay>()))
                 //.Register<IEmailService, EmailService>()
@@ -189,9 +193,9 @@ namespace XLabs.Samples.WinPhone
                 .Register<XFormsAppWin>(app)
                 .Register<IXFormsApp>(app)
                 .Register<ISecureStorage, SecureStorage>()
-                //.Register<ICacheProvider>(
-                //    t => new SQLiteSimpleCache(new SQLite.Net.Platform.WindowsPhone8.SQLitePlatformWP8(),
-                //        new SQLite.Net.SQLiteConnectionString(pathToDatabase, true), t.Resolve<IJsonSerializer>()))
+                .Register<ICacheProvider>(
+                    t => new SQLiteSimpleCache(new SQLitePlatformWinRT(),
+                        new SQLite.Net.SQLiteConnectionString(pathToDatabase, true), t.Resolve<IJsonSerializer>()))
                 ;
 
             Resolver.SetResolver(resolverContainer.GetResolver());

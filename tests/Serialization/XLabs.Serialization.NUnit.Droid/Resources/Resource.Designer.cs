@@ -29,6 +29,10 @@ namespace XLabs.Serialization.NUnit.Droid
 			global::Nunit.Runner.Resource.String.ApplicationName = global::XLabs.Serialization.NUnit.Droid.Resource.String.ApplicationName;
 			global::Nunit.Runner.Resource.String.Hello = global::XLabs.Serialization.NUnit.Droid.Resource.String.Hello;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::XLabs.Serialization.NUnit.Droid.Resource.Attribute.actionBarSize;
+			global::XLabs.Platform.Resource.String.ApplicationName = global::XLabs.Serialization.NUnit.Droid.Resource.String.ApplicationName;
+			global::XLabs.Platform.Resource.String.Hello = global::XLabs.Serialization.NUnit.Droid.Resource.String.Hello;
+			global::XLabs.Serialization.ServiceStack.Droid.Resource.String.ApplicationName = global::XLabs.Serialization.NUnit.Droid.Resource.String.ApplicationName;
+			global::XLabs.Serialization.ServiceStack.Droid.Resource.String.Hello = global::XLabs.Serialization.NUnit.Droid.Resource.String.Hello;
 		}
 		
 		public partial class Animation

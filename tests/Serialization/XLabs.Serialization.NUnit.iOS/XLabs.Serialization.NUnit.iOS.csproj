@@ -150,11 +150,23 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\source\Serialization\XLabs.Serialization.Json.NET\XLabs.Serialization.Json.NET.csproj">
+      <Project>{b1636d51-a05f-4957-93bc-cdceb79c2e33}</Project>
+      <Name>XLabs.Serialization.Json.NET</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\source\Serialization\XLabs.Serialization.ProtoBuf\XLabs.Serialization.ProtoBuf.csproj">
+      <Project>{324a8036-71ca-441c-8549-102f7eaf3331}</Project>
+      <Name>XLabs.Serialization.ProtoBuf</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\source\Serialization\XLabs.Serialization.ServiceStack.iOS\XLabs.Serialization.ServiceStack.iOS.csproj">
       <Project>{c8105e62-05b2-4301-bdd0-a0eaa21f3564}</Project>
       <Name>XLabs.Serialization.ServiceStack.iOS</Name>
       <IsAppExtension>false</IsAppExtension>
       <IsWatchApp>false</IsWatchApp>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\source\Serialization\XLabs.Serialization.ServiceStack\XLabs.Serialization.ServiceStack.csproj">
+      <Project>{c81cba7f-9c85-4064-8ce7-70f929d918c7}</Project>
+      <Name>XLabs.Serialization.ServiceStack</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\source\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
       <Project>{6c5c17d3-e6e8-4201-b11f-7c50b02e8e3d}</Project>

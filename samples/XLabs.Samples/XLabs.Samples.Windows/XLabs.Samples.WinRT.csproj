@@ -125,6 +125,8 @@
     <Content Include="Assets\SmallLogo.scale-100.png" />
     <Content Include="Assets\SplashScreen.scale-100.png" />
     <Content Include="Assets\StoreLogo.scale-100.png" />
+    <Content Include="HTML\canvasjs.min.js" />
+    <Content Include="HTML\home.html" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -185,9 +187,7 @@
       <Private>True</Private>
     </Reference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="HTML\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\..\source\Caching\XLabs.Caching.Sqlite\XLabs.Caching.Sqlite.csproj">
       <Project>{b42f3ce5-dc7c-4ef0-8712-ed810cefda11}</Project>
@@ -260,6 +260,10 @@
     <ProjectReference Include="..\..\..\source\Web\XLabs.Web\XLabs.Web.csproj">
       <Project>{f9f8ec0b-d46d-40ec-babf-f9d499ce451a}</Project>
       <Name>XLabs.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XLabs.Samples\XLabs.Samples.csproj">
+      <Project>{3c2a9e36-2d18-4780-9c40-3213471b716c}</Project>
+      <Name>XLabs.Samples</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '12.0' ">

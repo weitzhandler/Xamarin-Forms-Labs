@@ -67,6 +67,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Xml" />
     <Reference Include="Xamarin.Android.Support.Animated.Vector.Drawable, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -119,7 +120,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="KeyVaultTests.cs" />
     <Compile Include="MainActivity.cs" />
+    <Compile Include="PreferenceStorageTests.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -139,6 +142,30 @@
     <None Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\source\Platform\XLabs.Platform.Droid\XLabs.Platform.Droid.csproj">
+      <Project>{0e2e8aec-8dc9-4c9d-8680-903805f92fd4}</Project>
+      <Name>XLabs.Platform.Droid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\source\Platform\XLabs.Platform\XLabs.Platform.csproj">
+      <Project>{7b43b9f5-7c88-42f1-b217-34a24ae925d0}</Project>
+      <Name>XLabs.Platform</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\source\Serialization\XLabs.Serialization.Json.NET\XLabs.Serialization.Json.NET.csproj">
+      <Project>{b1636d51-a05f-4957-93bc-cdceb79c2e33}</Project>
+      <Name>XLabs.Serialization.Json.NET</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\source\Serialization\XLabs.Serialization.ProtoBuf\XLabs.Serialization.ProtoBuf.csproj">
+      <Project>{324a8036-71ca-441c-8549-102f7eaf3331}</Project>
+      <Name>XLabs.Serialization.ProtoBuf</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\source\Serialization\XLabs.Serialization.ServiceStack.Droid\XLabs.Serialization.ServiceStack.Droid.csproj">
+      <Project>{480a3b69-7110-400a-b06b-9f9e648d61e9}</Project>
+      <Name>XLabs.Serialization.ServiceStack.Droid</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\source\Serialization\XLabs.Serialization.ServiceStack\XLabs.Serialization.ServiceStack.csproj">
+      <Project>{c81cba7f-9c85-4064-8ce7-70f929d918c7}</Project>
+      <Name>XLabs.Serialization.ServiceStack</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\source\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
       <Project>{6c5c17d3-e6e8-4201-b11f-7c50b02e8e3d}</Project>
       <Name>XLabs.Serialization</Name>

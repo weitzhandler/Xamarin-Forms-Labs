@@ -5,7 +5,7 @@
              xmlns:lb="clr-namespace:XLabs.Forms.Behaviors;assembly=XLabs.Forms"
              xmlns:lc="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
              xmlns:lcon="clr-namespace:XLabs.Forms.Converter;assembly=XLabs.Forms"
-             xmlns:my="clr-namespace:XLabs.Sample.Pages.Controls;assembly=XLabs.Sample"
+             xmlns:my="clr-namespace:XLabs.Samples.Pages.Controls;assembly=XLabs.Samples"
              xmlns:sco="clr-namespace:System.Collections;assembly=mscorlib"
              xmlns:sys="clr-namespace:System;assembly=mscorlib">
 

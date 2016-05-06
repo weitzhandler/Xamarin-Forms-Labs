@@ -4,13 +4,15 @@ using Microsoft.VisualStudio.TestPlatform.UnitTestFramework;
 using TestFixture = Microsoft.VisualStudio.TestPlatform.UnitTestFramework.TestClassAttribute;
 using Test = Microsoft.VisualStudio.TestPlatform.UnitTestFramework.TestMethodAttribute;
 #else
+using Newtonsoft.Json;
 using NUnit.Framework;
+using JsonSerializer = XLabs.Serialization.JsonNET.JsonSerializer;
+
 #endif
 
 namespace SerializationTests
 {
     using XLabs.Serialization;
-    using XLabs.Serialization.SystemTextJson;
 
     public class CanSerializerSystemTextJson : CanSerializerTests
     {
@@ -20,7 +22,7 @@ namespace SerializationTests
         {
             get
             {
-                return new JsonSerializer(new XLabs.Serialization.ServiceStack.JsonSerializer());
+                return new JsonSerializer(new JsonSerializerSettings());
             }
         }
 

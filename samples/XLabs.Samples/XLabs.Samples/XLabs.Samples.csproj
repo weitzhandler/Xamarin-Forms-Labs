@@ -168,9 +168,6 @@
     <Compile Include="Pages\Services\AbsoluteLayoutWithDisplayInfoPage.cs" />
     <Compile Include="Pages\Services\AcceleratorSensorPage.cs" />
     <Compile Include="Pages\Services\BluetoothPage.cs" />
-    <Compile Include="Pages\Services\BluetoothPage.xaml.cs">
-      <DependentUpon>BluetoothPage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\Services\CacheServicePage.xaml.cs">
       <DependentUpon>CacheServicePage.xaml</DependentUpon>
     </Compile>
@@ -252,187 +249,175 @@
     <Content Include="Data\WebHybridTest.html" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Pages\Controls\AutoCompletePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <EmbeddedResource Include="Pages\Controls\AutoCompletePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\ButtonPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\CalendarPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\CameraViewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\CarouselSample.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\Charts\BarChartPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\Charts\BoundChartPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\Charts\CombinationPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\Charts\LineChartPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\Charts\PieChartPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\CheckBoxPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\CircleImagePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\DragPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\ButtonPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\DynamicList\DynamicListView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\CalendarPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\ExtendedButtonPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\CameraViewPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\ExtendedCellPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\CarouselSample.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\ExtendedEntryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\Charts\BarChartPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\ExtendedLabelPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\Charts\BoundChartPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\ExtendedPickerPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\Charts\CombinationPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\ExtendedScrollView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\Charts\LineChartPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\ExtendedSwitchPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\Charts\PieChartPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\ExtendedTextCellPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\CheckBoxPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\GestureSample.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\CircleImagePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\GridViewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\DragPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\HypberLinkLabelPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\DynamicList\DynamicListView.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\ImageGalleryPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\ExtendedButtonPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\PopupPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\ExtendedCellPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\RadioButtonPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\ExtendedEntryPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\SegmentedControlViewPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\ExtendedLabelPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\ValidatorSample.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\ExtendedPickerPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Controls\WebImagePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\ExtendedScrollView.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Mvvm\CanvasWebHybrid.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\ExtendedSwitchPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Mvvm\MvvmSamplePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\ExtendedTextCellPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Mvvm\NewPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\GestureSample.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Samples\ConverterPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\GridViewPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Services\CacheServicePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\HypberLinkLabelPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Services\CameraPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\ImageGalleryPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Services\GeolocatorPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\PopupPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Services\PhoneServicePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\RadioButtonPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Services\SecureStoragePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\SegmentedControlViewPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Services\SoundPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\ValidatorSample.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Services\TextToSpeechPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Controls\WebImagePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pages\Services\WaveRecorderPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Mvvm\CanvasWebHybrid.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Mvvm\MvvmSamplePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Mvvm\NewPageView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Samples\ConverterPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Services\BluetoothPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Services\CacheServicePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Services\CameraPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Services\GeolocatorPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Services\PhoneServicePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Services\SecureStoragePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Services\SoundPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Services\TextToSpeechPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Pages\Services\WaveRecorderPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\source\Caching\XLabs.Caching\XLabs.Caching.csproj">
       <Project>{da63bb22-3a83-4bdd-ac19-00904877f4fa}</Project>
       <Name>XLabs.Caching</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\source\Charting\XLabs.Forms.Charting\XLabs.Forms.Charting.csproj">
+      <Project>{a94e9b67-937d-443c-aeb0-1220131b590b}</Project>
+      <Name>XLabs.Forms.Charting</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\source\Core\XLabs.Core.csproj">
       <Project>{486abbd5-9e4d-4bd2-a6fb-82e0e3b5a163}</Project>
@@ -475,7 +460,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('..\..\..\source\packages\Xamarin.Forms.2.2.0.31\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\source\packages\Xamarin.Forms.2.2.0.31\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
   </Target>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>

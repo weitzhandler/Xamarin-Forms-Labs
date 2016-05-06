@@ -9,14 +9,21 @@ using NUnit.Framework;
 namespace SerializationTests
 {
     using XLabs.Serialization;
+
+#if !WINDOWS_PHONE && !WINDOWS_PHONE_APP
     using XLabs.Serialization.ProtoBuf;
+#endif
 
     [TestFixture()]
     public class CanSerializerTestsProtoBuf : CanSerializerTests
     {
         protected override ISerializer Serializer
         {
+#if WINDOWS_PHONE && !WINDOWS_PHONE_APP
             get { return new ProtoBufSerializer(); }
+#else
+            get { return null; }
+#endif
         }
     }
 }

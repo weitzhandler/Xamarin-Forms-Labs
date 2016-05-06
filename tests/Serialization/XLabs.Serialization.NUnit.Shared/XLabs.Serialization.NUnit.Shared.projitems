@@ -27,8 +27,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)DataObjects\ReadOnlyList.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataObjects\SomeKey.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ExtensionTests.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)KeyVaultTests.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)PreferenceStorageTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SecureStorageTests.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)SerializerTestExtensions.cs" />
   </ItemGroup>

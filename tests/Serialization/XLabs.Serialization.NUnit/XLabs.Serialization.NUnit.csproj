@@ -39,6 +39,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -47,6 +48,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\source\Platform\XLabs.Platform\XLabs.Platform.csproj">
+      <Project>{7B43B9F5-7C88-42F1-B217-34A24AE925D0}</Project>
+      <Name>XLabs.Platform</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\..\source\Serialization\XLabs.Serialization.Json.NET\XLabs.Serialization.Json.NET.csproj">
       <Project>{b1636d51-a05f-4957-93bc-cdceb79c2e33}</Project>
       <Name>XLabs.Serialization.Json.NET</Name>

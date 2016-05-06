@@ -5,87 +5,87 @@ using XLabs.Platform.Device;
 namespace XLabs.Samples.Pages.Services
 {
     /// <summary>
-	/// Class BluetoothPage.
-	/// </summary>
-	public class BluetoothPage : ContentPage
-	{
-		/// <summary>
-		/// Initializes a new instance of the <see cref="BluetoothPage"/> class.
-		/// </summary>
-		public BluetoothPage()
-		{
-			var device = Resolver.Resolve<IDevice>();
-		   // var bt = device.BluetoothHub;
+    /// Class BluetoothPage.
+    /// </summary>
+    public class BluetoothPage : ContentPage
+    {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="BluetoothPage"/> class.
+        /// </summary>
+        public BluetoothPage()
+        {
+            var device = Resolver.Resolve<IDevice>();
+           // var bt = device.BluetoothHub;
 
-			var stack = new StackLayout()
-				{
-					
-				};
+            var stack = new StackLayout()
+                {
 
-			var button = new Button()
-				{
-					Text = "Open BT settings"
-				};
+                };
 
-			button.SetBinding(Button.CommandProperty, "OpenSettings");
+            var button = new Button()
+                {
+                    Text = "Open BT settings"
+                };
 
-			stack.Children.Add(button);
+            button.SetBinding(Button.CommandProperty, "OpenSettings");
 
-			var scanButton = new Button()
-				{
-					Text = "Get paired devices"
-				};
+            stack.Children.Add(button);
 
-			stack.Children.Add(scanButton);
+            var scanButton = new Button()
+                {
+                    Text = "Get paired devices"
+                };
 
-			var deviceList = new ListView()
-				{
-					ItemTemplate = new DataTemplate(() =>
-						{
-							var nameLabel = new Label();
-							nameLabel.SetBinding(Label.TextProperty, "Name");
+            stack.Children.Add(scanButton);
 
-							var addressLabel = new Label();
-							addressLabel.SetBinding(Label.TextProperty, "Address");
+            var deviceList = new ListView()
+                {
+                    ItemTemplate = new DataTemplate(() =>
+                        {
+                            var nameLabel = new Label();
+                            nameLabel.SetBinding(Label.TextProperty, "Name");
 
-							var s = new StackLayout()
-								{
-									Children = {nameLabel, addressLabel}
-								};
+                            var addressLabel = new Label();
+                            addressLabel.SetBinding(Label.TextProperty, "Address");
 
-							return new ViewCell()
-								{
-									View = s
-								};
-						})
-				};
+                            var s = new StackLayout()
+                                {
+                                    Children = {nameLabel, addressLabel}
+                                };
 
-			//deviceList.ItemSelected += async (s, e) =>
-			//    {
-			//        var btDevice = e.SelectedItem as IBluetoothDevice;
+                            return new ViewCell()
+                                {
+                                    View = s
+                                };
+                        })
+                };
 
-			//        try
-			//        {
-			//            await btDevice.Connect();
-			//        }
-			//        catch (Exception ex)
-			//        {
-			//            System.Diagnostics.Debug.WriteLine(ex.Message);
-			//        }
-					
-			//    };
+            //deviceList.ItemSelected += async (s, e) =>
+            //    {
+            //        var btDevice = e.SelectedItem as IBluetoothDevice;
 
-			stack.Children.Add(deviceList);
+            //        try
+            //        {
+            //            await btDevice.Connect();
+            //        }
+            //        catch (Exception ex)
+            //        {
+            //            System.Diagnostics.Debug.WriteLine(ex.Message);
+            //        }
 
-			scanButton.Clicked += async (s, e) =>
-				{
+            //    };
+
+            stack.Children.Add(deviceList);
+
+            scanButton.Clicked += async (s, e) =>
+                {
 //                    var devices = await bt.GetPairedDevices();
 //                    deviceList.ItemsSource = devices;
-				};
+                };
 
-		   // this.BindingContext = bt;
+           // this.BindingContext = bt;
 
-			this.Content = stack;
-		}
-	}
+            this.Content = stack;
+        }
+    }
 }

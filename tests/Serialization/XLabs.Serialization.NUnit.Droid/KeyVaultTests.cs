@@ -1,11 +1,13 @@
-﻿namespace Labs.Tests.Droid.Tests
+﻿using XLabs.Serialization.JsonNET;
+
+namespace Labs.Tests.Droid.Tests
 {
     using System.Text;
     using NUnit.Framework;
     using SecureStorageTests;
     using XLabs.Platform.Services;
     using XLabs.Serialization;
-    using XLabs.Serialization.ServiceStack;
+
 
     [TestFixture]
     public class KeyVaultTests : SecureStorageTests

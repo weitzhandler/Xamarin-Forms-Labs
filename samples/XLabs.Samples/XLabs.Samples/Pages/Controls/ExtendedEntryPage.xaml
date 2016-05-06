@@ -7,7 +7,7 @@
              Title="Extended Entry">
     <ContentPage.Content>
         <ScrollView>
-            <StackLayout x:Name="StackLayout" Padding="0,40,0,0">
+            <StackLayout x:Name="layout" Padding="0,40,0,0">
                 <controls:ExtendedEntry Placeholder="Default placeholder text" />
                 <controls:ExtendedEntry IsPassword="true" Placeholder="Default Password placeholder text" />
                 <controls:ExtendedEntry Placeholder="RED placeholder text" PlaceholderTextColor="Red" />

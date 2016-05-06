@@ -2,7 +2,7 @@
 // Assembly         : XLabs.Sample
 // Author           : XLabs Team
 // Created          : 12-27-2015
-// 
+//
 // Last Modified By : XLabs Team
 // Last Modified On : 01-04-2016
 // ***********************************************************************
@@ -12,25 +12,26 @@
 // <summary>
 //       This project is licensed under the Apache 2.0 license
 //       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
-//       
-//       XLabs is a open source project that aims to provide a powerfull and cross 
+//
+//       XLabs is a open source project that aims to provide a powerfull and cross
 //       platform set of controls tailored to work with Xamarin Forms.
 // </summary>
 // ***********************************************************************
-// 
+//
 
 using System.Collections.Specialized;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using Xamarin.Forms;
+using XLabs.Forms.Mvvm;
 using XLabs.Ioc;
 using XLabs.Platform.Device;
 using XLabs.Samples.ViewModel;
 
 namespace XLabs.Samples.Pages.Mvvm
 {
-    public partial class CanvasWebHybrid
+    public partial class CanvasWebHybrid : BaseView
     {
         private bool loaded;
 

@@ -33,7 +33,7 @@
                             iOS="Black" />
             </controls:CheckBox.TextColor>
         </controls:CheckBox>
-        <ListView x:Name="ListView">
+        <ListView x:Name="lstView">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

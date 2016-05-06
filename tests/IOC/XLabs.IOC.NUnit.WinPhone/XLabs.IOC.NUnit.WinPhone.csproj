@@ -135,6 +135,10 @@
       <HintPath>..\..\..\source\packages\nunit.xamarin.3.0.1\lib\wpa81\nunit.runner.wp81.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SimpleInjector, Version=3.1.4.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\..\..\source\packages\SimpleInjector.3.1.4\lib\dotnet\SimpleInjector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\..\source\packages\Xamarin.Forms.2.2.0.31\lib\wpa81\Xamarin.Forms.Core.dll</HintPath>
       <Private>True</Private>

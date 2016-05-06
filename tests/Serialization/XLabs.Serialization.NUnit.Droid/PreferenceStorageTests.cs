@@ -1,13 +1,14 @@
-﻿namespace Labs.Tests.Droid.Tests
+﻿using XLabs.Serialization.JsonNET;
+using NUnit.Framework;
+using SecureStorageTests;
+using XLabs.Platform.Services;
+using XLabs.Serialization;
+
+namespace Labs.Tests.Droid.Tests
 {
-    using NUnit.Framework;
-    using SecureStorageTests;
-    using XLabs.Platform.Services;
-    using XLabs.Serialization;
-    using XLabs.Serialization.ServiceStack;
 
     [TestFixture]
-    public class PreferenceStorageTests : SecureStorageTests
+    public class PreferenceStorageTests : global::SecureStorageTests.SecureStorageTests
     {
         #region Overrides of SecureStorageTests
 

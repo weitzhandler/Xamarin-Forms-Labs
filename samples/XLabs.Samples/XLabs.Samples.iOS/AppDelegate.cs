@@ -19,12 +19,10 @@
 // ***********************************************************************
 //
 
-using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 
 using Foundation;
+using SQLite.Net.Platform.XamarinIOS;
 using UIKit;
 using XLabs.Caching;
 using XLabs.Caching.SQLite;
@@ -61,7 +59,7 @@ namespace XLabs.Samples.iOS
             HybridWebViewRenderer.CopyBundleDirectory("HTML");
 
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+            LoadApplication(new XLabs.Samples.App());
 
             Xamarin.Forms.Forms.ViewInitialized += (sender, e) =>
             {
@@ -99,7 +97,7 @@ namespace XLabs.Samples.iOS
                 .Register<ISecureStorage, SecureStorage>()
                 .Register<IDependencyContainer>(t => resolverContainer)
                 .Register<ICacheProvider>(
-                    t => new SQLiteSimpleCache(new SQLite.Net.Platform.XamarinIOS.SQLitePlatformIOS(),
+                    t => new SQLiteSimpleCache(new SQLitePlatformIOS(),
                         new SQLite.Net.SQLiteConnectionString(pathToDatabase, true), t.Resolve<IJsonSerializer>()));
 
             Resolver.SetResolver(resolverContainer.GetResolver());

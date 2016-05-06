@@ -73,6 +73,10 @@
       <HintPath>..\..\..\source\packages\nunit.xamarin.3.0.1\lib\MonoAndroid\nunit.runner.Droid.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="SimpleInjector, Version=3.1.4.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
+      <HintPath>..\..\..\source\packages\SimpleInjector.3.1.4\lib\dotnet\SimpleInjector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />

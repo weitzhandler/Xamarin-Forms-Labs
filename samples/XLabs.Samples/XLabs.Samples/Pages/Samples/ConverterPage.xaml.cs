@@ -1,4 +1,5 @@
-﻿using XLabs.Data;
+﻿using Xamarin.Forms;
+using XLabs.Data;
 
 namespace XLabs.Samples.Pages.Samples
 {
@@ -7,11 +8,6 @@ namespace XLabs.Samples.Pages.Samples
         public ConverterPage()
         {
             InitializeComponent();
-        }
-
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
 
             this.BindingContext = new MyViewModel();
         }
