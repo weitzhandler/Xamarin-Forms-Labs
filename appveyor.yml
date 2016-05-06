@@ -16,7 +16,7 @@ before_build:
 
     nuget restore .\source\XLabs.sln
 
-    Import-PfxCertificate -FilePath .\Samples\XLabs.sample.pfx -CertStoreLocation Cert:\CurrentUser\My
+    Import-PfxCertificate -FilePath .\Samples\XLabs.Samples.pfx -CertStoreLocation Cert:\CurrentUser\My
 - appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product iOS
 - appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product Android
 build:
