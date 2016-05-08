@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XLabs.Core", "Core\XLabs.Core.csproj", "{486ABBD5-9E4D-4BD2-A6FB-82E0E3B5A163}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{7C2AC26D-FFB8-4CF1-B189-1955A747B770}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuspec", ".nuspec", "{7C2AC26D-FFB8-4CF1-B189-1955A747B770}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".docs", ".docs", "{4290D156-3054-4484-B15B-B536F13F13F9}"
 EndProject
@@ -325,47 +325,56 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XLabs.IOC.TinyIOC.Net45", "
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "XLabs.Forms.Shared", "Forms\XLabs.Forms.Shared\XLabs.Forms.Shared.shproj", "{531D5086-CA30-4E17-AFE8-D339B312A57D}"
 EndProject
-Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Caching.Nupkg", "..\.nuget\source\XLabs.Caching.Nupkg\XLabs.Caching.Nupkg.nuproj", "{82B9805F-2FAA-4B35-8CB4-52EA3A77E432}"
+Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Caching.Nuspec", "..\.nuget\source\XLabs.Caching.Nuspec\XLabs.Caching.Nuspec.nuproj", "{82B9805F-2FAA-4B35-8CB4-52EA3A77E432}"
 EndProject
-Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Cryptography.Nupkg", "..\.nuget\source\XLabs.Cryptography.Nupkg\XLabs.Cryptography.Nupkg.nuproj", "{4DAD559E-46E0-401F-9B58-A2460748ADD4}"
+Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Cryptography.Nuspec", "..\.nuget\source\XLabs.Cryptography.Nuspec\XLabs.Cryptography.Nuspec.nuproj", "{4DAD559E-46E0-401F-9B58-A2460748ADD4}"
 EndProject
-Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Forms.Nupkg", "..\.nuget\source\XLabs.Forms.Nupkg\XLabs.Forms.Nupkg.nuproj", "{6BF7490B-A2F9-41CC-9329-F41EBA58ACCF}"
+Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Forms.Nuspec", "..\.nuget\source\XLabs.Forms.Nuspec\XLabs.Forms.Nuspec.nuproj", "{6BF7490B-A2F9-41CC-9329-F41EBA58ACCF}"
 EndProject
-Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.IOC.Nupkg", "..\.nuget\source\XLabs.IOC.Nupkg\XLabs.IOC.Nupkg.nuproj", "{BC725253-3A60-4C0D-8E83-BD977FBF97CD}"
+Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.IOC.Nuspec", "..\.nuget\source\XLabs.IOC.Nuspec\XLabs.IOC.Nuspec.nuproj", "{BC725253-3A60-4C0D-8E83-BD977FBF97CD}"
 EndProject
-Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.IOC.Autofac.Nupkg", "..\.nuget\source\XLabs.IOC.Autofac.Nupkg\XLabs.IOC.Autofac.Nupkg.nuproj", "{B16611E1-EEA0-4FA8-8FFB-FDD5288640B0}"
+Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.IOC.Autofac.Nuspec", "..\.nuget\source\XLabs.IOC.Autofac.Nuspec\XLabs.IOC.Autofac.Nuspec.nuproj", "{B16611E1-EEA0-4FA8-8FFB-FDD5288640B0}"
 EndProject
-Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.IOC.Ninject.Nupkg", "..\.nuget\source\XLabs.IOC.Ninject.Nupkg\XLabs.IOC.Ninject.Nupkg.nuproj", "{C046AF28-2565-4B10-81F7-05D5F456C5D4}"
+Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.IOC.Ninject.Nuspec", "..\.nuget\source\XLabs.IOC.Ninject.Nuspec\XLabs.IOC.Ninject.Nuspec.nuproj", "{C046AF28-2565-4B10-81F7-05D5F456C5D4}"
 EndProject
-Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.IOC.SimpleInjector.Nupkg", "..\.nuget\source\XLabs.IOC.SimpleInjector.Nupkg\XLabs.IOC.SimpleInjector.Nupkg.nuproj", "{1B5CA7BE-8E9C-4D21-83D9-2968B74428DC}"
+Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.IOC.SimpleInjector.Nuspec", "..\.nuget\source\XLabs.IOC.SimpleInjector.Nuspec\XLabs.IOC.SimpleInjector.Nuspec.nuproj", "{1B5CA7BE-8E9C-4D21-83D9-2968B74428DC}"
 EndProject
-Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.IOC.TinyIOC.Nupkg", "..\.nuget\source\XLabs.IOC.TinyIOC.Nupkg\XLabs.IOC.TinyIOC.Nupkg.nuproj", "{07A6D1B1-FCF7-42C5-A42C-850BFA29382E}"
+Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.IOC.TinyIOC.Nuspec", "..\.nuget\source\XLabs.IOC.TinyIOC.Nuspec\XLabs.IOC.TinyIOC.Nuspec.nuproj", "{07A6D1B1-FCF7-42C5-A42C-850BFA29382E}"
 EndProject
-Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.IOC.Unity.Nupkg", "..\.nuget\source\XLabs.IOC.Unity.Nupkg\XLabs.IOC.Unity.Nupkg.nuproj", "{141D75B1-9D99-4713-8F88-75A666E63C2E}"
+Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.IOC.Unity.Nuspec", "..\.nuget\source\XLabs.IOC.Unity.Nuspec\XLabs.IOC.Unity.Nuspec.nuproj", "{141D75B1-9D99-4713-8F88-75A666E63C2E}"
 EndProject
-Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Platform.Nupkg", "..\.nuget\source\XLabs.Platform.Nupkg\XLabs.Platform.Nupkg.nuproj", "{468F1E5E-B6F4-44C9-AFBE-7DEBC6D134BF}"
+Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Platform.Nuspec", "..\.nuget\source\XLabs.Platform.Nuspec\XLabs.Platform.Nuspec.nuproj", "{468F1E5E-B6F4-44C9-AFBE-7DEBC6D134BF}"
 EndProject
-Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Serialization.Nupkg", "..\.nuget\source\XLabs.Serialization.Nupkg\XLabs.Serialization.Nupkg.nuproj", "{AEC6DFCF-94D7-4E40-B706-CE3DB37856CD}"
+Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Serialization.Nuspec", "..\.nuget\source\XLabs.Serialization.Nuspec\XLabs.Serialization.Nuspec.nuproj", "{AEC6DFCF-94D7-4E40-B706-CE3DB37856CD}"
 EndProject
-Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Serialization.JasonNET.Nupkg", "..\.nuget\source\XLabs.Serialization.JasonNET.Nupkg\XLabs.Serialization.JasonNET.Nupkg.nuproj", "{B5D78C10-48E1-40B3-BB50-7106D6964E8A}"
+Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Serialization.Net45.Nuspec", "..\.nuget\source\XLabs.Serialization.Net45.Nuspec\XLabs.Serialization.Net45.Nuspec.nuproj", "{742D6151-5DF8-4283-9AB5-2EFD88B542B0}"
 EndProject
-Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Serialization.Net45.Nupkg", "..\.nuget\source\XLabs.Serialization.Net45.Nupkg\XLabs.Serialization.Net45.Nupkg.nuproj", "{742D6151-5DF8-4283-9AB5-2EFD88B542B0}"
+Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Serialization.ProtoBuf.Nuspec", "..\.nuget\source\XLabs.Serialization.ProtoBuf.Nuspec\XLabs.Serialization.ProtoBuf.Nuspec.nuproj", "{19602A6F-03AB-49F2-9663-06C20FA10743}"
 EndProject
-Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Serialization.ProtoBuf.Nupkg", "..\.nuget\source\XLabs.Serialization.ProtoBuf.Nupkg\XLabs.Serialization.ProtoBuf.Nupkg.nuproj", "{19602A6F-03AB-49F2-9663-06C20FA10743}"
+Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Serialization.ServiceStack.Nuspec", "..\.nuget\source\XLabs.Serialization.ServiceStack.Nuspec\XLabs.Serialization.ServiceStack.Nuspec.nuproj", "{A73F4A30-7A0F-4075-B290-9EF2360C1312}"
 EndProject
-Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Serialization.ServiceStack.Nupkg", "..\.nuget\source\XLabs.Serialization.ServiceStack.Nupkg\XLabs.Serialization.ServiceStack.Nupkg.nuproj", "{A73F4A30-7A0F-4075-B290-9EF2360C1312}"
+Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Settings.Nuspec", "..\.nuget\source\XLabs.Settings.Nuspec\XLabs.Settings.Nuspec.nuproj", "{4C83147A-C1DE-4B3B-9880-111D6FDDB079}"
 EndProject
-Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Settings.Nupkg", "..\.nuget\source\XLabs.Settings.Nupkg\XLabs.Settings.Nupkg.nuproj", "{4C83147A-C1DE-4B3B-9880-111D6FDDB079}"
+Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Web.Nuspec", "..\.nuget\source\XLabs.Web.Nuspec\XLabs.Web.Nuspec.nuproj", "{369700ED-D302-43D0-9EA2-F6FBB9D89883}"
 EndProject
-Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Web.Nupkg", "..\.nuget\source\XLabs.Web.Nupkg\XLabs.Web.Nupkg.nuproj", "{369700ED-D302-43D0-9EA2-F6FBB9D89883}"
+Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Settings.XamSettings.Nuspec", "..\.nuget\source\XLabs.Settings.XamSettings.Nuspec\XLabs.Settings.XamSettings.Nuspec.nuproj", "{E8B69725-7F6B-4F6D-90D5-0560BD620B95}"
 EndProject
-Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Settings.XamSettings.Nupkg", "..\.nuget\source\XLabs.Settings.XamSettings.Nupkg\XLabs.Settings.XamSettings.Nupkg.nuproj", "{E8B69725-7F6B-4F6D-90D5-0560BD620B95}"
+Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Caching.Net45.Nuspec", "..\.nuget\source\XLabs.Caching.Net45.Nuspec\XLabs.Caching.Net45.Nuspec.nuproj", "{A035E3A0-8C2A-4F3E-8646-6A2DE7E23671}"
 EndProject
-Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Caching.Net45.Nupkg", "..\.nuget\source\XLabs.Caching.Net45.Nupkg\XLabs.Caching.Net45.Nupkg.nuproj", "{A035E3A0-8C2A-4F3E-8646-6A2DE7E23671}"
+Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Caching.Sqlite.Nuspec", "..\.nuget\source\XLabs.Caching.Sqlite.Nuspec\XLabs.Caching.Sqlite.Nuspec.nuproj", "{B35333B1-F7E5-46B2-B475-187FF8FFB7D0}"
 EndProject
-Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Caching.Sqlite.Nupkg", "..\.nuget\source\XLabs.Caching.Sqlite.Nupkg\XLabs.Caching.Sqlite.Nupkg.nuproj", "{B35333B1-F7E5-46B2-B475-187FF8FFB7D0}"
+Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Forms.Charting.Nuspec", "..\.nuget\source\XLabs.Forms.Charting.Nuspec\XLabs.Forms.Charting.Nuspec.nuproj", "{BA5DDD8B-7F39-4059-8151-E4DFB855A1F0}"
 EndProject
-Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Forms.Charting.Nupkg", "..\.nuget\source\XLabs.Forms.Charting.Nupkg\XLabs.Forms.Charting.Nupkg.nuproj", "{BA5DDD8B-7F39-4059-8151-E4DFB855A1F0}"
+Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Serialization.JsonNET.Nuspec", "..\.nuget\source\XLabs.Serialization.JsonNET.Nuspec\XLabs.Serialization.JsonNET.Nuspec.nuproj", "{B5D78C10-48E1-40B3-BB50-7106D6964E8A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{92DE34DB-420B-4B18-B60C-9BCFACD3CDFC}"
+	ProjectSection(SolutionItems) = preProject
+		..\.nuget\NuGet.Config = ..\.nuget\NuGet.Config
+		..\.nuget\NuGet.exe = ..\.nuget\NuGet.exe
+		..\.nuget\NuGet.targets = ..\.nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Project("{FF286327-C783-4F7A-AB73-9BCBAD0D4460}") = "XLabs.Core.Nuspec", "..\.nuget\source\XLabs.Core.Nuspec\XLabs.Core.Nuspec.nuproj", "{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
@@ -377,54 +386,54 @@ Global
 		Forms\XLabs.Forms.Shared\XLabs.Forms.Shared.projitems*{3fdeee8a-55e3-42e9-91af-fbf94688ce71}*SharedItemsImports = 4
 		..\tests\Settings\XLabs.Settings.NUnit.Shared\XLabs.Settings.NUnit.Shared.projitems*{86728e28-8faa-43b6-958d-9f9dfcfc185d}*SharedItemsImports = 4
 		..\tests\Charting\XLabs.Forms.Charting.NUnit.Shared\XLabs.Forms.Charting.NUnit.Shared.projitems*{0d8f6c85-83ac-4151-a73f-11c0c0e1b70d}*SharedItemsImports = 13
-		Forms\XLabs.Forms.Shared\XLabs.Forms.Shared.projitems*{963abf63-cca5-4b67-86dc-fc5e372db33c}*SharedItemsImports = 4
 		Forms\XLabs.Forms.WinRT.Shared\XLabs.Forms.WinRT.Shared.projitems*{963abf63-cca5-4b67-86dc-fc5e372db33c}*SharedItemsImports = 4
+		Forms\XLabs.Forms.Shared\XLabs.Forms.Shared.projitems*{963abf63-cca5-4b67-86dc-fc5e372db33c}*SharedItemsImports = 4
 		..\tests\Platform\XLabs.Platform.NUnit.Shared\XLabs.Platform.NUnit.Shared.projitems*{7987295e-e22a-4ac3-b0b9-3c77ff48fe8f}*SharedItemsImports = 4
 		..\tests\Cryptography\XLabs.Cryptography.NUnit.Shared\XLabs.Cryptography.NUnit.Shared.projitems*{7e2079ee-a239-4406-be93-74d7f5b6341b}*SharedItemsImports = 4
 		..\tests\Web\XLabs.Web.NUnit.Shared\XLabs.Web.NUnit.Shared.projitems*{f18c2787-d1a5-42ef-b5b6-8b59155a6851}*SharedItemsImports = 4
 		..\tests\Web\XLabs.Web.NUnit.Shared\XLabs.Web.NUnit.Shared.projitems*{1c6a7d0a-ec61-480c-9888-5ebba6c9b3c5}*SharedItemsImports = 4
 		..\tests\Web\XLabs.Web.NUnit.Shared\XLabs.Web.NUnit.Shared.projitems*{3033f12a-b40b-4e17-8bc7-371c3c6069e2}*SharedItemsImports = 4
-		Forms\XLabs.Forms.Shared\XLabs.Forms.Shared.projitems*{54897e78-fb65-4ec5-a386-18745eae3ead}*SharedItemsImports = 4
 		Forms\XLabs.Forms.WinRT.Shared\XLabs.Forms.WinRT.Shared.projitems*{54897e78-fb65-4ec5-a386-18745eae3ead}*SharedItemsImports = 4
+		Forms\XLabs.Forms.Shared\XLabs.Forms.Shared.projitems*{54897e78-fb65-4ec5-a386-18745eae3ead}*SharedItemsImports = 4
 		..\tests\IOC\XLabs.IOC.NUnit.Shared\XLabs.IOC.NUnit.Shared.projitems*{f74f7bf7-d624-4292-bd0c-9b8368106e17}*SharedItemsImports = 4
 		..\tests\Core\XLabs.Core.NUnit.Shared\XLabs.Core.NUnit.Shared.projitems*{2f78d580-d028-4c9d-b859-44e41fadb8f2}*SharedItemsImports = 4
 		..\tests\Core\XLabs.Core.NUnit.Shared\XLabs.Core.NUnit.Shared.projitems*{b652ad4c-b712-4888-8807-c1b3cadf9763}*SharedItemsImports = 4
 		..\tests\Cryptography\XLabs.Cryptography.NUnit.Shared\XLabs.Cryptography.NUnit.Shared.projitems*{d60c8bab-62df-48a8-a5f0-76b638f89a83}*SharedItemsImports = 13
 		..\tests\Platform\XLabs.Platform.NUnit.Shared\XLabs.Platform.NUnit.Shared.projitems*{f63304a8-f8c2-4995-833f-c4e4c8e4a246}*SharedItemsImports = 4
 		..\tests\Serialization\XLabs.Serialization.NUnit.Shared\XLabs.Serialization.NUnit.Shared.projitems*{fa972198-b3a1-447b-b57d-84c606bdb3e7}*SharedItemsImports = 4
-		Platform\XLabs.Platform.WinRT.Shared\XLabs.Platform.WinRT.Shared.projitems*{ec8490d9-54f3-496a-8dc3-759d9ec53b74}*SharedItemsImports = 4
 		Platform\XLabs.Platform.Shared\XLabs.Platform.Shared.projitems*{ec8490d9-54f3-496a-8dc3-759d9ec53b74}*SharedItemsImports = 4
+		Platform\XLabs.Platform.WinRT.Shared\XLabs.Platform.WinRT.Shared.projitems*{ec8490d9-54f3-496a-8dc3-759d9ec53b74}*SharedItemsImports = 4
 		Forms\XLabs.Forms.Shared\XLabs.Forms.Shared.projitems*{5f75f28c-0e83-4594-97f1-9cdf806db5f2}*SharedItemsImports = 4
-		..\tests\Web\XLabs.Web.NUnit.Shared\XLabs.Web.NUnit.Shared.projitems*{d0bad482-3764-42d4-817c-309fe0705f9c}*SharedItemsImports = 4
-		..\tests\Core\XLabs.Core.NUnit.Shared\XLabs.Core.NUnit.Shared.projitems*{d0bad482-3764-42d4-817c-309fe0705f9c}*SharedItemsImports = 4
 		..\tests\IOC\XLabs.IOC.NUnit.Shared\XLabs.IOC.NUnit.Shared.projitems*{d0bad482-3764-42d4-817c-309fe0705f9c}*SharedItemsImports = 4
-		..\tests\Platform\XLabs.Platform.NUnit.Shared\XLabs.Platform.NUnit.Shared.projitems*{d0bad482-3764-42d4-817c-309fe0705f9c}*SharedItemsImports = 4
-		..\tests\Caching\XLabs.Caching.NUnit.Shared\XLabs.Caching.NUnit.Shared.projitems*{d0bad482-3764-42d4-817c-309fe0705f9c}*SharedItemsImports = 4
-		..\tests\Settings\XLabs.Settings.NUnit.Shared\XLabs.Settings.NUnit.Shared.projitems*{d0bad482-3764-42d4-817c-309fe0705f9c}*SharedItemsImports = 4
 		..\tests\Serialization\XLabs.Serialization.NUnit.Shared\XLabs.Serialization.NUnit.Shared.projitems*{d0bad482-3764-42d4-817c-309fe0705f9c}*SharedItemsImports = 4
+		..\tests\Web\XLabs.Web.NUnit.Shared\XLabs.Web.NUnit.Shared.projitems*{d0bad482-3764-42d4-817c-309fe0705f9c}*SharedItemsImports = 4
+		..\tests\Settings\XLabs.Settings.NUnit.Shared\XLabs.Settings.NUnit.Shared.projitems*{d0bad482-3764-42d4-817c-309fe0705f9c}*SharedItemsImports = 4
+		..\tests\Core\XLabs.Core.NUnit.Shared\XLabs.Core.NUnit.Shared.projitems*{d0bad482-3764-42d4-817c-309fe0705f9c}*SharedItemsImports = 4
+		..\tests\Caching\XLabs.Caching.NUnit.Shared\XLabs.Caching.NUnit.Shared.projitems*{d0bad482-3764-42d4-817c-309fe0705f9c}*SharedItemsImports = 4
+		..\tests\Platform\XLabs.Platform.NUnit.Shared\XLabs.Platform.NUnit.Shared.projitems*{d0bad482-3764-42d4-817c-309fe0705f9c}*SharedItemsImports = 4
 		..\tests\Cryptography\XLabs.Cryptography.NUnit.Shared\XLabs.Cryptography.NUnit.Shared.projitems*{d0bad482-3764-42d4-817c-309fe0705f9c}*SharedItemsImports = 4
 		Platform\XLabs.Platform.WinRT.Shared\XLabs.Platform.WinRT.Shared.projitems*{a44c2d82-3337-4af1-85ca-4da8a7b885fc}*SharedItemsImports = 13
 		Platform\XLabs.Platform.Shared\XLabs.Platform.Shared.projitems*{fc8dc19a-0aba-4922-9719-2debb20397f6}*SharedItemsImports = 13
-		..\tests\Web\XLabs.Web.NUnit.Shared\XLabs.Web.NUnit.Shared.projitems*{a6145120-36fe-4415-9188-4baefcf378d6}*SharedItemsImports = 4
-		..\tests\Core\XLabs.Core.NUnit.Shared\XLabs.Core.NUnit.Shared.projitems*{a6145120-36fe-4415-9188-4baefcf378d6}*SharedItemsImports = 4
 		..\tests\IOC\XLabs.IOC.NUnit.Shared\XLabs.IOC.NUnit.Shared.projitems*{a6145120-36fe-4415-9188-4baefcf378d6}*SharedItemsImports = 4
-		..\tests\Platform\XLabs.Platform.NUnit.Shared\XLabs.Platform.NUnit.Shared.projitems*{a6145120-36fe-4415-9188-4baefcf378d6}*SharedItemsImports = 4
-		..\tests\Caching\XLabs.Caching.NUnit.Shared\XLabs.Caching.NUnit.Shared.projitems*{a6145120-36fe-4415-9188-4baefcf378d6}*SharedItemsImports = 4
-		..\tests\Settings\XLabs.Settings.NUnit.Shared\XLabs.Settings.NUnit.Shared.projitems*{a6145120-36fe-4415-9188-4baefcf378d6}*SharedItemsImports = 4
 		..\tests\Serialization\XLabs.Serialization.NUnit.Shared\XLabs.Serialization.NUnit.Shared.projitems*{a6145120-36fe-4415-9188-4baefcf378d6}*SharedItemsImports = 4
+		..\tests\Web\XLabs.Web.NUnit.Shared\XLabs.Web.NUnit.Shared.projitems*{a6145120-36fe-4415-9188-4baefcf378d6}*SharedItemsImports = 4
+		..\tests\Settings\XLabs.Settings.NUnit.Shared\XLabs.Settings.NUnit.Shared.projitems*{a6145120-36fe-4415-9188-4baefcf378d6}*SharedItemsImports = 4
+		..\tests\Core\XLabs.Core.NUnit.Shared\XLabs.Core.NUnit.Shared.projitems*{a6145120-36fe-4415-9188-4baefcf378d6}*SharedItemsImports = 4
+		..\tests\Caching\XLabs.Caching.NUnit.Shared\XLabs.Caching.NUnit.Shared.projitems*{a6145120-36fe-4415-9188-4baefcf378d6}*SharedItemsImports = 4
+		..\tests\Platform\XLabs.Platform.NUnit.Shared\XLabs.Platform.NUnit.Shared.projitems*{a6145120-36fe-4415-9188-4baefcf378d6}*SharedItemsImports = 4
 		..\tests\Cryptography\XLabs.Cryptography.NUnit.Shared\XLabs.Cryptography.NUnit.Shared.projitems*{a6145120-36fe-4415-9188-4baefcf378d6}*SharedItemsImports = 4
 		..\tests\Core\XLabs.Core.NUnit.Shared\XLabs.Core.NUnit.Shared.projitems*{7cc90151-333a-4cb3-8d18-90b623bbf621}*SharedItemsImports = 4
 		..\tests\Serialization\XLabs.Serialization.NUnit.Shared\XLabs.Serialization.NUnit.Shared.projitems*{f94db05e-f1a8-4937-a975-e104e5c9e7d4}*SharedItemsImports = 4
 		Serialization\XLabs.Serialization.ServiceStack.Shared\XLabs.Serialization.ServiceStack.Shared.projitems*{70ea5fd6-61bf-4ddf-9cf3-fbe1012f575f}*SharedItemsImports = 13
 		Web\XLabs.Web.WinRT.Shared\XLabs.Web.WinRT.Shared.projitems*{bb146eb6-4ff8-44cf-8597-1e300fdba9a9}*SharedItemsImports = 13
 		IOC\XLabs.IOC.TinyIOC.Shared\XLabs.IOC.TinyIOC.Shared.projitems*{8445e7d5-a6cd-4fd4-9817-cc22e28a7d0d}*SharedItemsImports = 13
-		..\tests\Web\XLabs.Web.NUnit.Shared\XLabs.Web.NUnit.Shared.projitems*{7244ded9-d8f0-41d5-a96e-5a3773c4e3ee}*SharedItemsImports = 4
-		..\tests\Core\XLabs.Core.NUnit.Shared\XLabs.Core.NUnit.Shared.projitems*{7244ded9-d8f0-41d5-a96e-5a3773c4e3ee}*SharedItemsImports = 4
 		..\tests\IOC\XLabs.IOC.NUnit.Shared\XLabs.IOC.NUnit.Shared.projitems*{7244ded9-d8f0-41d5-a96e-5a3773c4e3ee}*SharedItemsImports = 4
-		..\tests\Platform\XLabs.Platform.NUnit.Shared\XLabs.Platform.NUnit.Shared.projitems*{7244ded9-d8f0-41d5-a96e-5a3773c4e3ee}*SharedItemsImports = 4
-		..\tests\Caching\XLabs.Caching.NUnit.Shared\XLabs.Caching.NUnit.Shared.projitems*{7244ded9-d8f0-41d5-a96e-5a3773c4e3ee}*SharedItemsImports = 4
-		..\tests\Settings\XLabs.Settings.NUnit.Shared\XLabs.Settings.NUnit.Shared.projitems*{7244ded9-d8f0-41d5-a96e-5a3773c4e3ee}*SharedItemsImports = 4
 		..\tests\Serialization\XLabs.Serialization.NUnit.Shared\XLabs.Serialization.NUnit.Shared.projitems*{7244ded9-d8f0-41d5-a96e-5a3773c4e3ee}*SharedItemsImports = 4
+		..\tests\Web\XLabs.Web.NUnit.Shared\XLabs.Web.NUnit.Shared.projitems*{7244ded9-d8f0-41d5-a96e-5a3773c4e3ee}*SharedItemsImports = 4
+		..\tests\Settings\XLabs.Settings.NUnit.Shared\XLabs.Settings.NUnit.Shared.projitems*{7244ded9-d8f0-41d5-a96e-5a3773c4e3ee}*SharedItemsImports = 4
+		..\tests\Core\XLabs.Core.NUnit.Shared\XLabs.Core.NUnit.Shared.projitems*{7244ded9-d8f0-41d5-a96e-5a3773c4e3ee}*SharedItemsImports = 4
+		..\tests\Caching\XLabs.Caching.NUnit.Shared\XLabs.Caching.NUnit.Shared.projitems*{7244ded9-d8f0-41d5-a96e-5a3773c4e3ee}*SharedItemsImports = 4
+		..\tests\Platform\XLabs.Platform.NUnit.Shared\XLabs.Platform.NUnit.Shared.projitems*{7244ded9-d8f0-41d5-a96e-5a3773c4e3ee}*SharedItemsImports = 4
 		..\tests\Cryptography\XLabs.Cryptography.NUnit.Shared\XLabs.Cryptography.NUnit.Shared.projitems*{7244ded9-d8f0-41d5-a96e-5a3773c4e3ee}*SharedItemsImports = 4
 		..\tests\Platform\XLabs.Platform.NUnit.Shared\XLabs.Platform.NUnit.Shared.projitems*{15214cbe-4aaf-4f29-8026-ae557445abd5}*SharedItemsImports = 4
 		IOC\XLabs.IOC.TinyIOC.Shared\XLabs.IOC.TinyIOC.Shared.projitems*{80d1829d-a217-43f6-b523-d7c32ebf46c1}*SharedItemsImports = 4
@@ -448,20 +457,20 @@ Global
 		IOC\XLabs.IOC.TinyIOC.WinRT.Shared\XLabs.IOC.TinyIOC.WinRT.Shared.projitems*{85f09484-e548-4b24-84a5-49ae63583b9d}*SharedItemsImports = 13
 		Web\XLabs.Web.Shared\XLabs.Web.Shared.projitems*{663cd8d6-a2f1-4ea4-9451-e93a773961d0}*SharedItemsImports = 13
 		..\tests\Settings\XLabs.Settings.NUnit.Shared\XLabs.Settings.NUnit.Shared.projitems*{a18fa2a6-0010-4168-876a-9446de40c952}*SharedItemsImports = 13
-		Platform\XLabs.Platform.WinRT.Shared\XLabs.Platform.WinRT.Shared.projitems*{9e294088-90dd-4339-aba5-3bfb5078084d}*SharedItemsImports = 4
 		Platform\XLabs.Platform.Shared\XLabs.Platform.Shared.projitems*{9e294088-90dd-4339-aba5-3bfb5078084d}*SharedItemsImports = 4
+		Platform\XLabs.Platform.WinRT.Shared\XLabs.Platform.WinRT.Shared.projitems*{9e294088-90dd-4339-aba5-3bfb5078084d}*SharedItemsImports = 4
 		..\tests\Caching\XLabs.Caching.NUnit.Shared\XLabs.Caching.NUnit.Shared.projitems*{d2ced8f0-7a76-454d-b5f7-9e8b9fe6a58e}*SharedItemsImports = 4
 		..\tests\IOC\XLabs.IOC.NUnit.Shared\XLabs.IOC.NUnit.Shared.projitems*{fcd47ebd-9614-4a36-9152-5db231c1ed76}*SharedItemsImports = 4
 		..\tests\Caching\XLabs.Caching.NUnit.Shared\XLabs.Caching.NUnit.Shared.projitems*{8edf4429-251a-416d-bb68-93f227191bcf}*SharedItemsImports = 4
 		..\tests\Platform\XLabs.Platform.NUnit.Shared\XLabs.Platform.NUnit.Shared.projitems*{26a91272-8bd7-4cbd-9362-971e2185d53e}*SharedItemsImports = 4
 		..\tests\Platform\XLabs.Platform.NUnit.Shared\XLabs.Platform.NUnit.Shared.projitems*{256a41e1-22b6-4b0c-b502-3dac5fab43e5}*SharedItemsImports = 13
-		..\tests\Web\XLabs.Web.NUnit.Shared\XLabs.Web.NUnit.Shared.projitems*{94c4528d-946e-41e5-b908-3bad1e3fee9a}*SharedItemsImports = 4
-		..\tests\Core\XLabs.Core.NUnit.Shared\XLabs.Core.NUnit.Shared.projitems*{94c4528d-946e-41e5-b908-3bad1e3fee9a}*SharedItemsImports = 4
 		..\tests\IOC\XLabs.IOC.NUnit.Shared\XLabs.IOC.NUnit.Shared.projitems*{94c4528d-946e-41e5-b908-3bad1e3fee9a}*SharedItemsImports = 4
-		..\tests\Platform\XLabs.Platform.NUnit.Shared\XLabs.Platform.NUnit.Shared.projitems*{94c4528d-946e-41e5-b908-3bad1e3fee9a}*SharedItemsImports = 4
-		..\tests\Caching\XLabs.Caching.NUnit.Shared\XLabs.Caching.NUnit.Shared.projitems*{94c4528d-946e-41e5-b908-3bad1e3fee9a}*SharedItemsImports = 4
-		..\tests\Settings\XLabs.Settings.NUnit.Shared\XLabs.Settings.NUnit.Shared.projitems*{94c4528d-946e-41e5-b908-3bad1e3fee9a}*SharedItemsImports = 4
 		..\tests\Serialization\XLabs.Serialization.NUnit.Shared\XLabs.Serialization.NUnit.Shared.projitems*{94c4528d-946e-41e5-b908-3bad1e3fee9a}*SharedItemsImports = 4
+		..\tests\Web\XLabs.Web.NUnit.Shared\XLabs.Web.NUnit.Shared.projitems*{94c4528d-946e-41e5-b908-3bad1e3fee9a}*SharedItemsImports = 4
+		..\tests\Settings\XLabs.Settings.NUnit.Shared\XLabs.Settings.NUnit.Shared.projitems*{94c4528d-946e-41e5-b908-3bad1e3fee9a}*SharedItemsImports = 4
+		..\tests\Core\XLabs.Core.NUnit.Shared\XLabs.Core.NUnit.Shared.projitems*{94c4528d-946e-41e5-b908-3bad1e3fee9a}*SharedItemsImports = 4
+		..\tests\Caching\XLabs.Caching.NUnit.Shared\XLabs.Caching.NUnit.Shared.projitems*{94c4528d-946e-41e5-b908-3bad1e3fee9a}*SharedItemsImports = 4
+		..\tests\Platform\XLabs.Platform.NUnit.Shared\XLabs.Platform.NUnit.Shared.projitems*{94c4528d-946e-41e5-b908-3bad1e3fee9a}*SharedItemsImports = 4
 		..\tests\Cryptography\XLabs.Cryptography.NUnit.Shared\XLabs.Cryptography.NUnit.Shared.projitems*{94c4528d-946e-41e5-b908-3bad1e3fee9a}*SharedItemsImports = 4
 		..\tests\Cryptography\XLabs.Cryptography.NUnit.Shared\XLabs.Cryptography.NUnit.Shared.projitems*{81d2a0cb-6a9e-4a22-b752-d558b61a42f7}*SharedItemsImports = 4
 		..\tests\IOC\XLabs.IOC.NUnit.Shared\XLabs.IOC.NUnit.Shared.projitems*{de0cb976-c1d4-4137-ba48-216ba962bfba}*SharedItemsImports = 13
@@ -476,21 +485,21 @@ Global
 		IOC\XLabs.IOC.TinyIOC.Shared\XLabs.IOC.TinyIOC.Shared.projitems*{eb37d7b5-a0cd-4447-b655-1430f7e919e9}*SharedItemsImports = 4
 		..\tests\Settings\XLabs.Settings.NUnit.Shared\XLabs.Settings.NUnit.Shared.projitems*{889a0780-6951-45c4-84bc-812ea71ced68}*SharedItemsImports = 4
 		..\tests\Core\XLabs.Core.NUnit.Shared\XLabs.Core.NUnit.Shared.projitems*{d37375fc-2b8c-41f7-a25a-9a7634fc9a0f}*SharedItemsImports = 4
-		Forms\XLabs.Forms.Shared\XLabs.Forms.Shared.projitems*{b959890d-b576-469d-aef6-6582c1dc5a3e}*SharedItemsImports = 4
 		Forms\XLabs.Forms.WinRT.Shared\XLabs.Forms.WinRT.Shared.projitems*{b959890d-b576-469d-aef6-6582c1dc5a3e}*SharedItemsImports = 4
+		Forms\XLabs.Forms.Shared\XLabs.Forms.Shared.projitems*{b959890d-b576-469d-aef6-6582c1dc5a3e}*SharedItemsImports = 4
 		..\tests\Charting\XLabs.Forms.Charting.NUnit.Shared\XLabs.Forms.Charting.NUnit.Shared.projitems*{1995cd55-990a-4a4d-84ec-edfe49eb9f9b}*SharedItemsImports = 4
 		..\tests\Serialization\XLabs.Serialization.NUnit.Shared\XLabs.Serialization.NUnit.Shared.projitems*{2951c80d-fce7-4ca3-bdcf-b88c3477c66c}*SharedItemsImports = 13
-		..\tests\Web\XLabs.Web.NUnit.Shared\XLabs.Web.NUnit.Shared.projitems*{f159c379-268c-4698-b568-b9b98780928b}*SharedItemsImports = 4
-		..\tests\Core\XLabs.Core.NUnit.Shared\XLabs.Core.NUnit.Shared.projitems*{f159c379-268c-4698-b568-b9b98780928b}*SharedItemsImports = 4
 		..\tests\IOC\XLabs.IOC.NUnit.Shared\XLabs.IOC.NUnit.Shared.projitems*{f159c379-268c-4698-b568-b9b98780928b}*SharedItemsImports = 4
-		..\tests\Platform\XLabs.Platform.NUnit.Shared\XLabs.Platform.NUnit.Shared.projitems*{f159c379-268c-4698-b568-b9b98780928b}*SharedItemsImports = 4
-		..\tests\Caching\XLabs.Caching.NUnit.Shared\XLabs.Caching.NUnit.Shared.projitems*{f159c379-268c-4698-b568-b9b98780928b}*SharedItemsImports = 4
-		..\tests\Settings\XLabs.Settings.NUnit.Shared\XLabs.Settings.NUnit.Shared.projitems*{f159c379-268c-4698-b568-b9b98780928b}*SharedItemsImports = 4
 		..\tests\Serialization\XLabs.Serialization.NUnit.Shared\XLabs.Serialization.NUnit.Shared.projitems*{f159c379-268c-4698-b568-b9b98780928b}*SharedItemsImports = 4
+		..\tests\Web\XLabs.Web.NUnit.Shared\XLabs.Web.NUnit.Shared.projitems*{f159c379-268c-4698-b568-b9b98780928b}*SharedItemsImports = 4
+		..\tests\Settings\XLabs.Settings.NUnit.Shared\XLabs.Settings.NUnit.Shared.projitems*{f159c379-268c-4698-b568-b9b98780928b}*SharedItemsImports = 4
+		..\tests\Core\XLabs.Core.NUnit.Shared\XLabs.Core.NUnit.Shared.projitems*{f159c379-268c-4698-b568-b9b98780928b}*SharedItemsImports = 4
+		..\tests\Caching\XLabs.Caching.NUnit.Shared\XLabs.Caching.NUnit.Shared.projitems*{f159c379-268c-4698-b568-b9b98780928b}*SharedItemsImports = 4
+		..\tests\Platform\XLabs.Platform.NUnit.Shared\XLabs.Platform.NUnit.Shared.projitems*{f159c379-268c-4698-b568-b9b98780928b}*SharedItemsImports = 4
 		..\tests\Cryptography\XLabs.Cryptography.NUnit.Shared\XLabs.Cryptography.NUnit.Shared.projitems*{f159c379-268c-4698-b568-b9b98780928b}*SharedItemsImports = 4
 		..\tests\Cryptography\XLabs.Cryptography.NUnit.Shared\XLabs.Cryptography.NUnit.Shared.projitems*{271b20ac-0019-41ac-ab80-544796def50b}*SharedItemsImports = 4
-		Platform\XLabs.Platform.WinRT.Shared\XLabs.Platform.WinRT.Shared.projitems*{02095c26-2120-46ea-88b5-5014445a31ff}*SharedItemsImports = 4
 		Platform\XLabs.Platform.Shared\XLabs.Platform.Shared.projitems*{02095c26-2120-46ea-88b5-5014445a31ff}*SharedItemsImports = 4
+		Platform\XLabs.Platform.WinRT.Shared\XLabs.Platform.WinRT.Shared.projitems*{02095c26-2120-46ea-88b5-5014445a31ff}*SharedItemsImports = 4
 		Platform\XLabs.Platform.Shared\XLabs.Platform.Shared.projitems*{bbb5402c-92f6-4e2d-bd9f-5ca6eb79cf27}*SharedItemsImports = 4
 		..\tests\Serialization\XLabs.Serialization.NUnit.Shared\XLabs.Serialization.NUnit.Shared.projitems*{4d57bc05-c6c2-4487-9f1b-f37d395b0c33}*SharedItemsImports = 4
 		Web\XLabs.Web.WinRT.Shared\XLabs.Web.WinRT.Shared.projitems*{395a8d8c-c5bf-4006-aed6-86937a724331}*SharedItemsImports = 4
@@ -6707,54 +6716,6 @@ Global
 		{AEC6DFCF-94D7-4E40-B706-CE3DB37856CD}.Release|x64.Build.0 = Release|Any CPU
 		{AEC6DFCF-94D7-4E40-B706-CE3DB37856CD}.Release|x86.ActiveCfg = Release|Any CPU
 		{AEC6DFCF-94D7-4E40-B706-CE3DB37856CD}.Release|x86.Build.0 = Release|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Ad-Hoc|Any CPU.ActiveCfg = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Ad-Hoc|Any CPU.Build.0 = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Ad-Hoc|ARM.ActiveCfg = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Ad-Hoc|ARM.Build.0 = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Ad-Hoc|iPhone.ActiveCfg = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Ad-Hoc|iPhone.Build.0 = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Ad-Hoc|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Ad-Hoc|x64.ActiveCfg = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Ad-Hoc|x64.Build.0 = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Ad-Hoc|x86.ActiveCfg = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Ad-Hoc|x86.Build.0 = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.AppStore|Any CPU.ActiveCfg = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.AppStore|Any CPU.Build.0 = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.AppStore|ARM.ActiveCfg = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.AppStore|ARM.Build.0 = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.AppStore|iPhone.ActiveCfg = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.AppStore|iPhone.Build.0 = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.AppStore|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.AppStore|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.AppStore|x64.ActiveCfg = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.AppStore|x64.Build.0 = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.AppStore|x86.ActiveCfg = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.AppStore|x86.Build.0 = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Debug|ARM.Build.0 = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Debug|x64.Build.0 = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Debug|x86.Build.0 = Debug|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Release|ARM.ActiveCfg = Release|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Release|ARM.Build.0 = Release|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Release|iPhone.Build.0 = Release|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Release|x64.ActiveCfg = Release|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Release|x64.Build.0 = Release|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Release|x86.ActiveCfg = Release|Any CPU
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Release|x86.Build.0 = Release|Any CPU
 		{742D6151-5DF8-4283-9AB5-2EFD88B542B0}.Ad-Hoc|Any CPU.ActiveCfg = Debug|Any CPU
 		{742D6151-5DF8-4283-9AB5-2EFD88B542B0}.Ad-Hoc|Any CPU.Build.0 = Debug|Any CPU
 		{742D6151-5DF8-4283-9AB5-2EFD88B542B0}.Ad-Hoc|ARM.ActiveCfg = Debug|Any CPU
@@ -7187,6 +7148,102 @@ Global
 		{BA5DDD8B-7F39-4059-8151-E4DFB855A1F0}.Release|x64.Build.0 = Release|Any CPU
 		{BA5DDD8B-7F39-4059-8151-E4DFB855A1F0}.Release|x86.ActiveCfg = Release|Any CPU
 		{BA5DDD8B-7F39-4059-8151-E4DFB855A1F0}.Release|x86.Build.0 = Release|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Ad-Hoc|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Ad-Hoc|Any CPU.Build.0 = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Ad-Hoc|ARM.ActiveCfg = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Ad-Hoc|ARM.Build.0 = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Ad-Hoc|iPhone.ActiveCfg = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Ad-Hoc|iPhone.Build.0 = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Ad-Hoc|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Ad-Hoc|x64.ActiveCfg = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Ad-Hoc|x64.Build.0 = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Ad-Hoc|x86.ActiveCfg = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Ad-Hoc|x86.Build.0 = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.AppStore|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.AppStore|Any CPU.Build.0 = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.AppStore|ARM.ActiveCfg = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.AppStore|ARM.Build.0 = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.AppStore|iPhone.ActiveCfg = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.AppStore|iPhone.Build.0 = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.AppStore|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.AppStore|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.AppStore|x64.ActiveCfg = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.AppStore|x64.Build.0 = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.AppStore|x86.ActiveCfg = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.AppStore|x86.Build.0 = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Debug|ARM.Build.0 = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Debug|x64.Build.0 = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Debug|x86.Build.0 = Debug|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Release|ARM.ActiveCfg = Release|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Release|ARM.Build.0 = Release|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Release|iPhone.Build.0 = Release|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Release|x64.ActiveCfg = Release|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Release|x64.Build.0 = Release|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Release|x86.ActiveCfg = Release|Any CPU
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A}.Release|x86.Build.0 = Release|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Ad-Hoc|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Ad-Hoc|Any CPU.Build.0 = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Ad-Hoc|ARM.ActiveCfg = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Ad-Hoc|ARM.Build.0 = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Ad-Hoc|iPhone.ActiveCfg = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Ad-Hoc|iPhone.Build.0 = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Ad-Hoc|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Ad-Hoc|x64.ActiveCfg = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Ad-Hoc|x64.Build.0 = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Ad-Hoc|x86.ActiveCfg = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Ad-Hoc|x86.Build.0 = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.AppStore|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.AppStore|Any CPU.Build.0 = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.AppStore|ARM.ActiveCfg = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.AppStore|ARM.Build.0 = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.AppStore|iPhone.ActiveCfg = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.AppStore|iPhone.Build.0 = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.AppStore|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.AppStore|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.AppStore|x64.ActiveCfg = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.AppStore|x64.Build.0 = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.AppStore|x86.ActiveCfg = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.AppStore|x86.Build.0 = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Debug|ARM.Build.0 = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Debug|x64.Build.0 = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Debug|x86.Build.0 = Debug|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Release|ARM.ActiveCfg = Release|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Release|ARM.Build.0 = Release|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Release|iPhone.Build.0 = Release|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Release|x64.ActiveCfg = Release|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Release|x64.Build.0 = Release|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Release|x86.ActiveCfg = Release|Any CPU
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -7359,7 +7416,6 @@ Global
 		{141D75B1-9D99-4713-8F88-75A666E63C2E} = {7C2AC26D-FFB8-4CF1-B189-1955A747B770}
 		{468F1E5E-B6F4-44C9-AFBE-7DEBC6D134BF} = {7C2AC26D-FFB8-4CF1-B189-1955A747B770}
 		{AEC6DFCF-94D7-4E40-B706-CE3DB37856CD} = {7C2AC26D-FFB8-4CF1-B189-1955A747B770}
-		{B5D78C10-48E1-40B3-BB50-7106D6964E8A} = {7C2AC26D-FFB8-4CF1-B189-1955A747B770}
 		{742D6151-5DF8-4283-9AB5-2EFD88B542B0} = {7C2AC26D-FFB8-4CF1-B189-1955A747B770}
 		{19602A6F-03AB-49F2-9663-06C20FA10743} = {7C2AC26D-FFB8-4CF1-B189-1955A747B770}
 		{A73F4A30-7A0F-4075-B290-9EF2360C1312} = {7C2AC26D-FFB8-4CF1-B189-1955A747B770}
@@ -7369,5 +7425,7 @@ Global
 		{A035E3A0-8C2A-4F3E-8646-6A2DE7E23671} = {7C2AC26D-FFB8-4CF1-B189-1955A747B770}
 		{B35333B1-F7E5-46B2-B475-187FF8FFB7D0} = {7C2AC26D-FFB8-4CF1-B189-1955A747B770}
 		{BA5DDD8B-7F39-4059-8151-E4DFB855A1F0} = {7C2AC26D-FFB8-4CF1-B189-1955A747B770}
+		{B5D78C10-48E1-40B3-BB50-7106D6964E8A} = {7C2AC26D-FFB8-4CF1-B189-1955A747B770}
+		{6B2D2798-A96A-4690-A1DA-E9A85BDD96B1} = {7C2AC26D-FFB8-4CF1-B189-1955A747B770}
 	EndGlobalSection
 EndGlobal
