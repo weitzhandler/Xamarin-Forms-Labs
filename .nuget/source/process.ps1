@@ -1,6 +1,8 @@
 New-Item ..\artifacts -ItemType Directory -ErrorAction SilentlyContinue
 Remove-Item ..\artifacts\*.* -ErrorAction SilentlyContinue
 
+[string]$versio = "2.2.0000-pre02"
+
 $rootPath = Resolve-Path ..\..
 
 gci -Recurse *.nuspec | Where-Object { $_.PSIsContainer -eq $False -and $_.Name -match ".nuspec$" } | % {
@@ -12,6 +14,8 @@ gci -Recurse *.nuspec | Where-Object { $_.PSIsContainer -eq $False -and $_.Name 
 	Write-Host "Reading XML"
 	[string]$xf = (Resolve-Path "..\artifacts\$s").Path
 	[xml]$xmlContent = Get-Content -Path $xf
+	
+	$xmlContent.package.metadata.SetAttribute("version", $version)
 	
 	$xmlContent.package.files.file | % {
 		$s1 = $_.src.Replace($rootPath, "..\..")
