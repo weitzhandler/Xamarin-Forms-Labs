@@ -17,6 +17,7 @@ properties {
 	$macAgentServerAddress = $null
 	$macAgentUser = $null
 	$baseNamespace = $null
+	$processNuProjOutput = $false
 }
 
 Task Default -Depends DisplayParams,Build
@@ -67,12 +68,19 @@ Task Publish -Depends Get-Version,DisplayParams,Package {
 	}
 }
 
-Task Package -Depends Get-Version,DisplayParams,RestoreDependencies { #-Depends Test {
+Task ProcessNuProjNuSpecFiles -Precondition { return $processNuProjOutput } {
+	pushd
+	cd $nuproj_folder
+	Exec { & ".\process.ps1" }
+	popd
+}
 
-	if ($preRelease) {
-		$ver = $version+"-"+$preRelease;
-	} else {
-		$ver = $version
+Task Package -Depends Get-Version,DisplayParams,RestoreDependencies,ProcessNuProjNuSpecFiles { #-Depends Test {
+	$ver = $version
+	
+	if ($preRelease)
+	{
+		$ver = "$ver-$preRelease"
 	}
 
 #	$projects | % {
@@ -80,11 +88,6 @@ Task Package -Depends Get-Version,DisplayParams,RestoreDependencies { #-Depends 
 #			exec { $nuget_folder\nuget.exe pack -sym $_.Fullname -OutputDirectory $deploy_folder -Version $ver -Prop Configuration=$configuration }
 #		}        
 #	}
-
-	pushd
-	cd $nuproj_folder
-	Exec { & ".\process.ps1" }
-	popd
 	
 	$path = Resolve-Path $deploy_folder
 	
@@ -101,7 +104,12 @@ Task Package -Depends Get-Version,DisplayParams,RestoreDependencies { #-Depends 
 			if (-Not ($updateNuspecFile)) { $nuspecFile = $nuSpecFilePathTmp; }
 		}
 
-		exec { & "$nuget_folder\nuget.exe" pack $nuspecFile -OutputDirectory '$path' -MSBuildVersion 14 -Version $ver -Symbols -Prop Configuration=$configuration }
+		Write-Host "`tnuspecFile: $nuSpecFile"
+		Write-Host "`tpath: $path"
+		Write-Host "`tver: $ver"
+		Write-Host "`tconfiguration: $configuration"
+		
+		exec { & "$nuget_folder\nuget.exe" pack $nuspecFile -OutputDirectory "$path" -MSBuildVersion 14 -Version $ver -Symbols -Prop Configuration=$configuration -Verbosity detailed }
 
 		if (-Not ($updateNuspecFile)) { Remove-Item $nuSpecFilePathTmp -ErrorAction SilentlyContinue }
 	}

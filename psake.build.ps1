@@ -15,6 +15,9 @@ Param(
 	[bool]$updateVersion = $false,
 		
 	[Parameter()]
+	[bool]$processNuProjOutput = $false,
+	
+	[Parameter()]
 	[bool]$updateNuspecFile = $true,
 	
 	[Parameter()]
@@ -51,13 +54,13 @@ $properties = @{
     # Folder to output deployable packages to. This folder should be ignored
     # from any source control, as we dont commit build artifacts to source
     # control
-    "deploy_folder" = '.\artifacts';
+    "deploy_folder" = '.\artifacts\packages';
 
 	# Folder that contains nuget files (nuget.exe, nuget.config)
 	"nuget_folder" = '.\.nuget';
 
 	# Folder that contains nuspec files
-	"nuspec_folder" = '.\.nuget\artifacts';
+	"nuspec_folder" = '.\.nuget\definitions';
 	
 	# Folder that contains nuspec files
 	"nuproj_folder" = '.\.nuget\source';
@@ -77,10 +80,12 @@ $properties = @{
 	"updateNuspecFile" = $updateNuspecFile;
 	
 	# The name or ip address of the Mac that is running the Xamarin build agent
-	"macAgentServerAddress" = "10.0.1.139"
+	"macAgentServerAddress" = $null; #"10.0.1.139"
 	
 	# The user name to use to authentice for the Xamarin build agent
-	"macAgentUser" = "Shawn Anderson"
+	"macAgentUser" = $null; #"Shawn Anderson"
+	
+	"processNuProjOutput" = $processNuProjOutput
 }
 
 #if (!(Get-Module -Name psake -ListAvailable)) { Install-Module -Name psake -Scope CurrentUser }
