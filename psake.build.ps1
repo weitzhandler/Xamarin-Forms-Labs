@@ -38,6 +38,9 @@ $properties = @{
 
     # Path to the solution file
     "solution"      = 'XLabs.sln';
+	
+	# Base namespeace for the package (used for updating nuspec details)
+	"baseNamespace" = 'XLabs';
 
     # Folder containing source code
     "source_folder" = '.\source';

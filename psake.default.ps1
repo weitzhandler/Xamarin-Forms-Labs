@@ -16,15 +16,17 @@ properties {
 	$unittest_framework = "nunit"
 	$macAgentServerAddress = $null
 	$macAgentUser = $null
+	$baseNamespace = $null
 }
 
 Task Default -Depends DisplayParams,Build
 
-Task DisplayParams {
+Task DisplayParams -Depends Get-Version {
     Write-Host "`tconfiguration : $configuration"
 	Write-Host "`tversion : $version"
 	Write-Host "`tpreRelease : $preRelease"
     Write-Host "`tsolution : $solution"
+	Write-Host "`tbaseNamespace: $baseNamespace"
     Write-Host "`tsource_folder : $source_folder"
 	Write-Host "`ttest_folder : $test_folder"
     Write-Host "`tdeploy_folder : $deploy_folder"
@@ -55,9 +57,7 @@ Task RestoreDependencies {
 #	}
 }
 
-Task Publish -Depends DisplayParams,Package {
-	$version = getVersionBase
-	
+Task Publish -Depends Get-Version,DisplayParams,Package {
 	$projects | % {
 		Get-ChildItem -Path $deploy_folder | Where-Object -FilterScript {
 			($_.Name.Contains("$project.$version")) -and !($_.Name.Contains(".symbols")) -and ($_.Extension -eq '.nupkg')    
@@ -67,20 +67,26 @@ Task Publish -Depends DisplayParams,Package {
 	}
 }
 
-Task Package -Depends DisplayParams,RestoreDependencies { #-Depends Test {
-	$version = getVersionBase
-	
+Task Package -Depends Get-Version,DisplayParams,RestoreDependencies { #-Depends Test {
+
 	if ($preRelease) {
-		$version = $version+"-"+$preRelease;
+		$ver = $version+"-"+$preRelease;
+	} else {
+		$ver = $version
 	}
 
 #	$projects | % {
 #		Get-ChildItem -Path "$_\*.csproj" | % {
-#			exec { $nuget_folder\nuget.exe pack -sym $_.Fullname -OutputDirectory $deploy_folder -Version $version -Prop Configuration=$configuration }
+#			exec { $nuget_folder\nuget.exe pack -sym $_.Fullname -OutputDirectory $deploy_folder -Version $ver -Prop Configuration=$configuration }
 #		}        
 #	}
 
-	Exec { & "$nuproj_folder\process.ps1" }
+	pushd
+	cd $nuproj_folder
+	Exec { & ".\process.ps1" }
+	popd
+	
+	$path = Resolve-Path $deploy_folder
 	
 	Get-ChildItem -Path "$nuspec_folder\*.nuspec" -ErrorAction SilentlyContinue | % {
 		$nuspecFile = $_;		
@@ -90,12 +96,12 @@ Task Package -Depends DisplayParams,RestoreDependencies { #-Depends Test {
 		{ 
 			if (-Not ($updateNuspecFile)) { $nuSpecFilePathTmp = "$nuspecFile.tmp.NuSpec"; }
 			
-			ChangeNuSpecVersion $baseNamespace $nuSpecFile $version $nuSpecFilePathTmp $true
+			ChangeNuSpecVersion $baseNamespace $nuSpecFile $ver $nuSpecFilePathTmp $true
 			
 			if (-Not ($updateNuspecFile)) { $nuspecFile = $nuSpecFilePathTmp; }
 		}
-				
-		exec { & "$nuget_folder\nuget.exe" "pack" "$nuspecFile" "-OutputDirectory $deploy_folder" "-Version $version" "-Symbols" "-Prop Configuration=$configuration" }
+
+		exec { & "$nuget_folder\nuget.exe" pack $nuspecFile -OutputDirectory '$path' -MSBuildVersion 14 -Version $ver -Symbols -Prop Configuration=$configuration }
 
 		if (-Not ($updateNuspecFile)) { Remove-Item $nuSpecFilePathTmp -ErrorAction SilentlyContinue }
 	}
@@ -114,7 +120,7 @@ Task Test -Depends Build {
 	}
 }
 
-Task Build -Depends Clean,Set-Versions,RestorePackages,RestoreDependencies {
+Task Build -Depends Set-Versions,RestorePackages,RestoreDependencies {
 	Exec { msbuild "$source_folder\$solution" /t:Build /p:Configuration=$configuration /consoleloggerparameters:"ErrorsOnly;WarningsOnly" /p:ServerAddress=$macAgentServerAddress /p:ServerUser=$macAgentUser } 
 }
 
@@ -127,16 +133,20 @@ Task Clean -Depends DisplayParams {
 	}
 }
 
-Task Set-Versions {
+Task Set-Versions -Depends Get-Version {
 	if (-Not $updateVersion) { return }
 	
-	$version = getVersionBase
-
 	Get-ChildItem -Recurse -Force | ? { $_.Name -eq "AssemblyInfo.cs" -or $_.Name -eq "AssemblyInfo.Shared.cs" } | % {
 		(Get-Content $_.FullName) | % {
 			($_ -replace 'AssemblyVersion\(.*\)', ('AssemblyVersion("' + $version + '")')) -replace 'AssemblyFileVersion\(.*\)', ('AssemblyFileVersion("' + $version + '")')
 		} | Set-Content $_.FullName -Encoding UTF8
 	}    
+}
+
+Task Get-Version {
+	if ($version -eq $null) {
+		$version = getVersionBase
+	}
 }
 
 #######################################################################################################################
