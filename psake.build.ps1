@@ -86,3 +86,5 @@ $properties = @{
 import-module C:\ProgramData\chocolatey\lib\psake\tools\psake.psm1
 
 invoke-psake $build_file $task_list -Properties $properties -Framework "4.6"
+
+Write-Host "Done..."

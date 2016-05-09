@@ -7,8 +7,8 @@
     <ProjectGuid>{D7952CFD-BDB2-4F9F-864C-98DD75B6A98C}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XLabs.Samples.WinRT.WinPhone</RootNamespace>
-    <AssemblyName>XLabs.Samples.WinRT.WinPhone</AssemblyName>
+    <RootNamespace>XLabs.Samples.WinRT.Phone</RootNamespace>
+    <AssemblyName>XLabs.Samples.WinRT.Phone</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformVersion>8.1</TargetPlatformVersion>
     <MinimumVisualStudioVersion>12</MinimumVisualStudioVersion>

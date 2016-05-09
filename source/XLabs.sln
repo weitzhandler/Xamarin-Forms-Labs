@@ -299,11 +299,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XLabs.Samples.Droid", "..\s
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XLabs.Samples.iOS", "..\samples\XLabs.Samples\XLabs.Samples.iOS\XLabs.Samples.iOS.csproj", "{3370101A-47EC-49B4-ABAF-2249A70B79E3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XLabs.Samples.WinRT.WinPhone", "..\samples\XLabs.Samples\XLabs.Samples.WinPhone\XLabs.Samples.WinRT.WinPhone.csproj", "{D7952CFD-BDB2-4F9F-864C-98DD75B6A98C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XLabs.Samples.UWP", "..\samples\XLabs.Samples\XLabs.Samples.UWP\XLabs.Samples.UWP.csproj", "{86EC4C83-425D-4D50-8DE5-0AC7AAE9D04C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XLabs.Samples.WinRT", "..\samples\XLabs.Samples\XLabs.Samples.Windows\XLabs.Samples.WinRT.csproj", "{945D0FE6-C6ED-461A-B91A-F70287B38213}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XLabs.Samples.WinRT", "..\samples\XLabs.Samples\XLabs.Samples.WinRT\XLabs.Samples.WinRT.csproj", "{945D0FE6-C6ED-461A-B91A-F70287B38213}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XLabs.Samples.WinRT.Phone", "..\samples\XLabs.Samples\XLabs.Samples.WinRT.Phone\XLabs.Samples.WinRT.Phone.csproj", "{D7952CFD-BDB2-4F9F-864C-98DD75B6A98C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XLabs.Samples", "..\samples\XLabs.Samples\XLabs.Samples\XLabs.Samples.csproj", "{3C2A9E36-2D18-4780-9C40-3213471B716C}"
 EndProject
