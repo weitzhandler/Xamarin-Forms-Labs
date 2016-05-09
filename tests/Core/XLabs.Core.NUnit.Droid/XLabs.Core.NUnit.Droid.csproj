@@ -7,8 +7,8 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XLabs.Core.NUnit.Drioid</RootNamespace>
-    <AssemblyName>XLabs.Core.NUnit.Drioid</AssemblyName>
+    <RootNamespace>XLabs.Core.NUnit.Droid</RootNamespace>
+    <AssemblyName>XLabs.Core.NUnit.Droid</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <AndroidApplication>true</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.Designer.cs</AndroidResgenFile>
@@ -142,6 +142,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MainActivity.cs.txt" />
+    <AndroidResource Include="Resources\values\Strings.xml" />
   </ItemGroup>
   <Import Project="..\XLabs.Core.NUnit.Shared\XLabs.Core.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

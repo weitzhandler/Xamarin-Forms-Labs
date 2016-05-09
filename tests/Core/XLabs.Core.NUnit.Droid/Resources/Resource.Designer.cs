@@ -9,9 +9,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Android.Runtime.ResourceDesignerAttribute("XLabs.Core.NUnit.Drioid.Resource", IsApplication=true)]
+[assembly: global::Android.Runtime.ResourceDesignerAttribute("XLabs.Core.NUnit.Droid.Resource", IsApplication=true)]
 
-namespace XLabs.Core.NUnit.Drioid
+namespace XLabs.Core.NUnit.Droid
 {
 	
 	
@@ -26,9 +26,9 @@ namespace XLabs.Core.NUnit.Drioid
 		
 		public static void UpdateIdValues()
 		{
-			global::Nunit.Runner.Resource.String.ApplicationName = global::XLabs.Core.NUnit.Drioid.Resource.String.ApplicationName;
-			global::Nunit.Runner.Resource.String.Hello = global::XLabs.Core.NUnit.Drioid.Resource.String.Hello;
-			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::XLabs.Core.NUnit.Drioid.Resource.Attribute.actionBarSize;
+			global::Nunit.Runner.Resource.String.ApplicationName = global::XLabs.Core.NUnit.Droid.Resource.String.ApplicationName;
+			global::Nunit.Runner.Resource.String.Hello = global::XLabs.Core.NUnit.Droid.Resource.String.Hello;
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::XLabs.Core.NUnit.Droid.Resource.Attribute.actionBarSize;
 		}
 		
 		public partial class Animation
@@ -2929,6 +2929,9 @@ namespace XLabs.Core.NUnit.Drioid
 			
 			// aapt resource value: 0x7f080026
 			public const int ApplicationName = 2131230758;
+			
+			// aapt resource value: 0x7f080027
+			public const int Hello = 2131230759;
 			
 			// aapt resource value: 0x7f08000f
 			public const int abc_action_bar_home_description = 2131230735;

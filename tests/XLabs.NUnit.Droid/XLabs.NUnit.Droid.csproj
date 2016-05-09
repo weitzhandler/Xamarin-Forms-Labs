@@ -268,6 +268,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="MainActivity.cs.txt" />
+    <AndroidResource Include="Resources\values\Strings.xml" />
   </ItemGroup>
   <Import Project="..\Caching\XLabs.Caching.NUnit.Shared\XLabs.Caching.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\Core\XLabs.Core.NUnit.Shared\XLabs.Core.NUnit.Shared.projitems" Label="Shared" />

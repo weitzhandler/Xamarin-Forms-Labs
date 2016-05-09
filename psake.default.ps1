@@ -79,6 +79,8 @@ Task Package -Depends DisplayParams,RestoreDependencies { #-Depends Test {
 #			exec { $nuget_folder\nuget.exe pack -sym $_.Fullname -OutputDirectory $deploy_folder -Version $version -Prop Configuration=$configuration }
 #		}        
 #	}
+
+	Exec { & "$nuproj_folder\process.ps1" }
 	
 	Get-ChildItem -Path "$nuspec_folder\*.nuspec" -ErrorAction SilentlyContinue | % {
 		$nuspecFile = $_;		
