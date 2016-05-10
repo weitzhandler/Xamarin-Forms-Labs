@@ -43,21 +43,6 @@ Task DisplayParams -Depends Get-Version {
     Write-Host "`tprojects : $projects"
 }
 
-Task RestorePackages {
-	New-Item -ItemType Directory  "$source_folder\packages" -ErrorAction SilentlyContinue
-	$pathToPackages = Resolve-Path "$source_folder\packages"
-	$nugetConfig = Resolve-Path "$nuget_folder\nuget.config"
-	Exec { & "$nuget_folder\nuget.exe" restore "$source_folder\$solution" -MSBuildVersion 14 -PackagesDirectory $pathToPackages -ConfigFile $nugetConfig  }
-	Exec { & "$nuget_folder\nuget.exe" install NuProj -OutputDirectory $pathToPackages -ConfigFile $nugetConfig -Prerelease }
-}
-
-Task RestoreDependencies {
-#	switch ($unittest_framework)
-#	{
-#		"nunit" { choco install -y nunit }
-#	}
-}
-
 Task Publish -Depends Get-Version,DisplayParams,Package {
 	$projects | % {
 		Get-ChildItem -Path $deploy_folder | Where-Object -FilterScript {
@@ -66,13 +51,6 @@ Task Publish -Depends Get-Version,DisplayParams,Package {
 			exec { & "$nuget_folder\nuget.exe" "push" "$($_.Fullname)" }
 		}
 	}
-}
-
-Task ProcessNuProjNuSpecFiles -Precondition { return $processNuProjOutput } {
-	pushd
-	cd $nuproj_folder
-	Exec { & ".\process.ps1" }
-	popd
 }
 
 Task Package -Depends Get-Version,DisplayParams,RestoreDependencies,ProcessNuProjNuSpecFiles { #-Depends Test {
@@ -128,7 +106,7 @@ Task Test -Depends Build {
 	}
 }
 
-Task Build -Depends Set-Versions,RestorePackages,RestoreDependencies {
+Task Build -Depends Get-Version,DisplayParams,Set-Versions,RestorePackages,RestoreDependencies {
 	Exec { msbuild "$source_folder\$solution" /t:Build /p:Configuration=$configuration /consoleloggerparameters:"ErrorsOnly;WarningsOnly" /p:ServerAddress=$macAgentServerAddress /p:ServerUser=$macAgentUser } 
 }
 
@@ -139,6 +117,28 @@ Task Clean -Depends DisplayParams {
 		remove-item $_ -recurse -force
 		write-host deleted $_
 	}
+}
+
+Task RestorePackages {
+	New-Item -ItemType Directory  "$source_folder\packages" -ErrorAction SilentlyContinue
+	$pathToPackages = Resolve-Path "$source_folder\packages"
+	$nugetConfig = Resolve-Path "$nuget_folder\nuget.config"
+	Exec { & "$nuget_folder\nuget.exe" restore "$source_folder\$solution" -MSBuildVersion 14 -PackagesDirectory $pathToPackages -ConfigFile $nugetConfig  }
+	Exec { & "$nuget_folder\nuget.exe" install NuProj -OutputDirectory $pathToPackages -ConfigFile $nugetConfig -Prerelease }
+}
+
+Task RestoreDependencies {
+#	switch ($unittest_framework)
+#	{
+#		"nunit" { choco install -y nunit }
+#	}
+}
+
+Task ProcessNuProjNuSpecFiles -Precondition { return $processNuProjOutput } {
+	pushd
+	cd $nuproj_folder
+	Exec { & ".\process.ps1" }
+	popd
 }
 
 Task Set-Versions -Depends Get-Version {

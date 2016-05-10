@@ -35,6 +35,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using XLabs.Forms;
 using XLabs.Ioc;
 using XLabs.Platform.Device;
 using XLabs.Platform.Mvvm;
@@ -152,8 +153,8 @@ namespace XLabs.Samples.UWP
             var pathToDatabase = Path.Combine(documents, "xforms.db");
 
             resolverContainer
-                .Register<IDevice>(t => WindowsDevice.CurrentDevice)
-                .Register<IDisplay>(t => new Display())
+                .Register<IDevice>(t =>  WindowsDevice.CurrentDevice)
+                .Register<IDisplay>(t => Resolver.Resolve<IDevice>().Display)
                 //.Register<IFontManager>(t => new FontManager(t.Resolve<IDisplay>()))
                 //.Register<IEmailService, EmailService>()
                 //.Register<IMediaPicker, MediaPicker>()
