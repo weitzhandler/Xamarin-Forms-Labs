@@ -160,10 +160,6 @@
       <Project>{b1636d51-a05f-4957-93bc-cdceb79c2e33}</Project>
       <Name>XLabs.Serialization.Json.NET</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\Serialization\XLabs.Serialization.ProtoBuf\XLabs.Serialization.ProtoBuf.csproj">
-      <Project>{324a8036-71ca-441c-8549-102f7eaf3331}</Project>
-      <Name>XLabs.Serialization.ProtoBuf</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\source\Serialization\XLabs.Serialization.ServiceStack.WinRT.Phone\XLabs.Serialization.ServiceStack.WinRT.Phone.csproj">
       <Project>{dfb7a228-d8f3-40f0-8bfe-a6a51aeed82f}</Project>
       <Name>XLabs.Serialization.ServiceStack.WinRT.Phone</Name>
