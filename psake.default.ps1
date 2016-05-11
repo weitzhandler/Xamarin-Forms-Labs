@@ -73,6 +73,7 @@ Task Package -Depends Get-Version,DisplayParams,RestoreDependencies { #-Depends 
 		$ver = "$ver-pre$($script:preReleaseNumber)"
 	}
 	
+	New-Item $deploy_folder -ItemType Directory -ErrorAction SilentlyContinue	
 	$path = Resolve-Path $deploy_folder
 	
 	Get-ChildItem -Path "$nuspec_folder\*.nuspec" -ErrorAction SilentlyContinue | % {
@@ -147,7 +148,7 @@ Task RestoreDependencies {
 Task ProcessNuProjNuSpecFiles -Precondition { return $processNuProjOutput } {
 	pushd
 	cd $nuproj_folder
-	#Exec { & ".\process.ps1" }
+	#exec { & ".\process.ps1" }
 	popd
 }
 
