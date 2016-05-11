@@ -65,7 +65,7 @@ Task Publish -Depends Get-Version,DisplayParams {
 	}
 }
 
-Task Package -Depends Get-Version,DisplayParams,RestoreDependencies,ProcessNuProjNuSpecFiles { #-Depends Test {
+Task Package -Depends Get-Version,DisplayParams,RestoreDependencies { #-Depends Test {
 	$ver = $script:packageVersion
 	
 	if ($script:preReleaseNumber)
@@ -129,6 +129,10 @@ Task RestorePackages {
 	New-Item -ItemType Directory  "$source_folder\packages" -ErrorAction SilentlyContinue
 	$pathToPackages = Resolve-Path "$source_folder\packages"
 	$nugetConfig = Resolve-Path "$nuget_folder\nuget.config"
+
+	Write-Host "`tRestoring Packages to: $pathToPackages" -ForegroundColor Yellow
+	Write-Host "`tUsing Nuget Config File: $nugetConfig" -ForegroundColor Yellow
+
 	Exec { & "$nuget_folder\nuget.exe" restore "$source_folder\$solution" -MSBuildVersion 14 -PackagesDirectory $pathToPackages -ConfigFile $nugetConfig }
 	Exec { & "$nuget_folder\nuget.exe" install NuProj -OutputDirectory $pathToPackages -ConfigFile $nugetConfig -Prerelease }
 }
@@ -143,7 +147,7 @@ Task RestoreDependencies {
 Task ProcessNuProjNuSpecFiles -Precondition { return $processNuProjOutput } {
 	pushd
 	cd $nuproj_folder
-	Exec { & ".\process.ps1" }
+	#Exec { & ".\process.ps1" }
 	popd
 }
 
