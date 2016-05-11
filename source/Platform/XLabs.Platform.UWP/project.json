@@ -1,6 +1,8 @@
 ﻿{
   "dependencies": {
+    "Fody": "1.29.4",
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
+    "PropertyChanged.Fody": "1.51.0",
     "SharpDX.Direct2D1": "3.0.2"
   },
   "frameworks": {

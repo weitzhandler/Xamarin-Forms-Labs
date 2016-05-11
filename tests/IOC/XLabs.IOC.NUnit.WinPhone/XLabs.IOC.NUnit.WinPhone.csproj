@@ -176,10 +176,6 @@
       <Project>{6e550f02-4666-4d37-962f-d2a990e9f2a7}</Project>
       <Name>XLabs.IOC.SimpleInjector</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC.TinyIOC.WinRT.Phone\XLabs.IOC.TinyIOC.WinRT.Phone.csproj">
-      <Project>{80d1829d-a217-43f6-b523-d7c32ebf46c1}</Project>
-      <Name>XLabs.IOC.TinyIOC.WinRT.Phone</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC.Unity\XLabs.IOC.Unity.csproj">
       <Project>{e426afa6-c141-4a21-963d-ff5a7a111757}</Project>
       <Name>XLabs.IOC.Unity</Name>
