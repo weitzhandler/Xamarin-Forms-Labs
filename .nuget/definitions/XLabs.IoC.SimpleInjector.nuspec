@@ -13,20 +13,18 @@
     <description>This package implements the IOC provider contracts via SimpleInjector</description>
     <summary>XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.</summary>
     <releaseNotes>Updated for Xamarin Forms 2.2</releaseNotes>
-    <copyright>Copyright Â© 2016 XLabs Team</copyright>
+    <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs IOC SimpleInjector</tags>
     <dependencies>
-      <group targetFramework="portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10">
+      <group targetFramework="portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch">
         <dependency id="XLabs.IoC" version="2.2.0000-pre01" />
-      </group>
-      <group targetFramework="portable-net45+win80+wpa81">
         <dependency id="SimpleInjector" version="3.1.4" />
       </group>
     </dependencies>
   </metadata>
   <files>
-    <file src="..\..\source\IOC\XLabs.IOC.SimpleInjector\bin\Debug\XLabs.IOC.SimpleInjector.dll" target="lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\XLabs.IOC.SimpleInjector.dll" exclude="" />
-    <file src="..\..\source\IOC\XLabs.IOC.SimpleInjector\bin\Debug\XLabs.IOC.SimpleInjector.pdb" target="lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\XLabs.IOC.SimpleInjector.pdb" exclude="" />
-    <file src="..\..\.nuget\source\XLabs.IOC.SimpleInjector.Nuspec\XLabs.IOC.SimpleInjector.Readme.md" target="" exclude="" />
+    <file src="..\source\XLabs.IOC.SimpleInjector.Nuspec\XLabs.IOC.SimpleInjector.Readme.md" target="content\XLabs.IOC.SimpleInjector.Readme.md" />
+    <file src="..\..\source\IOC\XLabs.IOC.SimpleInjector\bin\Debug\XLabs.IOC.SimpleInjector.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.IOC.SimpleInjector.dll" />
+    <file src="..\..\source\IOC\XLabs.IOC.SimpleInjector\bin\Debug\XLabs.IOC.SimpleInjector.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.IOC.SimpleInjector.pdb" />
   </files>
 </package>

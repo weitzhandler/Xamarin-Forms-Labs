@@ -13,12 +13,12 @@
     <description>This package implements the core Settings provider contracts</description>
     <summary>XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.</summary>
     <releaseNotes>Updated for Xamarin Forms 2.2</releaseNotes>
-    <copyright>Copyright Â© 2016 XLabs Team</copyright>
+    <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs Settings</tags>
   </metadata>
   <files>
-    <file src="..\..\source\Settings\XLabs.Settings\bin\Debug\XLabs.Settings.dll" target="lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\XLabs.Settings.dll" exclude="" />
-    <file src="..\..\source\Settings\XLabs.Settings\bin\Debug\XLabs.Settings.pdb" target="lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\XLabs.Settings.pdb" exclude="" />
-    <file src="..\..\.nuget\source\XLabs.Settings.Nuspec\XLabs.Settings.Readme.md" target="" exclude="" />
+    <file src="..\source\XLabs.Settings.Nuspec\XLabs.Settings.Readme.md" target="content\XLabs.Settings.Readme.md" />
+    <file src="..\..\source\Settings\XLabs.Settings\bin\Debug\XLabs.Settings.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.Settings.dll" />
+    <file src="..\..\source\Settings\XLabs.Settings\bin\Debug\XLabs.Settings.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.Settings.pdb" />
   </files>
 </package>

@@ -13,20 +13,24 @@
     <description>This package implements the IOC provider contracts via Ninject</description>
     <summary>XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.</summary>
     <releaseNotes>Updated for Xamarin Forms 2.2</releaseNotes>
-    <copyright>Copyright Â© 2016 XLabs Team</copyright>
+    <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs IOC Ninject</tags>
     <dependencies>
-      <group targetFramework="portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10">
+      <group targetFramework="portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch">
         <dependency id="XLabs.IoC" version="2.2.0000-pre01" />
-      </group>
-      <group targetFramework="portable-net45+win80+wpa81">
         <dependency id="Portable.Ninject" version="3.3.1" />
+      </group>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="Portable.Ninject" version="3.3.1" />
+        <dependency id="Ninject" version="3.2.2.0" />
       </group>
     </dependencies>
   </metadata>
   <files>
-    <file src="..\..\source\IOC\XLabs.IOC.Ninject\bin\Debug\XLabs.IOC.Ninject.dll" target="lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\XLabs.IOC.Ninject.dll" exclude="" />
-    <file src="..\..\source\IOC\XLabs.IOC.Ninject\bin\Debug\XLabs.IOC.Ninject.pdb" target="lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\XLabs.IOC.Ninject.pdb" exclude="" />
-    <file src="..\..\.nuget\source\XLabs.IOC.Ninject.Nuspec\XLabs.IOC.Ninject.Readme.md" target="" exclude="" />
+    <file src="..\source\XLabs.IOC.Ninject.Nuspec\XLabs.IOC.Ninject.Readme.md" target="content\XLabs.IOC.Ninject.Readme.md" />
+    <file src="..\..\source\IOC\XLabs.IOC.Ninject\bin\Debug\XLabs.IOC.Ninject.dll" target="lib\net45\XLabs.IOC.Ninject.dll" />
+    <file src="..\..\source\IOC\XLabs.IOC.Ninject\bin\Debug\XLabs.IOC.Ninject.pdb" target="lib\net45\XLabs.IOC.Ninject.pdb" />
+    <file src="..\..\source\IOC\XLabs.IOC.Ninject\bin\Debug\XLabs.IOC.Ninject.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.IOC.Ninject.dll" />
+    <file src="..\..\source\IOC\XLabs.IOC.Ninject\bin\Debug\XLabs.IOC.Ninject.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.IOC.Ninject.pdb" />
   </files>
 </package>

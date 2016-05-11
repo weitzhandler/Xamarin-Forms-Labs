@@ -13,27 +13,23 @@
     <description>This package implements the IOC provider contracts via TinyIOC</description>
     <summary>XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.</summary>
     <releaseNotes>Updated for Xamarin Forms 2.2</releaseNotes>
-    <copyright>Copyright Â© 2016 XLabs Team</copyright>
+    <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs IOC TinyIOC</tags>
     <dependencies>
-      <group targetFramework="MonoAndroid60">
-        <dependency id="XLabs.IoC" version="2.2.0000-pre01" />
-      </group>
-      <group targetFramework="xamarinios10">
-        <dependency id="XLabs.IoC" version="2.2.0000-pre01" />
-      </group>
-      <group targetFramework="net45">
+      <group targetFramework="portable-net45+win8+monoandroid+xamarinios+monotouch">
         <dependency id="XLabs.IoC" version="2.2.0000-pre01" />
       </group>
     </dependencies>
   </metadata>
   <files>
-    <file src="..\..\source\IOC\XLabs.IOC.TinyIOC.Droid\bin\Debug\XLabs.IOC.TinyIOC.Droid.dll" target="lib\MonoAndroid60\XLabs.IOC.TinyIOC.Droid.dll" exclude="" />
-    <file src="..\..\source\IOC\XLabs.IOC.TinyIOC.Droid\bin\Debug\XLabs.IOC.TinyIOC.Droid.pdb" target="lib\MonoAndroid60\XLabs.IOC.TinyIOC.Droid.pdb" exclude="" />
-    <file src="..\..\source\IOC\XLabs.IOC.TinyIOC.iOS\bin\Debug\XLabs.IOC.TinyIOC.iOS.dll" target="lib\xamarinios10\XLabs.IOC.TinyIOC.iOS.dll" exclude="" />
-    <file src="..\..\source\IOC\XLabs.IOC.TinyIOC.iOS\bin\Debug\XLabs.IOC.TinyIOC.iOS.pdb" target="lib\xamarinios10\XLabs.IOC.TinyIOC.iOS.pdb" exclude="" />
-    <file src="..\..\source\IOC\XLabs.IOC.TinyIOC.Net45\bin\Debug\XLabs.IOC.TinyIOC.Net45.dll" target="lib\net45\XLabs.IOC.TinyIOC.Net45.dll" exclude="" />
-    <file src="..\..\source\IOC\XLabs.IOC.TinyIOC.Net45\bin\Debug\XLabs.IOC.TinyIOC.Net45.pdb" target="lib\net45\XLabs.IOC.TinyIOC.Net45.pdb" exclude="" />
-    <file src="..\..\.nuget\source\XLabs.IOC.TinyIOC.Nuspec\XLabs.IOC.TinyIOC.Readme.md" target="" exclude="" />
+    <file src="..\source\XLabs.IOC.TinyIOC.Nuspec\XLabs.IOC.TinyIOC.Readme.md" target="content\XLabs.IOC.TinyIOC.Readme.md" />
+    <file src="..\..\source\IOC\XLabs.IOC.TinyIOC.Droid\bin\Debug\XLabs.IOC.TinyIOC.Droid.dll" target="lib\monoandroid\XLabs.IOC.TinyIOC.Droid.dll" />
+    <file src="..\..\source\IOC\XLabs.IOC.TinyIOC.Droid\bin\Debug\XLabs.IOC.TinyIOC.Droid.pdb" target="lib\monoandroid\XLabs.IOC.TinyIOC.Droid.pdb" />
+    <file src="..\..\source\IOC\XLabs.IOC.TinyIOC.Net45\bin\Debug\XLabs.IOC.TinyIOC.Net45.dll" target="lib\net45\XLabs.IOC.TinyIOC.Net45.dll" />
+    <file src="..\..\source\IOC\XLabs.IOC.TinyIOC.Net45\bin\Debug\XLabs.IOC.TinyIOC.Net45.pdb" target="lib\net45\XLabs.IOC.TinyIOC.Net45.pdb" />
+    <file src="..\..\source\IOC\XLabs.IOC.TinyIOC.UWP\bin\Debug\XLabs.IOC.TinyIOC.UWP.dll" target="lib\uap10.0\XLabs.IOC.TinyIOC.UWP.dll" />
+    <file src="..\..\source\IOC\XLabs.IOC.TinyIOC.UWP\bin\Debug\XLabs.IOC.TinyIOC.UWP.pdb" target="lib\uap10.0\XLabs.IOC.TinyIOC.UWP.pdb" />
+    <file src="..\..\source\IOC\XLabs.IOC.TinyIOC.iOS\bin\Debug\XLabs.IOC.TinyIOC.iOS.dll" target="lib\xamarinios\XLabs.IOC.TinyIOC.iOS.dll" />
+    <file src="..\..\source\IOC\XLabs.IOC.TinyIOC.iOS\bin\Debug\XLabs.IOC.TinyIOC.iOS.pdb" target="lib\xamarinios\XLabs.IOC.TinyIOC.iOS.pdb" />
   </files>
 </package>

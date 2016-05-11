@@ -13,12 +13,12 @@
     <description>This package contains helpers to work with cryptography.</description>
     <summary>XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.</summary>
     <releaseNotes>Updated for Xamarin Forms 2.2</releaseNotes>
-    <copyright>Copyright Â© 2016 XLabs Team</copyright>
+    <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs Cryptography</tags>
   </metadata>
   <files>
-    <file src="..\..\source\Cryptography\XLabs.Cryptography\bin\Debug\XLabs.Cryptography.dll" target="lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\XLabs.Cryptography.dll" exclude="" />
-    <file src="..\..\source\Cryptography\XLabs.Cryptography\bin\Debug\XLabs.Cryptography.pdb" target="lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\XLabs.Cryptography.pdb" exclude="" />
-    <file src="..\..\.nuget\source\XLabs.Cryptography.Nuspec\XLabs.Cryptography.Readme.md" target="" exclude="" />
+    <file src="..\source\XLabs.Cryptography.Nuspec\XLabs.Cryptography.Readme.md" target="content\XLabs.Cryptography.Readme.md" />
+    <file src="..\..\source\Cryptography\XLabs.Cryptography\bin\Debug\XLabs.Cryptography.dll" target="lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\XLabs.Cryptography.dll" />
+    <file src="..\..\source\Cryptography\XLabs.Cryptography\bin\Debug\XLabs.Cryptography.pdb" target="lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\XLabs.Cryptography.pdb" />
   </files>
 </package>

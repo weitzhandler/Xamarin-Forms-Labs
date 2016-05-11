@@ -13,12 +13,12 @@
     <description>This package implements the core IOC provider contracts</description>
     <summary>XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.</summary>
     <releaseNotes>Updated for Xamarin Forms 2.2</releaseNotes>
-    <copyright>Copyright Â© 2016 XLabs Team</copyright>
+    <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs IOC</tags>
   </metadata>
   <files>
-    <file src="..\..\source\IOC\XLabs.IOC\bin\Debug\XLabs.IOC.dll" target="lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\XLabs.IOC.dll" exclude="" />
-    <file src="..\..\source\IOC\XLabs.IOC\bin\Debug\XLabs.IOC.pdb" target="lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\XLabs.IOC.pdb" exclude="" />
-    <file src="..\..\.nuget\source\XLabs.IOC.Nuspec\XLabs.IOC.Readme.md" target="" exclude="" />
+    <file src="..\source\XLabs.IOC.Nuspec\XLabs.IOC.Readme.md" target="content\XLabs.IOC.Readme.md" />
+    <file src="..\..\source\IOC\XLabs.IOC\bin\Debug\XLabs.IOC.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.IOC.dll" />
+    <file src="..\..\source\IOC\XLabs.IOC\bin\Debug\XLabs.IOC.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.IOC.pdb" />
   </files>
 </package>

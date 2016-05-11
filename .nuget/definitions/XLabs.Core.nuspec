@@ -13,12 +13,12 @@
     <description>This packages implements core base functionality that all of XLabs uses.  Do not included this directly.</description>
     <summary>XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.</summary>
     <releaseNotes>Updated for Xamarin Forms 2.2</releaseNotes>
-    <copyright>Copyright Â© 2016 XLabs Team</copyright>
+    <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs</tags>
   </metadata>
   <files>
-    <file src="..\..\source\Core\bin\Debug\XLabs.Core.dll" target="lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\XLabs.Core.dll" exclude="" />
-    <file src="..\..\source\Core\bin\Debug\XLabs.Core.pdb" target="lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\XLabs.Core.pdb" exclude="" />
-    <file src="..\..\.nuget\source\XLabs.Core.Nuspec\XLabs.Core.Readme.md" target="" exclude="" />
+    <file src="..\source\XLabs.Core.Nuspec\XLabs.Core.Readme.md" target="content\XLabs.Core.Readme.md" />
+    <file src="..\..\source\Core\bin\Debug\XLabs.Core.dll" target="lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\XLabs.Core.dll" />
+    <file src="..\..\source\Core\bin\Debug\XLabs.Core.pdb" target="lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\XLabs.Core.pdb" />
   </files>
 </package>

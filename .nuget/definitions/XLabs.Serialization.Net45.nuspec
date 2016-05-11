@@ -13,17 +13,17 @@
     <description>This package implements the Serialization provider contracts for serializers supported in full .NET 4.5 framework</description>
     <summary>XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.</summary>
     <releaseNotes>Updated for Xamarin Forms 2.2</releaseNotes>
-    <copyright>Copyright Â© 2016 XLabs Team</copyright>
+    <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs Serialization datacontract</tags>
     <dependencies>
-      <group targetFramework="net45">
+      <group targetFramework="portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch">
         <dependency id="XLabs.Serialization" version="2.2.0000-pre01" />
       </group>
     </dependencies>
   </metadata>
   <files>
-    <file src="..\..\source\Serialization\XLabs.Serialization.Net45\bin\Debug\XLabs.Serialization.Net45.dll" target="lib\net45\XLabs.Serialization.Net45.dll" exclude="" />
-    <file src="..\..\source\Serialization\XLabs.Serialization.Net45\bin\Debug\XLabs.Serialization.Net45.pdb" target="lib\net45\XLabs.Serialization.Net45.pdb" exclude="" />
-    <file src="..\..\.nuget\source\XLabs.Serialization.Net45.Nuspec\XLabs.Serialization.Net45.Readme.md" target="" exclude="" />
+    <file src="..\source\XLabs.Serialization.Net45.Nuspec\XLabs.Serialization.Net45.Readme.md" target="content\XLabs.Serialization.Net45.Readme.md" />
+    <file src="..\..\source\Serialization\XLabs.Serialization.Net45\bin\Debug\XLabs.Serialization.Net45.dll" target="lib\net45\XLabs.Serialization.Net45.dll" />
+    <file src="..\..\source\Serialization\XLabs.Serialization.Net45\bin\Debug\XLabs.Serialization.Net45.pdb" target="lib\net45\XLabs.Serialization.Net45.pdb" />
   </files>
 </package>

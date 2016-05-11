@@ -13,12 +13,12 @@
     <description>This package implements the core Serialization provider contracts</description>
     <summary>XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.</summary>
     <releaseNotes>Updated for Xamarin Forms 2.2</releaseNotes>
-    <copyright>Copyright Â© 2016 XLabs Team</copyright>
+    <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs Serialization</tags>
   </metadata>
   <files>
-    <file src="..\..\source\Serialization\XLabs.Serialization\bin\Debug\XLabs.Serialization.dll" target="lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\XLabs.Serialization.dll" exclude="" />
-    <file src="..\..\source\Serialization\XLabs.Serialization\bin\Debug\XLabs.Serialization.pdb" target="lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\XLabs.Serialization.pdb" exclude="" />
-    <file src="..\..\.nuget\source\XLabs.Serialization.Nuspec\XLabs.Serialization.Readme.md" target="" exclude="" />
+    <file src="..\source\XLabs.Serialization.Nuspec\XLabs.Serialization.Readme.md" target="content\XLabs.Serialization.Readme.md" />
+    <file src="..\..\source\Serialization\XLabs.Serialization\bin\Debug\XLabs.Serialization.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.Serialization.dll" />
+    <file src="..\..\source\Serialization\XLabs.Serialization\bin\Debug\XLabs.Serialization.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.Serialization.pdb" />
   </files>
 </package>

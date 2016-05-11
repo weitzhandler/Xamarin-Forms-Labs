@@ -13,20 +13,18 @@
     <description>This package implements the IOC provider contracts via AutoFac</description>
     <summary>XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.</summary>
     <releaseNotes>Updated for Xamarin Forms 2.2</releaseNotes>
-    <copyright>Copyright Â© 2016 XLabs Team</copyright>
+    <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs IOC Autofac</tags>
     <dependencies>
-      <group targetFramework="portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10">
+      <group targetFramework="portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch">
         <dependency id="XLabs.IoC" version="2.2.0000-pre01" />
-      </group>
-      <group targetFramework="portable-net45+win80+wpa81">
         <dependency id="Autofac" version="3.5.2" />
       </group>
     </dependencies>
   </metadata>
   <files>
-    <file src="..\..\source\IOC\XLabs.IOC.Autofac\bin\Debug\XLabs.IOC.Autofac.dll" target="lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\XLabs.IOC.Autofac.dll" exclude="" />
-    <file src="..\..\source\IOC\XLabs.IOC.Autofac\bin\Debug\XLabs.IOC.Autofac.pdb" target="lib\portable-net45+win+wpa81+MonoAndroid10+xamarinios10+MonoTouch10\XLabs.IOC.Autofac.pdb" exclude="" />
-    <file src="..\..\.nuget\source\XLabs.IOC.Autofac.Nuspec\XLabs.IOC.Autofac.Readme.md" target="" exclude="" />
+    <file src="..\source\XLabs.IOC.Autofac.Nuspec\XLabs.IOC.Autofac.Readme.md" target="content\XLabs.IOC.Autofac.Readme.md" />
+    <file src="..\..\source\IOC\XLabs.IOC.Autofac\bin\Debug\XLabs.IOC.Autofac.dll" target="lib\portable-net45+win+wpa81+monoandroid+xamarinios+monotouch\XLabs.IOC.Autofac.dll" />
+    <file src="..\..\source\IOC\XLabs.IOC.Autofac\bin\Debug\XLabs.IOC.Autofac.pdb" target="lib\portable-net45+win+wpa81+monoandroid+xamarinios+monotouch\XLabs.IOC.Autofac.pdb" />
   </files>
 </package>
