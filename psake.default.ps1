@@ -94,7 +94,14 @@ Task Package -Depends Get-Version,DisplayParams,RestoreDependencies { #-Depends 
 		Write-Host "`tver: $ver"
 		Write-Host "`tconfiguration: $configuration"
 		
-		exec { & "$nuget_folder\nuget.exe" pack $nuspecFile -OutputDirectory "$path" -MSBuildVersion 14 -Version $ver -Symbols -Prop Configuration=$configuration -Verbosity detailed }
+		Try {
+			exec { & "$nuget_folder\nuget.exe" pack $nuspecFile -OutputDirectory "$path" -MSBuildVersion 14 -Version $ver -Symbols -Prop Configuration=$configuration -Verbosity detailed }
+		}
+		Catch 
+		{
+			Write-Host "`tFailed generating package: $nuspecFile" -ForegroundColor Red
+			Write-Host "`tError: $($_.Exception.Message)" -ForegroundColor Red
+		}
 
 		if (-Not ($updateNuspecFile)) { Remove-Item $nuSpecFilePathTmp -ErrorAction SilentlyContinue }
 	}
