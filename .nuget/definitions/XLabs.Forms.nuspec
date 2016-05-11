@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.Forms</id>
-    <version>2.2.0000-pre01</version>
+    <version>2.2.0-pre01</version>
     <title>XLabs - Forms</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -17,10 +17,10 @@
     <tags>Xamarin XLabs Forms Controls GridView ListView</tags>
     <dependencies>
       <group targetFramework="portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch">
-        <dependency id="XLabs.Core" version="2.2.0000-pre01" />
-        <dependency id="XLabs.IoC" version="2.2.0000-pre01" />
-        <dependency id="XLabs.Platform" version="2.2.0000-pre01" />
-        <dependency id="XLabs.Serialization" version="2.2.0000-pre01" />
+        <dependency id="XLabs.Core" version="[2.2.0-pre01]" />
+        <dependency id="XLabs.IoC" version="[2.2.0-pre01]" />
+        <dependency id="XLabs.Platform" version="[2.2.0-pre01]" />
+        <dependency id="XLabs.Serialization" version="[2.2.0-pre01]" />
         <dependency id="Xamarin.Forms" version="2.2.0.31" />
       </group>
     </dependencies>

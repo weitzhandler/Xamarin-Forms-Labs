@@ -19,7 +19,7 @@ GOTO BuildWithVersion
 IF [%3] == [] GOTO DisplayVersionError
 IF [%4] == [] GOTO DisplayVersionError
 echo Running psake build process with a specific Version (%VERSION%-%PRERELEASE%)
-powershell.exe -command ".\psake.build.ps1 %TASK% -configuration %CONFIG% -version %VERSION% -preRelease %PRERELEASE%"
+powershell.exe -command ".\psake.build.ps1 %TASK% -configuration %CONFIG% -version %VERSION% -preRelease %PRERELEASE% -updateNuspecFile $true -updateNuspecVersion $true"
 GOTO Done
 
 :BuildWithOutVersion
@@ -35,6 +35,7 @@ echo          Build: Builds entire library
 echo          Test: Executes unit tests
 echo          Package: Builds the nuget packages
 echo          Publish: Publishes nuget packages to nuget.org
+echo          Increment-Version: Increment the preRelease version if it is in the version.json, if not it will increment the build version number
 echo   2 - Configuration (default: Debug) : 
 echo   3 - Version (optional): A full version number (ex: 2.2.0)
 echo   4 - Prerelease (optional): A prerelease num (ex: pre01)

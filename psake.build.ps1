@@ -3,13 +3,16 @@ Param(
     [string[]]$task_list = @(),
 
 	[Parameter()]
-    [string]$version = $null,
+    [string]$packageVersion = $null,
 	
 	[Parameter()]
-    [string]$preRelease = $null,
+    [string]$preReleaseNumber = $null,
 	
 	[Parameter()]
     [string]$configuration = "Release",
+	
+	[Parameter()]
+	[bool]$autoIncrementVersion = $false,
 	
 	[Parameter()]
 	[bool]$updateVersion = $false,
@@ -21,7 +24,10 @@ Param(
 	[bool]$updateNuspecFile = $true,
 	
 	[Parameter()]
-	[bool]$updateNuspecVersion = $true
+	[bool]$updateNuspecVersion = $true,
+	
+	[Parameter()]
+	[string]$nugetAPIKey = $null
 )
 
 $build_file = 'psake.default.ps1'
@@ -34,10 +40,13 @@ $properties = @{
 
     # Version number to use if running the Publish build task.
     # This will be read from the command line args
-    "version"       = $version;
+    "packageVersion" = $packageVersion;
 
 	# Is the Nuget package a pre-release version?
-	"preRelease" = $preRelease;
+	"preReleaseNumber" = $preReleaseNumber;
+	
+	# Do we want to auto increment the version (if a prerelease it will increment prerelease otherwise it will increment build number)
+	"autoIncrementVersion" = $autoIncrementVersion;
 
     # Path to the solution file
     "solution"      = 'XLabs.sln';
@@ -70,7 +79,7 @@ $properties = @{
 	);
 	
 	# Unit Test Framework (nunit, xunit)
-	"unittest_framework" = "nunit";
+	"unittest_framework" = 'nunit';
 	
 	# Update the version numbers automatically
 	"updateVersion" = $updateVersion;
@@ -83,9 +92,13 @@ $properties = @{
 	"macAgentServerAddress" = $null; #"10.0.1.139"
 	
 	# The user name to use to authentice for the Xamarin build agent
-	"macAgentUser" = $null; #"Shawn Anderson"
+	"macAgentUser" = $null; #'Shawn Anderson'
 	
-	"processNuProjOutput" = $processNuProjOutput
+	"processNuProjOutput" = $processNuProjOutput;
+	
+	"nugetServerUrl" = 'https://nuget.org';
+	
+	"nugetAPIKey" = $null;
 }
 
 #if (!(Get-Module -Name psake -ListAvailable)) { Install-Module -Name psake -Scope CurrentUser }

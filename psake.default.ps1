@@ -1,7 +1,7 @@
 properties {
     $configuration = "Release"
-	$version = $null
-	$preRelease = $null
+	$packageVersion = $null
+	$preReleaseNumber = $null
     $solution = $null
     $source_folder = "."
 	$test_folder = "."
@@ -18,14 +18,17 @@ properties {
 	$macAgentUser = $null
 	$baseNamespace = $null
 	$processNuProjOutput = $false
+	$autoIncrementVersion = $false
+	$nugetServerUrl = "https://nuget.org"
+	$nugetAPIKey = $null
 }
 
 Task Default -Depends DisplayParams,Build
 
 Task DisplayParams -Depends Get-Version {
     Write-Host "`tconfiguration : $configuration"
-	Write-Host "`tversion : $version"
-	Write-Host "`tpreRelease : $preRelease"
+	Write-Host "`tpackageVersion : $script:packageVersion"
+	Write-Host "`tpreReleaseNumber : $script:preReleaseNumber"
     Write-Host "`tsolution : $solution"
 	Write-Host "`tbaseNamespace: $baseNamespace"
     Write-Host "`tsource_folder : $source_folder"
@@ -40,32 +43,35 @@ Task DisplayParams -Depends Get-Version {
 	Write-Host "`tunittest_framework : $unittest_framework"
 	Write-Host "`tmacAgentServerAddress : $macAgentServerAddress"
 	Write-Host "`tmacAgentUser : $macAgentUser"
+    Write-Host "`tnugetServerUrl : $nugetServerUrl"
+    Write-Host "`tnugetAPIKey : $nugetAPIKey"
     Write-Host "`tprojects : $projects"
 }
 
-Task Publish -Depends Get-Version,DisplayParams,Package {
-	$projects | % {
-		Get-ChildItem -Path $deploy_folder | Where-Object -FilterScript {
-			($_.Name.Contains("$project.$version")) -and !($_.Name.Contains(".symbols")) -and ($_.Extension -eq '.nupkg')    
-		} | % {
-			exec { & "$nuget_folder\nuget.exe" "push" "$($_.Fullname)" }
+Task Publish -Depends Get-Version,DisplayParams {
+	$nugetConfig = Resolve-Path "$nuget_folder\nuget.config"
+
+	Get-ChildItem -Path $deploy_folder | Where-Object -FilterScript {
+		($_.Name.Contains("$project.$script:packageVersion")) -and !($_.Name.Contains(".symbols")) -and ($_.Extension -eq '.nupkg')    
+	} | % {
+		Write-Host "Publishing $($_.Fullname)"
+		
+		if ($nugetAPIKey)
+		{
+			#exec { & "$nuget_folder\nuget.exe" "push" "$($_.Fullname)" -ConfigFile $nugetConfig -Source $nugetServerUrl -ApiKey $nugetAPIKey }
+		} else {
+			#exec { & "$nuget_folder\nuget.exe" "push" "$($_.Fullname)" -ConfigFile $nugetConfig }
 		}
 	}
 }
 
 Task Package -Depends Get-Version,DisplayParams,RestoreDependencies,ProcessNuProjNuSpecFiles { #-Depends Test {
-	$ver = $version
+	$ver = $script:packageVersion
 	
-	if ($preRelease)
+	if ($script:preReleaseNumber)
 	{
-		$ver = "$ver-$preRelease"
+		$ver = "$ver-pre$($script:preReleaseNumber)"
 	}
-
-#	$projects | % {
-#		Get-ChildItem -Path "$_\*.csproj" | % {
-#			exec { $nuget_folder\nuget.exe pack -sym $_.Fullname -OutputDirectory $deploy_folder -Version $ver -Prop Configuration=$configuration }
-#		}        
-#	}
 	
 	$path = Resolve-Path $deploy_folder
 	
@@ -106,7 +112,7 @@ Task Test -Depends Build {
 	}
 }
 
-Task Build -Depends Get-Version,DisplayParams,Set-Versions,RestorePackages,RestoreDependencies {
+Task Build -Depends DisplayParams,Set-Versions,RestorePackages,RestoreDependencies {
 	Exec { msbuild "$source_folder\$solution" /t:Build /p:Configuration=$configuration /consoleloggerparameters:"ErrorsOnly;WarningsOnly" /p:ServerAddress=$macAgentServerAddress /p:ServerUser=$macAgentUser } 
 }
 
@@ -123,7 +129,7 @@ Task RestorePackages {
 	New-Item -ItemType Directory  "$source_folder\packages" -ErrorAction SilentlyContinue
 	$pathToPackages = Resolve-Path "$source_folder\packages"
 	$nugetConfig = Resolve-Path "$nuget_folder\nuget.config"
-	Exec { & "$nuget_folder\nuget.exe" restore "$source_folder\$solution" -MSBuildVersion 14 -PackagesDirectory $pathToPackages -ConfigFile $nugetConfig  }
+	Exec { & "$nuget_folder\nuget.exe" restore "$source_folder\$solution" -MSBuildVersion 14 -PackagesDirectory $pathToPackages -ConfigFile $nugetConfig }
 	Exec { & "$nuget_folder\nuget.exe" install NuProj -OutputDirectory $pathToPackages -ConfigFile $nugetConfig -Prerelease }
 }
 
@@ -146,35 +152,56 @@ Task Set-Versions -Depends Get-Version {
 	
 	Get-ChildItem -Recurse -Force | ? { $_.Name -eq "AssemblyInfo.cs" -or $_.Name -eq "AssemblyInfo.Shared.cs" } | % {
 		(Get-Content $_.FullName) | % {
-			($_ -replace 'AssemblyVersion\(.*\)', ('AssemblyVersion("' + $version + '")')) -replace 'AssemblyFileVersion\(.*\)', ('AssemblyFileVersion("' + $version + '")')
+			($_ -replace 'AssemblyVersion\(.*\)', ('AssemblyVersion("' + $script:packageVersion + '")')) -replace 'AssemblyFileVersion\(.*\)', ('AssemblyFileVersion("' + $script:packageVersion + '")')
 		} | Set-Content $_.FullName -Encoding UTF8
 	}    
 }
 
 Task Get-Version {
-	if ($version -eq $null) {
-		$version = getVersionBase
+	if (-Not $script:packageVersion) {
+		$versionInfo = (Get-Content "version.json") -join "`n" | ConvertFrom-Json
+		$script:packageVersion = "$($versionInfo.major).$($versionInfo.minor).$($versionInfo.build)";
+		if ($versionInfo.preRelease) {
+			$script:preReleaseNumber = "{0:00}" -f $versionInfo.preRelease
+		}
+		
+		#Write-Host "`tVersion Loaded: $script:packageVersion $script:preReleaseNumber"
+	} 
+}
+
+Task Increment-Version {
+	if (-Not (Test-Path "version.json")) {
+		$versionInfo = '{ "major":  2, "minor":  2, "build":  0, "preRelease":  1 }' | ConvertFrom-Json
+	} else {
+		$versionInfo = (Get-Content "version.json") -join "`n" | ConvertFrom-Json
 	}
+
+	$preVersion = "$($versionInfo.major).$($versionInfo.minor).$($versionInfo.build)";	
+	
+	if ($versionInfo.preRelease) {
+		$preVersion = "$preVersion-pre" + "{0:00}" -f $versionInfo.preRelease
+		$versionInfo.preRelease = [int]$versionInfo.preRelease + 1
+		$newVersion = "-pre" + "{0:00}" -f $versionInfo.preRelease
+	} else {
+		$versionInfo.build = [int]$versionInfo.build + 1
+	}
+		
+	$newVersion = "$($versionInfo.major).$($versionInfo.minor).$($versionInfo.build)" + $newVersion;	
+	
+	Write-Host "`tIncrementing Version from $preVersion to $newVersion"
+	$versionInfo | ConvertTo-Json | Out-File "version.json"
 }
 
 #######################################################################################################################
 
-function getVersionBase {
-	if ($version -eq $null) {
-		$versionInfo = (Get-Content "version.json") -join "`n" | ConvertFrom-Json
-		"$($versionInfo.major).$($versionInfo.minor).$($versionInfo.build)";    
-	} else {
-		$version
-	}
-}
-
-function ChangeNuSpecVersion([string] $baseNamespace, [string] $nuSpecFilePath, [string] $version="0.0.0.0", [string] $nuSpecFilePathTmp = $null, [bool] $dependencyupdateVersion = $false, [string] $dependencyVersion = $null)
+function ChangeNuSpecVersion([string] $baseNamespace, [string] $nuSpecFilePath, [string] $versionNumber="0.0.0.0", [string] $nuSpecFilePathTmp = $null, [bool] $dependencyupdateVersion = $false, [string] $dependencyVersion = $null)
 {
-	Write-Host "Dynamically setting NuSpec version: $Version" -ForegroundColor Yellow
-	Write-Host "`tNuspec File: $nuSpecFilePath"
-	Write-Host "`tTemp Nuspec File: $nuSpecFilePathTmp"
-	Write-Host "`tBase Namespace: $baseNamespace"
-	Write-Host "`tUpdate Dependency Version: $dependencyupdateVersion"
+	Write-Host "`tDynamically setting NuSpec version: $versionNumber" -ForegroundColor Yellow
+	Write-Host "`t`tBase Namespace: $baseNamespace" -ForegroundColor Yellow
+	Write-Host "`t`tNuspec File: $nuSpecFilePath" -ForegroundColor Yellow
+	Write-Host "`t`tTemp Nuspec File: $nuSpecFilePathTmp" -ForegroundColor Yellow
+	Write-Host "`t`tDependency Version: $dependencyVersion" -ForegroundColor Yellow
+	Write-Host "`t`tUpdate Dependency Version: $dependencyupdateVersion" -ForegroundColor Yellow
 	
 	# Get full path or save operation fails when launched in standalone powershell
 	$nuSpecFile = Get-Item $nuSpecFilePath | Select-Object -First 1
@@ -182,38 +209,38 @@ function ChangeNuSpecVersion([string] $baseNamespace, [string] $nuSpecFilePath, 
 	# Bring the XML Linq namespace in
 	[Reflection.Assembly]::LoadWithPartialName( "System.Xml.Linq" ) | Out-Null
 	
-	# Update the XML document with the new version
-	$xmlns = [System.Xml.Linq.XNamespace] "http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd";
+	# Update the XML document with the new version	
+	$xmlns = [System.Xml.Linq.XNamespace] "http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd";
 	$xDoc = [System.Xml.Linq.XDocument]::Load( $nuSpecFile.FullName )
 	$versionNode = $xDoc.Descendants( $xmlns + "version" ) | Select-Object -First 1
 	if ($versionNode -ne $null)
 	{
-		Write-Host "`t`tUpdating Version: $version" -ForegroundColor Green
-		$versionNode.SetValue($version)
+		Write-Host "`t`t`tUpdating Version: $versionNumber" -ForegroundColor Green
+		$versionNode.SetValue($versionNumber)
 	}
 	
 	# Update the XML document dependencies with the new version
 	if ($dependencyupdateVersion)
 	{
-		Write-Host "Updating Dependencies" -ForegroundColor Yellow
+		Write-Host "`tUpdating Dependencies" -ForegroundColor Yellow
 		$dependencies = $xDoc.Descendants( $xmlns + "dependency" )
 		foreach( $dependency in $dependencies )
 		{
 			$idAttribute = $dependency.Attributes( "id" ) | Select-Object -First 1
-			if ( $idAttribute -ne $null )
+			Write-Host "`t`tDependency: $idAttribute"
+			if ( $idAttribute -ne $null -or $idAttribute)
 			{
-				Write-Host "`tChecking Dependency: $idAttribute.Value" -ForegroundColor Green
-				if ($baseNamespace -ne $null -and $idAttribute.Value -like "$baseNamespace.*" )
+				if ($baseNamespace -and $idAttribute.Value -like "$baseNamespace.*" )
 				{
-					Write-Host "`t`tUpdating Dependency Version: $version" -ForegroundColor Green
+					Write-Host "`t`t`tUpdating Dependency Version: $versionNumber" -ForegroundColor Green
 
-					if ($dependencyVersion -ne $null)					
+					if ($dependencyVersion)					
 					{
 						$dependency.SetAttributeValue( "version", "$dependencyVersion" )
 					} 
 					else
 					{
-					$dependency.SetAttributeValue( "version", "[$version]" )
+					$dependency.SetAttributeValue( "version", "[$versionNumber]" )
 					}
 				}
 			}
@@ -221,9 +248,9 @@ function ChangeNuSpecVersion([string] $baseNamespace, [string] $nuSpecFilePath, 
 	}
 	
 	# Save file
-	if ($nuSpecFilePathTmp -ne $null -and $nuSpecFilePathTmp.Lengt -gt 0) 
+	if ($nuSpecFilePathTmp) 
 	{ 
-		Write-Host "Creating a temporary NuSpec file with the new version" 
+		Write-Host "`tCreating a temporary NuSpec file with the new version" -ForegroundColor Yellow
 		$xDoc.Save( $nuSpecFilePathTmp, [System.Xml.Linq.SaveOptions]::None )
 	} else {
 		$xDoc.Save( $nuSpecFile.FullName, [System.Xml.Linq.SaveOptions]::None )
