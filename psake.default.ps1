@@ -58,9 +58,9 @@ Task Publish -Depends Get-Version,DisplayParams {
 		
 		if ($nugetAPIKey)
 		{
-			#exec { & "$nuget_folder\nuget.exe" "push" "$($_.Fullname)" -ConfigFile $nugetConfig -Source $nugetServerUrl -ApiKey $nugetAPIKey }
+			exec { & "$nuget_folder\nuget.exe" "push" "$($_.Fullname)" -ConfigFile $nugetConfig -Source $nugetServerUrl -ApiKey $nugetAPIKey }
 		} else {
-			#exec { & "$nuget_folder\nuget.exe" "push" "$($_.Fullname)" -ConfigFile $nugetConfig }
+			exec { & "$nuget_folder\nuget.exe" "push" "$($_.Fullname)" -ConfigFile $nugetConfig }
 		}
 	}
 }
