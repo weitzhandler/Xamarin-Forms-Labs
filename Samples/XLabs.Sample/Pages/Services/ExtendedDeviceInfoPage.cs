@@ -228,6 +228,30 @@ namespace XLabs.Sample.Pages.Services
 
             #endregion
 
+            #region Hardware Version Information
+            var nameLabel = new Label { Text = "Hardware Version:" };
+
+            var nameText = new Label();
+
+            stack.Children.Add(new Frame
+            {
+                Content = new StackLayout
+                {
+                    Children = { nameLabel, nameText }
+                }
+            });
+
+            try
+            {
+                nameText.Text = device.HardwareVersion;
+            }
+            catch (Exception ex)
+            {
+                idText.Text = ex.Message;
+            }
+
+            #endregion
+
             scroll.Content = stack;
 
             this.Content = scroll;
