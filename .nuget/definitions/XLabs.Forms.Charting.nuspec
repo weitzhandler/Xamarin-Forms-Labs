@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.Forms.Charting</id>
-    <version>2.2.0-pre01</version>
+    <version>2.2.0-pre02</version>
     <title>XLabs - Forms - Charting</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -16,8 +16,8 @@
     <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs Forms Charting</tags>
     <dependencies>
-      <group targetFramework="portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch">
-        <dependency id="XLabs.Forms" version="[2.2.0-pre01]" />
+      <group>
+        <dependency id="XLabs.Forms" version="[2.2.0-pre02]" />
         <dependency id="Xamarin.Forms" version="2.2.0.31" />
       </group>
     </dependencies>

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.Serialization.JSON</id>
-    <version>2.2.0-pre01</version>
+    <version>2.2.0-pre02</version>
     <title>XLabs - Serialization - JSON</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -16,8 +16,8 @@
     <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs Serialization json json.net</tags>
     <dependencies>
-      <group targetFramework="portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch">
-        <dependency id="XLabs.Serialization" version="[2.2.0-pre01]" />
+      <group>
+        <dependency id="XLabs.Serialization" version="[2.2.0-pre02]" />
         <dependency id="Newtonsoft.Json" version="8.0.3" />
       </group>
     </dependencies>
