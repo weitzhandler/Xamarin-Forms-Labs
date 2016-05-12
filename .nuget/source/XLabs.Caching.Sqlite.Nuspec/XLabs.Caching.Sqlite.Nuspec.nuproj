@@ -39,7 +39,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\source\Caching\XLabs.Caching.Sqlite\XLabs.Caching.Sqlite.csproj" />
     <ProjectReference Include="..\XLabs.Caching.NuSpec\XLabs.Caching.NuSpec.nuproj" />
-    <ProjectReference Include="..\XLabs.Serialization.NuSpec\XLabs.Seriaization.NuSpec.nuproj" />
+    <ProjectReference Include="..\XLabs.Serialization.Nuspec\XLabs.Serialization.Nuspec.nuproj" />
   </ItemGroup>
   <Import Project="$(NuProjPath)\NuProj.targets" />
 </Project>

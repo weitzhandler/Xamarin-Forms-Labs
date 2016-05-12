@@ -19,7 +19,7 @@ GOTO BuildWithVersion
 IF [%3] == [] GOTO DisplayVersionError
 IF [%4] == [] GOTO DisplayVersionError
 echo Running psake build process with a specific Version (%VERSION%-%PRERELEASE%)
-powershell.exe -command ".\psake.build.ps1 %TASK% -configuration %CONFIG% -version %VERSION% -preRelease %PRERELEASE% -updateNuspecFile $true -updateNuspecVersion $true"
+powershell.exe -command ".\psake.build.ps1 %TASK% -configuration %CONFIG% -packageVersion %VERSION% -preReleaseNumber %PRERELEASE% -updateNuspecFile $true -updateNuspecVersion $true"
 GOTO Done
 
 :BuildWithOutVersion
