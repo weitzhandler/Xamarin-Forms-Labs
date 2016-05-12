@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.Caching.SQLite</id>
-    <version>2.2.0-pre02</version>
+    <version>2.2.0-pre03</version>
     <title>XLabs - Caching - SQLite</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -17,15 +17,17 @@
     <tags>Xamarin XLabs caching sqlite</tags>
     <dependencies>
       <group>
-        <dependency id="XLabs.Caching" version="[2.2.0-pre02]" />
+        <dependency id="XLabs.Caching" version="[2.2.0-pre03]" />
         <dependency id="SQLite.Net.Async-PCL" version="3.1.1" />
         <dependency id="SQLite.Net.Core-PCL" version="3.1.1" />
       </group>
     </dependencies>
   </metadata>
   <files>
+    <!-- Content Files -->
     <file src="..\source\XLabs.Caching.Sqlite.Nuspec\XLabs.Caching.SQLite.Readme.md" target="content\XLabs.Caching.SQLite.Readme.md" />
-    <file src="..\..\source\Caching\XLabs.Caching.Sqlite\bin\Debug\XLabs.Caching.Sqlite.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.Caching.Sqlite.dll" />
-    <file src="..\..\source\Caching\XLabs.Caching.Sqlite\bin\Debug\XLabs.Caching.Sqlite.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.Caching.Sqlite.pdb" />
+    <!-- Assemblies: Portable -->
+    <file src="..\..\source\Caching\XLabs.Caching.Sqlite\bin\Debug\XLabs.Caching.Sqlite.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch+xamarinmac\XLabs.Caching.Sqlite.dll" />
+    <file src="..\..\source\Caching\XLabs.Caching.Sqlite\bin\Debug\XLabs.Caching.Sqlite.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch+xamarinmac\XLabs.Caching.Sqlite.pdb" />
   </files>
 </package>

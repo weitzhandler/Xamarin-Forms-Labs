@@ -17,8 +17,10 @@
     <tags>Xamarin XLabs</tags>
   </metadata>
   <files>
+    <!-- Content Files -->
     <file src="..\source\XLabs.Core.Nuspec\XLabs.Core.Readme.md" target="content\XLabs.Core.Readme.md" />
-    <file src="..\..\source\Core\bin\Debug\XLabs.Core.dll" target="lib\portable-net45+win+wpa81+MonoAndroid+xamarinios+MonoTouch\XLabs.Core.dll" />
-    <file src="..\..\source\Core\bin\Debug\XLabs.Core.pdb" target="lib\portable-net45+win+wpa81+MonoAndroid+xamarinios+MonoTouch\XLabs.Core.pdb" />
+    <!-- Assemblies: Portable -->
+    <file src="..\..\source\Core\bin\Debug\XLabs.Core.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch+xamarinmac\XLabs.Core.dll" />
+    <file src="..\..\source\Core\bin\Debug\XLabs.Core.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch+xamarinmac\XLabs.Core.pdb" />
   </files>
 </package>

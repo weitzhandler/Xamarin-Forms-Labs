@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.Caching.Net45</id>
-    <version>2.2.0-pre02</version>
+    <version>2.2.0-pre03</version>
     <title>XLabs - Caching - .NET 4.5</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -17,14 +17,16 @@
     <tags>Xamarin XLabs caching</tags>
     <dependencies>
       <group>
-        <dependency id="XLabs.Serialization" version="[2.2.0-pre02]" />
-        <dependency id="XLabs.Caching" version="[2.2.0-pre02]" />
+        <dependency id="XLabs.Serialization" version="[2.2.0-pre03]" />
+        <dependency id="XLabs.Caching" version="[2.2.0-pre03]" />
       </group>
     </dependencies>
   </metadata>
   <files>
+    <!-- Content Files -->
     <file src="..\source\XLabs.Caching.Net45.Nuspec\XLabs.Caching.Net45.Readme.md" target="content\XLabs.Caching.Net45.Readme.md" />
-    <file src="..\..\source\Caching\XLabs.Caching.Net45\bin\Debug\XLabs.Caching.Net45.pdb" target="lib\net45\XLabs.Caching.Net45.pdb" />
+    <!-- Assemblies: .NET 4.5 -->
     <file src="..\..\source\Caching\XLabs.Caching.Net45\bin\Debug\XLabs.Caching.Net45.dll" target="lib\net45\XLabs.Caching.Net45.dll" />
+    <file src="..\..\source\Caching\XLabs.Caching.Net45\bin\Debug\XLabs.Caching.Net45.pdb" target="lib\net45\XLabs.Caching.Net45.pdb" />
   </files>
 </package>

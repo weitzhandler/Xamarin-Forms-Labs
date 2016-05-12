@@ -17,8 +17,10 @@
     <tags>Xamarin XLabs Cryptography</tags>
   </metadata>
   <files>
+    <!-- Content Files -->
     <file src="..\source\XLabs.Cryptography.Nuspec\XLabs.Cryptography.Readme.md" target="content\XLabs.Cryptography.Readme.md" />
-    <file src="..\..\source\Cryptography\XLabs.Cryptography\bin\Debug\XLabs.Cryptography.dll" target="lib\portable-net45+win+wpa81+MonoAndroid+xamarinios+MonoTouch\XLabs.Cryptography.dll" />
-    <file src="..\..\source\Cryptography\XLabs.Cryptography\bin\Debug\XLabs.Cryptography.pdb" target="lib\portable-net45+win+wpa81+MonoAndroid+xamarinios+MonoTouch\XLabs.Cryptography.pdb" />
+    <!-- Assemblies: Portable -->
+    <file src="..\..\source\Cryptography\XLabs.Cryptography\bin\Debug\XLabs.Cryptography.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch+xamarinmac\XLabs.Cryptography.dll" />
+    <file src="..\..\source\Cryptography\XLabs.Cryptography\bin\Debug\XLabs.Cryptography.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch+xamarinmac\XLabs.Cryptography.pdb" />
   </files>
 </package>

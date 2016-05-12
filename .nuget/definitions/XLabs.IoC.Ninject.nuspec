@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.IoC.Ninject</id>
-    <version>2.2.0-pre02</version>
+    <version>2.2.0-pre03</version>
     <title>XLabs - IoC - Ninject</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -17,7 +17,7 @@
     <tags>Xamarin XLabs IOC Ninject</tags>
     <dependencies>
       <group>
-        <dependency id="XLabs.IoC" version="[2.2.0-pre02]" />
+        <dependency id="XLabs.IoC" version="[2.2.0-pre03]" />
         <dependency id="Portable.Ninject" version="3.3.1" />
       </group>
       <group targetFramework=".NETFramework4.5">
@@ -27,10 +27,13 @@
     </dependencies>
   </metadata>
   <files>
+    <!-- Content Files -->
     <file src="..\source\XLabs.IOC.Ninject.Nuspec\XLabs.IOC.Ninject.Readme.md" target="content\XLabs.IOC.Ninject.Readme.md" />
+    <!-- Assemblies: Portable -->
+    <file src="..\..\source\IOC\XLabs.IOC.Ninject\bin\Debug\XLabs.IOC.Ninject.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch+xamarinmac\XLabs.IOC.Ninject.dll" />
+    <file src="..\..\source\IOC\XLabs.IOC.Ninject\bin\Debug\XLabs.IOC.Ninject.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch+xamarinmac\XLabs.IOC.Ninject.pdb" />
+    <!-- Assemblies: .NET 4.5 -->
     <file src="..\..\source\IOC\XLabs.IOC.Ninject\bin\Debug\XLabs.IOC.Ninject.dll" target="lib\net45\XLabs.IOC.Ninject.dll" />
     <file src="..\..\source\IOC\XLabs.IOC.Ninject\bin\Debug\XLabs.IOC.Ninject.pdb" target="lib\net45\XLabs.IOC.Ninject.pdb" />
-    <file src="..\..\source\IOC\XLabs.IOC.Ninject\bin\Debug\XLabs.IOC.Ninject.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.IOC.Ninject.dll" />
-    <file src="..\..\source\IOC\XLabs.IOC.Ninject\bin\Debug\XLabs.IOC.Ninject.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.IOC.Ninject.pdb" />
   </files>
 </package>

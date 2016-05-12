@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.Serialization.ServiceStack</id>
-    <version>2.2.0-pre02</version>
+    <version>2.2.0-pre03</version>
     <title>XLabs - Serialization - ServiceStack</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -17,31 +17,39 @@
     <tags>Xamarin XLabs Serialization ServiceStack</tags>
     <dependencies>
       <group>
-        <dependency id="XLabs.Serialization" version="[2.2.0-pre02]" />
+        <dependency id="XLabs.Serialization" version="[2.2.0-pre03]" />
       </group>
     </dependencies>
   </metadata>
   <files>
+    <!-- Content Files -->
     <file src="..\source\XLabs.Serialization.ServiceStack.Nuspec\XLabs.Serialization.ServiceStack.Readme.md" target="content\XLabs.Serialization.ServiceStack.Readme.md" />
+    <!-- Assemblies: Microsoft -->
     <file src="C:\Program Files (x86)\Windows Kits\10\UnionMetadata\facade\Windows.WinMD" target="lib\.NETCore50\Windows.winmd" />
+    <!-- Assemblies: Portable -->
+    <file src="..\..\source\Serialization\XLabs.Serialization.ServiceStack\bin\Debug\XLabs.Serialization.ServiceStack.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch+xamarinmac\XLabs.Serialization.ServiceStack.dll" />
+    <file src="..\..\source\Serialization\XLabs.Serialization.ServiceStack\bin\Debug\XLabs.Serialization.ServiceStack.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch+xamarinmac\XLabs.Serialization.ServiceStack.pdb" />
+    <!-- Assemblies: .NET Core 5.0 -->
     <file src="..\..\source\Serialization\XLabs.Serialization.ServiceStack\bin\Debug\XLabs.Serialization.ServiceStack.dll" target="lib\.NETCore50\XLabs.Serialization.ServiceStack.dll" />
     <file src="..\..\source\Serialization\XLabs.Serialization.ServiceStack\bin\Debug\XLabs.Serialization.ServiceStack.pdb" target="lib\.NETCore50\XLabs.Serialization.ServiceStack.pdb" />
     <file src="..\..\source\Serialization\XLabs.Serialization.ServiceStack.UWP\bin\Debug\XLabs.Serialization.ServiceStack.UWP.dll" target="lib\.NETCore50\XLabs.Serialization.ServiceStack.UWP.dll" />
     <file src="..\..\source\Serialization\XLabs.Serialization.ServiceStack.UWP\bin\Debug\XLabs.Serialization.ServiceStack.UWP.pdb" target="lib\.NETCore50\XLabs.Serialization.ServiceStack.UWP.pdb" />
+    <!-- Assemblies: Android -->
     <file src="..\..\source\Serialization\XLabs.Serialization.ServiceStack\bin\Debug\XLabs.Serialization.ServiceStack.dll" target="lib\monoandroid\XLabs.Serialization.ServiceStack.dll" />
     <file src="..\..\source\Serialization\XLabs.Serialization.ServiceStack.Droid\bin\Debug\XLabs.Serialization.ServiceStack.Droid.dll" target="lib\monoandroid\XLabs.Serialization.ServiceStack.Droid.dll" />
     <file src="..\..\source\Serialization\XLabs.Serialization.ServiceStack.Droid\bin\Debug\XLabs.Serialization.ServiceStack.Droid.pdb" target="lib\monoandroid\XLabs.Serialization.ServiceStack.Droid.pdb" />
     <file src="..\..\source\Serialization\XLabs.Serialization.ServiceStack\bin\Debug\XLabs.Serialization.ServiceStack.pdb" target="lib\monoandroid\XLabs.Serialization.ServiceStack.pdb" />
-    <file src="..\..\source\Serialization\XLabs.Serialization.ServiceStack\bin\Debug\XLabs.Serialization.ServiceStack.dll" target="lib\portable-net45+win+wpa81+monoandroid+xamarinios+monotouch\XLabs.Serialization.ServiceStack.dll" />
-    <file src="..\..\source\Serialization\XLabs.Serialization.ServiceStack\bin\Debug\XLabs.Serialization.ServiceStack.pdb" target="lib\portable-net45+win+wpa81+monoandroid+xamarinios+monotouch\XLabs.Serialization.ServiceStack.pdb" />
+    <!-- Assemblies: Windows 8.1 -->
     <file src="..\..\source\Serialization\XLabs.Serialization.ServiceStack\bin\Debug\XLabs.Serialization.ServiceStack.dll" target="lib\win81\XLabs.Serialization.ServiceStack.dll" />
     <file src="..\..\source\Serialization\XLabs.Serialization.ServiceStack\bin\Debug\XLabs.Serialization.ServiceStack.pdb" target="lib\win81\XLabs.Serialization.ServiceStack.pdb" />
     <file src="..\..\source\Serialization\XLabs.Serialization.ServiceStack.WinRT\bin\Debug\XLabs.Serialization.ServiceStack.WinRT.dll" target="lib\win81\XLabs.Serialization.ServiceStack.WinRT.dll" />
     <file src="..\..\source\Serialization\XLabs.Serialization.ServiceStack.WinRT\bin\Debug\XLabs.Serialization.ServiceStack.WinRT.pdb" target="lib\win81\XLabs.Serialization.ServiceStack.WinRT.pdb" />
+    <!-- Assemblies: Winows Mobile 8.1 -->
     <file src="..\..\source\Serialization\XLabs.Serialization.ServiceStack\bin\Debug\XLabs.Serialization.ServiceStack.dll" target="lib\wpa81\XLabs.Serialization.ServiceStack.dll" />
     <file src="..\..\source\Serialization\XLabs.Serialization.ServiceStack\bin\Debug\XLabs.Serialization.ServiceStack.pdb" target="lib\wpa81\XLabs.Serialization.ServiceStack.pdb" />
     <file src="..\..\source\Serialization\XLabs.Serialization.ServiceStack.WinRT.Phone\bin\Debug\XLabs.Serialization.ServiceStack.WinRT.Phone.dll" target="lib\wpa81\XLabs.Serialization.ServiceStack.WinRT.Phone.dll" />
     <file src="..\..\source\Serialization\XLabs.Serialization.ServiceStack.WinRT.Phone\bin\Debug\XLabs.Serialization.ServiceStack.WinRT.Phone.pdb" target="lib\wpa81\XLabs.Serialization.ServiceStack.WinRT.Phone.pdb" />
+    <!-- Assemblies: iOS -->
     <file src="..\..\source\Serialization\XLabs.Serialization.ServiceStack\bin\Debug\XLabs.Serialization.ServiceStack.dll" target="lib\xamarinios\XLabs.Serialization.ServiceStack.dll" />
     <file src="..\..\source\Serialization\XLabs.Serialization.ServiceStack.iOS\bin\Debug\XLabs.Serialization.ServiceStack.iOS.dll" target="lib\xamarinios\XLabs.Serialization.ServiceStack.iOS.dll" />
     <file src="..\..\source\Serialization\XLabs.Serialization.ServiceStack.iOS\bin\Debug\XLabs.Serialization.ServiceStack.iOS.pdb" target="lib\xamarinios\XLabs.Serialization.ServiceStack.iOS.pdb" />
