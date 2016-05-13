@@ -1,26 +1,26 @@
 properties {
-    $configuration = "Release"
-	$packageVersion = $null
-	$preReleaseNumber = $null
-    $solution = $null
-    $source_folder = "."
-	$test_folder = "."
-    $deploy_folder = "deploy"
-	$nuget_folder = ".nuget"
-	$nuspec_folder = $null
-	$nuproj_folder = $null
+    [string]$configuration = "Release"
+	[string]$packageVersion = $null
+	[string]$preReleaseNumber = $null
+    [string]$solution = $null
+    [string]$source_folder = "."
+	[string]$test_folder = "."
+    [string]$deploy_folder = "deploy"
+	[string]$nuget_folder = ".nuget"
+	[string]$nuspec_folder = $null
+	[string]$nuproj_folder = $null
     $projects = $null
-	$updateVersion = $true
-	$updateNuspecVersion = $true
-	$updateNuspecFile = $true
-	$unittest_framework = "nunit"
-	$macAgentServerAddress = $null
-	$macAgentUser = $null
-	$baseNamespace = $null
-	$processNuProjOutput = $false
-	$autoIncrementVersion = $false
-	$nugetServerUrl = "https://nuget.org"
-	$nugetAPIKey = $null
+	[bool]$updateVersion = $true
+	[bool]$updateNuspecVersion = $true
+	[bool]$updateNuspecFile = $true
+	[string]$unittest_framework = "nunit"
+	[string]$macAgentServerAddress = $null
+	[string]$macAgentUser = $null
+	[string]$baseNamespace = $null
+	[bool]$processNuProjOutput = $false
+	[bool]$autoIncrementVersion = $false
+	[string]$nugetServerUrl = "https://nuget.org"
+	[string]$nugetAPIKey = $null
 }
 
 Task Default -Depends DisplayParams,Build
@@ -65,6 +65,28 @@ Task Publish -Depends Get-Version,DisplayParams {
 	}
 }
 
+Task UnPublish -Depends Get-Version,DisplayParams {
+	$ver = $script:packageVersion
+	
+	if ($script:preReleaseNumber)
+	{
+		$ver = "$ver-pre$($script:preReleaseNumber)"
+	}
+
+	$nugetConfig = Resolve-Path "$nuget_folder\nuget.config"
+
+	Get-ChildItem -Path "$nuspec_folder\*.nuspec" -ErrorAction SilentlyContinue | % {
+		Write-Host "`tUnPublishing $($_.BaseName) $ver"
+		
+		if ($nugetAPIKey)
+		{
+			exec { & "$nuget_folder\nuget.exe" "delete" "$($_.BaseName)" $ver -ConfigFile $nugetConfig -Source $nugetServerUrl -ApiKey $nugetAPIKey -NonInteractive }
+		} else {
+			exec { & "$nuget_folder\nuget.exe" "delete" "$($_.BaseName)" $ver -ConfigFile $nugetConfig -NonInteractive }
+		}
+	}
+}
+
 Task Package -Depends Get-Version,DisplayParams,RestoreDependencies { #-Depends Test {
 	$ver = $script:packageVersion
 	
@@ -73,6 +95,7 @@ Task Package -Depends Get-Version,DisplayParams,RestoreDependencies { #-Depends 
 		$ver = "$ver-pre$($script:preReleaseNumber)"
 	}
 	
+	New-Item $deploy_folder -ItemType Directory -ErrorAction SilentlyContinue	
 	$path = Resolve-Path $deploy_folder
 	
 	Get-ChildItem -Path "$nuspec_folder\*.nuspec" -ErrorAction SilentlyContinue | % {
@@ -93,7 +116,14 @@ Task Package -Depends Get-Version,DisplayParams,RestoreDependencies { #-Depends 
 		Write-Host "`tver: $ver"
 		Write-Host "`tconfiguration: $configuration"
 		
-		exec { & "$nuget_folder\nuget.exe" pack $nuspecFile -OutputDirectory "$path" -MSBuildVersion 14 -Version $ver -Symbols -Prop Configuration=$configuration -Verbosity detailed }
+		Try {
+			exec { & "$nuget_folder\nuget.exe" pack $nuspecFile -OutputDirectory "$path" -MSBuildVersion 14 -Version $ver -Symbols -Prop Configuration=$configuration -Verbosity detailed }
+		}
+		Catch 
+		{
+			Write-Host "`tFailed generating package: $nuspecFile" -ForegroundColor Red
+			Write-Host "`tError: $($_.Exception.Message)" -ForegroundColor Red
+		}
 
 		if (-Not ($updateNuspecFile)) { Remove-Item $nuSpecFilePathTmp -ErrorAction SilentlyContinue }
 	}
@@ -147,7 +177,7 @@ Task RestoreDependencies {
 Task ProcessNuProjNuSpecFiles -Precondition { return $processNuProjOutput } {
 	pushd
 	cd $nuproj_folder
-	#Exec { & ".\process.ps1" }
+	#exec { & ".\process.ps1" }
 	popd
 }
 
@@ -162,15 +192,23 @@ Task Set-Versions -Depends Get-Version {
 }
 
 Task Get-Version {
-	if (-Not $script:packageVersion) {
+	if (-Not $script:packageVersion -and -Not $packageVersion) {
 		$versionInfo = (Get-Content "version.json") -join "`n" | ConvertFrom-Json
 		$script:packageVersion = "$($versionInfo.major).$($versionInfo.minor).$($versionInfo.build)";
 		if ($versionInfo.preRelease) {
 			$script:preReleaseNumber = "{0:00}" -f $versionInfo.preRelease
 		}
 		
-		#Write-Host "`tVersion Loaded: $script:packageVersion $script:preReleaseNumber"
-	} 
+		Write-Host "`tVersion Loaded: $script:packageVersion $script:preReleaseNumber"
+	} else {
+		$script:packageVersion = $packageVersion
+		
+		if ($preReleaseNumber) {
+			$script:preReleaseNumber = "{0:00}" -f $preReleaseNumber
+		}
+		
+		Write-Host "`tVersion Passed in: $script:packageVersion $script:preReleaseNumber"
+	}
 }
 
 Task Increment-Version {

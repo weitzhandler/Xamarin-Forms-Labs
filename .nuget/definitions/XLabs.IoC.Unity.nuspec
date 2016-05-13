@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.IoC.Unity</id>
-    <version>2.2.0-pre01</version>
+    <version>2.2.0-pre03</version>
     <title>XLabs - IoC - Unity</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -16,15 +16,17 @@
     <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs IOC</tags>
     <dependencies>
-      <group targetFramework="portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch">
-        <dependency id="XLabs.IoC" version="[2.2.0-pre01]" />
+      <group>
+        <dependency id="XLabs.IoC" version="[2.2.0-pre03]" />
         <dependency id="Unity" version="4.0.1" />
       </group>
     </dependencies>
   </metadata>
   <files>
+    <!-- Content Files -->
     <file src="..\source\XLabs.IOC.Unity.Nuspec\XLabs.IOC.Unity.Readme.md" target="content\XLabs.IOC.Unity.Readme.md" />
-    <file src="..\..\source\IOC\XLabs.IOC.Unity\bin\Debug\XLabs.IOC.Unity.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.IOC.Unity.dll" />
-    <file src="..\..\source\IOC\XLabs.IOC.Unity\bin\Debug\XLabs.IOC.Unity.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.IOC.Unity.pdb" />
+    <!-- Assemblies: Portable -->
+    <file src="..\..\source\IOC\XLabs.IOC.Unity\bin\Debug\XLabs.IOC.Unity.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch+xamarinmac\XLabs.IOC.Unity.dll" />
+    <file src="..\..\source\IOC\XLabs.IOC.Unity\bin\Debug\XLabs.IOC.Unity.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch+xamarinmac\XLabs.IOC.Unity.pdb" />
   </files>
 </package>

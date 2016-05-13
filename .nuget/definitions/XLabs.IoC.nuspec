@@ -17,8 +17,10 @@
     <tags>Xamarin XLabs IOC</tags>
   </metadata>
   <files>
+    <!-- Content Files -->
     <file src="..\source\XLabs.IOC.Nuspec\XLabs.IOC.Readme.md" target="content\XLabs.IOC.Readme.md" />
-    <file src="..\..\source\IOC\XLabs.IOC\bin\Debug\XLabs.IOC.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.IOC.dll" />
-    <file src="..\..\source\IOC\XLabs.IOC\bin\Debug\XLabs.IOC.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.IOC.pdb" />
+    <!-- Assemblies: Portable -->
+    <file src="..\..\source\IOC\XLabs.IOC\bin\Debug\XLabs.IOC.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch+xamarinmac\XLabs.IOC.dll" />
+    <file src="..\..\source\IOC\XLabs.IOC\bin\Debug\XLabs.IOC.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch+xamarinmac\XLabs.IOC.pdb" />
   </files>
 </package>
