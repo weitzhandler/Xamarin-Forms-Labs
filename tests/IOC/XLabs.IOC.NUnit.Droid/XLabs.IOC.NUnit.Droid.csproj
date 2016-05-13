@@ -73,10 +73,6 @@
       <HintPath>..\..\..\source\packages\nunit.xamarin.3.0.1\lib\MonoAndroid\nunit.runner.Droid.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="SimpleInjector, Version=3.1.4.0, Culture=neutral, PublicKeyToken=984cb50dea722e99, processorArchitecture=MSIL">
-      <HintPath>..\..\..\source\packages\SimpleInjector.3.1.4\lib\dotnet\SimpleInjector.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -158,10 +154,6 @@
     <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC.Ninject\XLabs.IOC.Ninject.csproj">
       <Project>{95559c0f-3aba-4d68-8e3e-5b9230887ed1}</Project>
       <Name>XLabs.IOC.Ninject</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC.SimpleInjector\XLabs.IOC.SimpleInjector.csproj">
-      <Project>{6e550f02-4666-4d37-962f-d2a990e9f2a7}</Project>
-      <Name>XLabs.IOC.SimpleInjector</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\..\source\IOC\XLabs.IOC.TinyIOC.Droid\XLabs.IOC.TinyIOC.Droid.csproj">
       <Project>{e2d6629f-0471-41b1-b3ae-b0c15683a6ae}</Project>
