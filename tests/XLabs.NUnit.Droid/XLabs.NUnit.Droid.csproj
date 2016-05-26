@@ -217,10 +217,6 @@
       <Project>{480a3b69-7110-400a-b06b-9f9e648d61e9}</Project>
       <Name>XLabs.Serialization.ServiceStack.Droid</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\source\Serialization\XLabs.Serialization.ServiceStack\XLabs.Serialization.ServiceStack.csproj">
-      <Project>{c81cba7f-9c85-4064-8ce7-70f929d918c7}</Project>
-      <Name>XLabs.Serialization.ServiceStack</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\source\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
       <Project>{6c5c17d3-e6e8-4201-b11f-7c50b02e8e3d}</Project>
       <Name>XLabs.Serialization</Name>
