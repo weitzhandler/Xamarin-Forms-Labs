@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.Web</id>
-    <version>2.2.0-pre03</version>
+    <version>2.2.0-pre04</version>
     <title>XLabs - Web</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -26,12 +26,12 @@
   </metadata>
   <files>
     <!-- Content Files -->
-    <file src="..\source\XLabs.Web.Nuspec\XLabs.Settings.Web.Readme.md" target="content\XLabs.Settings.Web.Readme.md" />
+    <file src="..\..\docs\XLabs.Settings.Web.Readme.md" target="content\XLabs.Settings.Web.Readme.md" />
     <!-- Assemblies: Microsoft -->
     <file src="C:\Program Files (x86)\Windows Kits\10\UnionMetadata\facade\Windows.WinMD" target="lib\.NETCore50\Windows.winmd" />
     <!-- Assemblies: Portable -->
-    <file src="..\..\source\Web\XLabs.Web\bin\Debug\XLabs.Web.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch+xamarinmac\XLabs.Web.dll" />
-    <file src="..\..\source\Web\XLabs.Web\bin\Debug\XLabs.Web.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch+xamarinmac\XLabs.Web.pdb" />
+    <file src="..\..\source\Web\XLabs.Web\bin\Debug\XLabs.Web.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\XLabs.Web.dll" />
+    <file src="..\..\source\Web\XLabs.Web\bin\Debug\XLabs.Web.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\XLabs.Web.pdb" />
     <!-- Assemblies: .NET Core 5.0 -->
     <file src="..\..\source\Web\XLabs.Web\bin\Debug\XLabs.Web.dll" target="lib\.NETCore50\XLabs.Web.dll" />
     <file src="..\..\source\Web\XLabs.Web\bin\Debug\XLabs.Web.pdb" target="lib\.NETCore50\XLabs.Web.pdb" />

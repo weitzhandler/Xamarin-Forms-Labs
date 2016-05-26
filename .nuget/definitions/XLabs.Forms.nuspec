@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.Forms</id>
-    <version>2.2.0-pre03</version>
+    <version>2.2.0-pre04</version>
     <title>XLabs - Forms</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -17,20 +17,20 @@
     <tags>Xamarin XLabs Forms Controls GridView ListView</tags>
     <dependencies>
       <group>
-        <dependency id="XLabs.Core" version="[2.2.0-pre03]" />
-        <dependency id="XLabs.IoC" version="[2.2.0-pre03]" />
-        <dependency id="XLabs.Platform" version="[2.2.0-pre03]" />
-        <dependency id="XLabs.Serialization" version="[2.2.0-pre03]" />
+        <dependency id="XLabs.Core" version="[2.2.0-pre04]" />
+        <dependency id="XLabs.IoC" version="[2.2.0-pre04]" />
+        <dependency id="XLabs.Platform" version="[2.2.0-pre04]" />
+        <dependency id="XLabs.Serialization" version="[2.2.0-pre04]" />
         <dependency id="Xamarin.Forms" version="2.2.0.31" />
       </group>
     </dependencies>
   </metadata>
   <files>
     <!-- Content Files -->
-    <file src="..\source\XLabs.Forms.Nuspec\XLabs.Forms.Readme.md" target="content\XLabs.Forms.Readme.md" />
+    <file src="..\..\docs\XLabs.Forms.Readme.md" target="content\XLabs.Forms.Readme.md" />
     <!-- Assemblies: Portable -->
-    <file src="..\..\source\Forms\XLabs.Forms\bin\Debug\XLabs.Forms.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch+xamarinmac\XLabs.Forms.dll" />
-    <file src="..\..\source\Forms\XLabs.Forms\bin\Debug\XLabs.Forms.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch+xamarinmac\XLabs.Forms.pdb" />
+    <file src="..\..\source\Forms\XLabs.Forms\bin\Debug\XLabs.Forms.dll" target="lib\portable-net45+win8+wpa81+monoandroid+xamarinios+monotouch+xamarinmac\XLabs.Forms.dll" />
+    <file src="..\..\source\Forms\XLabs.Forms\bin\Debug\XLabs.Forms.pdb" target="lib\portable-net45+win8+wpa81+monoandroid+xamarinios+monotouch+xamarinmac\XLabs.Forms.pdb" />
     <!-- Assemblies: .NET Core 5.0 -->
     <file src="..\..\source\Forms\XLabs.Forms\bin\Debug\XLabs.Forms.dll" target="lib\.NETCore50\XLabs.Forms.dll" />
     <file src="..\..\source\Forms\XLabs.Forms\bin\Debug\XLabs.Forms.pdb" target="lib\.NETCore50\XLabs.Forms.pdb" />

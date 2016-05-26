@@ -1,4 +1,11 @@
 ﻿// ***********************************************************************
+// Assembly         : XLabs.Serialization.ASPNET
+// Author           : XLabs Team
+// Created          : 12-27-2015
+// 
+// Last Modified By : XLabs Team
+// Last Modified On : 01-04-2016
+// ***********************************************************************
 // <copyright file="AssemblyInfo.cs" company="XLabs Team">
 //     Copyright (c) XLabs Team. All rights reserved.
 // </copyright>
@@ -11,22 +18,23 @@
 // </summary>
 // ***********************************************************************
 // 
+#region
 
-using System.Resources;
 using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
+using System.Resources;
+
+#endregion
 
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("XLabs.Serialization.AspNet")]
+[assembly: AssemblyTitle("XLabs.Serialization.ASPNET")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
 
-#if !_USE_SHARED_ASSEMBLYINFO
+#if _USE_INDIVIDUAL_ASSEMBLYINFO
 [assembly: AssemblyCompany("XLabs Team")]
 [assembly: AssemblyProduct("XLabs")]
 [assembly: AssemblyCopyright("Copyright © XLabs Team 2016")]
@@ -46,6 +54,3 @@ using System.Runtime.InteropServices;
 
 //[assembly: AssemblyFileVersion("2.0.*")]
 #endif
-
-// The following GUID is for the ID of the typelib if this project is exposed to COM
-//[assembly: Guid("89368b47-f7bf-4d0c-bc55-5b557b36d01c")]

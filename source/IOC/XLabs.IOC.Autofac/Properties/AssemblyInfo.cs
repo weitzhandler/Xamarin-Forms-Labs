@@ -1,5 +1,5 @@
 ﻿// ***********************************************************************
-// Assembly         : XLabs.Ioc.Autofac
+// Assembly         : XLabs.IOC.Autofac
 // Author           : XLabs Team
 // Created          : 12-27-2015
 // 
@@ -26,12 +26,12 @@ using System.Resources;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 
-[assembly: AssemblyTitle("XLabs.Ioc.Autofac")]
+[assembly: AssemblyTitle("XLabs.IOC.Autofac")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyCulture("")]
 [assembly: NeutralResourcesLanguage("en")]
 
-#if !_USE_SHARED_ASSEMBLYINFO
+#if _USE_INDIVIDUAL_ASSEMBLYINFO
 [assembly: AssemblyCompany("XLabs Team")]
 [assembly: AssemblyProduct("XLabs")]
 [assembly: AssemblyCopyright("Copyright © XLabs Team 2016")]
