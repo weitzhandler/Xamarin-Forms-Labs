@@ -111,14 +111,8 @@ namespace XLabs.Forms.Controls
         /// requirement of having a business license or higher.</remarks>
         public HybridWebView()
         {
-            if (!Resolver.IsSet || (this.jsonSerializer = Resolver.Resolve<IJsonSerializer>() ?? DependencyService.Get<IJsonSerializer>()) == null)
-            {
-#if BUSINESS_LICENSE
-                _jsonSerializer = new SystemJsonSerializer();
-#else
-                throw new Exception("HybridWebView requires IJsonSerializer implementation to be registered.");
-#endif
-            }
+            this.jsonSerializer = (Resolver.IsSet ? Resolver.Resolve<IJsonSerializer>() : null)
+                ?? DependencyService.Get<IJsonSerializer>() ?? new SystemJsonSerializer();
 
             this.registeredActions = new Dictionary<string, Action<string>>();
             this.registeredFunctions = new Dictionary<string, Func<string, object[]>>();
