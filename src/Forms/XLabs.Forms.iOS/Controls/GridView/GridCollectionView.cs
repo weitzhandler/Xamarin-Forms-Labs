@@ -136,11 +136,6 @@ namespace XLabs.Forms.Controls
 
             base.Draw (rect);
         }
-
-        public override CGSize SizeThatFits(CGSize size)
-        {
-            return ItemSize;
-        }
     }
 }
 

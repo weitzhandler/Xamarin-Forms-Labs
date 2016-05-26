@@ -22,7 +22,6 @@
 using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
-using System.Windows.Input;
 using Xamarin.Forms;
 using XLabs.Ioc;
 using XLabs.Platform.Device;
@@ -45,11 +44,11 @@ namespace XLabs.Sample.ViewModel
         /// <summary>
         /// Initializes a new instance of the <see cref="MainViewModel"/> class.
         /// </summary>
-        public MainViewModel()
+        public MainViewModel ()
         {
-            SpeakCommand = new Command(() => Resolver.Resolve<ITextToSpeechService>().Speak(TextToSpeak));
-            AddImagesCommand = new RelayCommand(async () => await AddImages());
-            RemoveImagesCommand = new Command(async () => await RemoveImages());
+            SpeakCommand = new Command (() => Resolver.Resolve<ITextToSpeechService>().Speak(TextToSpeak));
+            AddImagesCommand = new Command(() => AddImages());
+            RemoveImagesCommand = new Command(() => RemoveImages());
             ChangeImageSourceCommand = new Command(() => ChangeImageSource());
 
             Images = new ObservableCollection<string>();
@@ -62,23 +61,28 @@ namespace XLabs.Sample.ViewModel
         }
 
 
-        public async Task AddImages()
+        public Task AddImages()
         {
-            await Task.Delay(1000);
-            for (var i = 0; i < 5; i++)
+            return Task.Run(async () => 
             {
-                Images.Add("http://www.stockvault.net/data/2011/05/31/124348/small.jpg");
-            }
+                await Task.Delay(1000);
+                for (var i = 0; i < 5; i++) 
+                {
+                    Images.Add ("http://www.stockvault.net/data/2011/05/31/124348/small.jpg");
+                }
+            });
         }
 
-        public async Task RemoveImages()
+        public Task RemoveImages()
         {
-            await Task.Delay(1000);
-            for (var i = 0; i < 5; i++)
+            return Task.Run(async () => 
             {
-                if (Images.Count > 0)
-                    Images.RemoveAt(0);
-            }
+                    for (var i = 0; i < 5; i++) 
+                {
+                    if(Images.Count > 0)
+                        Images.RemoveAt(0);
+                }
+            });
         }
 
         public void ChangeImageSource()
@@ -89,10 +93,9 @@ namespace XLabs.Sample.ViewModel
         /// <summary>
         /// The start timer.
         /// </summary>
-        public void StartTimer()
+        public void StartTimer ()
         {
-            Device.StartTimer(new TimeSpan(6000), () =>
-            {
+            Device.StartTimer (new TimeSpan (6000), () => {
                 DeviceTimerInfo = "This text was updated using the Device Timer";
                 return true;
             });
@@ -104,9 +107,9 @@ namespace XLabs.Sample.ViewModel
         /// <value>
         /// The device manufacturer.
         /// </value>
-        public string DeviceManufacturer
+        public string DeviceManufacturer 
         {
-            get
+            get 
             {
                 return string.Format("Device was manufactured by {0}", _device.Manufacturer);
             }
@@ -118,11 +121,9 @@ namespace XLabs.Sample.ViewModel
         /// <value>
         /// The device name.
         /// </value>
-        public string DeviceName
-        {
-            get
-            {
-                return string.Format("Device is called {0}", _device.Name);
+        public string DeviceName {
+            get {
+                return string.Format ("Device is called {0}", _device.Name);
             }
         }
 
@@ -132,15 +133,12 @@ namespace XLabs.Sample.ViewModel
         /// <value>
         /// The number to call.
         /// </value>
-        public string NumberToCall
-        {
-            get
-            {
+        public string NumberToCall {
+            get {
                 return _numberToCall;
             }
-            set
-            {
-                SetProperty(ref _numberToCall, value);
+            set {
+                SetProperty (ref _numberToCall, value);
             }
         }
 
@@ -150,15 +148,12 @@ namespace XLabs.Sample.ViewModel
         /// <value>
         /// The text to speak.
         /// </value>
-        public string TextToSpeak
-        {
-            get
-            {
+        public string TextToSpeak {
+            get {
                 return _textToSpeak;
             }
-            set
-            {
-                SetProperty(ref _textToSpeak, value);
+            set {
+                SetProperty (ref _textToSpeak, value);
             }
         }
 
@@ -170,15 +165,12 @@ namespace XLabs.Sample.ViewModel
         /// <value>
         /// The device UI thread info.
         /// </value>
-        public string DeviceUIThreadInfo
-        {
-            get
-            {
+        public string DeviceUIThreadInfo {
+            get {
                 return _deviceUIThreadInfo;
             }
-            set
-            {
-                SetProperty(ref _deviceUIThreadInfo, value);
+            set { 
+                SetProperty (ref _deviceUIThreadInfo, value);
             }
         }
 
@@ -188,34 +180,28 @@ namespace XLabs.Sample.ViewModel
         /// <value>
         /// The device timer info.
         /// </value>
-        public string DeviceTimerInfo
-        {
-            get
-            {
+        public string DeviceTimerInfo {
+            get {
                 return _deviceTimerInfo;
             }
-
-            set
-            {
-                SetProperty(ref _deviceTimerInfo, value);
+            
+            set { 
+                SetProperty (ref _deviceTimerInfo, value);
             }
         }
-
+        
         /// <summary>
         /// Gets or sets the demo images.
         /// </summary>
         /// <value>
         /// The images.
         /// </value>
-        public ObservableCollection<string> Images
-        {
-            get
-            {
+        public ObservableCollection<string> Images {
+            get {
                 return _images;
             }
-            set
-            {
-                SetProperty(ref _images, value);
+            set {
+                SetProperty (ref _images, value);
             }
         }
 
@@ -225,39 +211,39 @@ namespace XLabs.Sample.ViewModel
         /// <value>
         /// The speak command.
         /// </value>
-        public ICommand SpeakCommand { get; private set; }
+        public Command SpeakCommand { get; private set; }
 
         /// <summary>
         /// Command to add images to the list
         /// </summary>
         /// <value>The add images command.</value>
-        public ICommand AddImagesCommand { get; private set; }
+        public Command AddImagesCommand { get; private set; }
 
         /// <summary>
         /// Command to remove images from the list
         /// </summary>
         /// <value>The remove images command.</value>
-        public ICommand RemoveImagesCommand { get; private set; }
+        public Command RemoveImagesCommand { get; private set; }
 
         /// <summary>
         /// Command to swap the image source to a new object
         /// </summary>
         /// <value>The change image source command.</value>
         public Command ChangeImageSourceCommand { get; private set; }
-
+        
         /// <summary>
         /// Gets the call command.
         /// </summary>
         /// <value>
         /// The call command.
         /// </value>
-        public Command CallCommand
+        public Command CallCommand 
         {
-            get
+            get 
             {
-                return _callCommand ?? (_callCommand = new Command(
-                    () => _device.PhoneService.DialNumber(NumberToCall),
-                    () => _device.PhoneService != null));
+                return _callCommand ?? (_callCommand = new Command (
+                    () => _device.PhoneService.DialNumber (NumberToCall),
+                    () => _device.PhoneService != null)); 
             }
         }
     }
