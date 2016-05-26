@@ -6,6 +6,8 @@ using Test = Microsoft.VisualStudio.TestPlatform.UnitTestFramework.TestMethodAtt
 using NUnit.Framework;
 #endif
 
+// SimpleInjector does not work with MonoAndroid60, because of its dependencies
+#if !__ANDROID__
 namespace IocTests
 {
     using SimpleInjector;
@@ -26,3 +28,4 @@ namespace IocTests
         }
     }
 }
+#endif
