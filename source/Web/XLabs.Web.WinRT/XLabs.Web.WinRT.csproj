@@ -35,6 +35,14 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework is automatically included -->
+    <ProjectReference Include="..\..\Core\XLabs.Core.csproj">
+      <Project>{486abbd5-9e4d-4bd2-a6fb-82e0e3b5a163}</Project>
+      <Name>XLabs.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
+      <Project>{6c5c17d3-e6e8-4201-b11f-7c50b02e8e3d}</Project>
+      <Name>XLabs.Serialization</Name>
+    </ProjectReference>
     <ProjectReference Include="..\XLabs.Web\XLabs.Web.csproj">
       <Project>{f9f8ec0b-d46d-40ec-babf-f9d499ce451a}</Project>
       <Name>XLabs.Web</Name>
@@ -47,6 +55,7 @@
     </Compile>
   </ItemGroup>
   <Import Project="..\XLabs.Web.WinRT.Shared\XLabs.Web.WinRT.Shared.projitems" Label="Shared" />
+  <Import Project="..\XLabs.Web.Shared\XLabs.Web.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

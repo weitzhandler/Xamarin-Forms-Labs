@@ -184,10 +184,6 @@
       <Project>{324a8036-71ca-441c-8549-102f7eaf3331}</Project>
       <Name>XLabs.Serialization.ProtoBuf</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\source\Serialization\XLabs.Serialization.ServiceStack.UWP\XLabs.Serialization.ServiceStack.UWP.csproj">
-      <Project>{619c467a-32b4-44c5-96f0-eccf904c24c8}</Project>
-      <Name>XLabs.Serialization.ServiceStack.UWP</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\source\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
       <Project>{6c5c17d3-e6e8-4201-b11f-7c50b02e8e3d}</Project>
       <Name>XLabs.Serialization</Name>

@@ -46,34 +46,34 @@
     <!-- Content Files -->
     <file src="..\..\docs\XLabs.Platform.Readme.md" target="content\XLabs.Platform.Readme.md" />
     <!-- Assemblies: Microsoft -->
-    <file src="C:\Program Files (x86)\Windows Kits\10\UnionMetadata\facade\Windows.WinMD" target="lib\.NETCore50\Windows.winmd" />
+    <file src="C:\Program Files (x86)\Windows Kits\10\UnionMetadata\facade\Windows.WinMD" target="lib\uap10\Windows.winmd" />
     <!-- Assemblies: Portable -->
-    <file src="..\..\source\Platform\XLabs.Platform\bin\Debug\XLabs.Platform.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\XLabs.Platform.dll" />
-    <file src="..\..\source\Platform\XLabs.Platform\bin\Debug\XLabs.Platform.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\XLabs.Platform.pdb" />
-    <!-- Assemblies: .NET Core 5.0 -->
-    <file src="..\..\source\Platform\XLabs.Platform\bin\Debug\XLabs.Platform.dll" target="lib\.NETCore50\XLabs.Platform.dll" />
-    <file src="..\..\source\Platform\XLabs.Platform\bin\Debug\XLabs.Platform.pdb" target="lib\.NETCore50\XLabs.Platform.pdb" />
-    <file src="..\..\source\Platform\XLabs.Platform.UWP\bin\Debug\XLabs.Platform.UWP.dll" target="lib\.NETCore50\XLabs.Platform.UWP.dll" />
-    <file src="..\..\source\Platform\XLabs.Platform.UWP\bin\Debug\XLabs.Platform.UWP.pdb" target="lib\.NETCore50\XLabs.Platform.UWP.pdb" />
+    <file src="..\..\source\Platform\XLabs.Platform\bin\Debug\XLabs.Platform.dll" target="lib\portable-netcore451+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\XLabs.Platform.dll" />
+    <file src="..\..\source\Platform\XLabs.Platform\bin\Debug\XLabs.Platform.pdb" target="lib\portable-netcore451+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\XLabs.Platform.pdb" />
     <!-- Assemblies: Android -->
     <file src="..\..\source\Platform\XLabs.Platform\bin\Debug\XLabs.Platform.dll" target="lib\MonoAndroid\XLabs.Platform.dll" />
     <file src="..\..\source\Platform\XLabs.Platform\bin\Debug\XLabs.Platform.pdb" target="lib\MonoAndroid\XLabs.Platform.pdb" />
     <file src="..\..\source\Platform\XLabs.Platform.Droid\bin\Debug\XLabs.Platform.Droid.dll" target="lib\MonoAndroid\XLabs.Platform.Droid.dll" />
     <file src="..\..\source\Platform\XLabs.Platform.Droid\bin\Debug\XLabs.Platform.Droid.pdb" target="lib\MonoAndroid\XLabs.Platform.Droid.pdb" />
+    <!-- Assemblies: iOS -->
+    <file src="..\..\source\Platform\XLabs.Platform\bin\Debug\XLabs.Platform.dll" target="lib\xamarinios10\XLabs.Platform.dll" />
+    <file src="..\..\source\Platform\XLabs.Platform\bin\Debug\XLabs.Platform.pdb" target="lib\xamarinios10\XLabs.Platform.pdb" />
+    <file src="..\..\source\Platform\XLabs.Platform.iOS\bin\Debug\XLabs.Platform.iOS.dll" target="lib\xamarinios10\XLabs.Platform.iOS.dll" />
+    <file src="..\..\source\Platform\XLabs.Platform.iOS\bin\Debug\XLabs.Platform.iOS.pdb" target="lib\xamarinios10\XLabs.Platform.iOS.pdb" />
     <!-- Assemblies: Windows 8.1 -->
-    <file src="..\..\source\Platform\XLabs.Platform\bin\Debug\XLabs.Platform.dll" target="lib\win81\XLabs.Platform.dll" />
-    <file src="..\..\source\Platform\XLabs.Platform\bin\Debug\XLabs.Platform.pdb" target="lib\win81\XLabs.Platform.pdb" />
-    <file src="..\..\source\Platform\XLabs.Platform.WinRT\bin\Debug\XLabs.Platform.WinRT.dll" target="lib\win81\XLabs.Platform.WinRT.dll" />
-    <file src="..\..\source\Platform\XLabs.Platform.WinRT\bin\Debug\XLabs.Platform.WinRT.pdb" target="lib\win81\XLabs.Platform.WinRT.pdb" />
+    <file src="..\..\source\Platform\XLabs.Platform\bin\Debug\XLabs.Platform.dll" target="lib\netcore451\XLabs.Platform.dll" />
+    <file src="..\..\source\Platform\XLabs.Platform\bin\Debug\XLabs.Platform.pdb" target="lib\netcore451\XLabs.Platform.pdb" />
+    <file src="..\..\source\Platform\XLabs.Platform.WinRT\bin\Debug\XLabs.Platform.WinRT.dll" target="lib\netcore451\XLabs.Platform.WinRT.dll" />
+    <file src="..\..\source\Platform\XLabs.Platform.WinRT\bin\Debug\XLabs.Platform.WinRT.pdb" target="lib\netcore451\XLabs.Platform.WinRT.pdb" />
     <!-- Assemblies: Winows Mobile 8.1 -->
     <file src="..\..\source\Platform\XLabs.Platform\bin\Debug\XLabs.Platform.dll" target="lib\wpa81\XLabs.Platform.dll" />
     <file src="..\..\source\Platform\XLabs.Platform\bin\Debug\XLabs.Platform.pdb" target="lib\wpa81\XLabs.Platform.pdb" />
     <file src="..\..\source\Platform\XLabs.Platform.WinRT.Phone\bin\Debug\XLabs.Platform.WinRT.Phone.dll" target="lib\wpa81\XLabs.Platform.WinRT.Phone.dll" />
     <file src="..\..\source\Platform\XLabs.Platform.WinRT.Phone\bin\Debug\XLabs.Platform.WinRT.Phone.pdb" target="lib\wpa81\XLabs.Platform.WinRT.Phone.pdb" />
-    <!-- Assemblies: iOS -->
-    <file src="..\..\source\Platform\XLabs.Platform\bin\Debug\XLabs.Platform.dll" target="lib\xamarinios\XLabs.Platform.dll" />
-    <file src="..\..\source\Platform\XLabs.Platform\bin\Debug\XLabs.Platform.pdb" target="lib\xamarinios\XLabs.Platform.pdb" />
-    <file src="..\..\source\Platform\XLabs.Platform.iOS\bin\Debug\XLabs.Platform.iOS.dll" target="lib\xamarinios\XLabs.Platform.iOS.dll" />
-    <file src="..\..\source\Platform\XLabs.Platform.iOS\bin\Debug\XLabs.Platform.iOS.pdb" target="lib\xamarinios\XLabs.Platform.iOS.pdb" />
+    <!-- Assemblies: .NET Core 5.0 -->
+    <file src="..\..\source\Platform\XLabs.Platform\bin\Debug\XLabs.Platform.dll" target="lib\uap10\XLabs.Platform.dll" />
+    <file src="..\..\source\Platform\XLabs.Platform\bin\Debug\XLabs.Platform.pdb" target="lib\uap10\XLabs.Platform.pdb" />
+    <file src="..\..\source\Platform\XLabs.Platform.UWP\bin\Debug\XLabs.Platform.UWP.dll" target="lib\uap10\XLabs.Platform.UWP.dll" />
+    <file src="..\..\source\Platform\XLabs.Platform.UWP\bin\Debug\XLabs.Platform.UWP.pdb" target="lib\uap10\XLabs.Platform.UWP.pdb" />
   </files>
 </package>
