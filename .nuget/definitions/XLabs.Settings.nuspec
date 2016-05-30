@@ -18,9 +18,9 @@
   </metadata>
   <files>
     <!-- Content Files -->
-    <file src="..\source\XLabs.Settings.Nuspec\XLabs.Settings.Readme.md" target="content\XLabs.Settings.Readme.md" />
+    <file src="..\..\docs\XLabs.Settings.Readme.md" target="content\XLabs.Settings.Readme.md" />
     <!-- Assemblies: Portable -->
-    <file src="..\..\source\Settings\XLabs.Settings\bin\Debug\XLabs.Settings.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch+xamarinmac\XLabs.Settings.dll" />
-    <file src="..\..\source\Settings\XLabs.Settings\bin\Debug\XLabs.Settings.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch+xamarinmac\XLabs.Settings.pdb" />
+    <file src="..\..\source\Settings\XLabs.Settings\bin\Debug\XLabs.Settings.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\XLabs.Settings.dll" />
+    <file src="..\..\source\Settings\XLabs.Settings\bin\Debug\XLabs.Settings.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\XLabs.Settings.pdb" />
   </files>
 </package>

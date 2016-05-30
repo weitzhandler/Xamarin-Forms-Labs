@@ -18,9 +18,9 @@
   </metadata>
   <files>
     <!-- Content Files -->
-    <file src="..\source\XLabs.Core.Nuspec\XLabs.Core.Readme.md" target="content\XLabs.Core.Readme.md" />
+    <file src="..\..\docs\XLabs.Core.Readme.md" target="content\XLabs.Core.Readme.md" />
     <!-- Assemblies: Portable -->
-    <file src="..\..\source\Core\bin\Debug\XLabs.Core.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch+xamarinmac\XLabs.Core.dll" />
-    <file src="..\..\source\Core\bin\Debug\XLabs.Core.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch+xamarinmac\XLabs.Core.pdb" />
+    <file src="..\..\source\Core\bin\Debug\XLabs.Core.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\XLabs.Core.dll" />
+    <file src="..\..\source\Core\bin\Debug\XLabs.Core.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\XLabs.Core.pdb" />
   </files>
 </package>

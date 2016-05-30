@@ -163,9 +163,9 @@
       <Project>{324a8036-71ca-441c-8549-102f7eaf3331}</Project>
       <Name>XLabs.Serialization.ProtoBuf</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\..\source\Serialization\XLabs.Serialization.ServiceStack.iOS\XLabs.Serialization.ServiceStack.iOS.csproj">
+    <ProjectReference Include="..\..\..\source\Serialization\XLabs.Serialization.ServiceStack.iOS\XLabs.Serialization.ServiceStackV3.iOS.csproj">
       <Project>{c8105e62-05b2-4301-bdd0-a0eaa21f3564}</Project>
-      <Name>XLabs.Serialization.ServiceStack.iOS</Name>
+      <Name>XLabs.Serialization.ServiceStackV3.iOS</Name>
       <IsAppExtension>false</IsAppExtension>
       <IsWatchApp>false</IsWatchApp>
     </ProjectReference>
@@ -180,10 +180,4 @@
   <Import Project="..\XLabs.Serialization.NUnit.Shared\XLabs.Serialization.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\..\source\packages\Xamarin.Forms.2.2.0.31\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\..\source\packages\Xamarin.Forms.2.2.0.31\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
-  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
-    <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
-    </PropertyGroup>
-    <Error Condition="!Exists('..\..\..\source\packages\Xamarin.Forms.2.2.0.31\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\..\..\source\packages\Xamarin.Forms.2.2.0.31\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets'))" />
-  </Target>
 </Project>
