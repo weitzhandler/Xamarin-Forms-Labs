@@ -19,6 +19,6 @@
 ### Project Information
 **Target Platform or Profile**: [Android, iOS, Windows Phone, Windows Universal, Profile111, etc]
 
-**Development Envrionment:**
+**Development Environment:**
 
 ### Any build or debug Logs
