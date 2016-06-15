@@ -8,7 +8,6 @@ properties {
     [string]$deploy_folder = "deploy"
 	[string]$nuget_folder = ".nuget"
 	[string]$nuspec_folder = $null
-	[string]$nuproj_folder = $null
     $projects = $null
 	[bool]$updateVersion = $true
 	[bool]$updateNuspecVersion = $true
@@ -36,7 +35,6 @@ Task DisplayParams -Depends Get-Version {
     Write-Host "`tdeploy_folder : $deploy_folder"
 	Write-Host "`tnuget_folder : $nuget_folder"
 	Write-Host "`tnuspec_folder : $nuspec_folder"
-	Write-Host "`tnuproj_folder : $nuproj_folder"
 	Write-Host "`tupdateVersion : $updateVersion"
 	Write-Host "`tupdateNuspecVersion : $updateNuspecVersion"
 	Write-Host "`tupdateNuspecFile : $updateNuspecFile"
@@ -149,7 +147,7 @@ Task Build -Depends DisplayParams,Set-Versions,RestorePackages,RestoreDependenci
 Task Clean -Depends DisplayParams {
 	Exec { msbuild "$source_folder\$solution" /t:Clean /p:Configuration=$configuration /consoleloggerparameters:"ErrorsOnly" /p:ServerAddress=$macAgentServerAddress /p:ServerUser=$macAgentUser } 
 	
-	gci -Path $source_folder,$test_folder,$deploy_folder,$nuspec_folder,$nuproj_folder -Recurse -include 'bin','obj' -ErrorAction SilentlyContinue | % {
+	gci -Path $source_folder,$test_folder,$deploy_folder,$nuspec_folder, -Recurse -include 'bin','obj' -ErrorAction SilentlyContinue | % {
 		remove-item $_ -recurse -force
 		write-host deleted $_
 	}
