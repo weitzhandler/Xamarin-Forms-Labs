@@ -2,32 +2,29 @@ Param(
     [Parameter(Position=1,Mandatory=0)]
     [string[]]$task_list = @(),
 
-	[Parameter()]
+    [Parameter()]
     [string]$packageVersion = $null,
 	
-	[Parameter()]
+    [Parameter()]
     [string]$preReleaseNumber = $null,
 	
-	[Parameter()]
+    [Parameter()]
     [string]$configuration = "Release",
 	
-	[Parameter()]
-	[bool]$autoIncrementVersion = $false,
+    [Parameter()]
+    [bool]$autoIncrementVersion = $false,
 	
-	[Parameter()]
-	[bool]$updateVersion = $false,
+    [Parameter()]
+    [bool]$updateVersion = $false,
 		
-	[Parameter()]
-	[bool]$processNuProjOutput = $false,
+    [Parameter()]
+    [bool]$updateNuspecFile = $true,
 	
-	[Parameter()]
-	[bool]$updateNuspecFile = $true,
+    [Parameter()]
+    [bool]$updateNuspecVersion = $true,
 	
-	[Parameter()]
-	[bool]$updateNuspecVersion = $true,
-	
-	[Parameter()]
-	[string]$nugetAPIKey = $null
+    [Parameter()]
+    [string]$nugetAPIKey = $null
 )
 
 $build_file = 'psake.default.ps1'
@@ -42,63 +39,60 @@ $properties = @{
     # This will be read from the command line args
     "packageVersion" = $packageVersion;
 
-	# Is the Nuget package a pre-release version?
-	"preReleaseNumber" = $preReleaseNumber;
+    # Is the Nuget package a pre-release version?
+    "preReleaseNumber" = $preReleaseNumber;
 	
-	# Do we want to auto increment the version (if a prerelease it will increment prerelease otherwise it will increment build number)
-	"autoIncrementVersion" = $autoIncrementVersion;
+    # Do we want to auto increment the version (if a prerelease it will increment prerelease otherwise it will increment build number)
+    "autoIncrementVersion" = $autoIncrementVersion;
 
     # Path to the solution file
     "solution"      = 'XLabs.sln';
 	
-	# Base namespeace for the package (used for updating nuspec details)
-	"baseNamespace" = 'XLabs';
+    # Base namespeace for the package (used for updating nuspec details)
+    "baseNamespace" = 'XLabs';
 
     # Folder containing source code
     "source_folder" = '.\source';
 	
-	# Folder container unit tests
-	"test_folder" = '.\tests';
+    # Folder container unit tests
+    "test_folder" = '.\tests';
 
     # Folder to output deployable packages to. This folder should be ignored
     # from any source control, as we dont commit build artifacts to source
     # control
     "deploy_folder" = '.\artifacts\packages';
 
-	# Folder that contains nuget files (nuget.exe, nuget.config)
-	"nuget_folder" = '.\.nuget';
+    # Folder that contains nuget files (nuget.exe, nuget.config)
+    "nuget_folder" = '.\.nuget';
 
-	# Folder that contains nuspec files
-	"nuspec_folder" = '.\.nuget\definitions';
+    # Folder that contains nuspec files
+    "nuspec_folder" = '.\.nuget\definitions';
 	
-	# Folder that contains nuspec files
-	"nuproj_folder" = '.\.nuget\source';
-	
-	# List of projects to use when building NuGet Packages (Note: Not used for XLabs)
+    # List of projects to use when building NuGet Packages (Note: Not used for XLabs)
     "projects" = @(
-	);
+    );
 	
-	# Unit Test Framework (nunit, xunit)
-	"unittest_framework" = 'nunit';
+    # Unit Test Framework (nunit, xunit)
+    "unittest_framework" = 'nunit';
 	
-	# Update the version numbers automatically
-	"updateVersion" = $updateVersion;
+    # Update the version numbers automatically
+    "updateVersion" = $updateVersion;
 	
-	"updateNuspecVersion" = $updateNuspecVersion;
+    "updateNuspecVersion" = $updateNuspecVersion;
+
+    "updateNuspecFile" = $updateNuspecFile;
 	
-	"updateNuspecFile" = $updateNuspecFile;
+    # The name or ip address of the Mac that is running the Xamarin build agent
+    "macAgentServerAddress" = $null; 
 	
-	# The name or ip address of the Mac that is running the Xamarin build agent
-	"macAgentServerAddress" = $null; #"10.0.1.139"
+    # The user name to use to authentice for the Xamarin build agent
+    "macAgentUser" = $null; #'Shawn Anderson'
+
+    # URL of Nuget Server to push packages to	
+    "nugetServerUrl" = 'https://nuget.org';
 	
-	# The user name to use to authentice for the Xamarin build agent
-	"macAgentUser" = $null; #'Shawn Anderson'
-	
-	"processNuProjOutput" = $processNuProjOutput;
-	
-	"nugetServerUrl" = 'https://nuget.org';
-	
-	"nugetAPIKey" = "8f7a6be5-4f64-400b-95ef-e2cb9accdf8f";
+    # API key for enabling the push to the Nuget Server 
+    "nugetAPIKey" = $null;
 }
 
 #if (!(Get-Module -Name psake -ListAvailable)) { Install-Module -Name psake -Scope CurrentUser }
