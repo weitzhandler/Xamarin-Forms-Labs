@@ -46,7 +46,12 @@ namespace XLabs
         /// <returns>System.Decimal.</returns>
         public override decimal ReadDecimal()
         {
-            return new Decimal(new[] { ReadInt32(), ReadInt32(), ReadInt32(), ReadInt32() });
+            // see valid decimal bits: https://msdn.microsoft.com/en-us/library/t1de0ya1(v=vs.110).aspx
+            var low = ReadInt32();
+            var middle = ReadInt32();
+            var high = ReadInt32();
+            var scale = ReadInt32();// (int)(ReadInt32() & 0x801C0000);
+            return new decimal(new[] { low, middle, high, scale });
         }
 
         /// <summary>
