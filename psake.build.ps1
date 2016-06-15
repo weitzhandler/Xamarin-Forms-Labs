@@ -98,7 +98,7 @@ $properties = @{
 	
 	"nugetServerUrl" = 'https://nuget.org';
 	
-	"nugetAPIKey" = "8f7a6be5-4f64-400b-95ef-e2cb9accdf8f";
+	"nugetAPIKey" = $null;
 }
 
 #if (!(Get-Module -Name psake -ListAvailable)) { Install-Module -Name psake -Scope CurrentUser }
