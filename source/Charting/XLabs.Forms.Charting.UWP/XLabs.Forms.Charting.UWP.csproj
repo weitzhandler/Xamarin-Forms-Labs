@@ -121,6 +121,7 @@
       <Name>XLabs.Forms.Charting</Name>
     </ProjectReference>
   </ItemGroup>
+  <Import Project="..\XLabs.Forms.Charting.WinRT.Shared\XLabs.Forms.Charting.WinRT.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

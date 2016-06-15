@@ -36,6 +36,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Navigation;
+using SQLite.Net;
 using SQLite.Net.Platform.WinRT;
 using XLabs.Caching;
 using XLabs.Caching.SQLite;
@@ -195,7 +196,7 @@ namespace XLabs.Samples.WinPhone
                 .Register<ISecureStorage, SecureStorage>()
                 .Register<ICacheProvider>(
                     t => new SQLiteSimpleCache(new SQLitePlatformWinRT(),
-                        new SQLite.Net.SQLiteConnectionString(pathToDatabase, true), t.Resolve<IJsonSerializer>()))
+                        new SQLiteConnectionString(pathToDatabase, true), t.Resolve<IJsonSerializer>()))
                 ;
 
             Resolver.SetResolver(resolverContainer.GetResolver());

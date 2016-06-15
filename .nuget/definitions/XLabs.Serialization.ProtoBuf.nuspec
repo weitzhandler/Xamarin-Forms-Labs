@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.Serialization.ProtoBuf</id>
-    <version>2.2.0-pre01</version>
+    <version>2.2.0-pre05</version>
     <title>XLabs - Serialization - ProtoBuf</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -16,15 +16,17 @@
     <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs Serialization ProtoBuf</tags>
     <dependencies>
-      <group targetFramework="portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch">
-        <dependency id="XLabs.Serialization" version="[2.2.0-pre01]" />
+      <group>
+        <dependency id="XLabs.Serialization" version="[2.2.0-pre05]" />
         <dependency id="protobuf-portable-net" version="2.0.0.668" />
       </group>
     </dependencies>
   </metadata>
   <files>
-    <file src="..\source\XLabs.Serialization.ProtoBuf.Nuspec\XLabs.Serialization.ProtoBuf.Readme.md" target="content\XLabs.Serialization.ProtoBuf.Readme.md" />
-    <file src="..\..\source\Serialization\XLabs.Serialization.ProtoBuf\bin\Debug\XLabs.Serialization.ProtoBuf.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.Serialization.ProtoBuf.dll" />
-    <file src="..\..\source\Serialization\XLabs.Serialization.ProtoBuf\bin\Debug\XLabs.Serialization.ProtoBuf.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.Serialization.ProtoBuf.pdb" />
+    <!-- Content Files -->
+    <!-- file src="..\..\docs\XLabs.Serialization.ProtoBuf.Readme.md" target="content" -->
+    <!-- Assemblies: Portable -->
+    <file src="..\..\source\Serialization\XLabs.Serialization.ProtoBuf\bin\$configuration$\XLabs.Serialization.ProtoBuf.dll" target="lib\portable-net45+netcore45+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\..\source\Serialization\XLabs.Serialization.ProtoBuf\bin\$configuration$\XLabs.Serialization.ProtoBuf.pdb" target="lib\portable-net45+netcore45+monoandroid+monotouch+xamarinios10+xamarinmac" />
   </files>
 </package>

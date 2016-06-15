@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.Caching</id>
-    <version>2.2.0-pre01</version>
+    <version>2.2.0-pre05</version>
     <title>XLabs - Caching</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -13,17 +13,19 @@
     <description>This package implements the core caching provider contracts</description>
     <summary>XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.</summary>
     <releaseNotes>Updated for Xamarin Forms 2.2</releaseNotes>
-    <copyright>Copyright Â© 2016 XLabs Team</copyright>
+    <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs caching</tags>
     <dependencies>
-      <group targetFramework="portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch">
-        <dependency id="XLabs.Serialization" version="[2.2.0-pre01]" />
+      <group>
+        <dependency id="XLabs.Serialization" version="[2.2.0-pre05]" />
       </group>
     </dependencies>
   </metadata>
   <files>
-    <file src="..\source\XLabs.Caching.Nuspec\XLabs.Caching.Readme.md" target="content\XLabs.Caching.Readme.md" />
-    <file src="..\..\source\Caching\XLabs.Caching\bin\Debug\XLabs.Caching.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.Caching.dll" />
-    <file src="..\..\source\Caching\XLabs.Caching\bin\Debug\XLabs.Caching.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+xamarinios+monotouch\XLabs.Caching.pdb" />
+    <!-- Content Files -->
+    <!-- file src="..\..\docs\XLabs.Caching.Readme.md" target="content" -->
+    <!-- Assemblies: Portable -->
+    <file src="..\..\source\Caching\XLabs.Caching\bin\$configuration$\XLabs.Caching.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\..\source\Caching\XLabs.Caching\bin\$configuration$\XLabs.Caching.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
   </files>
 </package>

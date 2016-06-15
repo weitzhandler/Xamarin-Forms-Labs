@@ -2,7 +2,7 @@
 // Assembly         : XLabs.Sample
 // Author           : XLabs Team
 // Created          : 12-27-2015
-// 
+//
 // Last Modified By : XLabs Team
 // Last Modified On : 01-04-2016
 // ***********************************************************************
@@ -12,16 +12,17 @@
 // <summary>
 //       This project is licensed under the Apache 2.0 license
 //       https://github.com/XLabs/Xamarin-Forms-Labs/blob/master/LICENSE
-//       
-//       XLabs is a open source project that aims to provide a powerfull and cross 
+//
+//       XLabs is a open source project that aims to provide a powerfull and cross
 //       platform set of controls tailored to work with Xamarin Forms.
 // </summary>
 // ***********************************************************************
-// 
+//
 
 using System;
 using Xamarin.Forms;
 using XLabs.Platform.Device;
+using XLabs.Platform.Services;
 
 namespace XLabs.Samples.Pages.Services
 {
@@ -36,7 +37,7 @@ namespace XLabs.Samples.Pages.Services
         /// <param name="device">The device.</param>
         public ExtendedDeviceInfoPage(IDevice device)
         {
-            this.Title ="Extended Device Info";
+            this.Title = "Extended Device Info";
             if (device == null)
             {
                 this.Content = new Label()
@@ -71,7 +72,7 @@ namespace XLabs.Samples.Pages.Services
                 displayFrame.Content = new Label { TextColor = Color.Red, Text = "Device does not contain display information." };
             }
 
-            stack.Children.Add(displayFrame); 
+            stack.Children.Add(displayFrame);
             #endregion
 
             #region Battery information
@@ -103,7 +104,7 @@ namespace XLabs.Samples.Pages.Services
                 batteryFrame.Content = new Label { TextColor = Color.Red, Text = "Device does not contain battery information." };
             }
 
-            stack.Children.Add(batteryFrame); 
+            stack.Children.Add(batteryFrame);
             #endregion
 
             #region RAM information
@@ -152,6 +153,122 @@ namespace XLabs.Samples.Pages.Services
             try
             {
                 idText.Text = device.Id;
+            }
+            catch (Exception ex)
+            {
+                idText.Text = ex.Message;
+            }
+
+            #endregion
+
+            #region Device Name Information
+            var deviceNameLabel = new Label { Text = "Device Name:" };
+
+            var deiceNameText = new Label();
+
+            stack.Children.Add(new Frame
+            {
+                Content = new StackLayout
+                {
+                    Children = { deviceNameLabel, deiceNameText }
+                }
+            });
+
+            try
+            {
+                deiceNameText.Text = device.Name;
+            }
+            catch (Exception ex)
+            {
+                idText.Text = ex.Message;
+            }
+
+            #endregion
+
+            #region Device Language Information
+            var languageLabel = new Label { Text = "Device Language Code:" };
+
+            var languageText = new Label();
+
+            stack.Children.Add(new Frame
+            {
+                Content = new StackLayout
+                {
+                    Children = { languageLabel, languageText }
+                }
+            });
+
+            try
+            {
+                languageText.Text = device.LanguageCode;
+
+
+            }
+            catch (Exception ex)
+            {
+                idText.Text = ex.Message;
+            }
+
+            #endregion
+
+            #region Hardware Version Information
+            var hardwareVersionLabel = new Label { Text = "Hardware Version:" };
+
+            var hardwareVersionText = new Label();
+
+            stack.Children.Add(new Frame
+            {
+                Content = new StackLayout
+                {
+                    Children = { hardwareVersionLabel, hardwareVersionText }
+                }
+            });
+
+            try
+            {
+                hardwareVersionText.Text = device.HardwareVersion;
+            }
+            catch (Exception ex)
+            {
+                idText.Text = ex.Message;
+            }
+
+            #endregion
+
+            #region Network Connetctions Information
+            var networkLabel = new Label { Text = "Network Connections:" };
+
+            var networkText = new Label();
+
+            stack.Children.Add(new Frame
+            {
+                Content = new StackLayout
+                {
+                    Children = { networkLabel, networkText }
+                }
+            });
+
+            try
+            {
+                var internetConnectionStatus = device.Network.InternetConnectionStatus();
+                switch (internetConnectionStatus)
+                {
+                    case NetworkStatus.NotReachable:
+                        networkText.Text = "No Connetcions";
+                        break;
+                    case NetworkStatus.ReachableViaCarrierDataNetwork:
+                        networkText.Text = "Mobil device Internet connetions";
+                        break;
+                    case NetworkStatus.ReachableViaWiFiNetwork:
+                        networkText.Text = "Wi-fi Internet connetcions";
+                        break;
+                    case NetworkStatus.ReachableViaUnknownNetwork:
+                        networkText.Text = "Unknow connetcions";
+                        break;
+                    default:
+                        networkText.Text = "Error";
+                        break;
+                }
             }
             catch (Exception ex)
             {

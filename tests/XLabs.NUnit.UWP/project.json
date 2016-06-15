@@ -12,7 +12,7 @@
     "SQLite.Net.Async-PCL": "3.1.1",
     "SQLite.Net.Core-PCL": "3.1.1",
     "Unity": "4.0.1",
-    "Xamarin.Forms": "2.2.0.31"
+    "Xamarin.Forms": "2.2.0.45"
   },
   "frameworks": {
     "uap10.0": {}

@@ -9,7 +9,7 @@ SET PRERELEASE=%4
 IF [%1] == [] SET TASK=BUILD
 IF [%2] == [] SET CONFIG=Debug
 IF [%3] == [] SET VERSION=2.2.0
-IF [%4] == [] SET PRERELEASE=pre01
+IF [%4] == [] SET PRERELEASE=pre05
 
 IF [%1] == [help] GOTO DisplayHelp
 if [%3] == [] GOTO BuildWithOutVersion
@@ -19,7 +19,7 @@ GOTO BuildWithVersion
 IF [%3] == [] GOTO DisplayVersionError
 IF [%4] == [] GOTO DisplayVersionError
 echo Running psake build process with a specific Version (%VERSION%-%PRERELEASE%)
-powershell.exe -command ".\psake.build.ps1 %TASK% -configuration %CONFIG% -version %VERSION% -preRelease %PRERELEASE% -updateNuspecFile $true -updateNuspecVersion $true"
+powershell.exe -command ".\psake.build.ps1 %TASK% -configuration %CONFIG% -packageVersion %VERSION% -preReleaseNumber %PRERELEASE% -updateNuspecFile $true -updateNuspecVersion $true"
 GOTO Done
 
 :BuildWithOutVersion
