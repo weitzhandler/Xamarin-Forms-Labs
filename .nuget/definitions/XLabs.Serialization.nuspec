@@ -18,9 +18,9 @@
   </metadata>
   <files>
     <!-- Content Files -->
-    <file src="..\..\docs\XLabs.Serialization.Readme.md" target="content\XLabs.Serialization.Readme.md" />
+    <!-- file src="..\..\docs\XLabs.Serialization.Readme.md" target="content" -->
     <!-- Assemblies: Portable -->
-    <file src="..\..\source\Serialization\XLabs.Serialization\bin\Debug\XLabs.Serialization.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\XLabs.Serialization.dll" />
-    <file src="..\..\source\Serialization\XLabs.Serialization\bin\Debug\XLabs.Serialization.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\XLabs.Serialization.pdb" />
+    <file src="..\..\source\Serialization\XLabs.Serialization\bin\$configuration$\XLabs.Serialization.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\..\source\Serialization\XLabs.Serialization\bin\$configuration$\XLabs.Serialization.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
   </files>
 </package>

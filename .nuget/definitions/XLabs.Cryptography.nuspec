@@ -18,9 +18,9 @@
   </metadata>
   <files>
     <!-- Content Files -->
-    <file src="..\..\docs\XLabs.Cryptography.Readme.md" target="content\XLabs.Cryptography.Readme.md" />
+    <!-- file src="..\..\docs\XLabs.Cryptography.Readme.md" target="content" -->
     <!-- Assemblies: Portable -->
-    <file src="..\..\source\Cryptography\XLabs.Cryptography\bin\Debug\XLabs.Cryptography.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\XLabs.Cryptography.dll" />
-    <file src="..\..\source\Cryptography\XLabs.Cryptography\bin\Debug\XLabs.Cryptography.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\XLabs.Cryptography.pdb" />
+    <file src="..\..\source\Cryptography\XLabs.Cryptography\bin\$configuration$\XLabs.Cryptography.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\..\source\Cryptography\XLabs.Cryptography\bin\$configuration$\XLabs.Cryptography.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
   </files>
 </package>

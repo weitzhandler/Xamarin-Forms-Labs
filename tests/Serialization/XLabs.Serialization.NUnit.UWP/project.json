@@ -4,7 +4,7 @@
     "Newtonsoft.Json": "8.0.3",
     "NUnit": "3.0.1",
     "nunit.xamarin": "3.0.1",
-    "Xamarin.Forms": "2.2.0.31"
+    "Xamarin.Forms": "2.2.0.45"
   },
   "frameworks": {
     "uap10.0": {}

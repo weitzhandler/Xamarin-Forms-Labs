@@ -175,58 +175,12 @@ Task RestorePackages {
 	New-Item -ItemType Directory  "$source_folder\packages" -ErrorAction SilentlyContinue
 	$pathToPackages = Resolve-Path "$source_folder\packages"
 	$nugetConfig = Resolve-Path "$nuget_folder\nuget.config"
-	
-	$packages = @( 
-		"Microsoft.Bcl", "Microsoft.Bcl.Async", "Microsoft.Bcl.Build", "Microsoft.CSharp", "Microsoft.Net.Http", "Microsoft.NETCore",
-		"Microsoft.NETCore.Platforms", "Microsoft.NETCore.Portable.Compatibility", "Microsoft.NETCore.Runtime", "Microsoft.NETCore.Runtime.CoreCLR",
-		"Microsoft.NETCore.Runtime.Native", "Microsoft.NETCore.Targets", "Microsoft.NETCore.Targets.UniversalWindowsPlatform", "Microsoft.NETCore.UniversalWindowsPlatform",
-		"Microsoft.NETCore.Windows.ApiSets-x64", "Microsoft.NETCore.Windows.ApiSets-x86", "Microsoft.VisualBasic", "Microsoft.Win32.Primitives",
-		"runtime.any.System.Private.DataContractSerialization", "runtime.aot.System.Private.DataContractSerialization",
-		"runtime.win7-x64.Microsoft.NETCore.Runtime.CoreCLR", "runtime.win7-x86.Microsoft.NETCore.Runtime.CoreCLR",
-		"runtime.win8-arm.Microsoft.NETCore.Runtime.CoreCLR", "System.AppContext",
-		"System.Collections", "System.Collections.Concurrent", "System.Collections.Immutable",
-		"System.Collections.NonGeneric", "System.Collections.Specialized", "System.ComponentModel",
-		"System.ComponentModel.Annotations", "System.ComponentModel.EventBasedAsync", "System.Data.Common",
-		"System.Diagnostics.Contracts", "System.Diagnostics.Debug", "System.Diagnostics.StackTrace",
-		"System.Diagnostics.Tools", "System.Diagnostics.Tracing", "System.Dynamic.Runtime",
-		"System.Globalization", "System.Globalization.Calendars", "System.Globalization.Extensions",
-		"System.IO", "System.IO.Compression", "System.IO.Compression.clrcompression-arm",
-		"System.IO.Compression.clrcompression-x64", "System.IO.Compression.clrcompression-x86",
-		"System.IO.Compression.ZipFile", "System.IO.FileSystem", "System.IO.FileSystem.Primitives",
-		"System.IO.IsolatedStorage", "System.IO.UnmanagedMemoryStream", "System.Linq",
-		"System.Linq.Expressions", "System.Linq.Parallel", "System.Linq.Queryable",
-		"System.Net.Http", "System.Net.Http.Rtc", "System.Net.NetworkInformation",
-		"System.Net.Primitives", "System.Net.Requests", "System.Net.Sockets",
-		"System.Net.WebHeaderCollection", "System.Numerics.Vectors", "System.Numerics.Vectors.WindowsRuntime",
-		"System.ObjectModel", "System.Private.DataContractSerialization", "System.Private.Networking",
-		"System.Private.ServiceModel", "System.Private.Uri", "System.Reflection",
-		"System.Reflection.Context", "System.Reflection.DispatchProxy", "System.Reflection.Emit",
-		"System.Reflection.Emit.ILGeneration", "System.Reflection.Emit.Lightweight", "System.Reflection.Extensions",
-		"System.Reflection.Metadata", "System.Reflection.Primitives", "System.Reflection.TypeExtensions",
-		"System.Resources.ResourceManager", "System.Runtime", "System.Runtime.Extensions",
-		"System.Runtime.Handles", "System.Runtime.InteropServices", "System.Runtime.InteropServices.WindowsRuntime",
-		"System.Runtime.Numerics", "System.Runtime.Serialization.Json", "System.Runtime.Serialization.Primitives",
-		"System.Runtime.Serialization.Xml", "System.Runtime.WindowsRuntime", "System.Runtime.WindowsRuntime.UI.Xaml",
-		"System.Security.Claims", "System.Security.Principal", "System.ServiceModel.Duplex",
-		"System.ServiceModel.Http", "System.ServiceModel.NetTcp", "System.ServiceModel.Primitives",
-		"System.ServiceModel.Security", "System.Text.Encoding", "System.Text.Encoding.CodePages",
-		"System.Text.Encoding.Extensions", "System.Text.RegularExpressions", "System.Threading",
-		"System.Threading.Overlapped", "System.Threading.Tasks", "System.Threading.Tasks.Dataflow",
-		"System.Threading.Tasks.Parallel", "System.Threading.Timer", "System.Xml.ReaderWriter",
-		"System.Xml.XDocument", "System.Xml.XmlDocument", "System.Xml.XmlSerializer", "PropertyChanged.Fody", "Autofac", "Newtonsoft.Json", 
-		"NUnit"
-	)
 
 	Write-Host "`tRestoring Packages to: $pathToPackages" -ForegroundColor Yellow
 	Write-Host "`tUsing Nuget Config File: $nugetConfig" -ForegroundColor Yellow
 
 	#Exec { & "$nuget_folder\nuget.exe" restore -SolutionDirectory $source_folder -PackagesDirectory $pathToPackages -ConfigFile $nugetConfig }
 	Exec { & "$nuget_folder\nuget.exe" restore "$source_folder\$solution" -PackagesDirectory $pathToPackages -ConfigFile $nugetConfig }
-	
-	$packages | % { 
-		Write-Host "`t`tInstalling Package: $_" -ForegroundColor Yellow
-		Exec { & "$nuget_folder\nuget.exe" install $_ -OutputDirectory $pathToPackages -ConfigFile $nugetConfig }
-	}
 }
 
 Task RestoreDependencies {
@@ -234,13 +188,6 @@ Task RestoreDependencies {
 #	{
 #		"nunit" { choco install -y nunit }
 #	}
-}
-
-Task ProcessNuProjNuSpecFiles -Precondition { return $processNuProjOutput } {
-	pushd
-	cd $nuproj_folder
-	#exec { & ".\process.ps1" }
-	popd
 }
 
 Task Set-Versions -Depends Get-Version {

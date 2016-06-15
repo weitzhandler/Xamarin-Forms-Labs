@@ -18,9 +18,9 @@
   </metadata>
   <files>
     <!-- Content Files -->
-    <file src="..\..\docs\XLabs.IOC.Readme.md" target="content\XLabs.IOC.Readme.md" />
+    <!-- file src="..\..\docs\XLabs.IOC.Readme.md" target="content" -->
     <!-- Assemblies: Portable -->
-    <file src="..\..\source\IOC\XLabs.IOC\bin\Debug\XLabs.IOC.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\XLabs.IOC.dll" />
-    <file src="..\..\source\IOC\XLabs.IOC\bin\Debug\XLabs.IOC.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\XLabs.IOC.pdb" />
+    <file src="..\..\source\IOC\XLabs.IOC\bin\$configuration$\XLabs.IOC.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\..\source\IOC\XLabs.IOC\bin\$configuration$\XLabs.IOC.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
   </files>
 </package>

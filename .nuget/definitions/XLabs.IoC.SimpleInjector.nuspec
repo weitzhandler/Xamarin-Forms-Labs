@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.IoC.SimpleInjector</id>
-    <version>2.2.0-pre04</version>
+    <version>2.2.0-pre05</version>
     <title>XLabs - IoC - SimpleInjector</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -17,16 +17,16 @@
     <tags>Xamarin XLabs IOC SimpleInjector</tags>
     <dependencies>
       <group>
-        <dependency id="XLabs.IoC" version="[2.2.0-pre04]" />
+        <dependency id="XLabs.IoC" version="[2.2.0-pre05]" />
         <dependency id="SimpleInjector" version="3.1.4" />
       </group>
     </dependencies>
   </metadata>
   <files>
     <!-- Content Files -->
-    <file src="..\..\docs\XLabs.IOC.SimpleInjector.Readme.md" target="content\XLabs.IOC.SimpleInjector.Readme.md" />
+    <!-- file src="..\..\docs\XLabs.IOC.SimpleInjector.Readme.md" target="content" -->
     <!-- Assemblies: Portable -->
-    <file src="..\..\source\IOC\XLabs.IOC.SimpleInjector\bin\Debug\XLabs.IOC.SimpleInjector.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\XLabs.IOC.SimpleInjector.dll" />
-    <file src="..\..\source\IOC\XLabs.IOC.SimpleInjector\bin\Debug\XLabs.IOC.SimpleInjector.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\XLabs.IOC.SimpleInjector.pdb" />
+    <file src="..\..\source\IOC\XLabs.IOC.SimpleInjector\bin\$configuration$\XLabs.IOC.SimpleInjector.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\" />
+    <file src="..\..\source\IOC\XLabs.IOC.SimpleInjector\bin\$configuration$\XLabs.IOC.SimpleInjector.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\" />
   </files>
 </package>

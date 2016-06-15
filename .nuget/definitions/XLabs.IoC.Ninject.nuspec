@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.IoC.Ninject</id>
-    <version>2.2.0-pre04</version>
+    <version>2.2.0-pre05</version>
     <title>XLabs - IoC - Ninject</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -17,7 +17,7 @@
     <tags>Xamarin XLabs IOC Ninject</tags>
     <dependencies>
       <group>
-        <dependency id="XLabs.IoC" version="[2.2.0-pre04]" />
+        <dependency id="XLabs.IoC" version="[2.2.0-pre05]" />
         <dependency id="Portable.Ninject" version="3.3.1" />
       </group>
       <group targetFramework=".NETFramework4.5">
@@ -28,12 +28,12 @@
   </metadata>
   <files>
     <!-- Content Files -->
-    <file src="..\..\docs\XLabs.IOC.Ninject.Readme.md" target="content\XLabs.IOC.Ninject.Readme.md" />
+    <!-- file src="..\..\docs\XLabs.IOC.Ninject.Readme.md" target="content" -->
     <!-- Assemblies: Portable -->
-    <file src="..\..\source\IOC\XLabs.IOC.Ninject\bin\Debug\XLabs.IOC.Ninject.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\XLabs.IOC.Ninject.dll" />
-    <file src="..\..\source\IOC\XLabs.IOC.Ninject\bin\Debug\XLabs.IOC.Ninject.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac\XLabs.IOC.Ninject.pdb" />
+    <file src="..\..\source\IOC\XLabs.IOC.Ninject\bin\$configuration$\XLabs.IOC.Ninject.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\..\source\IOC\XLabs.IOC.Ninject\bin\$configuration$\XLabs.IOC.Ninject.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
     <!-- Assemblies: .NET 4.5 -->
-    <file src="..\..\source\IOC\XLabs.IOC.Ninject\bin\Debug\XLabs.IOC.Ninject.dll" target="lib\net45\XLabs.IOC.Ninject.dll" />
-    <file src="..\..\source\IOC\XLabs.IOC.Ninject\bin\Debug\XLabs.IOC.Ninject.pdb" target="lib\net45\XLabs.IOC.Ninject.pdb" />
+    <file src="..\..\source\IOC\XLabs.IOC.Ninject\bin\$configuration$\XLabs.IOC.Ninject.dll" target="lib\net45" />
+    <file src="..\..\source\IOC\XLabs.IOC.Ninject\bin\$configuration$\XLabs.IOC.Ninject.pdb" target="lib\net45" />
   </files>
 </package>
