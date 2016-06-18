@@ -1,7 +1,7 @@
 ﻿**Xamarin Forms Labs** [![Build status](https://ci.appveyor.com/api/projects/status/33q2u1d3dpn3abgn?svg=true)](https://ci.appveyor.com/project/xlabs/xamarin-forms-labs)
 =====================
 
-[![Build status](https://ci.appveyor.com/api/projects/status/33q2u1d3dpn3abgn?svg=true)](https://ci.appveyor.com/project/xlabs/xamarin-forms-labs)
+[![Build status](https://ci.appveyor.com/api/projects/status/v6dqbuurg2ltihoq?svg=true)](https://ci.appveyor.com/project/ravensorb/xamarin-forms-labs)
 
 **XLabs** is a open source project that aims to provide a powerful and cross platform set of services and controls tailored to work with Xamarin and [Xamarin Forms](http://xamarin.com/forms).
 
