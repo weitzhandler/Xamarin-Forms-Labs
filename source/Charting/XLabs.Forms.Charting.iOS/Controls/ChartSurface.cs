@@ -1,18 +1,20 @@
+using OpenTK;
+
 namespace XLabs.Forms.Charting.Controls
 {
-    using System;
-    using CoreGraphics;
-    using Events;
-    using Foundation;
-    using UIKit;
+	using CoreGraphics;
+	using Events;
+	using Foundation;
+	using System;
+	using UIKit;
 
-    /// <summary>
-    /// Class ChartSurface.
-    /// </summary>
-    public class ChartSurface : UIView
+	/// <summary>
+	/// Class ChartSurface.
+	/// </summary>
+	public class ChartSurface : UIView
     {
-        const float StartAngle = -((float)Math.PI / 2);
-        const float EndAngle = ((2 * (float)Math.PI) + StartAngle);
+        const float START_ANGLE = -((float)Math.PI / 2);
+        const float END_ANGLE = ((2 * (float)Math.PI) + START_ANGLE);
 
         /// <summary>
         /// The chart
@@ -37,22 +39,22 @@ namespace XLabs.Forms.Charting.Controls
         /// <param name="colors">The colors.</param>
         public ChartSurface(Chart chart, UIColor color, UIColor[] colors)
         {
-            this.Chart = chart;
-            this.Color = color;
-            this.Colors = colors;
+            Chart = chart;
+            Color = color;
+            Colors = colors;
 
-            this.Chart.OnDrawBar -= _chart_OnDrawBar;
-            this.Chart.OnDrawBar += _chart_OnDrawBar;
-            this.Chart.OnDrawCircle -= _chart_OnDrawCircle;
-            this.Chart.OnDrawCircle += _chart_OnDrawCircle;
-            this.Chart.OnDrawGridLine -= _chart_OnDrawGridLine;
-            this.Chart.OnDrawGridLine += _chart_OnDrawGridLine;
-            this.Chart.OnDrawLine -= _chart_OnDrawLine;
-            this.Chart.OnDrawLine += _chart_OnDrawLine;
-            this.Chart.OnDrawText -= _chart_OnDrawText;
-            this.Chart.OnDrawText += _chart_OnDrawText;
-            this.Chart.OnDrawPie -= _chart_OnDrawPie;
-            this.Chart.OnDrawPie += _chart_OnDrawPie;
+            Chart.OnDrawBar -= _chart_OnDrawBar;
+            Chart.OnDrawBar += _chart_OnDrawBar;
+            Chart.OnDrawCircle -= _chart_OnDrawCircle;
+            Chart.OnDrawCircle += _chart_OnDrawCircle;
+            Chart.OnDrawGridLine -= _chart_OnDrawGridLine;
+            Chart.OnDrawGridLine += _chart_OnDrawGridLine;
+            Chart.OnDrawLine -= _chart_OnDrawLine;
+            Chart.OnDrawLine += _chart_OnDrawLine;
+            Chart.OnDrawText -= _chart_OnDrawText;
+            Chart.OnDrawText += _chart_OnDrawText;
+            Chart.OnDrawPie -= _chart_OnDrawPie;
+            Chart.OnDrawPie += _chart_OnDrawPie;
         }
 
         /// <summary>
@@ -63,7 +65,7 @@ namespace XLabs.Forms.Charting.Controls
         {
             base.Draw(rect);
 
-            this.Chart.DrawChart();
+            Chart.DrawChart();
         }
 
         /// <summary>
@@ -76,8 +78,8 @@ namespace XLabs.Forms.Charting.Controls
             using (var g = UIGraphics.GetCurrentContext())
             {
                 g.SetLineWidth(1);
-                this.Colors[e.Data.SeriesNo].SetFill();
-                this.Colors[e.Data.SeriesNo].SetStroke();
+                Colors[e.Data.SeriesNo].SetFill();
+                Colors[e.Data.SeriesNo].SetStroke();
 
                 var rect = new CGRect((float)e.Data.XFrom, (float)e.Data.YFrom, (float)(e.Data.XTo - e.Data.XFrom), (float)(e.Data.YTo - e.Data.YFrom));
                 g.AddRect(rect);
@@ -96,9 +98,9 @@ namespace XLabs.Forms.Charting.Controls
             using (var g = UIGraphics.GetCurrentContext())
             {
                 g.SetLineWidth(2);
-                this.Colors[e.Data.SeriesNo].SetFill();
-                this.Colors[e.Data.SeriesNo].SetStroke();
-                g.AddArc((float)e.Data.X, (float)e.Data.Y, (float)e.Data.Size, StartAngle, EndAngle, true);
+                Colors[e.Data.SeriesNo].SetFill();
+                Colors[e.Data.SeriesNo].SetStroke();
+                g.AddArc((float)e.Data.X, (float)e.Data.Y, (float)e.Data.Size, START_ANGLE, END_ANGLE, true);
                 g.DrawPath(CGPathDrawingMode.FillStroke);
             }
         }
@@ -113,8 +115,8 @@ namespace XLabs.Forms.Charting.Controls
             using (var g = UIGraphics.GetCurrentContext())
             {
                 g.SetLineWidth(2);
-                this.Color.SetFill();
-                this.Color.SetStroke();
+                Color.SetFill();
+                Color.SetStroke();
 
                 g.MoveTo((float)e.Data.XFrom, (float)e.Data.YFrom);
                 g.AddLineToPoint((float)e.Data.XTo, (float)e.Data.YTo);
@@ -133,8 +135,8 @@ namespace XLabs.Forms.Charting.Controls
             using (var g = UIGraphics.GetCurrentContext())
             {
                 g.SetLineWidth(2.5F);
-                this.Colors[e.Data.SeriesNo].SetFill();
-                this.Colors[e.Data.SeriesNo].SetStroke();
+                Colors[e.Data.SeriesNo].SetFill();
+                Colors[e.Data.SeriesNo].SetStroke();
 
                 g.MoveTo((float)e.Data.XFrom, (float)e.Data.YFrom);
                 g.AddLineToPoint((float)e.Data.XTo, (float)e.Data.YTo);
@@ -157,11 +159,11 @@ namespace XLabs.Forms.Charting.Controls
                 using (var g = UIGraphics.GetCurrentContext())
                 {
                     g.SetLineWidth(2);
-                    this.Colors[i].SetFill();
-                    this.Colors[i].SetStroke();
+                    Colors[i].SetFill();
+                    Colors[i].SetStroke();
                     g.MoveTo((float)e.Data.X, (float)e.Data.Y);
                     g.AddArc((float)e.Data.X, (float)e.Data.Y, (float)e.Data.Size,
-                        (float)MathHelper.Deg2Rad(360 - totalDegrees - degrees), (float)MathHelper.Deg2Rad(360 - totalDegrees), false);
+                        (float)MathHelper.DegreesToRadians(360 - totalDegrees - degrees), (float)MathHelper.DegreesToRadians(360 - totalDegrees), false);
                     g.DrawPath(CGPathDrawingMode.FillStroke);
                 }
 
