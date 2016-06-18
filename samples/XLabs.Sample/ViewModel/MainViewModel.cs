@@ -28,7 +28,7 @@ using XLabs.Ioc;
 using XLabs.Platform.Device;
 using XLabs.Platform.Services;
 
-namespace XLabs.Samples.ViewModel
+namespace XLabs.Sample.ViewModel
 {
     /// <summary>
     /// The main view model.
