@@ -19,6 +19,9 @@
 ### Project Information
 **Target Platform or Profile**: [Android, iOS, Windows Phone, Windows Universal, Profile111, etc]
 
-**Development Envrionment:**
+**Package Build Number**: [Nuget package version number]
+
+**Development Environment:**
+
 
 ### Any build or debug Logs
