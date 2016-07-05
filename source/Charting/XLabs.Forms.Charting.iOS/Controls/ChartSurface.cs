@@ -163,7 +163,7 @@ namespace XLabs.Forms.Charting.Controls
                     Colors[i].SetStroke();
                     g.MoveTo((float)e.Data.X, (float)e.Data.Y);
                     g.AddArc((float)e.Data.X, (float)e.Data.Y, (float)e.Data.Size,
-                        (float)MathHelper.DegreesToRadians(360 - totalDegrees - degrees), (float)MathHelper.DegreesToRadians(360 - totalDegrees), false);
+                             (float)MathHelper.Deg2Rad(360 - totalDegrees - degrees), (float)MathHelper.Deg2Rad(360 - totalDegrees), false);
                     g.DrawPath(CGPathDrawingMode.FillStroke);
                 }
 
