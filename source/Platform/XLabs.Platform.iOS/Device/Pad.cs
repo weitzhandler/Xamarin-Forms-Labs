@@ -276,7 +276,7 @@ namespace XLabs.Platform.Device
 
             int width;
             int height;
-            if (UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
+            if (UIKit.UIDevice.CurrentDevice.CheckSystemVersion(8, 0))
             {
                 CoreGraphics.CGRect bounds = UIKit.UIScreen.MainScreen.NativeBounds;
                 width = (int)bounds.Width;
@@ -286,8 +286,8 @@ namespace XLabs.Platform.Device
             {
                 //All older devices are portrait by design so treat the default bounds as such
                 CoreGraphics.CGRect bounds = UIKit.UIScreen.MainScreen.Bounds;
-                width = Math.Min((int)bounds.Width, (int)bounds.Height);
-                height = Math.Max((int)bounds.Width, (int)bounds.Height);
+                width = System.Math.Min((int)bounds.Width, (int)bounds.Height);
+                height = System.Math.Max((int)bounds.Width, (int)bounds.Height);
             }
 
             width *= (int)UIKit.UIScreen.MainScreen.Scale;
