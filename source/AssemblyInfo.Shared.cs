@@ -20,7 +20,7 @@ using System.Reflection;
 // associated with an assembly.
 [assembly: AssemblyCompany("XLabs Team")]
 [assembly: AssemblyProduct("XLabs")]
-[assembly: AssemblyCopyright("Copyright © XLabs Team 2016")]
+[assembly: AssemblyCopyright("Copyright ï¿½ XLabs Team 2016")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyConfiguration("")]
 
@@ -33,8 +33,8 @@ using System.Reflection;
 //
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("2.2.0.*")]
-//[assembly: AssemblyFileVersion("2.2.0.1")]
+[assembly: AssemblyVersion("2.3.0")]
+//[assembly: AssemblyFileVersion("2.3.0")]
 #endif
 
 // Setting ComVisible to false makes the types in this assembly not visible
