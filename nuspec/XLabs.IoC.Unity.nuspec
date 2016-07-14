@@ -26,7 +26,7 @@
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.IOC.Unity.Readme.md" target="content" -->
     <!-- Assemblies: Portable -->
-    <file src="..\..\source\IOC\XLabs.IOC.Unity\bin\$configuration$\XLabs.IOC.Unity.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
-    <file src="..\..\source\IOC\XLabs.IOC.Unity\bin\$configuration$\XLabs.IOC.Unity.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\IOC\XLabs.IOC.Unity\bin\$configuration$\XLabs.IOC.Unity.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\IOC\XLabs.IOC.Unity\bin\$configuration$\XLabs.IOC.Unity.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
   </files>
 </package>

@@ -26,7 +26,7 @@
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.Serialization.JsonNET.Readme.md" target="content" -->
     <!-- Assemblies: Portable -->
-    <file src="..\..\source\Serialization\XLabs.Serialization.Json.NET\bin\$configuration$\XLabs.Serialization.Json.NET.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
-    <file src="..\..\source\Serialization\XLabs.Serialization.Json.NET\bin\$configuration$\XLabs.Serialization.Json.NET.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\Serialization\XLabs.Serialization.Json.NET\bin\$configuration$\XLabs.Serialization.Json.NET.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\Serialization\XLabs.Serialization.Json.NET\bin\$configuration$\XLabs.Serialization.Json.NET.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
   </files>
 </package>

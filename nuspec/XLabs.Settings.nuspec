@@ -20,7 +20,7 @@
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.Settings.Readme.md" target="content" -->
     <!-- Assemblies: Portable -->
-    <file src="..\..\source\Settings\XLabs.Settings\bin\$configuration$\XLabs.Settings.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
-    <file src="..\..\source\Settings\XLabs.Settings\bin\$configuration$\XLabs.Settings.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\Settings\XLabs.Settings\bin\$configuration$\XLabs.Settings.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\Settings\XLabs.Settings\bin\$configuration$\XLabs.Settings.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
   </files>
 </package>

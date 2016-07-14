@@ -27,7 +27,7 @@
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.Caching.SQLite.Readme.md" target="content" -->
     <!-- Assemblies: Portable -->
-    <file src="..\..\source\Caching\XLabs.Caching.Sqlite\bin\$configuration$\XLabs.Caching.Sqlite.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
-    <file src="..\..\source\Caching\XLabs.Caching.Sqlite\bin\$configuration$\XLabs.Caching.Sqlite.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\Caching\XLabs.Caching.Sqlite\bin\$configuration$\XLabs.Caching.Sqlite.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\Caching\XLabs.Caching.Sqlite\bin\$configuration$\XLabs.Caching.Sqlite.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
   </files>
 </package>

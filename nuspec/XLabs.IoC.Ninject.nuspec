@@ -30,10 +30,10 @@
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.IOC.Ninject.Readme.md" target="content" -->
     <!-- Assemblies: Portable -->
-    <file src="..\..\source\IOC\XLabs.IOC.Ninject\bin\$configuration$\XLabs.IOC.Ninject.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
-    <file src="..\..\source\IOC\XLabs.IOC.Ninject\bin\$configuration$\XLabs.IOC.Ninject.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\IOC\XLabs.IOC.Ninject\bin\$configuration$\XLabs.IOC.Ninject.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\IOC\XLabs.IOC.Ninject\bin\$configuration$\XLabs.IOC.Ninject.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
     <!-- Assemblies: .NET 4.5 -->
-    <file src="..\..\source\IOC\XLabs.IOC.Ninject\bin\$configuration$\XLabs.IOC.Ninject.dll" target="lib\net45" />
-    <file src="..\..\source\IOC\XLabs.IOC.Ninject\bin\$configuration$\XLabs.IOC.Ninject.pdb" target="lib\net45" />
+    <file src="..\src\IOC\XLabs.IOC.Ninject\bin\$configuration$\XLabs.IOC.Ninject.dll" target="lib\net45" />
+    <file src="..\src\IOC\XLabs.IOC.Ninject\bin\$configuration$\XLabs.IOC.Ninject.pdb" target="lib\net45" />
   </files>
 </package>

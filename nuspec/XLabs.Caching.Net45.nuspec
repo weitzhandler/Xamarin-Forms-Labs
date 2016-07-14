@@ -26,7 +26,7 @@
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.Caching.Net45.Readme.md" target="content" -->
     <!-- Assemblies: .NET 4.5 -->
-    <file src="..\..\source\Caching\XLabs.Caching.Net45\bin\$configuration$\XLabs.Caching.Net45.dll" target="lib\net45" />
-    <file src="..\..\source\Caching\XLabs.Caching.Net45\bin\$configuration$\XLabs.Caching.Net45.pdb" target="lib\net45" />
+    <file src="..\src\Caching\XLabs.Caching.Net45\bin\$configuration$\XLabs.Caching.Net45.dll" target="lib\net45" />
+    <file src="..\src\Caching\XLabs.Caching.Net45\bin\$configuration$\XLabs.Caching.Net45.pdb" target="lib\net45" />
   </files>
 </package>

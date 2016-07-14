@@ -26,7 +26,7 @@
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.IOC.SimpleInjector.Readme.md" target="content" -->
     <!-- Assemblies: Portable -->
-    <file src="..\..\source\IOC\XLabs.IOC.SimpleInjector\bin\$configuration$\XLabs.IOC.SimpleInjector.dll" target="lib\portable-net45+netcore45+wpa81+wp8" />
-    <file src="..\..\source\IOC\XLabs.IOC.SimpleInjector\bin\$configuration$\XLabs.IOC.SimpleInjector.pdb" target="lib\portable-net45+netcore45+wpa81+wp8" />
+    <file src="..\src\IOC\XLabs.IOC.SimpleInjector\bin\$configuration$\XLabs.IOC.SimpleInjector.dll" target="lib\portable-net45+netcore45+wpa81+wp8" />
+    <file src="..\src\IOC\XLabs.IOC.SimpleInjector\bin\$configuration$\XLabs.IOC.SimpleInjector.pdb" target="lib\portable-net45+netcore45+wpa81+wp8" />
   </files>
 </package>

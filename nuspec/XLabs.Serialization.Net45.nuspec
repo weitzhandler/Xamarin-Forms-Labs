@@ -25,7 +25,7 @@
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.Serialization.Net45.Readme.md" target="content" -->
     <!-- Assemblies: .NET 4.5 -->
-    <file src="..\..\source\Serialization\XLabs.Serialization.Net45\bin\$configuration$\XLabs.Serialization.Net45.dll" target="lib\net45" />
-    <file src="..\..\source\Serialization\XLabs.Serialization.Net45\bin\$configuration$\XLabs.Serialization.Net45.pdb" target="lib\net45" />
+    <file src="..\src\Serialization\XLabs.Serialization.Net45\bin\$configuration$\XLabs.Serialization.Net45.dll" target="lib\net45" />
+    <file src="..\src\Serialization\XLabs.Serialization.Net45\bin\$configuration$\XLabs.Serialization.Net45.pdb" target="lib\net45" />
   </files>
 </package>

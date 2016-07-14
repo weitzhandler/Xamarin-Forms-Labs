@@ -25,7 +25,7 @@
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.Caching.Readme.md" target="content" -->
     <!-- Assemblies: Portable -->
-    <file src="..\..\source\Caching\XLabs.Caching\bin\$configuration$\XLabs.Caching.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
-    <file src="..\..\source\Caching\XLabs.Caching\bin\$configuration$\XLabs.Caching.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\Caching\XLabs.Caching\bin\$configuration$\XLabs.Caching.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\Caching\XLabs.Caching\bin\$configuration$\XLabs.Caching.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
   </files>
 </package>
