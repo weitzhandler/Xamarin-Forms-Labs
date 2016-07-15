@@ -1,252 +1,240 @@
-#tool nuget:?package=NUnit.ConsoleRunner&version=3.2.1
-#tool "nuget:?package=GitReleaseNotes"
-#tool "nuget:?package=GitVersion.CommandLine"
-#addin "Cake.Git"
-#addin "Cake.Json"
-#addin "Cake.Xamarin"
-//#addin "Cake.Slack"
+///////////////////////////////////////////////////////////////////////////////
+// Directives
+///////////////////////////////////////////////////////////////////////////////
 
-//////////////////////////////////////////////////////////////////////
+#l "tools/versionUtils.cake"
+#l "tools/settingsUtils.cake"
+
+///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
-//////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 
-var target = Argument("target", "Default");
-var configuration = Argument("configuration", "Release");
-var settings = DeserializeJsonFromFile<BuildSettings>("build.settings.json");
-var versionInfo = DeserializeJsonFromFile<VersionInfo>("version.json");
+var target = Argument<string>("target", "Default");
+var configuration = Argument<string>("configuration", "Release");
+var settingsFile = Argument<string>("settingsFile", ".\\settings.json");
+var skipBuild = Argument<string>("skipBuild", "false").ToLower() == "true" || Argument<string>("skipBuild", "false") == "1";
 
-//////////////////////////////////////////////////////////////////////
-// PREPARATION
-//////////////////////////////////////////////////////////////////////
+var buildSettings = SettingsUtils.LoadSettings(Context, settingsFile);
+var versionInfo = VersionUtils.LoadVersion(Context, buildSettings);
 
-// Define directories.
-var sourceDir = MakeAbsolute(Directory("./source"));
-var solutionFile =  sourceDir + File("/XLabs.sln");
+///////////////////////////////////////////////////////////////////////////////
+// GLOBAL VARIABLES
+///////////////////////////////////////////////////////////////////////////////
 
-//////////////////////////////////////////////////////////////////////
-// TASKS
-//////////////////////////////////////////////////////////////////////
+var solutions = GetFiles(buildSettings.Build.SolutionFilePath);
+var solutionPaths = solutions.Select(solution => solution.GetDirectory());
+
+///////////////////////////////////////////////////////////////////////////////
+// SETUP / TEARDOWN
+///////////////////////////////////////////////////////////////////////////////
+
+Setup((c) =>
+{
+	c.Information("Command Line:");
+	c.Information("\tConfiguration: {0}", configuration);
+	c.Information("\tSettings Files: {0}", settingsFile);
+	c.Information("\tSkip Build: {0}", skipBuild);
+	c.Information("\tSolutions Found: {0}", solutions.Count);
+
+    // Executed BEFORE the first task.
+	buildSettings.Display(c);
+	versionInfo.Display(c);
+});
+
+Teardown((c) =>
+{
+    // Executed AFTER the last task.
+    Information("Finished running tasks.");
+});
+
+///////////////////////////////////////////////////////////////////////////////
+// TASK DEFINITIONS
+///////////////////////////////////////////////////////////////////////////////
 
 Task("Clean")
-	.IsDependentOn("DisplaySettings")
+    .Description("Cleans all directories that are used during the build process.")
+	.WithCriteria(!skipBuild)
     .Does(() =>
 {
-	string binFolderSpec = sourceDir.ToString() + "/**/bin/" + configuration;
-	string objFolderSpec = sourceDir.ToString() + "/**/obj";
-	
-	Information("Cleaning Bin Folders by spec: {0}", binFolderSpec);
-    CleanDirectories(binFolderSpec);
-	Information("Cleaning Obj Folders by spec: {0}", objFolderSpec);
-    CleanDirectories(objFolderSpec);
+    // Clean solution directories.
+    foreach(var path in solutionPaths)
+    {
+        Information("Cleaning {0}", path);
+        CleanDirectories(path + "/**/bin/" + configuration);
+        CleanDirectories(path + "/**/obj/" + configuration);
+    }
 });
 
-//////////////////////////////////////////////////////////////////////
-Task("CleanPackages")
-	.IsDependentOn("DisplaySettings")
-	.Does(() =>
+Task("CleanAll")
+    .Description("Cleans all directories that are used during the build process.")
+    .Does(() =>
 {
-	var packageFolderSpec = sourceDir.ToString() + "/artifacts/Packages/*";
-
-	Information("Cleaning Artifacts Folders by spec: {0}", packageFolderSpec);
-    CleanDirectory(packageFolderSpec);
+    // Clean solution directories.
+    foreach(var path in solutionPaths)
+    {
+        Information("Cleaning {0}", path);
+        CleanDirectories(path + "/**/bin");
+        CleanDirectories(path + "/**/obj");
+		CleanDirectories(path + "/packages/**/*");
+		CleanDirectories(path + "/artifacts/**/*");
+    }
 });
 
-//////////////////////////////////////////////////////////////////////
+Task("CleanPackages")
+    .Description("Cleans all packages that are used during the build process.")
+    .Does(() =>
+{
+    // Clean solution directories.
+    foreach(var path in solutionPaths)
+    {
+        Information("Cleaning {0}", path);
+		CleanDirectories(path + "/packages/**/*");
+    }
+});
 
 Task("Restore")
-	.IsDependentOn("DisplaySettings")
-    .IsDependentOn("Clean")
+    .Description("Restores all the NuGet packages that are used by the specified solution.")
+	.WithCriteria(!skipBuild)
     .Does(() =>
 {
-    NuGetRestore(solutionFile);
+    // Restore all NuGet packages.
+    foreach(var solution in solutions)
+    {
+        Information("Restoring {0}...", solution);
+        NuGetRestore(solution, new NuGetRestoreSettings { ConfigFile = buildSettings.Build.NugetConfigPath });
+    }
 });
-
-//////////////////////////////////////////////////////////////////////
 
 Task("Build")
-	.IsDependentOn("DisplaySettings")
+    .Description("Builds all the different parts of the project.")
+	.WithCriteria(!skipBuild)
+    .IsDependentOn("Clean")
     .IsDependentOn("Restore")
+	.IsDependentOn("UpdateVersion")
     .Does(() =>
 {
-	DotNetBuild(solutionFile, settings => 
-		settings.SetConfiguration(configuration)
-			.SetVerbosity(Cake.Core.Diagnostics.Verbosity.Minimal)
-			.WithTarget("Build")
-			.WithProperty("TreatWarningsAsErrors","true"));
-		
+	if (buildSettings.Version.AutoIncrementVersion)
+	{
+		RunTarget("IncrementVersion");
+	}
+
+    // Build all solutions.
+    foreach(var solution in solutions)
+    {
+        Information("Building {0}", solution);
+        MSBuild(solution, settings =>
+            settings.SetPlatformTarget(PlatformTarget.MSIL)
+                .WithProperty("TreatWarningsAsErrors",buildSettings.Build.TreatWarningsAsErrors.ToString())
+                .WithTarget("Build")
+                .SetConfiguration(configuration));
+    }
 });
 
-//////////////////////////////////////////////////////////////////////
-
-Task("Publish")
-	.IsDependentOn("DisplaySettings")
-	.IsDependentOn("Build")
-	.Does(() =>
-{
-
-});
-
-//////////////////////////////////////////////////////////////////////
-
-Task("UnitTests")
-	.IsDependentOn("DisplaySettings")
+Task("Package")
+    .Description("Packages all nuspec files into nupkg packages.")
     .IsDependentOn("Build")
     .Does(() =>
 {
-    NUnit3("./src/**/bin/" + configuration + "/*.UnitTests.dll", new NUnit3Settings {
-        NoResults = true
-        });
+	var artifactsPath = Directory(buildSettings.NuGet.ArtifactsPath);
+	var nugetProps = new Dictionary<string, string>() { {"Configuration", configuration} };
+	
+	CreateDirectory(artifactsPath);
+	
+	var nuspecFiles = GetFiles(buildSettings.NuGet.NuSpecFileSpec);
+	foreach(var nsf in nuspecFiles)
+	{
+		Information("Packaging {0}", nsf);
+		NuGetPack(nsf, new NuGetPackSettings {
+			Version = versionInfo.ToString(),
+			ReleaseNotes = versionInfo.ReleaseNotes,
+			Symbols = true,
+			Properties = nugetProps,
+			OutputDirectory = artifactsPath
+		});
+	}
 });
 
-//////////////////////////////////////////////////////////////////////
-
-Task("UpdateAssemblyInfo")
-	.IsDependentOn("DisplaySettings")
-	.IsDependentOn("GetVersionInfo")
+Task("Publish")
+    .Description("Publishes all of the nupkg packages to the nuget server.")
+    .IsDependentOn("Package")
     .Does(() =>
 {
-    GitVersion(new GitVersionSettings {
-        UpdateAssemblyInfo = true
-    });
+	var nupkgFiles = GetFiles(buildSettings.NuGet.NuGetPackagesSpec);
+	foreach(var pkg in nupkgFiles)
+	{
+		// Lets skip everything except the current version and we can skip the symbols pkg for now
+		if (!pkg.ToString().Contains(versionInfo.ToString(false)) || pkg.ToString().Contains("symbols")) continue; 
+		
+		Information("Publishing {0}", pkg);
+		
+		NuGetPush(pkg, new NuGetPushSettings {
+			Source = buildSettings.NuGet.FeedUrl,
+			ApiKey = buildSettings.NuGet.FeedApiKey,
+			ConfigFile = buildSettings.NuGet.NuGetConfig,
+			Verbosity = NuGetVerbosity.Detailed
+		});
+	}
 });
 
-Task("GetVersionInfo")
-	.IsDependentOn("DisplaySettings")
+Task("UnPublish")
+    .Description("UnPublishes all of the current nupkg packages from the nuget server.")
     .Does(() =>
 {
-    var result = GitVersion(new GitVersionSettings {
-        UserName = settings.git.userName,
-        Password = settings.git.password,
-        Url = settings.git.url,
-        Branch = settings.git.branch
-        //,Commit = EnviromentVariable("MY_COMMIT")
-    });
-    // Use result for building nuget packages, setting build server version, etc...
 });
 
-//////////////////////////////////////////////////////////////////////
+Task("UpdateVersion")
+	.Description("Updates the version number in the necessary files")
+	.Does(() =>
+{
+	Information("Updating Version to {0}", versionInfo.ToString());
+	
+	VersionUtils.UpdateVersion(Context, buildSettings, versionInfo);
+});
+
+Task("IncrementVersion")
+	.Description("Increments the version number and then updates it in the necessary files")
+	.IsDependentOn("UpdateVersion")
+	.Does(() =>
+{
+	var oldVer = versionInfo.ToString();
+	if (versionInfo.IsPreRelease) versionInfo.PreRelease++; else versionInfo.Build++;
+	
+	Information("Incrementing Version {0} to {1}", oldVer, versionInfo.ToString());
+});
+
+Task("BuildNewVersion")
+	.Description("Increments and Builds a new version")
+	.IsDependentOn("IncrementVersion")
+	.IsDependentOn("Build")
+	.Does(() =>
+{
+});
+
+Task("PublishNewVersion")
+	.Description("Increments, Builds, and publishes a new version")
+	.IsDependentOn("BuildNewVersion")
+	.IsDependentOn("Publish")
+	.Does(() =>
+{
+});
 
 Task("DisplaySettings")
-	.Does(() => 
+    .Description("Displays All Settings.")
+    .Does(() =>
 {
-	Information(logAction=>logAction("Target: {0}", target));
-	Information(logAction=>logAction("Configuration: {0}", configuration));
-
-	Information(logAction=>logAction("Settings: \r\n\t{0}", settings.Dump()));
-	Information(logAction=>logAction("Version: {0}", versionInfo.ToString()));
+	// Settings will be displayed as they are part of the Setup task
 });
 
-//////////////////////////////////////////////////////////////////////
-
-Task("Blank")
-	.Does(() =>
-	{
-	});
-
-//////////////////////////////////////////////////////////////////////
-// TASK SETUP/TEARDOWN
-//////////////////////////////////////////////////////////////////////
-
-TaskSetup((context, task) =>
-{
-	// custom logging
-	//Verbose(logAction=>logAction("Task: {0} - Start", task.Task.Name));
-});
-
-TaskTeardown((context, task) =>
-{
-	//Verbose(logAction=>logAction("Task: {0} - Finish", task.Task.Name));
-});
-
-//////////////////////////////////////////////////////////////////////
-// TASK TARGETS
-//////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+// TARGETS
+///////////////////////////////////////////////////////////////////////////////
 
 Task("Default")
-    .IsDependentOn("Blank");
+    .Description("This is the default task which will be ran if no specific target is passed in.")
+    .IsDependentOn("Build");
 
-//////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 // EXECUTION
-//////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 
 RunTarget(target);
-
-//////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////
-
-//////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////
-// Helper classes for settings and Versioning (wish cake supported dynamic types out of json)
-// then these would not be needed
-//////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////
-public class BuildSettings
-{
-	public GitSettings git {get; set;}
-	public NugetSetings nuget {get;set;}
-	
-	public string Dump()
-	{
-		var message = git.Dump() + "\r\n\t" + nuget.Dump();
-		
-		return message;
-	}
-}
-
-public class GitSettings
-{
-	public string url {get;set;}
-	public string apiKey {get;set;}
-	public string userName {get;set;}
-	public string password {get;set;}
-	public string branch {get;set;}
-	
-	public string Dump()
-	{
-		var message = string.Format("Git Settings: [Url={0}] APIKey={1}, branch={2}, User={3}, Password={4}", url, 
-																											apiKey,
-																											branch,																											
-																											userName, 
-																											string.IsNullOrEmpty(password) ? "Not Specificed" : "Specified");
-		return message;
-	}
-}
-
-public class NugetSetings
-{
-	public string url {get;set;}
-	public string apiKey {get;set;}
-	
-	public string Dump()
-	{
-		var message = string.Format("NuGet Settings: [Url={0}] APIKey={1}", url, apiKey);
-		
-		return message;
-	}
-}
-
-public class VersionInfo
-{
-	public VersionInfo()
-	{
-		major = 1; minor = 0; build = 0; preRelease = null;
-	}
-	
-	public int major {get;set;} 
-	public int minor {get;set;} 
-	public int build {get;set;} 
-
-	public int? preRelease {get;set;}
-	public string commit {get;set;}
-	
-	public override string ToString()
-	{
-		var str = string.Format("{0:#0}.{1:#0}.{2:#0}", major, minor, build);
-		
-		if (preRelease != null) str += string.Format(".pre{0:00}", preRelease);
-		
-		return str;
-	}
-}
-//////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////
