@@ -106,7 +106,22 @@ if (!(Test-Path $NUGET_EXE)) {
     } catch {
         Throw "Could not download NuGet.exe."
     }
+} else {
+    # Update nuget.exe if needed
+    Push-Location
+    Set-Location $TOOLS_DIR
+
+    Write-Verbose -Message "Updating NuGet executable..."
+    $NuGetOutput = Invoke-Expression "&`"$NUGET_EXE`" update -Self"
+    Write-Verbose -Message ($NuGetOutput | out-string)
+
+    Pop-Location
+    if ($LASTEXITCODE -ne 0)
+    {
+        exit $LASTEXITCODE
+    }
 }
+
 
 # Save nuget.exe path to environment to be available to child processed
 $ENV:NUGET_EXE = $NUGET_EXE

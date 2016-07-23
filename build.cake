@@ -77,6 +77,8 @@ Task("CleanAll")
         CleanDirectories(path + "/**/obj");
 		CleanDirectories(path + "/packages/**/*");
 		CleanDirectories(path + "/artifacts/**/*");
+		CleanDirectories(path + "/packages");
+		CleanDirectories(path + "/artifacts");
     }
 });
 
@@ -89,6 +91,7 @@ Task("CleanPackages")
     {
         Information("Cleaning {0}", path);
 		CleanDirectories(path + "/packages/**/*");
+		CleanDirectories(path + "/packages");
     }
 });
 
@@ -124,6 +127,7 @@ Task("Build")
         Information("Building {0}", solution);
         MSBuild(solution, settings =>
             settings.SetPlatformTarget(PlatformTarget.MSIL)
+				.SetMaxCpuCount(1)
                 .WithProperty("TreatWarningsAsErrors",buildSettings.Build.TreatWarningsAsErrors.ToString())
                 .WithTarget("Build")
                 .SetConfiguration(configuration));
@@ -177,12 +181,20 @@ Task("Publish")
 		
 		Information("Publishing {0}", pkg);
 		
-		NuGetPush(pkg, new NuGetPushSettings {
-			Source = buildSettings.NuGet.FeedUrl,
-			ApiKey = buildSettings.NuGet.FeedApiKey,
-			ConfigFile = buildSettings.NuGet.NuGetConfig,
-			Verbosity = NuGetVerbosity.Detailed
-		});
+		if (buildSettings.NuGet.FeedApiKey != "VSTS" ) {
+			NuGetPush(pkg, new NuGetPushSettings {
+				Source = buildSettings.NuGet.FeedUrl,
+				ApiKey = buildSettings.NuGet.FeedApiKey,
+				ConfigFile = buildSettings.NuGet.NuGetConfig,
+				Verbosity = NuGetVerbosity.Detailed
+			});
+		} else {
+			NuGetPush(pkg, new NuGetPushSettings {
+				Source = buildSettings.NuGet.FeedUrl,
+				ConfigFile = buildSettings.NuGet.NuGetConfig,
+				Verbosity = NuGetVerbosity.Detailed
+			});
+		}
 	}
 });
 
@@ -197,12 +209,16 @@ Task("UnPublish")
 	{
 		Information("UnPublishing {0}", f.GetFilenameWithoutExtension());
 
-		var args = string.Format("delete {0} {1} -Source {2} -NonInteractive -ApiKey {3}", 
+		var args = string.Format("delete {0} {1} -Source {2} -NonInteractive", 
 								f.GetFilenameWithoutExtension(),
 								v,
-								buildSettings.NuGet.FeedUrl,
-								buildSettings.NuGet.FeedApiKey
+								buildSettings.NuGet.FeedUrl
 								);
+	
+		if (buildSettings.NuGet.FeedApiKey != "VSTS" ) {
+			args = args + string.Format(" -ApiKey {0}", buildSettings.NuGet.FeedApiKey);
+		}
+		
 		
 		if (!string.IsNullOrEmpty(buildSettings.NuGet.NuGetConfig)) {
 			args = args + string.Format(" -Config {0}", buildSettings.NuGet.NuGetConfig);
