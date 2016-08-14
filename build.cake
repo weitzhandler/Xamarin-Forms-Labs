@@ -77,6 +77,8 @@ Task("CleanAll")
         CleanDirectories(path + "/**/obj");
 		CleanDirectories(path + "/packages/**/*");
 		CleanDirectories(path + "/artifacts/**/*");
+		CleanDirectories(path + "/packages");
+		CleanDirectories(path + "/artifacts");
     }
 });
 
@@ -89,6 +91,7 @@ Task("CleanPackages")
     {
         Information("Cleaning {0}", path);
 		CleanDirectories(path + "/packages/**/*");
+		CleanDirectories(path + "/packages");
     }
 });
 
@@ -124,6 +127,7 @@ Task("Build")
         Information("Building {0}", solution);
         MSBuild(solution, settings =>
             settings.SetPlatformTarget(PlatformTarget.MSIL)
+				.SetMaxCpuCount(1)
                 .WithProperty("TreatWarningsAsErrors",buildSettings.Build.TreatWarningsAsErrors.ToString())
                 .WithTarget("Build")
                 .SetConfiguration(configuration));
@@ -144,6 +148,13 @@ Task("Package")
 	foreach(var nsf in nuspecFiles)
 	{
 		Information("Packaging {0}", nsf);
+		
+		if (buildSettings.NuGet.UpdateVersion) {
+			VersionUtils.UpdateNuSpecVersion(Context, buildSettings, versionInfo, nsf.ToString());	
+		}
+		
+		VersionUtils.UpdateNuSpecVersionDependency(Context, buildSettings, versionInfo, nsf.ToString());
+		
 		NuGetPack(nsf, new NuGetPackSettings {
 			Version = versionInfo.ToString(),
 			ReleaseNotes = versionInfo.ReleaseNotes,
@@ -155,7 +166,7 @@ Task("Package")
 });
 
 Task("Publish")
-    .Description("Publishes all of the nupkg packages to the nuget server.")
+    .Description("Publishes all of the nupkg packages to the nuget server. ")
     .IsDependentOn("Package")
     .Does(() =>
 {
@@ -163,23 +174,65 @@ Task("Publish")
 	foreach(var pkg in nupkgFiles)
 	{
 		// Lets skip everything except the current version and we can skip the symbols pkg for now
-		if (!pkg.ToString().Contains(versionInfo.ToString(false)) || pkg.ToString().Contains("symbols")) continue; 
+		if (!pkg.ToString().Contains(versionInfo.ToString()) || pkg.ToString().Contains("symbols")) {
+			Information("Skipping {0}", pkg);
+			continue; 
+		}
 		
 		Information("Publishing {0}", pkg);
 		
-		NuGetPush(pkg, new NuGetPushSettings {
-			Source = buildSettings.NuGet.FeedUrl,
-			ApiKey = buildSettings.NuGet.FeedApiKey,
-			ConfigFile = buildSettings.NuGet.NuGetConfig,
-			Verbosity = NuGetVerbosity.Detailed
-		});
+		if (buildSettings.NuGet.FeedApiKey != "VSTS" ) {
+			NuGetPush(pkg, new NuGetPushSettings {
+				Source = buildSettings.NuGet.FeedUrl,
+				ApiKey = buildSettings.NuGet.FeedApiKey,
+				ConfigFile = buildSettings.NuGet.NuGetConfig,
+				Verbosity = NuGetVerbosity.Detailed
+			});
+		} else {
+			NuGetPush(pkg, new NuGetPushSettings {
+				Source = buildSettings.NuGet.FeedUrl,
+				ConfigFile = buildSettings.NuGet.NuGetConfig,
+				Verbosity = NuGetVerbosity.Detailed
+			});
+		}
 	}
 });
 
 Task("UnPublish")
-    .Description("UnPublishes all of the current nupkg packages from the nuget server.")
+    .Description("UnPublishes all of the current nupkg packages from the nuget server. Issue: versionToDelete must use : instead of . due to bug in cake")
     .Does(() =>
 {
+	var v = Argument<string>("versionToDelete", versionInfo.ToString()).Replace(":",".");
+	
+	var nuspecFiles = GetFiles(buildSettings.NuGet.NuSpecFileSpec);
+	foreach(var f in nuspecFiles)
+	{
+		Information("UnPublishing {0}", f.GetFilenameWithoutExtension());
+
+		var args = string.Format("delete {0} {1} -Source {2} -NonInteractive", 
+								f.GetFilenameWithoutExtension(),
+								v,
+								buildSettings.NuGet.FeedUrl
+								);
+	
+		if (buildSettings.NuGet.FeedApiKey != "VSTS" ) {
+			args = args + string.Format(" -ApiKey {0}", buildSettings.NuGet.FeedApiKey);
+		}
+		
+		
+		if (!string.IsNullOrEmpty(buildSettings.NuGet.NuGetConfig)) {
+			args = args + string.Format(" -Config {0}", buildSettings.NuGet.NuGetConfig);
+		}
+		
+		Information("NuGet Command Line: {0}", args);
+		using (var process = StartAndReturnProcess("tools\\nuget.exe", new ProcessSettings {
+			Arguments = args
+		}))
+		{
+			process.WaitForExit();
+			Information("nuget delete exit code: {0}", process.GetExitCode());
+		}
+	}
 });
 
 Task("UpdateVersion")
