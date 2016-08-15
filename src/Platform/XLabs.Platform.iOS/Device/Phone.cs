@@ -20,6 +20,8 @@
 // 
 
 using System.ComponentModel;
+using CoreGraphics;
+using UIKit;
 using XLabs.Platform.Extensions;
 using XLabs.Platform.Services;
 
