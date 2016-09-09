@@ -53,7 +53,7 @@ Teardown((c) =>
 
 Task("Clean")
     .Description("Cleans all directories that are used during the build process.")
-	.WithCriteria(!skipBuild)
+		.WithCriteria(!skipBuild)
     .Does(() =>
 {
     // Clean solution directories.
@@ -72,13 +72,13 @@ Task("CleanAll")
     // Clean solution directories.
     foreach(var path in solutionPaths)
     {
-        Information("Cleaning {0}", path);
-        CleanDirectories(path + "/**/bin");
-        CleanDirectories(path + "/**/obj");
-		CleanDirectories(path + "/packages/**/*");
-		CleanDirectories(path + "/artifacts/**/*");
-		CleanDirectories(path + "/packages");
-		CleanDirectories(path + "/artifacts");
+			Information("Cleaning {0}", path);
+			CleanDirectories(path + "/**/bin");
+			CleanDirectories(path + "/**/obj");
+			CleanDirectories(path + "/packages/**/*");
+			CleanDirectories(path + "/artifacts/**/*");
+			CleanDirectories(path + "/packages");
+			CleanDirectories(path + "/artifacts");
     }
 });
 
@@ -97,7 +97,7 @@ Task("CleanPackages")
 
 Task("Restore")
     .Description("Restores all the NuGet packages that are used by the specified solution.")
-	.WithCriteria(!skipBuild)
+		.WithCriteria(!skipBuild)
     .Does(() =>
 {
     // Restore all NuGet packages.
@@ -110,10 +110,10 @@ Task("Restore")
 
 Task("Build")
     .Description("Builds all the different parts of the project.")
-	.WithCriteria(!skipBuild)
+		.WithCriteria(!skipBuild)
     .IsDependentOn("Clean")
     .IsDependentOn("Restore")
-	.IsDependentOn("UpdateVersion")
+		.IsDependentOn("UpdateVersion")
     .Does(() =>
 {
 	if (buildSettings.Version.AutoIncrementVersion)
@@ -125,12 +125,23 @@ Task("Build")
     foreach(var solution in solutions)
     {
         Information("Building {0}", solution);
-        MSBuild(solution, settings =>
-            settings.SetPlatformTarget(PlatformTarget.MSIL)
-				.SetMaxCpuCount(1)
-                .WithProperty("TreatWarningsAsErrors",buildSettings.Build.TreatWarningsAsErrors.ToString())
-                .WithTarget("Build")
-                .SetConfiguration(configuration));
+				var msBuildSettings = new MSBuildSettings {
+					MaxCpuCount = 1,
+					Configuration = configuration,
+					PlatformTarget = PlatformTarget.MSIL,
+//					Verbosity = Verbosity.Diagnostic
+				}.WithProperty("TreatWarningsAsErrors",buildSettings.Build.TreatWarningsAsErrors.ToString())
+				 .WithTarget("Build");
+
+				if (buildSettings.Build.EnableXamarinIOS)
+				{
+					// Mac build host connection properties
+					msBuildSettings.WithProperty("ServerAddress", buildSettings.Build.MacAgentIPAddress);
+					msBuildSettings.WithProperty("ServerUser", buildSettings.Build.MacAgentUserName);
+					msBuildSettings.WithProperty("ServerPassword", buildSettings.Build.MacAgentUserPassword);
+				}
+
+        MSBuild(solution, msBuildSettings);
     }
 });
 
@@ -141,20 +152,20 @@ Task("Package")
 {
 	var artifactsPath = Directory(buildSettings.NuGet.ArtifactsPath);
 	var nugetProps = new Dictionary<string, string>() { {"Configuration", configuration} };
-	
+
 	CreateDirectory(artifactsPath);
-	
+
 	var nuspecFiles = GetFiles(buildSettings.NuGet.NuSpecFileSpec);
 	foreach(var nsf in nuspecFiles)
 	{
 		Information("Packaging {0}", nsf);
-		
+
 		if (buildSettings.NuGet.UpdateVersion) {
-			VersionUtils.UpdateNuSpecVersion(Context, buildSettings, versionInfo, nsf.ToString());	
+			VersionUtils.UpdateNuSpecVersion(Context, buildSettings, versionInfo, nsf.ToString());
 		}
-		
+
 		VersionUtils.UpdateNuSpecVersionDependency(Context, buildSettings, versionInfo, nsf.ToString());
-		
+
 		NuGetPack(nsf, new NuGetPackSettings {
 			Version = versionInfo.ToString(),
 			ReleaseNotes = versionInfo.ReleaseNotes,
@@ -176,54 +187,53 @@ Task("Publish")
 		// Lets skip everything except the current version and we can skip the symbols pkg for now
 		if (!pkg.ToString().Contains(versionInfo.ToString()) || pkg.ToString().Contains("symbols")) {
 			Information("Skipping {0}", pkg);
-			continue; 
+			continue;
 		}
-		
+
 		Information("Publishing {0}", pkg);
-		
-		if (buildSettings.NuGet.FeedApiKey != "VSTS" ) {
-			NuGetPush(pkg, new NuGetPushSettings {
-				Source = buildSettings.NuGet.FeedUrl,
-				ApiKey = buildSettings.NuGet.FeedApiKey,
-				ConfigFile = buildSettings.NuGet.NuGetConfig,
-				Verbosity = NuGetVerbosity.Detailed
-			});
-		} else {
-			NuGetPush(pkg, new NuGetPushSettings {
-				Source = buildSettings.NuGet.FeedUrl,
-				ConfigFile = buildSettings.NuGet.NuGetConfig,
-				Verbosity = NuGetVerbosity.Detailed
-			});
+
+		var nugetSettings = new NuGetPushSettings {
+			Source = buildSettings.NuGet.FeedUrl,
+			ConfigFile = buildSettings.NuGet.NuGetConfig,
+			Verbosity = NuGetVerbosity.Detailed
+		};
+
+		if (!string.IsNullOrEmpty(buildSettings.NuGet.FeedApiKey))
+		{
+			nugetSettings.ApiKey = buildSettings.NuGet.FeedApiKey;
 		}
+
+		NuGetPush(pkg, nugetSettings);
 	}
 });
+
 
 Task("UnPublish")
     .Description("UnPublishes all of the current nupkg packages from the nuget server. Issue: versionToDelete must use : instead of . due to bug in cake")
     .Does(() =>
 {
 	var v = Argument<string>("versionToDelete", versionInfo.ToString()).Replace(":",".");
-	
+
 	var nuspecFiles = GetFiles(buildSettings.NuGet.NuSpecFileSpec);
 	foreach(var f in nuspecFiles)
 	{
 		Information("UnPublishing {0}", f.GetFilenameWithoutExtension());
 
-		var args = string.Format("delete {0} {1} -Source {2} -NonInteractive", 
+		var args = string.Format("delete {0} {1} -Source {2} -NonInteractive",
 								f.GetFilenameWithoutExtension(),
 								v,
 								buildSettings.NuGet.FeedUrl
 								);
-	
+
 		if (buildSettings.NuGet.FeedApiKey != "VSTS" ) {
 			args = args + string.Format(" -ApiKey {0}", buildSettings.NuGet.FeedApiKey);
 		}
-		
-		
+
+
 		if (!string.IsNullOrEmpty(buildSettings.NuGet.NuGetConfig)) {
 			args = args + string.Format(" -Config {0}", buildSettings.NuGet.NuGetConfig);
 		}
-		
+
 		Information("NuGet Command Line: {0}", args);
 		using (var process = StartAndReturnProcess("tools\\nuget.exe", new ProcessSettings {
 			Arguments = args
@@ -240,7 +250,7 @@ Task("UpdateVersion")
 	.Does(() =>
 {
 	Information("Updating Version to {0}", versionInfo.ToString());
-	
+
 	VersionUtils.UpdateVersion(Context, buildSettings, versionInfo);
 });
 
@@ -251,8 +261,9 @@ Task("IncrementVersion")
 {
 	var oldVer = versionInfo.ToString();
 	if (versionInfo.IsPreRelease) versionInfo.PreRelease++; else versionInfo.Build++;
-	
+
 	Information("Incrementing Version {0} to {1}", oldVer, versionInfo.ToString());
+	VersionUtils.UpdateVersion(Context, buildSettings, versionInfo);
 });
 
 Task("BuildNewVersion")
@@ -277,6 +288,7 @@ Task("DisplaySettings")
 {
 	// Settings will be displayed as they are part of the Setup task
 });
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // TARGETS
