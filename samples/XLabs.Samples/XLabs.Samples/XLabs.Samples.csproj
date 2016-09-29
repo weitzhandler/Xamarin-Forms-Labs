@@ -41,7 +41,6 @@
     <Compile Include="Data\IImageListSource.cs" />
     <Compile Include="Data\ImageListItem.cs" />
     <Compile Include="Data\JsonImageListSource.cs" />
-    <Compile Include="Helpers\Settings.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
