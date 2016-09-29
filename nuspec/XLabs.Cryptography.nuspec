@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>XLabs.Cryptography</id>
-    <version>2.2.0000-pre01</version>
+    <version>2.3.0-pre03</version>
     <title>XLabs - Cryptography</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -20,7 +20,7 @@
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.Cryptography.Readme.md" target="content" -->
     <!-- Assemblies: Portable -->
-    <file src="..\src\Cryptography\XLabs.Cryptography\bin\$configuration$\XLabs.Cryptography.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
-    <file src="..\src\Cryptography\XLabs.Cryptography\bin\$configuration$\XLabs.Cryptography.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\Cryptography\XLabs.Cryptography\bin\$configuration$\XLabs.Cryptography.dll" target="lib\netstandard1.0" />
+    <file src="..\src\Cryptography\XLabs.Cryptography\bin\$configuration$\XLabs.Cryptography.pdb" target="lib\netstandard1.0" />
   </files>
 </package>

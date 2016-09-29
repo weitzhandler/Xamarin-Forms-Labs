@@ -10,14 +10,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)BlobSerializerExtensionsTests.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Mocks\SQLite\BlobSerializer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Mocks\SQLite\MockBase.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Mocks\SQLite\MockDbHandle.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Mocks\SQLite\MockDbStatement.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Mocks\SQLite\MockReflectionService.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Mocks\SQLite\MockSQLiteApi.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Mocks\SQLite\MockSqlLiteProvider.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Mocks\Xlabs\MockByteSerializer.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)SQLiteSimpleCacheTests.cs" />
   </ItemGroup>
 </Project>

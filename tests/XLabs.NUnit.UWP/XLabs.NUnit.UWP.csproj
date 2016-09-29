@@ -11,7 +11,7 @@
     <AssemblyName>XLabs.NUnit.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10240.0</TargetPlatformVersion>
+    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
     <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
@@ -91,6 +91,7 @@
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +137,14 @@
       <Project>{da63bb22-3a83-4bdd-ac19-00904877f4fa}</Project>
       <Name>XLabs.Caching</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\src\Charting\XLabs.Forms.Charting.UWP\XLabs.Forms.Charting.UWP.csproj">
+      <Project>{3f20acb5-5dbc-45c7-88a3-78b24ad95400}</Project>
+      <Name>XLabs.Forms.Charting.UWP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Charting\XLabs.Forms.Charting\XLabs.Forms.Charting.csproj">
+      <Project>{a94e9b67-937d-443c-aeb0-1220131b590b}</Project>
+      <Name>XLabs.Forms.Charting</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\src\Core\XLabs.Core.csproj">
       <Project>{486abbd5-9e4d-4bd2-a6fb-82e0e3b5a163}</Project>
       <Name>XLabs.Core</Name>
@@ -143,6 +152,14 @@
     <ProjectReference Include="..\..\src\Cryptography\XLabs.Cryptography\XLabs.Cryptography.csproj">
       <Project>{be2c2399-a4b7-4e9a-ad93-9b78b167895a}</Project>
       <Name>XLabs.Cryptography</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Forms\XLabs.Forms.UWP\XLabs.Forms.UWP.csproj">
+      <Project>{963abf63-cca5-4b67-86dc-fc5e372db33c}</Project>
+      <Name>XLabs.Forms.UWP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\src\Forms\XLabs.Forms\XLabs.Forms.csproj">
+      <Project>{59ad9d73-9348-4262-a869-6168057da26a}</Project>
+      <Name>XLabs.Forms</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\IOC\XLabs.IOC.Autofac\XLabs.IOC.Autofac.csproj">
       <Project>{3a675f66-34e2-4142-bc47-5042c1de26b3}</Project>
@@ -153,7 +170,7 @@
       <Name>XLabs.IOC.Ninject</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\IOC\XLabs.IOC.SimpleInjector\XLabs.IOC.SimpleInjector.csproj">
-      <Project>{6e550f02-4666-4d37-962f-d2a990e9f2a7}</Project>
+      <Project>{6E550F02-4666-4D37-962F-D2A990E9F2A7}</Project>
       <Name>XLabs.IOC.SimpleInjector</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\src\IOC\XLabs.IOC.TinyIOC.UWP\XLabs.IOC.TinyIOC.UWP.csproj">
@@ -180,10 +197,6 @@
       <Project>{b1636d51-a05f-4957-93bc-cdceb79c2e33}</Project>
       <Name>XLabs.Serialization.Json.NET</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\src\Serialization\XLabs.Serialization.ProtoBuf\XLabs.Serialization.ProtoBuf.csproj">
-      <Project>{324a8036-71ca-441c-8549-102f7eaf3331}</Project>
-      <Name>XLabs.Serialization.ProtoBuf</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\src\Serialization\XLabs.Serialization\XLabs.Serialization.csproj">
       <Project>{6c5c17d3-e6e8-4201-b11f-7c50b02e8e3d}</Project>
       <Name>XLabs.Serialization</Name>
@@ -208,11 +221,19 @@
   <Import Project="..\Caching\XLabs.Caching.NUnit.Shared\XLabs.Caching.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\Core\XLabs.Core.NUnit.Shared\XLabs.Core.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\Cryptography\XLabs.Cryptography.NUnit.Shared\XLabs.Cryptography.NUnit.Shared.projitems" Label="Shared" />
-  <Import Project="..\IOC\XLabs.IOC.NUnit.Shared\XLabs.IOC.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\Platform\XLabs.Platform.NUnit.Shared\XLabs.Platform.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\Serialization\XLabs.Serialization.NUnit.Shared\XLabs.Serialization.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\Settings\XLabs.Settings.NUnit.Shared\XLabs.Settings.NUnit.Shared.projitems" Label="Shared" />
   <Import Project="..\Web\XLabs.Web.NUnit.Shared\XLabs.Web.NUnit.Shared.projitems" Label="Shared" />
+  <Import Project="..\Caching\XLabs.Caching.Sqlite.NUnit.Shared\XLabs.Caching.Sqlite.NUnit.Shared.projitems" Label="Shared" />
+  <Import Project="..\Charting\XLabs.Forms.Charting.NUnit.Shared\XLabs.Forms.Charting.NUnit.Shared.projitems" Label="Shared" />
+  <Import Project="..\Forms\XLabs.Forms.NUnit.Shared\XLabs.Forms.NUnit.Shared.projitems" Label="Shared" />
+  <Import Project="..\IOC\XLabs.IOC.Autofac.NUnit.Shared\XLabs.IOC.Autofac.NUnit.Shared.projitems" Label="Shared" />
+  <Import Project="..\IOC\XLabs.IOC.Ninject.NUnit.Shared\XLabs.IOC.Ninject.NUnit.Shared.projitems" Label="Shared" />
+  <Import Project="..\IOC\XLabs.IOC.NUnit.Shared\XLabs.IOC.NUnit.Shared.projitems" Label="Shared" />
+  <Import Project="..\IOC\XLabs.IOC.SimpleInjector.NUnit.Shared\XLabs.IOC.SimpleInjector.NUnit.Shared.projitems" Label="Shared" />
+  <Import Project="..\Serialization\XLabs.Serialization.JsonNet.NUnit.Shared\XLabs.Serialization.JsonNet.NUnit.Shared.projitems" Label="Shared" />
+  <Import Project="..\Serialization\XLabs.Serialization.ServiceStack.NUnit.Shared\XLabs.Serialization.ServiceStack.NUnit.Shared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

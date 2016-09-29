@@ -13,49 +13,52 @@ public class VersionUtils
 		}
 
 		VersionInfo verInfo = null;
-
-		if (!string.IsNullOrEmpty(settings.Version.VersionFile) && context.FileExists(settings.Version.VersionFile))
+		
+		switch (settings.Version.LoadFrom)
 		{
-			verInfo = LoadVersionFromJson(context, settings.Version.VersionFile);
+			case VersionSourceTypes.none:
+				break;
+			case VersionSourceTypes.versionfile:
+				verInfo = LoadVersionFromJson(context, settings.Version.VersionFile);
+				break;
+			case VersionSourceTypes.assemblyinfo:
+				verInfo = LoadVersionFromAssemblyInfo(context, settings.Version.AssemblyInfoFile);
+				break;
+			case VersionSourceTypes.git:
+				verInfo = LoadVersionFromGit(context);
+				break;
+			case VersionSourceTypes.tfs:
+				//verInfo = LoadVersionFromTfs(context);
+				break;
 		}
-
-		if (verInfo == null && !string.IsNullOrEmpty(settings.Version.AssemblyInfoFile) && context.FileExists(settings.Version.AssemblyInfoFile))
-		{
-			verInfo = LoadVersionFromAssemblyInfo(context, settings.Version.AssemblyInfoFile);
-		}
-
-		if (verInfo == null && settings.Version.LoadFromGit)
-		{
-			verInfo = LoadVersionFromGit(context);
-		}
-
+		
 		if (verInfo != null)
 		{
 			verInfo.CakeVersion = typeof(ICakeContext).Assembly.GetName().Version.ToString();
 		}
-
+		
 		return verInfo;
 	}
-
+	
 	private static VersionInfo LoadVersionFromJson(ICakeContext context, string versionFile)
 	{
 		context.Information("Loading Version Info From File: {0}", versionFile);
-		if (!context.FileExists(versionFile))
+		if (string.IsNullOrEmpty(versionFile) || !context.FileExists(versionFile))
 		{
 			context.Error("Version File Does Not Exist");
 			return null;
 		}
-
+		
 		var obj = context.DeserializeJsonFromFile<VersionInfo>(versionFile);
-
+		
 		return obj;
 	}
-
+	
 	private static VersionInfo LoadVersionFromAssemblyInfo(ICakeContext context, string assemblyInfoFile)
 	{
 		context.Information("Fetching Version Info from AssemblyInfo File: {0}", assemblyInfoFile);
-
-		if (!context.FileExists(assemblyInfoFile))
+		
+		if (!string.IsNullOrEmpty(assemblyInfoFile) || !context.FileExists(assemblyInfoFile))
 		{
 			context.Error("AssemblyInfo file does not exist");
 			return null;
@@ -64,7 +67,7 @@ public class VersionUtils
 		try {
 			var assemblyInfo = context.ParseAssemblyInfo(assemblyInfoFile);
 			var v = Version.Parse(assemblyInfo.AssemblyVersion);
-
+			
 			var verInfo = new VersionInfo {
 				Major = v.Major,
 				Minor = v.Minor,
@@ -72,14 +75,14 @@ public class VersionUtils
 				Semantic = assemblyInfo.AssemblyInformationalVersion,
 				Milestone = string.Concat("v", v.ToString())
 			};
-
+			
 			return verInfo;
 		}
 		catch {}
-
+		
 		return null;
 	}
-
+	
 	private static VersionInfo LoadVersionFromGit(ICakeContext context)
 	{
 		context.Information("Fetching Verson Infop from Git");
@@ -88,7 +91,7 @@ public class VersionUtils
 			GitVersion assertedVersions = context.GitVersion(new GitVersionSettings
 			{
 				OutputType = GitVersionOutput.Json,
-				});
+			});
 
 			var verInfo = new VersionInfo {
 				Major = assertedVersions.Major,
@@ -101,55 +104,55 @@ public class VersionUtils
 			context.Information("Calculated Semantic Version: {0}", verInfo.Semantic);
 
 			return verInfo;
-			} catch {}
+		} catch {}
 
-			return null;
+		return null;
+	}
+	
+	public static void UpdateVersion(ICakeContext context, Settings settings, VersionInfo verInfo)
+	{
+		if (context == null)
+		{
+			throw new ArgumentNullException("context");
 		}
 
-		public static void UpdateVersion(ICakeContext context, Settings settings, VersionInfo verInfo)
-		{
-			if (context == null)
-			{
-				throw new ArgumentNullException("context");
-			}
-
-			if (!string.IsNullOrEmpty(settings.Version.VersionFile) && context.FileExists(settings.Version.VersionFile))
-			{
-				context.Information("Updating Version File {0}", settings.Version.VersionFile);
-
-				context.SerializeJsonToFile(settings.Version.VersionFile, verInfo);
-			}
-
-			if (!string.IsNullOrEmpty(settings.Version.AssemblyInfoFile) && context.FileExists(settings.Version.AssemblyInfoFile))
-			{
-				context.Information("Updating Assembly Info File {0}", settings.Version.AssemblyInfoFile);
-
-				context.ReplaceRegexInFiles(settings.Version.AssemblyInfoFile, "AssemblyVersion\\(.*\\)", string.Format("AssemblyVersion(\"{0}\")", verInfo.ToString(false)));
-				context.ReplaceRegexInFiles(settings.Version.AssemblyInfoFile, "AssemblyFileVersion\\(.*\\)", string.Format("AssemblyFileVersion(\"{0}\")", verInfo.ToString(false)));
-			}
+		if (!string.IsNullOrEmpty(settings.Version.VersionFile) && context.FileExists(settings.Version.VersionFile))
+		{	
+			context.Information("Updating Version File {0}", settings.Version.VersionFile);
+			
+			context.SerializeJsonToFile(settings.Version.VersionFile, verInfo);
 		}
-
-		public static void UpdateNuSpecVersion(ICakeContext context, Settings settings, VersionInfo verInfo, FilePath nuspecFile)
+		
+		if (!string.IsNullOrEmpty(settings.Version.AssemblyInfoFile) && context.FileExists(settings.Version.AssemblyInfoFile))
 		{
-			if (context == null)
-			{
-				throw new ArgumentNullException("context");
-			}
-
-			var xpq = string.Format("/n:package/n:metadata/n:version");
-
-			context.Information("\tUpdating Version in Nuspec File {0} to {1}", nuspecFile, verInfo.ToString());
-
-			try {
-				context.XmlPoke(nuspecFile, xpq, verInfo.ToString(), new XmlPokeSettings {
-					PreserveWhitespace = true
-					, Namespaces = new Dictionary<string, string> {
-						{ /* Prefix */ "n", /* URI */ "http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd"}
-					}
-					});
-		} catch {} // Its ok to throw these away as it most likely means the file didn't exist or the XPath didn't find any nodes
+			context.Information("Updating Assembly Info File {0}", settings.Version.AssemblyInfoFile);
+			
+			context.ReplaceRegexInFiles(settings.Version.AssemblyInfoFile, "AssemblyVersion\\(.*\\)", string.Format("AssemblyVersion(\"{0}\")", verInfo.ToString(false)));
+			context.ReplaceRegexInFiles(settings.Version.AssemblyInfoFile, "AssemblyFileVersion\\(.*\\)", string.Format("AssemblyFileVersion(\"{0}\")", verInfo.ToString(false)));
+		}
 	}
 
+	public static void UpdateNuSpecVersion(ICakeContext context, Settings settings, VersionInfo verInfo, FilePath nuspecFile)
+	{
+		if (context == null)
+		{
+			throw new ArgumentNullException("context");
+		}
+
+		var xpq = string.Format("/n:package/n:metadata/n:version");
+		
+		context.Information("\tUpdating Version in Nuspec File {0} to {1}", nuspecFile, verInfo.ToString());
+		
+		try {
+			context.XmlPoke(nuspecFile, xpq, verInfo.ToString(), new XmlPokeSettings {
+				PreserveWhitespace = true
+				, Namespaces = new Dictionary<string, string> {
+					 { /* Prefix */ "n", /* URI */ "http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd"}
+				 }
+			});
+		} catch {} // Its ok to throw these away as it most likely means the file didn't exist or the XPath didn't find any nodes
+	}
+	
 	public static void UpdateNuSpecVersionDependency(ICakeContext context, Settings settings, VersionInfo verInfo, FilePath nuspecFile)
 	{
 		if (context == null)
@@ -157,29 +160,30 @@ public class VersionUtils
 			throw new ArgumentNullException("context");
 		}
 
-		if (string.IsNullOrEmpty(settings.Version.NamespaceBase)) return;
+		if (string.IsNullOrEmpty(settings.NuGet.LibraryNamespaceBase)) return;
+		
+		var xpq = string.Format("/n:package/n:metadata/n:dependencies//n:dependency[starts-with(@id, '{0}')]/@version", settings.NuGet.LibraryNamespaceBase);
+		
+		var replacementStr = !string.IsNullOrEmpty(settings.NuGet.LibraryMinVersionDependency) ? settings.NuGet.LibraryMinVersionDependency : verInfo.ToString();
 
-		var xpq = string.Format("/n:package/n:metadata/n:dependencies//n:dependency[starts-with(@id, '{0}')]/@version", settings.Version.NamespaceBase);
-		var replacementStr = verInfo.ToString();
-
-		switch (settings.NuGet.VersionDependencyForLibrary)
+		switch (settings.NuGet.VersionDependencyTypeForLibrary)
 		{
-			case "none": break;
-			case "exact": replacementStr = string.Format("[{0}]", replacementStr); break;
-			case "greaterthan": replacementStr = string.Format("(,{0})", replacementStr); break;
-			case "greaterthanorequal": replacementStr = string.Format("(,{0}]", replacementStr); break;
-			case "lessthan": replacementStr = string.Format("({0},)", replacementStr); break;
+			case VersionDependencyTypes.none: break;
+			case VersionDependencyTypes.exact: replacementStr = string.Format("[{0}]", replacementStr); break;
+			case VersionDependencyTypes.greaterthan: replacementStr = string.Format("(,{0})", replacementStr); break;
+			case VersionDependencyTypes.greaterthanorequal: replacementStr = string.Format("(,{0}]", replacementStr); break;
+			case VersionDependencyTypes.lessthan: replacementStr = string.Format("({0},)", replacementStr); break;
 		}
-
-		context.Information("\tUpdating Version for {0} Namespace Assemblies in Nuspec File {1} to {2}", settings.Version.NamespaceBase, nuspecFile, replacementStr);
-
+		
+		context.Information("\tUpdating Version for {0} Namespace Assemblies in Nuspec File {1} to {2}", settings.NuGet.LibraryNamespaceBase, nuspecFile, replacementStr);
+		
 		try {
 			context.XmlPoke(nuspecFile, xpq, replacementStr, new XmlPokeSettings {
 				PreserveWhitespace = true
 				, Namespaces = new Dictionary<string, string> {
-					{ /* Prefix */ "n", /* URI */ "http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd"}
-				}
-				});
+					 { /* Prefix */ "n", /* URI */ "http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd"}
+				 }
+			});
 		} catch {} // Its ok to throw these away as it most likely means the file didn't exist or the XPath didn't find any nodes
 	}
 }
@@ -203,18 +207,18 @@ public class VersionInfo
 	public string Milestone {get;set;}
 	[Newtonsoft.Json.JsonIgnore]
 	public string CakeVersion {get;set;}
-
+	
 	[Newtonsoft.Json.JsonIgnore]
 	public bool IsPreRelease { get { return PreRelease != null && PreRelease != 0; } }
 
-	public string ToString(bool includePreRelease = true)
-	{
+	public new string ToString(bool includePreRelease = true) 
+	{ 
 		var str = string.Format("{0:#0}.{1:#0}.{2:#0}", Major, Minor, Build);
 		if (IsPreRelease && includePreRelease) str += string.Format("-pre{0:00}", PreRelease);
 
-		return str;
+		return str; 
 	}
-
+	
 	public void Display(ICakeContext context)
 	{
 		context.Information("Version:");
@@ -226,7 +230,7 @@ public class VersionInfo
 		context.Information("\tSemantic: {0}", Semantic);
 		context.Information("\tMilestone: {0}", Milestone);
 		context.Information("\tCake Version: {0}", CakeVersion);
-
+		
 		if (ReleaseNotes != null) context.Information("\tRelease Notes: {0}", ReleaseNotes);
 	}
 }

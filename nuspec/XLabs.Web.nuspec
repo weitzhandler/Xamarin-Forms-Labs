@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.Web</id>
-    <version>2.3.0-pre02</version>
+    <version>2.3.0-pre03</version>
     <title>XLabs - Web</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -17,12 +17,15 @@
     <tags>Xamarin XLabs Web REST</tags>
     <dependencies>
       <group>
-        <dependency id="Microsoft.Bcl" version="1.1.10" />
-        <dependency id="Microsoft.Bcl.Async" version="1.0.168" />
-        <dependency id="Microsoft.Bcl.Build" version="1.0.21" />
-        <dependency id="Microsoft.Net.Http" version="2.2.29" />
-        <dependency id="XLabs.Core" version="[2.3.0-pre02]" />
-        <dependency id="XLabs.Serialization" version="[2.3.0-pre02]" />
+        <dependency id="XLabs.Core" version="2.3.0-pre03" />
+        <dependency id="XLabs.Serialization" version="2.3.0-pre03" />
+        <dependency id="System.Net.Http" version="4.1.0" />
+      </group>
+      <group targetFramework="netstandard1.0">
+        <dependency id="NETStandard.Library" version="1.6.0" />
+        <dependency id="XLabs.Core" version="2.3.0-pre03" />
+        <dependency id="XLabs.Serialization" version="2.3.0-pre03" />
+        <dependency id="System.Net.Http" version="4.1.0" />
       </group>
     </dependencies>
   </metadata>
@@ -32,23 +35,28 @@
     <!-- Assemblies: Portable -->
     <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
     <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+
+    <!-- Assemblies: .Net Standard 1.0 Profile -->
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\netstandard1.0" />
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\netstandard1.0" />
+    
     <!-- Assemblies: Android -->
     <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\monoandroid" />
     <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\monoandroid" />
     <file src="..\src\Web\XLabs.Web.Droid\bin\$configuration$\XLabs.Web.Droid.dll" target="lib\monoandroid" />
     <file src="..\src\Web\XLabs.Web.Droid\bin\$configuration$\XLabs.Web.Droid.pdb" target="lib\monoandroid" />
+    
     <!-- Assemblies: iOS -->
     <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\xamarinios" />
     <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\xamarinios" />
     <file src="..\src\Web\XLabs.Web.iOS\bin\$configuration$\XLabs.Web.iOS.dll" target="lib\xamarinios" />
     <file src="..\src\Web\XLabs.Web.iOS\bin\$configuration$\XLabs.Web.iOS.pdb" target="lib\xamarinios" />
+    
     <!-- Assemblies: Microsoft -->
-    <file src="C:\Program Files (x86)\Windows Kits\10\UnionMetadata\facade\Windows.WinMD" target="lib\.NETCore50\Windows.winmd" />
-    <!-- Assemblies: .NET Core 5.0 -->
-    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\.NETCore50" />
-    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\.NETCore50" />
-    <file src="..\src\Web\XLabs.Web.UWP\bin\$configuration$\XLabs.Web.UWP.dll" target="lib\.NETCore50" />
-    <file src="..\src\Web\XLabs.Web.UWP\bin\$configuration$\XLabs.Web.UWP.pdb" target="lib\.NETCore50" />
+    
+    <!-- Assemblies: UWP -->
+    <file src="..\src\Web\XLabs.Web.UWP\bin\$configuration$\XLabs.Web.UWP.dll" target="lib\uap" />
+    <file src="..\src\Web\XLabs.Web.UWP\bin\$configuration$\XLabs.Web.UWP.pdb" target="lib\uap" />
     <!-- Assemblies: .NET 4.5 -->
     <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\net45" />
     <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\net45" />

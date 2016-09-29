@@ -15,12 +15,17 @@
     <releaseNotes>Updated for Xamarin Forms 2.3</releaseNotes>
     <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs Settings</tags>
+    <dependencies>
+      <group targetFramework="netstandard1.0">
+        <dependency id="NETStandard.Library"  version="1.6.0" />
+      </group>
+    </dependencies>
   </metadata>
   <files>
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.Settings.Readme.md" target="content" -->
     <!-- Assemblies: Portable -->
-    <file src="..\src\Settings\XLabs.Settings\bin\$configuration$\XLabs.Settings.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
-    <file src="..\src\Settings\XLabs.Settings\bin\$configuration$\XLabs.Settings.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\Settings\XLabs.Settings\bin\$configuration$\XLabs.Settings.dll" target="lib\netstandard1.0" />
+    <file src="..\src\Settings\XLabs.Settings\bin\$configuration$\XLabs.Settings.pdb" target="lib\netstandard1.0" />
   </files>
 </package>

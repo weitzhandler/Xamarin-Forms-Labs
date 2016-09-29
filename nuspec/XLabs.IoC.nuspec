@@ -15,12 +15,17 @@
     <releaseNotes>Updated for Xamarin Forms 2.3</releaseNotes>
     <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs IOC</tags>
+    <dependencies>
+      <group targetFramework="netstandard1.0">
+        <dependency id="NETStandard.Library"  version="1.6.0" />
+      </group>
+    </dependencies>
   </metadata>
   <files>
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.IOC.Readme.md" target="content" -->
     <!-- Assemblies: Portable -->
-    <file src="..\src\IOC\XLabs.IOC\bin\$configuration$\XLabs.IOC.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
-    <file src="..\src\IOC\XLabs.IOC\bin\$configuration$\XLabs.IOC.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\IOC\XLabs.IOC\bin\$configuration$\XLabs.IOC.dll" target="lib\netstandard1.0" />
+    <file src="..\src\IOC\XLabs.IOC\bin\$configuration$\XLabs.IOC.pdb" target="lib\netstandard1.0" />
   </files>
 </package>
