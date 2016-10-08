@@ -1,11 +1,20 @@
 ﻿{
   "supports": {},
   "dependencies": {
-    "Microsoft.NETCore.Portable.Compatibility": "1.0.1",
-    "NETStandard.Library": "1.6.0",
-    "protobuf-net": "2.1.0"
+    "protobuf-net": "2.1.0",
+    "System.Runtime": "4.1.0",
+    "System.Reflection.Emit": "4.0.1",
+    "System.Reflection.Emit.ILGeneration": "4.0.1",
+    "System.Reflection.Emit.Lightweight": "4.0.1",
+    "System.Reflection.TypeExtensions": "4.1.0",
+    "System.Xml.XmlSerializer": "4.0.11",
+    "System.Runtime.Serialization.Primitives": "4.1.1",
+    "System.Diagnostics.Debug": "4.0.11",
+    "System.Diagnostics.Tools": "4.0.1",
+    "Microsoft.NETCore.Platforms": "1.0.1",
+    "Microsoft.NETCore.Targets": "1.0.1"
   },
   "frameworks": {
-    "netstandard1.5": {}
+    "netstandard1.3": {}
   }
 }

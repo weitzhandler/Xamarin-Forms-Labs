@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.Caching</id>
-    <version>2.3.0-pre03</version>
+    <version>2.3.0-pre04</version>
     <title>XLabs - Caching</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -16,9 +16,24 @@
     <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs caching</tags>
     <dependencies>
-      <group targetFramework="netstandard1.0">
+      <group targetFramework=".NETFramework4.5">    
+        <dependency id="XLabs.Serialization" version="2.3.0-pre04" />
+      </group>
+      <group targetFramework=".NETPortable4.5-Profile111">
+        <dependency id="XLabs.Serialization" version="2.3.0-pre04" />
+      </group>
+      <group targetFramework=".NETPortable4.5-Profile259">
+        <dependency id="XLabs.Serialization" version="2.3.0-pre04" />
+      </group>
+      <group targetFramework=".NETStandard1.0">
         <dependency id="NETStandard.Library" version="1.6.0" />
-        <dependency id="XLabs.Serialization" version="2.3.0-pre03" />
+
+        <dependency id="XLabs.Serialization" version="2.3.0-pre04" />
+      </group>
+      <group targetFramework=".NETStandard1.1">
+        <dependency id="NETStandard.Library" version="1.6.0" />
+
+        <dependency id="XLabs.Serialization" version="2.3.0-pre04" />
       </group>
     </dependencies>
   </metadata>
@@ -28,5 +43,14 @@
     <!-- Assemblies: Portable -->
     <file src="..\src\Caching\XLabs.Caching\bin\$configuration$\XLabs.Caching.dll" target="lib\netstandard1.0" />
     <file src="..\src\Caching\XLabs.Caching\bin\$configuration$\XLabs.Caching.pdb" target="lib\netstandard1.0" />
+
+    <file src="..\src\Caching\XLabs.Caching\bin\$configuration$\XLabs.Caching.dll" target="lib\netstandard1.1" />
+    <file src="..\src\Caching\XLabs.Caching\bin\$configuration$\XLabs.Caching.pdb" target="lib\netstandard1.1" />
+
+    <file src="..\src\Caching\XLabs.Caching\bin\$configuration$\XLabs.Caching.dll" target="lib\portable-net45+win8+wpa81+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\Caching\XLabs.Caching\bin\$configuration$\XLabs.Caching.pdb" target="lib\portable-net45+win8+wpa81+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    
+    <file src="..\src\Caching\XLabs.Caching\bin\$configuration$\XLabs.Caching.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\Caching\XLabs.Caching\bin\$configuration$\XLabs.Caching.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
   </files>
 </package>

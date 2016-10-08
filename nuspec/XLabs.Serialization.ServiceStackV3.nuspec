@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.Serialization.ServiceStackV3</id>
-    <version>2.3.0-pre03</version>
+    <version>2.3.0-pre04</version>
     <title>XLabs - Serialization - ServiceStackV3</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -11,13 +11,13 @@
     <iconUrl>https://raw.githubusercontent.com/XLabs/Xamarin-Forms-Labs/master/Design/Icons/nuget/icon_nuget.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>This package implements the Serialization provider contracts via ServiceStack</description>
-    <summary>XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms.</summary>
+    <summary>XLabs is a open source project that aims to provide a powerfull and cross platform set of controls tailored to work with Xamarin Forms (Android and iOS Support Only).</summary>
     <releaseNotes>Updated for Xamarin Forms 2.3</releaseNotes>
     <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs Serialization ServiceStack</tags>
     <dependencies>
       <group>
-        <dependency id="XLabs.Serialization" version="2.3.0-pre03" />
+        <dependency id="XLabs.Serialization" version="2.3.0-pre04" />
       </group>
     </dependencies>
   </metadata>

@@ -22,8 +22,8 @@
 	},
 	"nuget": {
 		"NuGetConfig": "./.nuget/NuGet.config",
-		"FeedUrl": "https://nuget.org",
-		"FeedAPIKey": "",
+		"FeedUrl": "https://www.myget.org/F/xlabs/api/v2/package",
+		"FeedAPIKey": "2b490881-c52e-4a97-b441-b1560d8b0bec",
 		"ArtifactsPath": "./artifacts/packages",
 		"NuspecPath": "./nuspec",
 		"UpdateVersion": true,

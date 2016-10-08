@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.Web</id>
-    <version>2.3.0-pre03</version>
+    <version>2.3.0-pre04</version>
     <title>XLabs - Web</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -16,16 +16,26 @@
     <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs Web REST</tags>
     <dependencies>
-      <group>
-        <dependency id="XLabs.Core" version="2.3.0-pre03" />
-        <dependency id="XLabs.Serialization" version="2.3.0-pre03" />
+      <group targetFramework="netstandard1.1">
+        <dependency id="NETStandard.Library" version="1.6.0" />
+        <dependency id="XLabs.Core" version="2.3.0-pre04" />
+        <dependency id="XLabs.Serialization" version="2.3.0-pre04" />
         <dependency id="System.Net.Http" version="4.1.0" />
       </group>
       <group targetFramework="netstandard1.0">
-        <dependency id="NETStandard.Library" version="1.6.0" />
-        <dependency id="XLabs.Core" version="2.3.0-pre03" />
-        <dependency id="XLabs.Serialization" version="2.3.0-pre03" />
-        <dependency id="System.Net.Http" version="4.1.0" />
+        <dependency id="XLabs.Core" version="2.3.0-pre04" />
+        <dependency id="XLabs.Serialization" version="2.3.0-pre04" />
+        <dependency id="Microsoft.Net.Http" version="2.2.29" />
+      </group>
+      <group targetFramework="portable-net45+win81+wpa81+monoandroid+monotouch+xamarinios10+xamarinmac">
+        <dependency id="XLabs.Core" version="2.3.0-pre04" />
+        <dependency id="XLabs.Serialization" version="2.3.0-pre04" />
+        <dependency id="Microsoft.Net.Http" version="2.2.29" />
+      </group>
+      <group targetFramework="portable-net45+win8+wpa81">
+        <dependency id="XLabs.Core" version="2.3.0-pre04" />
+        <dependency id="XLabs.Serialization" version="2.3.0-pre04" />
+        <dependency id="Microsoft.Net.Http" version="2.2.29" />
       </group>
     </dependencies>
   </metadata>
@@ -33,13 +43,17 @@
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.Settings.Web.Readme.md" target="content" -->
     <!-- Assemblies: Portable -->
-    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
-    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\portable-net45+win81+wpa81+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\portable-net45+win81+wpa81+monoandroid+monotouch+xamarinios10+xamarinmac" />
 
     <!-- Assemblies: .Net Standard 1.0 Profile -->
     <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\netstandard1.0" />
     <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\netstandard1.0" />
-    
+
+    <!-- Assemblies: .Net Standard 1.1 Profile -->
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\netstandard1.1" />
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\netstandard1.1" />
+
     <!-- Assemblies: Android -->
     <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\monoandroid" />
     <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\monoandroid" />
@@ -62,11 +76,13 @@
     <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\net45" />
     <file src="..\src\Web\XLabs.Web.Net45\bin\$configuration$\XLabs.Web.Net45.dll" target="lib\net45" />
     <file src="..\src\Web\XLabs.Web.Net45\bin\$configuration$\XLabs.Web.Net45.pdb" target="lib\net45" />
+    
     <!-- Assemblies: Windows 8.1 -->
     <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\win81" />
     <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\win81" />
     <file src="..\src\Web\XLabs.Web.WinRT\bin\$configuration$\XLabs.Web.WinRT.dll" target="lib\win81" />
     <file src="..\src\Web\XLabs.Web.WinRT\bin\$configuration$\XLabs.Web.WinRT.pdb" target="lib\win81" />
+    
     <!-- Assemblies: Winows Mobile 8.1 -->
     <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\wpa81" />
     <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\wpa81" />
