@@ -25,11 +25,12 @@
   <files>
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.Settings.XamSettings.Readme.md" target="content" -->
-    <!-- Assemblies: Portable -->
+    <!-- Assemblies: PCL Profile 259 + Xamarin -->
     <file src="..\src\Settings\XLabs.Settings.XamSettings\bin\$configuration$\XLabs.Settings.XamSettings.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
     <file src="..\src\Settings\XLabs.Settings.XamSettings\bin\$configuration$\XLabs.Settings.XamSettings.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
 
-    <file src="..\src\Settings\XLabs.Settings.XamSettings\bin\$configuration$\XLabs.Settings.XamSettings.dll" target="lib\portable-net45+win8+wpa81+monoandroid+monotouch+xamarinios10+xamarinmac" />
-    <file src="..\src\Settings\XLabs.Settings.XamSettings\bin\$configuration$\XLabs.Settings.XamSettings.pdb" target="lib\portable-net45+win8+wpa81+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <!-- Assemblies: .NET Standard 1.0 -->
+    <file src="..\src\Settings\XLabs.Settings.XamSettings\bin\$configuration$\XLabs.Settings.XamSettings.dll" target="lib\netstandard1.0" />
+    <file src="..\src\Settings\XLabs.Settings.XamSettings\bin\$configuration$\XLabs.Settings.XamSettings.pdb" target="lib\netstandard1.0" />
   </files>
 </package>

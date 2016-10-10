@@ -16,25 +16,19 @@
     <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs IOC Autofac</tags>
     <dependencies>
-      <group targetFramework="netstandard1.1">
+      <group>
         <dependency id="XLabs.IoC" version="2.3.0-pre04" />
         <dependency id="Autofac" version="4.1.1" />
-        <dependency id="System.Runtime" version="4.1.0" />
-        <dependency id="System.Collections" version="4.0.11" />
-        <dependency id="System.Diagnostics.Debug" version="4.0.11" />
-        <dependency id="System.Diagnostics.Tools" version="4.0.1" />
-        <dependency id="System.ComponentModel" version="4.0.1" />
       </group>
-      <group targetFramework="netstandard1.0">
+      <group targetFramework=".NETPortable,Version=v4.5,Profile=Profile78">
         <dependency id="XLabs.IoC" version="2.3.0-pre04" />
         <dependency id="Autofac" version="[3.5.2]" />
-        <dependency id="System.Runtime" version="4.1.0" />
-        <dependency id="System.Collections" version="4.0.11" />
-        <dependency id="System.Diagnostics.Debug" version="4.0.11" />
-        <dependency id="System.Diagnostics.Tools" version="4.0.1" />
-        <dependency id="System.ComponentModel" version="4.0.1" />
       </group>
-      <group targetFramework="portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac">
+      <group targetFramework=".NETPortable,Version=v4.5,Profile=Profile111">
+        <dependency id="XLabs.IoC" version="2.3.0-pre04" />
+        <dependency id="Autofac" version="[3.5.2]" />
+      </group>
+      <group targetFramework=".NETPortable,Version=v4.5,Profile=Profile259">
         <dependency id="XLabs.IoC" version="2.3.0-pre04" />
         <dependency id="Autofac" version="[3.5.2]" />
       </group>
@@ -43,14 +37,16 @@
   <files>
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.IOC.Autofac.Readme.md" target="content" -->
-    <!-- Assemblies: Portable -->
-    <file src="..\src\IOC\XLabs.IOC.Autofac\bin\$configuration$\XLabs.IOC.Autofac.dll" target="lib\netstandard1.1" />
-    <file src="..\src\IOC\XLabs.IOC.Autofac\bin\$configuration$\XLabs.IOC.Autofac.pdb" target="lib\netstandard1.1" />
+    <!-- Assemblies: PCL Profile 259 + Xamarin -->
+    <file src="..\src\IOC\XLabs.IOC.Autofac\bin\$configuration$\XLabs.IOC.Autofac.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\IOC\XLabs.IOC.Autofac\bin\$configuration$\XLabs.IOC.Autofac.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />    
 
+    <!-- Assemblies: .NET Stanadard 1.0 -->
     <file src="..\src\IOC\XLabs.IOC.Autofac\bin\$configuration$\XLabs.IOC.Autofac.dll" target="lib\netstandard1.0" />
     <file src="..\src\IOC\XLabs.IOC.Autofac\bin\$configuration$\XLabs.IOC.Autofac.pdb" target="lib\netstandard1.0" />
 
-    <file src="..\src\IOC\XLabs.IOC.Autofac\bin\$configuration$\XLabs.IOC.Autofac.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
-    <file src="..\src\IOC\XLabs.IOC.Autofac\bin\$configuration$\XLabs.IOC.Autofac.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />    
+    <!-- Assemblies: .NET Stanadard 1.1 -->
+    <file src="..\src\IOC\XLabs.IOC.Autofac\bin\$configuration$\XLabs.IOC.Autofac.dll" target="lib\netstandard1.1" />
+    <file src="..\src\IOC\XLabs.IOC.Autofac\bin\$configuration$\XLabs.IOC.Autofac.pdb" target="lib\netstandard1.1" />
   </files>
 </package>

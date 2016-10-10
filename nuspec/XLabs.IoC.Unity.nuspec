@@ -25,10 +25,11 @@
   <files>
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.IOC.Unity.Readme.md" target="content" -->
-    <!-- Assemblies: Portable -->
+    <!-- Assemblies: PCL Profile 259 + Xamarin -->
     <file src="..\src\IOC\XLabs.IOC.Unity\bin\$configuration$\XLabs.IOC.Unity.dll" target="lib\portable45-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
     <file src="..\src\IOC\XLabs.IOC.Unity\bin\$configuration$\XLabs.IOC.Unity.pdb" target="lib\portable45-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
 
+	<!-- Assemblies: .NET Standard 1.0 -->
     <file src="..\src\IOC\XLabs.IOC.Unity\bin\$configuration$\XLabs.IOC.Unity.dll" target="lib\netstandard1.0" />
     <file src="..\src\IOC\XLabs.IOC.Unity\bin\$configuration$\XLabs.IOC.Unity.pdb" target="lib\netstandard1.0" />
   </files>

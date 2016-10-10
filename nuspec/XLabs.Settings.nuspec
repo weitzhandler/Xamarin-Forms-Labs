@@ -16,29 +16,26 @@
     <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs Settings</tags>
     <dependencies>
-      <group targetFramework="netstandard1.0">
-        <dependency id="NETStandard.Library" version="1.6.0" />
-        <dependency id="System.Runtime" version="4.1.0" />
-        <dependency id="System.Runtime.Extensions" version="4.1.0" />
-        <dependency id="System.Collections" version="4.0.11" />
-        <dependency id="System.Resources.ResourceManager" version="4.0.1" />
-        <dependency id="System.Globalization" version="4.0.11" />
-      </group>
-      <group targetFramework="portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac"/>
-      <group targetFramework="portable-net45+win8+wpa81+monoandroid+monotouch+xamarinios10+xamarinmac"/>
+      <group targetFramework="NETStandard1.0"/>
+      <group targetFramework=".NETFramework4.5"/>
+      <group targetFramework=".NETPortable,Version=v4.5,Profile=Profile78"/>
+      <group targetFramework=".NETPortable,Version=v4.5,Profile=Profile111"/>
+      <group targetFramework=".NETPortable,Version=v4.5,Profile=Profile259"/>
+	  <group targetFramework="MonoAndroid"/>
+	  <group targetFramework="MonoTouch"/>
+	  <group targetFramework="Xamarin.iOS10"/>
+	  <group targetFramework="Xamarin.Mac"/>
     </dependencies>
   </metadata>
   <files>
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.Settings.Readme.md" target="content" -->
-    <!-- Assemblies: Portable -->
-    <file src="..\src\Settings\XLabs.Settings\bin\$configuration$\XLabs.Settings.dll" target="lib\netstandard1.0" />
-    <file src="..\src\Settings\XLabs.Settings\bin\$configuration$\XLabs.Settings.pdb" target="lib\netstandard1.0" />
-
+	<!-- Assemblies: PCL Profile 259 + Xamarin -->
     <file src="..\src\Settings\XLabs.Settings\bin\$configuration$\XLabs.Settings.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
     <file src="..\src\Settings\XLabs.Settings\bin\$configuration$\XLabs.Settings.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
 
-    <file src="..\src\Settings\XLabs.Settings\bin\$configuration$\XLabs.Settings.dll" target="lib\portable-net45+win8+wpa81+monoandroid+monotouch+xamarinios10+xamarinmac" />
-    <file src="..\src\Settings\XLabs.Settings\bin\$configuration$\XLabs.Settings.pdb" target="lib\portable-net45+win8+wpa81+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <!-- Assemblies: .NET Standard 1.0 -->
+    <file src="..\src\Settings\XLabs.Settings\bin\$configuration$\XLabs.Settings.dll" target="lib\netstandard1.0" />
+    <file src="..\src\Settings\XLabs.Settings\bin\$configuration$\XLabs.Settings.pdb" target="lib\netstandard1.0" />
   </files>
 </package>

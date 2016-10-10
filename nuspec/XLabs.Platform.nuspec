@@ -60,32 +60,38 @@
   <files>
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.Platform.Readme.md" target="content" -->
-    <!-- Assemblies: Portable -->
+	<!-- Assemblies: PCL Profile 259 + Xamarin -->
     <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10" />
     <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10" />
+
     <!-- Assemblies: .NET Standard 1.0 -->
     <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.dll" target="lib\netstandard1.0" />
     <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.pdb" target="lib\netstandard1.0" />
+
     <!-- Assemblies: Android -->
     <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.dll" target="lib\monoandroid" />
     <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.pdb" target="lib\monoandroid" />
     <file src="..\src\Platform\XLabs.Platform.Droid\bin\$configuration$\XLabs.Platform.Droid.dll" target="lib\monoandroid" />
     <file src="..\src\Platform\XLabs.Platform.Droid\bin\$configuration$\XLabs.Platform.Droid.pdb" target="lib\monoandroid" />
+
     <!-- Assemblies: iOS -->
     <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.dll" target="lib\xamarinios10" />
     <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.pdb" target="lib\xamarinios10" />
     <file src="..\src\Platform\XLabs.Platform.iOS\bin\$configuration$\XLabs.Platform.iOS.dll" target="lib\xamarinios10" />
     <file src="..\src\Platform\XLabs.Platform.iOS\bin\$configuration$\XLabs.Platform.iOS.pdb" target="lib\xamarinios10" />
+
     <!-- Assemblies: Windows 8.1 -->
     <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.dll" target="lib\win8" />
     <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.pdb" target="lib\win8" />
     <file src="..\src\Platform\XLabs.Platform.WinRT\bin\$configuration$\XLabs.Platform.WinRT.dll" target="lib\win8" />
     <file src="..\src\Platform\XLabs.Platform.WinRT\bin\$configuration$\XLabs.Platform.WinRT.pdb" target="lib\win8" />
+
     <!-- Assemblies: Winows Mobile 8.1 -->
     <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.dll" target="lib\wpa81" />
     <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.pdb" target="lib\wpa81" />
     <file src="..\src\Platform\XLabs.Platform.WinRT.Phone\bin\$configuration$\XLabs.Platform.WinRT.Phone.dll" target="lib\wpa81" />
     <file src="..\src\Platform\XLabs.Platform.WinRT.Phone\bin\$configuration$\XLabs.Platform.WinRT.Phone.pdb" target="lib\wpa81" />
+
     <!-- Assemblies: UWP/UAP -->
     <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.dll" target="lib\uap10.0" />
     <file src="..\src\Platform\XLabs.Platform\bin\$configuration$\XLabs.Platform.pdb" target="lib\uap10.0" />

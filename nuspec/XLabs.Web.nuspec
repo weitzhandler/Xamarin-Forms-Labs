@@ -16,43 +16,84 @@
     <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs Web REST</tags>
     <dependencies>
-      <group targetFramework="netstandard1.1">
-        <dependency id="NETStandard.Library" version="1.6.0" />
+	  <group>
         <dependency id="XLabs.Core" version="2.3.0-pre04" />
         <dependency id="XLabs.Serialization" version="2.3.0-pre04" />
         <dependency id="System.Net.Http" version="4.1.0" />
       </group>
-      <group targetFramework="netstandard1.0">
+      <group targetFramework="NETStandard1.0">
+        <dependency id="XLabs.Core" version="2.3.0-pre04" />
+        <dependency id="XLabs.Serialization" version="2.3.0-pre04" />
+        <dependency id="Microsoft.Net.Http" version="2.2.29" />
+      </group>	  
+      <group targetFramework="NETStandard1.1">
+        <dependency id="XLabs.Core" version="2.3.0-pre04" />
+        <dependency id="XLabs.Serialization" version="2.3.0-pre04" />
+        <dependency id="System.Net.Http" version="4.1.0" />
+      </group>	  
+      <group targetFramework="NETStandard1.3">
+        <dependency id="XLabs.Core" version="2.3.0-pre04" />
+        <dependency id="XLabs.Serialization" version="2.3.0-pre04" />
+        <dependency id="System.Net.Http" version="4.1.0" />
+      </group>	  
+      <group targetFramework="NETStandard1.4">
+        <dependency id="XLabs.Core" version="2.3.0-pre04" />
+        <dependency id="XLabs.Serialization" version="2.3.0-pre04" />
+        <dependency id="System.Net.Http" version="4.1.0" />
+      </group>	  
+      <group targetFramework="NETStandard1.5">
+        <dependency id="XLabs.Core" version="2.3.0-pre04" />
+        <dependency id="XLabs.Serialization" version="2.3.0-pre04" />
+        <dependency id="System.Net.Http" version="4.1.0" />
+      </group>	  
+      <group targetFramework="NETStandard1.6">
+        <dependency id="XLabs.Core" version="2.3.0-pre04" />
+        <dependency id="XLabs.Serialization" version="2.3.0-pre04" />
+        <dependency id="System.Net.Http" version="4.1.0" />
+      </group>	  
+      <group targetFramework=".NETPortable,Version=v4.5,Profile=Profile78">
         <dependency id="XLabs.Core" version="2.3.0-pre04" />
         <dependency id="XLabs.Serialization" version="2.3.0-pre04" />
         <dependency id="Microsoft.Net.Http" version="2.2.29" />
       </group>
-      <group targetFramework="portable-net45+win81+wpa81+monoandroid+monotouch+xamarinios10+xamarinmac">
+      <group targetFramework=".NETPortable,Version=v4.5,Profile=Profile111">
         <dependency id="XLabs.Core" version="2.3.0-pre04" />
         <dependency id="XLabs.Serialization" version="2.3.0-pre04" />
         <dependency id="Microsoft.Net.Http" version="2.2.29" />
       </group>
-      <group targetFramework="portable-net45+win8+wpa81">
+      <group targetFramework=".NETPortable,Version=v4.5,Profile=Profile259">
         <dependency id="XLabs.Core" version="2.3.0-pre04" />
         <dependency id="XLabs.Serialization" version="2.3.0-pre04" />
         <dependency id="Microsoft.Net.Http" version="2.2.29" />
-      </group>
+      </group>	  
     </dependencies>
   </metadata>
   <files>
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.Settings.Web.Readme.md" target="content" -->
-    <!-- Assemblies: Portable -->
-    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\portable-net45+win81+wpa81+monoandroid+monotouch+xamarinios10+xamarinmac" />
-    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\portable-net45+win81+wpa81+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <!-- Assemblies: PCL Profile 259 + Xamarin -->
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
 
-    <!-- Assemblies: .Net Standard 1.0 Profile -->
-    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\netstandard1.0" />
-    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\netstandard1.0" />
+    <!-- Assemblies: PCL Profile 111 + Xamarin -->
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\portable-net45+win8+wpa81+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\portable-net45+win8+wpa81+monoandroid+monotouch+xamarinios10+xamarinmac" />
 
-    <!-- Assemblies: .Net Standard 1.1 Profile -->
+    <!-- Assemblies: PCL Profile 78 + Xamarin -->
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\portable-net45+win8+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\portable-net45+win8+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+
+    <!-- Assemblies: .NET Standard 1.1 -->
     <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\netstandard1.1" />
     <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\netstandard1.1" />
+
+    <!-- Assemblies: .NET Standard 1.3 -->
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\netstandard1.3" />
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\netstandard1.3" />
+
+    <!-- Assemblies: .NET Standard 1.6 -->
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\netstandard1.6" />
+    <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.pdb" target="lib\netstandard1.6" />
 
     <!-- Assemblies: Android -->
     <file src="..\src\Web\XLabs.Web\bin\$configuration$\XLabs.Web.dll" target="lib\monoandroid" />

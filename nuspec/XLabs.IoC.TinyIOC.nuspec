@@ -24,16 +24,20 @@
   <files>
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.IOC.TinyIOC.Readme.md" target="content" -->
-    <!-- Assemblies: Android -->
+    
+	<!-- Assemblies: Android -->
     <file src="..\src\IOC\XLabs.IOC.TinyIOC.Droid\bin\$configuration$\XLabs.IOC.TinyIOC.Droid.dll" target="lib\monoandroid" />
     <file src="..\src\IOC\XLabs.IOC.TinyIOC.Droid\bin\$configuration$\XLabs.IOC.TinyIOC.Droid.pdb" target="lib\monoandroid" />
-    <!-- Assemblies: iOS -->
+    
+	<!-- Assemblies: iOS -->
     <file src="..\src\IOC\XLabs.IOC.TinyIOC.iOS\bin\$configuration$\XLabs.IOC.TinyIOC.iOS.dll" target="lib\xamarinios" />
     <file src="..\src\IOC\XLabs.IOC.TinyIOC.iOS\bin\$configuration$\XLabs.IOC.TinyIOC.iOS.pdb" target="lib\xamarinios" />
-    <!-- Assemblies: .NET 4.5 -->
+    
+	<!-- Assemblies: .NET 4.5 -->
     <file src="..\src\IOC\XLabs.IOC.TinyIOC.Net45\bin\$configuration$\XLabs.IOC.TinyIOC.Net45.dll" target="lib\net45" />
     <file src="..\src\IOC\XLabs.IOC.TinyIOC.Net45\bin\$configuration$\XLabs.IOC.TinyIOC.Net45.pdb" target="lib\net45" />
-    <!-- Assemblies: Windows 10 -->
+    
+	<!-- Assemblies: Windows 10 -->
     <file src="..\src\IOC\XLabs.IOC.TinyIOC.UWP\bin\$configuration$\XLabs.IOC.TinyIOC.UWP.dll" target="lib\uap10.0" />
     <file src="..\src\IOC\XLabs.IOC.TinyIOC.UWP\bin\$configuration$\XLabs.IOC.TinyIOC.UWP.pdb" target="lib\uap10.0" />
   </files>

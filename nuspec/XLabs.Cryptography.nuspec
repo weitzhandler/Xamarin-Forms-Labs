@@ -19,15 +19,12 @@
   <files>
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.Cryptography.Readme.md" target="content" -->
-    <!-- Assemblies: Portable -->
-    <file src="..\src\Cryptography\XLabs.Cryptography\bin\$configuration$\XLabs.Cryptography.dll" target="lib\netstandard1.0" />
-    <file src="..\src\Cryptography\XLabs.Cryptography\bin\$configuration$\XLabs.Cryptography.pdb" target="lib\netstandard1.0" />
-
+	<!-- Assemblies: PCL Profile 259 + Xamarin -->
     <file src="..\src\Cryptography\XLabs.Cryptography\bin\$configuration$\XLabs.Cryptography.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
     <file src="..\src\Cryptography\XLabs.Cryptography\bin\$configuration$\XLabs.Cryptography.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
-
-    <file src="..\src\Cryptography\XLabs.Cryptography\bin\$configuration$\XLabs.Cryptography.dll" target="lib\portable-net45+win8+wpa81+monoandroid+monotouch+xamarinios10+xamarinmac" />
-    <file src="..\src\Cryptography\XLabs.Cryptography\bin\$configuration$\XLabs.Cryptography.pdb" target="lib\portable-net45+win8+wpa81+monoandroid+monotouch+xamarinios10+xamarinmac" />
-
+	
+    <!-- Assemblies: .NET Stanadard 1.0 -->
+    <file src="..\src\Cryptography\XLabs.Cryptography\bin\$configuration$\XLabs.Cryptography.dll" target="lib\netstandard1.0" />
+    <file src="..\src\Cryptography\XLabs.Cryptography\bin\$configuration$\XLabs.Cryptography.pdb" target="lib\netstandard1.0" />
   </files>
 </package>

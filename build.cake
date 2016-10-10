@@ -202,23 +202,31 @@ Task("Package")
 	var nuspecFiles = GetFiles(buildSettings.NuGet.NuSpecFileSpec);
 	foreach(var nsf in nuspecFiles)
 	{
-		Information("Packaging {0}", nsf);
-		
-		if (buildSettings.NuGet.UpdateVersion) {
-			VersionUtils.UpdateNuSpecVersion(Context, buildSettings, versionInfo, nsf.ToString());	
+		try {
+			Information("Packaging {0}", nsf);
+			
+			if (buildSettings.NuGet.UpdateVersion) {
+				VersionUtils.UpdateNuSpecVersion(Context, buildSettings, versionInfo, nsf.ToString());	
+			}
+			
+			if (buildSettings.NuGet.UpdateLibraryDependencies) {
+				VersionUtils.UpdateNuSpecVersionDependency(Context, buildSettings, versionInfo, nsf.ToString());
+			}
+			
+			NuGetPack(nsf, new NuGetPackSettings {
+				Version = versionInfo.ToString(),
+				ReleaseNotes = versionInfo.ReleaseNotes,
+				Symbols = true,
+				Properties = nugetProps,
+				OutputDirectory = artifactsPath,
+				Verbosity = NuGetVerbosity.Detailed
+			});
 		}
-		
-		if (buildSettings.NuGet.UpdateLibraryDependencies) {
-			VersionUtils.UpdateNuSpecVersionDependency(Context, buildSettings, versionInfo, nsf.ToString());
+		catch (Exception ex)
+		{
+			Information("Failed creating Package {0}", nsf);
+			Information(ex.Message.ToString());
 		}
-		
-		NuGetPack(nsf, new NuGetPackSettings {
-			Version = versionInfo.ToString(),
-			ReleaseNotes = versionInfo.ReleaseNotes,
-			Symbols = true,
-			Properties = nugetProps,
-			OutputDirectory = artifactsPath
-		});
 	}
 });
 

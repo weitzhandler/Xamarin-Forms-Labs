@@ -16,20 +16,19 @@
     <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs IOC SimpleInjector</tags>
     <dependencies>
-      <group targetFramework="netstandard1.0">
-
-        <dependency id="System.ComponentModel" version="4.0.1" />
-        <dependency id="System.Diagnostics.Debug" version="4.0.11" />
-        <dependency id="System.Diagnostics.Tools" version="4.0.1" />
-        <dependency id="System.Globalization" version="4.0.11" />
-        <dependency id="System.Linq" version="4.1.0" />
-        <dependency id="System.Linq.Expressions" version="4.1.0" />
-        <dependency id="System.Reflection" version="4.1.0" />
-        <dependency id="System.Reflection.Extensions" version="4.0.1" />
-        <dependency id="System.Runtime" version="4.1.0" />
-        <dependency id="System.Runtime.Extensions" version="4.1.0" />
-        <dependency id="System.Threading.Tasks" version="4.0.11" />
-
+      <group>
+        <dependency id="XLabs.IoC" version="2.3.0-pre04" />
+        <dependency id="SimpleInjector" version="3.2.2" />
+      </group>
+      <group targetFramework=".NETPortable,Version=v4.5,Profile=Profile78">
+        <dependency id="XLabs.IoC" version="2.3.0-pre04" />
+        <dependency id="SimpleInjector" version="3.1.1" />
+      </group>
+      <group targetFramework=".NETPortable,Version=v4.5,Profile=Profile111">
+        <dependency id="XLabs.IoC" version="2.3.0-pre04" />
+        <dependency id="SimpleInjector" version="3.1.1" />
+      </group>
+      <group targetFramework=".NETPortable,Version=v4.5,Profile=Profile259">
         <dependency id="XLabs.IoC" version="2.3.0-pre04" />
         <dependency id="SimpleInjector" version="3.2.2" />
       </group>
@@ -38,7 +37,19 @@
   <files>
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.IOC.SimpleInjector.Readme.md" target="content" -->
-    <!-- Assemblies: Portable -->
+    <!-- Assemblies: PCL Profile 259 + Xamarin -->
+    <file src="..\src\IOC\XLabs.IOC.SimpleInjector\bin\$configuration$\XLabs.IOC.SimpleInjector.dll" target="lib\portable45-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\IOC\XLabs.IOC.SimpleInjector\bin\$configuration$\XLabs.IOC.SimpleInjector.pdb" target="lib\portable45-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+
+    <!-- Assemblies: .NET Standard 1.0 -->
+    <file src="..\src\IOC\XLabs.IOC.SimpleInjector\bin\$configuration$\XLabs.IOC.SimpleInjector.dll" target="lib\portable45-net45+win8+wpa81+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\IOC\XLabs.IOC.SimpleInjector\bin\$configuration$\XLabs.IOC.SimpleInjector.pdb" target="lib\portable45-net45+win8+wpa81+monoandroid+monotouch+xamarinios10+xamarinmac" />
+
+    <!-- Assemblies: .NET Standard 1.0 -->
+    <file src="..\src\IOC\XLabs.IOC.SimpleInjector\bin\$configuration$\XLabs.IOC.SimpleInjector.dll" target="lib\portable45-net45+win8+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\IOC\XLabs.IOC.SimpleInjector\bin\$configuration$\XLabs.IOC.SimpleInjector.pdb" target="lib\portable45-net45+win8+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+	
+    <!-- Assemblies: .NET Standard 1.0 -->
     <file src="..\src\IOC\XLabs.IOC.SimpleInjector\bin\$configuration$\XLabs.IOC.SimpleInjector.dll" target="lib\netstandard1.0" />
     <file src="..\src\IOC\XLabs.IOC.SimpleInjector\bin\$configuration$\XLabs.IOC.SimpleInjector.pdb" target="lib\netstandard1.0" />
   </files>

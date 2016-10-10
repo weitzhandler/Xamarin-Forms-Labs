@@ -16,31 +16,26 @@
     <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs Serialization</tags>
     <dependencies>
-      <group targetFramework=".NETFramework4.5" />
-      <group targetFramework=".NETPortable4.5-Profile111">
-      </group>
-      <group targetFramework=".NETPortable4.5-Profile259">
-      </group>
-      <group targetFramework="netstandard1.0">
-        <dependency id="NETStandard.Library" version="1.6.0" />
-      </group>
-      <group targetFramework="netstandard1.1">
-        <dependency id="NETStandard.Library" version="1.6.0" />
-      </group>
+      <group targetFramework="NETStandard1.0"/>
+      <group targetFramework=".NETFramework4.5"/>
+      <group targetFramework=".NETPortable,Version=v4.5,Profile=Profile78"/>
+      <group targetFramework=".NETPortable,Version=v4.5,Profile=Profile111"/>
+      <group targetFramework=".NETPortable,Version=v4.5,Profile=Profile259"/>
+	  <group targetFramework="MonoAndroid"/>
+	  <group targetFramework="MonoTouch"/>
+	  <group targetFramework="Xamarin.iOS10"/>
+	  <group targetFramework="Xamarin.Mac"/>
     </dependencies>
   </metadata>
   <files>
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.Serialization.Readme.md" target="content" -->
-    <!-- Assemblies: Portable -->
-    <file src="..\src\Serialization\XLabs.Serialization\bin\$configuration$\XLabs.Serialization.dll" target="lib\netstandard1.0" />
-    <file src="..\src\Serialization\XLabs.Serialization\bin\$configuration$\XLabs.Serialization.pdb" target="lib\netstandard1.0" />
+	<!-- Assemblies: PCL Profile 259 + Xamarin -->
+    <file src="..\src\Serialization\XLabs.Serialization\bin\$configuration$\XLabs.Serialization.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\Serialization\XLabs.Serialization\bin\$configuration$\XLabs.Serialization.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
 
-    <file src="..\src\Serialization\XLabs.Serialization\bin\$configuration$\XLabs.Serialization.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
-    <file src="..\src\Serialization\XLabs.Serialization\bin\$configuration$\XLabs.Serialization.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
-
-    <file src="..\src\Serialization\XLabs.Serialization\bin\$configuration$\XLabs.Serialization.dll" target="lib\portable-net45+win8+wpa81+monoandroid+monotouch+xamarinios10+xamarinmac" />
-    <file src="..\src\Serialization\XLabs.Serialization\bin\$configuration$\XLabs.Serialization.pdb" target="lib\portable-net45+win8+wpa81+monoandroid+monotouch+xamarinios10+xamarinmac" />
-
+	<!-- Assemblies: .NET Stanadard 1.0 -->
+    <file src="..\src\Serialization\XLabs.Serialization\bin\$configuration$\XLabs.Serialization.dll" target="lib\NETStandard1.0" />
+    <file src="..\src\Serialization\XLabs.Serialization\bin\$configuration$\XLabs.Serialization.pdb" target="lib\NETStandard1.0" />
   </files>
 </package>
