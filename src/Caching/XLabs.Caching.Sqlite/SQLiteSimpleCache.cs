@@ -100,7 +100,7 @@ namespace XLabs.Caching.SQLite
             var entry = Find<SQliteCacheTable>(key);
             if (entry != null)
             {
-                if (entry.AbsoluteExpiration != null && DateTime.Now.ToUniversalTime() > entry.AbsoluteExpiration)
+                if (entry.AbsoluteExpiration != null && DateTime.UtcNow > entry.AbsoluteExpiration)
                 {
                     Remove(key);
                     return default(T);
@@ -368,7 +368,7 @@ namespace XLabs.Caching.SQLite
             var entry = await _asyncConnection.FindAsync<SQliteCacheTable>(key);
             if (entry != null)
             {
-                if (entry.AbsoluteExpiration != null && DateTime.Now.ToUniversalTime() > entry.AbsoluteExpiration)
+                if (entry.AbsoluteExpiration != null && DateTime.UtcNow > entry.AbsoluteExpiration)
                 {
                     Remove(key);
                     return default(T);
