@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>XLabs.Settings.XamSettings</id>
-    <version>2.3.0-pre02</version>
+    <version>2.3.0-pre04</version>
     <title>XLabs - Settings - XamSettings</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -17,7 +17,7 @@
     <tags>Xamarin XLabs Settings XamSettings</tags>
     <dependencies>
       <group>
-        <dependency id="XLabs.Settings" version="[2.3.0-pre02]" />
+        <dependency id="XLabs.Settings" version="2.3.0-pre04" />
         <dependency id="Xam.Plugins.Settings" version="2.1.0" />
       </group>
     </dependencies>
@@ -25,8 +25,12 @@
   <files>
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.Settings.XamSettings.Readme.md" target="content" -->
-    <!-- Assemblies: Portable -->
-    <file src="..\src\Settings\XLabs.Settings.XamSettings\bin\$configuration$\XLabs.Settings.XamSettings.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
-    <file src="..\src\Settings\XLabs.Settings.XamSettings\bin\$configuration$\XLabs.Settings.XamSettings.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <!-- Assemblies: PCL Profile 259 + Xamarin -->
+    <file src="..\src\Settings\XLabs.Settings.XamSettings\bin\$configuration$\XLabs.Settings.XamSettings.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\Settings\XLabs.Settings.XamSettings\bin\$configuration$\XLabs.Settings.XamSettings.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+
+    <!-- Assemblies: .NET Standard 1.0 -->
+    <file src="..\src\Settings\XLabs.Settings.XamSettings\bin\$configuration$\XLabs.Settings.XamSettings.dll" target="lib\netstandard1.0" />
+    <file src="..\src\Settings\XLabs.Settings.XamSettings\bin\$configuration$\XLabs.Settings.XamSettings.pdb" target="lib\netstandard1.0" />
   </files>
 </package>

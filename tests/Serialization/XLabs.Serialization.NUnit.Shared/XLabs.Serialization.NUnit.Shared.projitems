@@ -9,12 +9,7 @@
     <Import_RootNamespace>XLabs.Serialization.NUnit.Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)CanSerializerSystemTextJson.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)CanSerializerTests.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)CanSerializerTestsJsonNet.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)CanSerializerTestsProtoBuf.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)CanSerializerTestsServiceStack.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)CanSerializeTestsSystemJson.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataObjects\Animal.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataObjects\Cat.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)DataObjects\DateTimeDto.cs" />

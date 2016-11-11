@@ -2,27 +2,34 @@
 	"version": {
 		"VersionFile": "./version.json",
 		"AssemblyInfoFile": "./src/AssemblyInfo.Shared.cs",
-		"LoadFrom": "VersionFile",
-		"AutoIncrementVersion": false,
-		"NamespaceBase": "XLabs"
+		"LoadFrom": "versionfile",
+		"AutoIncrementVersion": false
 	},
 	"build": {
 		"SourcePath": "./src",
-		"SolutionFileSpec": "./src/*.sln",
+		"SolutionFileSpec": "./src/XLabs.Framework.sln",
 		"TreatWarningsAsErrors": false,
-		"NugetConfigPath": "./.nuget/NuGet.Config",
 		"EnableXamarinIOS": false,
 		"MacAgentIPAddress": "",
 		"MacAgentUserName": "",
 		"MacAgentUserPassword": ""
 	},
+	"test": {
+		"SourcePath": "./tests",
+		"ResultsPath": "./artifacts",
+		"AssemblyFileSpec": "*.UnitTests.dll",
+		"Framework": "NUnit3"
+	},
 	"nuget": {
 		"NuGetConfig": "./.nuget/NuGet.config",
-		"FeedUrl": "https://nuget.org",
+		"FeedUrl": "",
 		"FeedAPIKey": "",
 		"ArtifactsPath": "./artifacts/packages",
 		"NuspecPath": "./nuspec",
 		"UpdateVersion": true,
-		"VersionDependencyForLibrary": "exact"
+		"UpdateLibraryDependencies": true,
+		"VersionDependencyForLibrary": "greaterthanorequal",
+		"LibraryNamespaceBase": "XLabs",
+		"LibraryMinVersionDependency": ""
 	}
 }

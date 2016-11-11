@@ -167,10 +167,6 @@
       <Project>{88f99257-b7a1-4c67-b134-7bdad63aeef1}</Project>
       <Name>XLabs.IOC</Name>
     </ProjectReference>
-    <ProjectReference Include="..\XLabs.IOC.NUnit\XLabs.IOC.NUnit.csproj">
-      <Project>{f74f7bf7-d624-4292-bd0c-9b8368106e17}</Project>
-      <Name>XLabs.IOC.NUnit</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="MainActivity.cs.txt" />

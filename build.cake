@@ -4,6 +4,7 @@
 
 #l "tools/versionUtils.cake"
 #l "tools/settingsUtils.cake"
+#tool "nuget:?package=NUnit.ConsoleRunner"
 
 ///////////////////////////////////////////////////////////////////////////////
 // ARGUMENTS
@@ -13,9 +14,14 @@ var target = Argument<string>("target", "Default");
 var configuration = Argument<string>("configuration", "Release");
 var settingsFile = Argument<string>("settingsFile", ".\\settings.json");
 var skipBuild = Argument<string>("skipBuild", "false").ToLower() == "true" || Argument<string>("skipBuild", "false") == "1";
+var skipPackage = Argument<string>("skipPackage", "false").ToLower() == "true" || Argument<string>("skipPackage", "false") == "1";
 
 var buildSettings = SettingsUtils.LoadSettings(Context, settingsFile);
 var versionInfo = VersionUtils.LoadVersion(Context, buildSettings);
+
+// Allow for any overrides
+buildSettings.NuGet.LibraryMinVersionDependency = (Argument<string>("dependencyVersion", buildSettings.NuGet.LibraryMinVersionDependency)).Replace(":",".");
+buildSettings.NuGet.VersionDependencyTypeForLibrary = Argument<VersionDependencyTypes>("dependencyType", buildSettings.NuGet.VersionDependencyTypeForLibrary);
 
 ///////////////////////////////////////////////////////////////////////////////
 // GLOBAL VARIABLES
@@ -36,15 +42,15 @@ Setup((c) =>
 	c.Information("\tSkip Build: {0}", skipBuild);
 	c.Information("\tSolutions Found: {0}", solutions.Count);
 
-    // Executed BEFORE the first task.
+	// Executed BEFORE the first task.
 	buildSettings.Display(c);
 	versionInfo.Display(c);
 });
 
 Teardown((c) =>
 {
-    // Executed AFTER the last task.
-    Information("Finished running tasks.");
+	// Executed AFTER the last task.
+	Information("Finished running tasks.");
 });
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -52,155 +58,213 @@ Teardown((c) =>
 ///////////////////////////////////////////////////////////////////////////////
 
 Task("Clean")
-    .Description("Cleans all directories that are used during the build process.")
+	.Description("Cleans all directories that are used during the build process.")
 	.WithCriteria(!skipBuild)
-    .Does(() =>
+	.Does(() =>
 {
-    // Clean solution directories.
-    foreach(var path in solutionPaths)
-    {
-        Information("Cleaning {0}", path);
-        CleanDirectories(path + "/**/bin/" + configuration);
-        CleanDirectories(path + "/**/obj/" + configuration);
-    }
+	// Clean solution directories.
+	foreach(var path in solutionPaths)
+	{
+		Information("Cleaning {0}", path);
+		try { CleanDirectories(path + "/**/bin/" + configuration); } catch {}
+		try { CleanDirectories(path + "/**/obj/" + configuration); } catch {}
+	}
+
+	var pathTest = MakeAbsolute(Directory(buildSettings.Test.SourcePath)).FullPath;
+	Information("Cleaning {0}", pathTest);
+	try { CleanDirectories(pathTest + "/**/bin/" + configuration); } catch {}
+	try { CleanDirectories(pathTest + "/**/obj/" + configuration); } catch {}
+	
 });
 
 Task("CleanAll")
-    .Description("Cleans all directories that are used during the build process.")
-    .Does(() =>
+	.Description("Cleans all directories that are used during the build process.")
+	.Does(() =>
 {
-    // Clean solution directories.
-    foreach(var path in solutionPaths)
-    {
-        Information("Cleaning {0}", path);
-        CleanDirectories(path + "/**/bin");
-        CleanDirectories(path + "/**/obj");
+	// Clean solution directories.
+	foreach(var path in solutionPaths)
+	{
+		Information("Cleaning {0}", path);
+		CleanDirectories(path + "/**/bin");
+		CleanDirectories(path + "/**/obj");
 		CleanDirectories(path + "/packages/**/*");
 		CleanDirectories(path + "/artifacts/**/*");
 		CleanDirectories(path + "/packages");
 		CleanDirectories(path + "/artifacts");
-    }
+	}
+	
+	var pathTest = MakeAbsolute(Directory(buildSettings.Test.SourcePath)).FullPath;
+	Information("Cleaning {0}", pathTest);
+	try { CleanDirectories(pathTest + "/**/bin"); } catch {}
+	try { CleanDirectories(pathTest + "/**/obj"); } catch {}
 });
 
 Task("CleanPackages")
-    .Description("Cleans all packages that are used during the build process.")
-    .Does(() =>
+	.Description("Cleans all packages that are used during the build process.")
+	.Does(() =>
 {
-    // Clean solution directories.
-    foreach(var path in solutionPaths)
-    {
-        Information("Cleaning {0}", path);
+	// Clean solution directories.
+	foreach(var path in solutionPaths)
+	{
+		Information("Cleaning {0}", path);
 		CleanDirectories(path + "/packages/**/*");
 		CleanDirectories(path + "/packages");
-    }
+	}
 });
 
 Task("Restore")
-    .Description("Restores all the NuGet packages that are used by the specified solution.")
+	.Description("Restores all the NuGet packages that are used by the specified solution.")
 	.WithCriteria(!skipBuild)
-    .Does(() =>
+	.Does(() =>
 {
-    // Restore all NuGet packages.
-    foreach(var solution in solutions)
-    {
-        Information("Restoring {0}...", solution);
-        NuGetRestore(solution, new NuGetRestoreSettings { ConfigFile = buildSettings.Build.NugetConfigPath });
-    }
+	// Restore all NuGet packages.
+	foreach(var solution in solutions)
+	{
+		Information("Restoring {0}...", solution);
+		NuGetRestore(solution, new NuGetRestoreSettings { ConfigFile = buildSettings.NuGet.NuGetConfig });
+	}
 });
 
 Task("Build")
-    .Description("Builds all the different parts of the project.")
+	.Description("Builds all the different parts of the project.")
 	.WithCriteria(!skipBuild)
-    .IsDependentOn("Clean")
-    .IsDependentOn("Restore")
+	.IsDependentOn("Clean")
+	.IsDependentOn("Restore")
 	.IsDependentOn("UpdateVersion")
-    .Does(() =>
+	.Does(() =>
 {
 	if (buildSettings.Version.AutoIncrementVersion)
 	{
 		RunTarget("IncrementVersion");
 	}
 
-    // Build all solutions.
-    foreach(var solution in solutions)
-    {
-        Information("Building {0}", solution);
-        MSBuild(solution, settings =>
-            settings.SetPlatformTarget(PlatformTarget.MSIL)
-				.SetMaxCpuCount(1)
-                .WithProperty("TreatWarningsAsErrors",buildSettings.Build.TreatWarningsAsErrors.ToString())
-                .WithTarget("Build")
-                .SetConfiguration(configuration));
-    }
+	// Build all solutions.
+	foreach(var solution in solutions)
+	{
+		Information("Building {0}", solution);
+		MSBuild(solution, settings =>
+			settings.SetPlatformTarget(PlatformTarget.MSIL)
+				.SetMaxCpuCount(buildSettings.Build.MaxCpuCount)
+				.WithProperty("TreatWarningsAsErrors",buildSettings.Build.TreatWarningsAsErrors.ToString())
+				.WithTarget("Build")
+				.SetConfiguration(configuration));
+	}
+});
+
+Task("UnitTest")
+	.Description("Run unit tests for the solution.")
+	.WithCriteria(!skipBuild)
+	.IsDependentOn("Build")
+	.Does(() => 
+{
+	// Run all unit tests we can find.
+			
+	var assemplyFilePath = string.Format("{0}/**/bin/{1}/{2}", buildSettings.Test.SourcePath, configuration, buildSettings.Test.AssemblyFileSpec);
+	
+	Information("Unit Test Files: {0}", assemplyFilePath);
+	
+	var unitTestAssemblies = GetFiles(assemplyFilePath);
+	
+	foreach(var uta in unitTestAssemblies)
+	{
+		Information("Executing Tests for {0}", uta);
+		
+		switch (buildSettings.Test.Framework)
+		{
+			case TestFrameworkTypes.NUnit2:
+				NUnit(uta.ToString(), new NUnitSettings { });
+				break;
+			case TestFrameworkTypes.NUnit3:
+				NUnit3(uta.ToString(), new NUnit3Settings { Configuration=configuration });
+				break;
+			case TestFrameworkTypes.XUnit:
+				XUnit(uta.ToString(), new XUnitSettings { OutputDirectory = buildSettings.Test.ResultsPath });
+				break;
+			case TestFrameworkTypes.XUnit2:
+				XUnit2(uta.ToString(), new XUnit2Settings { OutputDirectory = buildSettings.Test.ResultsPath, XmlReportV1 = true });
+				break;
+		}
+	}
 });
 
 Task("Package")
-    .Description("Packages all nuspec files into nupkg packages.")
-    .IsDependentOn("Build")
-    .Does(() =>
+	.Description("Packages all nuspec files into nupkg packages.")
+	.WithCriteria(!skipPackage)
+	.IsDependentOn("UnitTest")
+	.Does(() =>
 {
 	var artifactsPath = Directory(buildSettings.NuGet.ArtifactsPath);
 	var nugetProps = new Dictionary<string, string>() { {"Configuration", configuration} };
+	
 	
 	CreateDirectory(artifactsPath);
 	
 	var nuspecFiles = GetFiles(buildSettings.NuGet.NuSpecFileSpec);
 	foreach(var nsf in nuspecFiles)
 	{
-		Information("Packaging {0}", nsf);
-		
-		if (buildSettings.NuGet.UpdateVersion) {
-			VersionUtils.UpdateNuSpecVersion(Context, buildSettings, versionInfo, nsf.ToString());	
+		try {
+			Information("Packaging {0}", nsf);
+			
+			if (buildSettings.NuGet.UpdateVersion) {
+				VersionUtils.UpdateNuSpecVersion(Context, buildSettings, versionInfo, nsf.ToString());	
+			}
+			
+			if (buildSettings.NuGet.UpdateLibraryDependencies) {
+				VersionUtils.UpdateNuSpecVersionDependency(Context, buildSettings, versionInfo, nsf.ToString());
+			}
+			
+			NuGetPack(nsf, new NuGetPackSettings {
+				Version = versionInfo.ToString(),
+				ReleaseNotes = versionInfo.ReleaseNotes,
+				Symbols = true,
+				Properties = nugetProps,
+				OutputDirectory = artifactsPath,
+				Verbosity = NuGetVerbosity.Detailed
+			});
 		}
-		
-		VersionUtils.UpdateNuSpecVersionDependency(Context, buildSettings, versionInfo, nsf.ToString());
-		
-		NuGetPack(nsf, new NuGetPackSettings {
-			Version = versionInfo.ToString(),
-			ReleaseNotes = versionInfo.ReleaseNotes,
-			Symbols = true,
-			Properties = nugetProps,
-			OutputDirectory = artifactsPath
-		});
+		catch (Exception ex)
+		{
+			Information("Failed creating Package {0}", nsf);
+			Information(ex.Message.ToString());
+		}
 	}
 });
 
 Task("Publish")
-    .Description("Publishes all of the nupkg packages to the nuget server. ")
-    .IsDependentOn("Package")
-    .Does(() =>
+	.Description("Publishes all of the nupkg packages to the nuget server. ")
+	.IsDependentOn("Package")
+	.Does(() =>
 {
 	var nupkgFiles = GetFiles(buildSettings.NuGet.NuGetPackagesSpec);
 	foreach(var pkg in nupkgFiles)
 	{
-		// Lets skip everything except the current version and we can skip the symbols pkg for now
-		if (!pkg.ToString().Contains(versionInfo.ToString()) || pkg.ToString().Contains("symbols")) {
+		// Lets skip everything except the current version 
+		if (!pkg.ToString().Contains(versionInfo.ToString())) {
 			Information("Skipping {0}", pkg);
 			continue; 
 		}
 		
 		Information("Publishing {0}", pkg);
 		
-		if (buildSettings.NuGet.FeedApiKey != "VSTS" ) {
+		try
+		{
 			NuGetPush(pkg, new NuGetPushSettings {
 				Source = buildSettings.NuGet.FeedUrl,
 				ApiKey = buildSettings.NuGet.FeedApiKey,
 				ConfigFile = buildSettings.NuGet.NuGetConfig,
-				Verbosity = NuGetVerbosity.Detailed
+				Verbosity = NuGetVerbosity.Normal
 			});
-		} else {
-			NuGetPush(pkg, new NuGetPushSettings {
-				Source = buildSettings.NuGet.FeedUrl,
-				ConfigFile = buildSettings.NuGet.NuGetConfig,
-				Verbosity = NuGetVerbosity.Detailed
-			});
+		}
+		catch (Exception ex)
+		{
+			Information("\tFailed to published: ", ex.Message);
 		}
 	}
 });
 
 Task("UnPublish")
-    .Description("UnPublishes all of the current nupkg packages from the nuget server. Issue: versionToDelete must use : instead of . due to bug in cake")
-    .Does(() =>
+	.Description("UnPublishes all of the current nupkg packages from the nuget server. Issue: versionToDelete must use : instead of . due to bug in cake")
+	.Does(() =>
 {
 	var v = Argument<string>("versionToDelete", versionInfo.ToString()).Replace(":",".");
 	
@@ -215,11 +279,10 @@ Task("UnPublish")
 								buildSettings.NuGet.FeedUrl
 								);
 	
-		if (buildSettings.NuGet.FeedApiKey != "VSTS" ) {
+		//if (buildSettings.NuGet.FeedApiKey != "VSTS" ) {
 			args = args + string.Format(" -ApiKey {0}", buildSettings.NuGet.FeedApiKey);
-		}
-		
-		
+		//}
+				
 		if (!string.IsNullOrEmpty(buildSettings.NuGet.NuGetConfig)) {
 			args = args + string.Format(" -Config {0}", buildSettings.NuGet.NuGetConfig);
 		}
@@ -246,13 +309,14 @@ Task("UpdateVersion")
 
 Task("IncrementVersion")
 	.Description("Increments the version number and then updates it in the necessary files")
-	.IsDependentOn("UpdateVersion")
 	.Does(() =>
 {
 	var oldVer = versionInfo.ToString();
 	if (versionInfo.IsPreRelease) versionInfo.PreRelease++; else versionInfo.Build++;
 	
 	Information("Incrementing Version {0} to {1}", oldVer, versionInfo.ToString());
+	
+	RunTarget("UpdateVersion");	
 });
 
 Task("BuildNewVersion")
@@ -272,8 +336,8 @@ Task("PublishNewVersion")
 });
 
 Task("DisplaySettings")
-    .Description("Displays All Settings.")
-    .Does(() =>
+	.Description("Displays All Settings.")
+	.Does(() =>
 {
 	// Settings will be displayed as they are part of the Setup task
 });
@@ -283,8 +347,8 @@ Task("DisplaySettings")
 ///////////////////////////////////////////////////////////////////////////////
 
 Task("Default")
-    .Description("This is the default task which will be ran if no specific target is passed in.")
-    .IsDependentOn("Build");
+	.Description("This is the default task which will be ran if no specific target is passed in.")
+	.IsDependentOn("Build");
 
 ///////////////////////////////////////////////////////////////////////////////
 // EXECUTION
