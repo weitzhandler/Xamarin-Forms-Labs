@@ -23,20 +23,37 @@ public class SettingsUtils
 		obj.Configuration = context.Argument<string>("configuration", obj.Configuration);
 		obj.VersionFile = context.Argument<string>("versionFile", obj.VersionFile);
 				
-		obj.ExecuteBuild 		= context.Argument<string>("build", obj.ExecuteBuild.ToString()).ToLower() == "true" 		|| context.Argument<string>("build", obj.ExecuteBuild.ToString()) == "1";
-		obj.ExecutePackage 		= context.Argument<string>("package", obj.ExecutePackage.ToString()).ToLower() == "true" 	|| context.Argument<string>("package", obj.ExecutePackage.ToString()) == "1";
-		obj.ExecuteUnitTest 	= context.Argument<string>("unitTest", obj.ExecuteUnitTest.ToString()).ToLower() == "true" 	|| context.Argument<string>("unitTest", obj.ExecuteUnitTest.ToString()) == "1";
-		obj.ExecuteClean 		= context.Argument<string>("clean", obj.ExecuteClean.ToString()).ToLower() == "true" 		|| context.Argument<string>("clean", obj.ExecuteClean.ToString()) == "1";
+		obj.ExecuteBuild 		= GetBoolArgument(context, "build", obj.ExecuteBuild);
+		obj.ExecuteBuild 		= !GetBoolArgument(context, "skipBuild", !obj.ExecuteBuild);
+
+		obj.ExecutePackage 		= GetBoolArgument(context, "package", obj.ExecutePackage); 
+		obj.ExecutePackage 		= !GetBoolArgument(context, "skipPackage", !obj.ExecutePackage);
+
+		obj.ExecuteUnitTest 	= GetBoolArgument(context, "unitTest", obj.ExecuteUnitTest); 
+		obj.ExecuteUnitTest 	= !GetBoolArgument(context, "unitTest", !obj.ExecuteUnitTest); 
+
+		obj.ExecuteClean 		= GetBoolArgument(context, "clean", obj.ExecuteClean); 
+		obj.ExecuteClean 		= !GetBoolArgument(context, "skipClean", !obj.ExecuteClean); 
 
 		if (obj.NuGet == null) obj.NuGet = new NuGetSettings();
 		
 		obj.NuGet.FeedUrl		= context.Argument<string>("nugetFeed", obj.NuGet.FeedUrl);
+		obj.NuGet.FeedUrl		= context.Argument<string>("nugetFeedUrl", obj.NuGet.FeedUrl);
+
 		obj.NuGet.FeedApiKey	= context.Argument<string>("nugetApiKey", obj.NuGet.FeedApiKey);
 		
 		obj.NuGet.LibraryMinVersionDependency 		= (context.Argument<string>("dependencyVersion", obj.NuGet.LibraryMinVersionDependency)).Replace(":",".");
 		obj.NuGet.VersionDependencyTypeForLibrary 	= context.Argument<VersionDependencyTypes>("dependencyType", obj.NuGet.VersionDependencyTypeForLibrary);
 		
 		return obj;
+	}
+		
+	private static bool GetBoolArgument(ICakeContext context, string argumentName, bool defaultValue)
+	{
+		var result = context.Argument<string>(argumentName, defaultValue.ToString()).ToLower() == "true" || 
+						context.Argument<string>(argumentName, argumentName.ToString()) == "1";
+		
+		return result;
 	}
 	
 	public static void DisplayHelp(ICakeContext context)

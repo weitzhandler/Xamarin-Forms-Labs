@@ -12,8 +12,6 @@ install:
 - choco install doxygen.portable
 before_build:
 - ps: >-
-    nuget install NuProj -Prerelease -OutputDirectory .\src\packages
-
     nuget restore .\src\XLabs.Framework.sln
 
     Import-PfxCertificate -FilePath .\Samples\XLabs.Samples.pfx -CertStoreLocation Cert:\CurrentUser\My

@@ -65,7 +65,7 @@ Task("CleanAll")
 
 Task("Clean")
 	.Description("Cleans all directories that are used during the build process.")
-	.WithCriteria(settings.ExecuteClean || settings.ExecuteBuild)
+	.WithCriteria(settings.ExecuteBuild)
 	.Does(() =>
 {
 	// Clean solution directories.
