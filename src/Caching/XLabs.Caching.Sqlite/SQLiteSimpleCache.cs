@@ -20,26 +20,26 @@
 // 
 #region
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using SQLite.Net;
 using SQLite.Net.Async;
 using SQLite.Net.Attributes;
 using SQLite.Net.Interop;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using XLabs.Serialization;
 
 #endregion
 
 namespace XLabs.Caching.SQLite
 {
-    /// <summary>
-    /// Implements <see cref="IAsyncCacheProvider" /> caching interface
-    /// using SQLite.Async.Pcl library.
-    /// </summary>
-    // ReSharper disable once InconsistentNaming
-    public class SQLiteSimpleCache : SQLiteConnectionWithLock, IAsyncCacheProvider
+	/// <summary>
+	/// Implements <see cref="IAsyncCacheProvider" /> caching interface
+	/// using SQLite.Async.Pcl library.
+	/// </summary>
+	// ReSharper disable once InconsistentNaming
+	public class SQLiteSimpleCache : SQLiteConnectionWithLock, IAsyncCacheProvider
     {
         /// <summary>
         /// The serializer
@@ -84,9 +84,9 @@ namespace XLabs.Caching.SQLite
         /// <returns><c>true</c> if XXXX, <c>false</c> otherwise.</returns>
         public bool RemoveAll(IEnumerable<string> keys)
         {
-            var enumerable = keys.Select(Remove);
+            var enumerable = keys.Select(Remove).ToList();
 
-            return true;
+            return enumerable.All(x => x);
         }
 
         /// <summary>
@@ -263,7 +263,7 @@ namespace XLabs.Caching.SQLite
         /// <param name="values">The values.</param>
         public void SetAll<T>(IDictionary<string, T> values)
         {
-            var enumerable = values.Select(pair => Set(pair.Key, pair.Value));
+            var enumerable = values.Select(pair => Set(pair.Key, pair.Value)).ToList();
         }
 
         #endregion

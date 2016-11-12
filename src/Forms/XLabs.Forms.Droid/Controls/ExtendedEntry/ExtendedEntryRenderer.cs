@@ -22,6 +22,8 @@
 using System;
 using System.ComponentModel;
 using Android.Graphics;
+using Android.Graphics.Drawables;
+using Android.Graphics.Drawables.Shapes;
 using Android.Text;
 using Android.Text.Method;
 using Android.Util;
