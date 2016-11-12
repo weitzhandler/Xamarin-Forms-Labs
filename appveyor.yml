@@ -12,15 +12,15 @@ install:
 - choco install doxygen.portable
 before_build:
 - ps: >-
-    nuget install NuProj -Prerelease -OutputDirectory .\source\packages
+    nuget install NuProj -Prerelease -OutputDirectory .\src\packages
 
-    nuget restore .\source\XLabs.sln
+    nuget restore .\src\XLabs.Framework.sln
 
     Import-PfxCertificate -FilePath .\Samples\XLabs.Samples.pfx -CertStoreLocation Cert:\CurrentUser\My
 - appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product iOS
 - appveyor RegisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password% -Product Android
 build:
-  project: .\source\XLabs.sln
+  project: .\src\XLabs.Framework.sln
   verbosity: quiet
 after_build:
 - appveyor UnregisterXamarinLicense -Email %xamarin_email% -Password %xamarin_password%
