@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>XLabs.IoC</id>
-    <version>2.2.0000-pre01</version>
+    <version>2.3.0-pre04</version>
     <title>XLabs - IoC</title>
     <authors>XLabs Team</authors>
     <owners>XLabs Team</owners>
@@ -15,12 +15,27 @@
     <releaseNotes>Updated for Xamarin Forms 2.3</releaseNotes>
     <copyright>Copyright © 2016 XLabs Team</copyright>
     <tags>Xamarin XLabs IOC</tags>
+    <dependencies>
+      <group targetFramework="NETStandard1.0"/>
+      <group targetFramework=".NETFramework4.5"/>
+      <group targetFramework=".NETPortable,Version=v4.5,Profile=Profile78"/>
+      <group targetFramework=".NETPortable,Version=v4.5,Profile=Profile111"/>
+      <group targetFramework=".NETPortable,Version=v4.5,Profile=Profile259"/>
+	  <group targetFramework="MonoAndroid"/>
+	  <group targetFramework="MonoTouch"/>
+	  <group targetFramework="Xamarin.iOS10"/>
+	  <group targetFramework="Xamarin.Mac"/>
+    </dependencies>
   </metadata>
   <files>
     <!-- Content Files -->
     <!-- file src="..\..\docs\XLabs.IOC.Readme.md" target="content" -->
-    <!-- Assemblies: Portable -->
-    <file src="..\src\IOC\XLabs.IOC\bin\$configuration$\XLabs.IOC.dll" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
-    <file src="..\src\IOC\XLabs.IOC\bin\$configuration$\XLabs.IOC.pdb" target="lib\portable-net45+netcore45+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <!-- Assemblies: PCL Profile 259 + Xamarin -->
+    <file src="..\src\IOC\XLabs.IOC\bin\$configuration$\XLabs.IOC.dll" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+    <file src="..\src\IOC\XLabs.IOC\bin\$configuration$\XLabs.IOC.pdb" target="lib\portable-net45+win8+wpa81+wp8+monoandroid+monotouch+xamarinios10+xamarinmac" />
+
+	<!-- Assemblies: .NET Standard 1.0 -->
+    <file src="..\src\IOC\XLabs.IOC\bin\$configuration$\XLabs.IOC.dll" target="lib\netstandard1.0" />
+    <file src="..\src\IOC\XLabs.IOC\bin\$configuration$\XLabs.IOC.pdb" target="lib\netstandard1.0" />
   </files>
 </package>
