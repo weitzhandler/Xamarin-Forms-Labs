@@ -68,24 +68,43 @@ namespace XLabs.Forms.Controls
             base.Content = this.layout = new RelativeLayout();
         }
 
+		#region Content property
+
+		public new static BindableProperty ContentProperty = BindableProperty.Create(nameof(Content), typeof(View), typeof(PopupLayout),
+																					 null, propertyChanged: OnContentChanged);
+
+		private void SetContent(View view)
+		{
+			if (view != null)
+				layout.Children.Remove(view);
+			content = view;
+			if (content != null)
+				layout.Children.Add(content, () => Bounds);
+		}
+
+		private static void OnContentChanged(BindableObject bindable, object oldValue, object newValue)
+		{
+			var obj = bindable as PopupLayout;
+			obj.SetContent(newValue as View);
+		}
+
         /// <summary>
         /// Gets or sets the content.
         /// </summary>
         /// <value>The content.</value>
         public new View Content
         {
-            get { return this.content; }
-            set
-            {
-                if (this.content != null)
-                {
-                    this.layout.Children.Remove(this.content);
-                }
-
-                this.content = value;
-                this.layout.Children.Add(this.content, () => this.Bounds);
-            }
+			get
+			{
+				return GetValue(ContentProperty) as View;
+			}
+			set
+			{
+				SetValue(ContentProperty, value);
+			}
         }
+
+		#endregion
 
         /// <summary>
         /// Gets a value indicating whether this instance is popup active.
@@ -122,8 +141,8 @@ namespace XLabs.Forms.Controls
             DismissPopup();
             this.popup = popupView;
 
-            this.layout.InputTransparent = true;
-            this.content.InputTransparent = true;
+			if (this.content != null)
+				this.content.InputTransparent = true;
             this.layout.Children.Add(this.popup, xConstraint, yConstraint, widthConstraint, heightConstraint);
 
             this.layout.ForceLayout();
