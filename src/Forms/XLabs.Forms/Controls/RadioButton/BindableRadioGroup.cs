@@ -56,7 +56,7 @@ namespace XLabs.Forms.Controls
         /// The selected index property
         /// </summary>
         public static BindableProperty SelectedIndexProperty =
-            BindableProperty.Create<BindableRadioGroup, int>(o => o.SelectedIndex, default(int), BindingMode.TwoWay,
+            BindableProperty.Create<BindableRadioGroup, int>(o => o.SelectedIndex, -1, BindingMode.TwoWay,
                 propertyChanged: OnSelectedIndexChanged);
 
 
