@@ -5,6 +5,8 @@
 
 **XLabs** is a open source project that aims to provide a powerful and cross platform set of services and controls tailored to work with Xamarin and [Xamarin Forms](http://xamarin.com/forms).
 
+##NOTICE: This project is no longer maintained. It may not work with newer versions of Xamarin.Forms. 
+
 Call for action for all Xamarin Developers, embrace this project and share your controls and services with the community, add your own control to the toolkit.
 
 **Important for developers**
