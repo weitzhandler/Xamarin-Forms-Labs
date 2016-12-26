@@ -54,6 +54,18 @@ namespace XLabs.Forms.Controls
             BindableProperty.Create("CleanupCalled", typeof(bool), typeof(HybridWebView), false);
 
         /// <summary>
+        /// Enable/Disable android hardware webpage rendering.
+        /// </summary>
+        public static readonly BindableProperty AndroidHardwareRenderingProperty =
+            BindableProperty.Create("AndroidHardwareRendering", typeof(bool), typeof(HybridWebView), false);
+
+        /// <summary>
+        /// Enable/Disable additional android touch callback.
+        /// </summary>
+        public static readonly BindableProperty AndroidAdditionalTouchCallbackProperty =
+            BindableProperty.Create("AndroidAdditionalTouchCallback", typeof(bool), typeof(HybridWebView), true);
+
+        /// <summary>
         /// The java script load requested
         /// </summary>
         internal EventHandler<string> JavaScriptLoadRequested;
@@ -157,6 +169,24 @@ namespace XLabs.Forms.Controls
         {
             get { return (bool)GetValue (CleanupProperty); }
             set { SetValue (CleanupProperty, value); }
+        }
+
+        /// <summary>
+        /// Gets or sets android hardware rendering flag.
+        /// </summary>
+        public bool AndroidHardwareRendering
+        {
+            get { return (bool)GetValue(AndroidHardwareRenderingProperty); }
+            set { SetValue(AndroidHardwareRenderingProperty, value);  }
+        }
+
+        /// <summary>
+        /// Gets or sets android additional touch callback. 
+        /// </summary>
+        public bool AndroidAdditionalTouchCallback
+        {
+            get { return (bool)GetValue(AndroidAdditionalTouchCallbackProperty); }
+            set { SetValue(AndroidAdditionalTouchCallbackProperty, value); }
         }
 
         /// <summary>

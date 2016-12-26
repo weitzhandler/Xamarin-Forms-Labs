@@ -77,13 +77,13 @@ namespace XLabs.Forms.Controls
 
             if (this.Control == null && e.NewElement != null)
             {
-                var webView = new NativeWebView(this);
+                var webView = new NativeWebView(this, e.NewElement.AndroidAdditionalTouchCallback);
 
                 webView.Settings.JavaScriptEnabled = true;
                 webView.Settings.DomStorageEnabled = true;
 
                 //Turn off hardware rendering
-                webView.SetLayerType(LayerType.Software, null);
+                webView.SetLayerType(e.NewElement.AndroidHardwareRendering? LayerType.Hardware : LayerType.Software, null);
 
                 //Set the background color to transparent to fix an issue where the
                 //the picture would fail to draw
@@ -223,6 +223,8 @@ namespace XLabs.Forms.Controls
             }
         }
 
+        
+
         /// <summary>
         /// Class Client.
         /// </summary>
@@ -334,13 +336,24 @@ namespace XLabs.Forms.Controls
             private readonly GestureDetector detector;
 
             /// <summary>
+            /// Detector switch
+            /// </summary>
+            private readonly bool enableDetector;
+
+
+            /// <summary>
             /// Initializes a new instance of the <see cref="NativeWebView"/> class.
             /// </summary>
             /// <param name="renderer">The renderer.</param>
-            public NativeWebView(HybridWebViewRenderer renderer) : base(renderer.Context)
+            public NativeWebView(HybridWebViewRenderer renderer, bool enableAdditionalTouchDetector) : base(renderer.Context)
             {
-                var listener = new MyGestureListener(renderer);
-                this.detector = new GestureDetector(this.Context, listener);
+                enableDetector = enableAdditionalTouchDetector;
+
+                if (enableDetector)
+                {
+                    var listener = new MyGestureListener(renderer);
+                    this.detector = new GestureDetector(this.Context, listener);
+                }
             }
 
             /// <summary>
@@ -368,7 +381,10 @@ namespace XLabs.Forms.Controls
             /// </para></remarks>
             public override bool OnTouchEvent(MotionEvent e)
             {
-                this.detector.OnTouchEvent(e);
+                if (enableDetector)
+                {
+                    this.detector.OnTouchEvent(e);
+                }
                 return base.OnTouchEvent(e);
             }
 
