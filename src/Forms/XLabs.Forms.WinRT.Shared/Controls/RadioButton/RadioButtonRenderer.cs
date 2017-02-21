@@ -22,6 +22,7 @@
 using System.ComponentModel;
 using Xamarin.Forms;
 using XLabs.Forms.Controls;
+using Windows.UI.Xaml.Media;
 
 #if WINDOWS_PHONE
 using Xamarin.Forms.Platform.WinPhone;
@@ -39,7 +40,7 @@ using NativeRadioButton = Windows.UI.Xaml.Controls.RadioButton;
 
 namespace XLabs.Forms.Controls
 {
-    public class RadioButtonRenderer : ViewRenderer<CustomRadioButton, Windows.UI.Xaml.Controls.RadioButton>
+    public class RadioButtonRenderer : ViewRenderer<CustomRadioButton, NativeRadioButton>
     {
         protected override void OnElementChanged(ElementChangedEventArgs<CustomRadioButton> e)
         {
@@ -55,26 +56,27 @@ namespace XLabs.Forms.Controls
                 return;
             }
 
-            if (this.Control == null)
+            if (Control == null)
             {
                 var radioButton = new NativeRadioButton();
-                radioButton.Checked += (s, args) => this.Element.Checked = true;
-                radioButton.Unchecked += (s, args) => this.Element.Checked = false;
+                radioButton.Checked += (s, args) => Element.Checked = true;
+                radioButton.Unchecked += (s, args) => Element.Checked = false;
 
-                this.SetNativeControl(radioButton);
+                SetNativeControl(radioButton);
             }
 
-            this.Control.Content = e.NewElement.Text;
-            this.Control.IsChecked = e.NewElement.Checked;
+            Control.Content = e.NewElement.Text;
+            Control.IsChecked = e.NewElement.Checked;
 
+            UpdateFont();
 
-            this.Element.CheckedChanged += CheckedChanged;
-            this.Element.PropertyChanged += ElementOnPropertyChanged;
+            Element.CheckedChanged += CheckedChanged;
+            Element.PropertyChanged += ElementOnPropertyChanged;
         }
 
         private void ElementOnPropertyChanged(object sender, PropertyChangedEventArgs propertyChangedEventArgs)
         {
-            NativeRadioButton control = this.Control;
+            NativeRadioButton control = Control;
 
             if (control == null)
             {
@@ -84,10 +86,14 @@ namespace XLabs.Forms.Controls
             switch (propertyChangedEventArgs.PropertyName)
             {
                 case "Checked":
-                    control.IsChecked = this.Element.Checked;
+                    control.IsChecked = Element.Checked;
                     break;
                 case "TextColor":
-                    //control.Foreground = this.Element.TextColor ToBrush();
+                    control.Foreground = Element.TextColor.ToBrush();
+                    break;
+                case "FontName":
+                case "FontSize":
+                    UpdateFont();
                     break;
                 case "Text":
                     control.Content = Element.Text;
@@ -102,11 +108,22 @@ namespace XLabs.Forms.Controls
         {
             Device.BeginInvokeOnMainThread(() =>
             {
-                this.Control.Content = this.Element.Text;
-                this.Control.IsChecked = eventArgs.Value;
+                Control.Content = Element.Text;
+                Control.IsChecked = eventArgs.Value;
             });
         }
 
-
+        /// <summary>
+        /// Updates the font.
+        /// </summary>
+        private void UpdateFont()
+        {
+            if (!string.IsNullOrEmpty(Element.FontName))
+            {
+                Control.FontFamily = new FontFamily(Element.FontName);
+            }
+ 
+            Control.FontSize = (Element.FontSize > 0) ? (float)Element.FontSize : 12.0f;
+        }
     }
 }
