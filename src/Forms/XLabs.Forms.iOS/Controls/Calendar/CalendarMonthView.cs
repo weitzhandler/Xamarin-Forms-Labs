@@ -565,26 +565,32 @@ namespace XLabs.Forms.Controls
 
             Action action = () =>
             {
-                if (isMin && _leftArrow.Enabled)
+                if(_leftArrow != null) 
                 {
-                    _leftArrow.Enabled = false;
-                    _leftArrow.Alpha = 0;
-                }
-                else
-                {
-                    _leftArrow.Enabled = true;
-                    _leftArrow.Alpha = 1;
+                    if (isMin && _leftArrow.Enabled)
+                    {
+                        _leftArrow.Enabled = false;
+                        _leftArrow.Alpha = 0;
+                    }
+                    else
+                    {
+                        _leftArrow.Enabled = true;
+                        _leftArrow.Alpha = 1;
+                    }
                 }
 
-                if (isMax && _rightArrow.Enabled)
+                if(_rightArrow != null) 
                 {
-                    _rightArrow.Enabled = false;
-                    _rightArrow.Alpha = 0;
-                }
-                else
-                {
-                    _rightArrow.Enabled = true;
-                    _rightArrow.Alpha = 1;
+                    if (isMax && _rightArrow.Enabled)
+                    {
+                        _rightArrow.Enabled = false;
+                        _rightArrow.Alpha = 0;
+                    }
+                    else
+                    {
+                        _rightArrow.Enabled = true;
+                        _rightArrow.Alpha = 1;
+                    }
                 }
             };
 
