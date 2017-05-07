@@ -39,19 +39,19 @@ namespace XLabs.Forms.Controls
           var template = ContentTemplate;
 
           if (template == null)
+          {
             Content = null;
+            return;
+          }
 
           var dts = template as DataTemplateSelector;
           if (dts != null)
           {
             var item = GetValue(BindingContextProperty);
             template = dts.SelectTemplate(item, this);
-          }
-          else
-          {
-            var content = (View)template.CreateContent();
-            Content = content;
-          }
+          }          
+          
+          Content = (View)template.CreateContent();                      
         }
 
         /// <summary>
